@@ -1,0 +1,30 @@
+name: Quranic root correction
+description: Correct Quranic root index metadata
+title: "[Quranic root correction]: "
+labels: ["quranic-root", "data-correction"]
+body:
+  - type: input
+    id: root
+    attributes:
+      label: Arabic root
+      placeholder: قرأ
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: What should change?
+      description: Include corrected display root, gloss, occurrence count, or first occurrence as relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source and license
+      description: Provide source name, URL, and license/terms. Do not paste proprietary dictionary text.
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: Your name (optional)

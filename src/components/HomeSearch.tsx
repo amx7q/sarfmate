@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
 import { normaliseArabicInput } from "@/lib/arabic";
-import { searchRoot } from "@/lib/roots";
+import { searchRootLibrary } from "@/lib/quranRoots";
 import RootSearch from "@/components/RootSearch";
 import RootResult from "@/components/RootResult";
+import IndexedQuranRootCard from "@/components/IndexedQuranRootCard";
 import EmptyState from "@/components/EmptyState";
 import SuggestRootDialog from "@/components/SuggestRootDialog";
 
@@ -22,7 +23,7 @@ export default function HomeSearch() {
 
   const normalised = normaliseArabicInput(query);
   const hasQuery = query.trim().length > 0;
-  const entry = hasQuery ? searchRoot(query) : undefined;
+  const result = hasQuery ? searchRootLibrary(query) : undefined;
 
   function search(value: string) {
     setInput(value);
@@ -48,7 +49,7 @@ export default function HomeSearch() {
             type="button"
             onClick={() => search(root)}
             className={`rounded-full border px-4 py-1.5 font-arabic text-lg transition-colors ${
-              entry?.root === root
+              result?.kind === "full_entry" && result.entry.root === root
                 ? "border-secondary bg-secondary/10 text-primary"
                 : "border-border-soft bg-surface text-ink hover:border-secondary hover:text-primary"
             }`}
@@ -62,8 +63,14 @@ export default function HomeSearch() {
 
       <div aria-live="polite" className="mt-10">
         <AnimatePresence mode="wait">
-          {entry ? (
-            <RootResult key={entry.root} entry={entry} />
+          {result?.kind === "full_entry" ? (
+            <RootResult key={result.entry.root} entry={result.entry} />
+          ) : result?.kind === "indexed_only" ? (
+            <IndexedQuranRootCard
+              key={result.indexEntry.root}
+              entry={result.indexEntry}
+              onSuggest={() => setSuggestOpen(true)}
+            />
           ) : hasQuery ? (
             <EmptyState
               key="empty"

@@ -1,0 +1,26 @@
+name: Request full entry
+description: Request six-form learner data for an indexed-only root
+title: "[Request full entry]: "
+labels: ["request-full-entry"]
+body:
+  - type: input
+    id: root
+    attributes:
+      label: Arabic root
+      placeholder: هدى
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is this root useful?
+      description: Tell us if it is Quranic, common in class, or confusing for learners.
+  - type: textarea
+    id: known_forms
+    attributes:
+      label: Any forms or sources you already know?
+      description: Optional. Include references rather than copied dictionary entries.
+  - type: input
+    id: contributor
+    attributes:
+      label: Your name (optional)

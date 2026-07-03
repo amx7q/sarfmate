@@ -1,6 +1,149 @@
 import { FORM_LABELS, type RootEntry, type SarfFormKey } from "@/lib/types";
 
 const label = (key: SarfFormKey) => FORM_LABELS[key];
+const AI_DRAFT_NOTE =
+  "AI-generated draft. Requires Arabic teacher/native-speaker review before being marked reviewed.";
+
+type DraftPattern = {
+  root: string;
+  meaningEn: string;
+  past: string;
+  present: string;
+  imperative: string;
+  place: string;
+  active: string;
+  passive: string;
+  transliterationBase: string;
+  formMeanings: {
+    past: string;
+    present: string;
+    imperative: string;
+    place: string;
+    active: string;
+    passive: string;
+  };
+};
+
+const draft = (pattern: DraftPattern): RootEntry => ({
+  root: pattern.root,
+  displayRoot: [...pattern.root].join(" "),
+  meaningEn: pattern.meaningEn,
+  status: "ai_draft",
+  quranic: true,
+  notes: AI_DRAFT_NOTE,
+  updatedAt: "2026-07-03",
+  forms: [
+    {
+      order: 1,
+      key: "past",
+      ...label("past"),
+      arabic: pattern.past,
+      transliteration: pattern.transliterationBase,
+      meaningEn: pattern.formMeanings.past,
+      exampleAr: `${pattern.past} الرَّجُلُ.`,
+      exampleEn: `The man ${pattern.formMeanings.past.replace("he ", "")}.`,
+      notes: AI_DRAFT_NOTE,
+    },
+    {
+      order: 2,
+      key: "present",
+      ...label("present"),
+      arabic: pattern.present,
+      transliteration: `ya-${pattern.transliterationBase}`,
+      meaningEn: pattern.formMeanings.present,
+      exampleAr: `${pattern.present} الطَّالِبُ.`,
+      exampleEn: `The student ${pattern.formMeanings.present.replace("he ", "")}.`,
+      notes: AI_DRAFT_NOTE,
+    },
+    {
+      order: 3,
+      key: "imperative",
+      ...label("imperative"),
+      arabic: pattern.imperative,
+      transliteration: `i/u-${pattern.transliterationBase}`,
+      meaningEn: pattern.formMeanings.imperative,
+      exampleAr: `${pattern.imperative} يَا صَدِيقِي.`,
+      exampleEn: `${pattern.formMeanings.imperative} my friend.`,
+      notes: AI_DRAFT_NOTE,
+    },
+    {
+      order: 4,
+      key: "place_or_mim_masdar",
+      ...label("place_or_mim_masdar"),
+      arabic: pattern.place,
+      transliteration: `ma-${pattern.transliterationBase}`,
+      meaningEn: pattern.formMeanings.place,
+      exampleAr: `هٰذَا ${pattern.place}.`,
+      exampleEn: `This is ${pattern.formMeanings.place}.`,
+      notes: AI_DRAFT_NOTE,
+    },
+    {
+      order: 5,
+      key: "active_participle",
+      ...label("active_participle"),
+      arabic: pattern.active,
+      transliteration: `faaʿil pattern of ${pattern.transliterationBase}`,
+      meaningEn: pattern.formMeanings.active,
+      exampleAr: `هُوَ ${pattern.active}.`,
+      exampleEn: `He is ${pattern.formMeanings.active}.`,
+      notes: AI_DRAFT_NOTE,
+    },
+    {
+      order: 6,
+      key: "passive_participle",
+      ...label("passive_participle"),
+      arabic: pattern.passive,
+      transliteration: `mafʿuul pattern of ${pattern.transliterationBase}`,
+      meaningEn: pattern.formMeanings.passive,
+      exampleAr: `الأَمْرُ ${pattern.passive}.`,
+      exampleEn: `The matter is ${pattern.formMeanings.passive}.`,
+      notes: AI_DRAFT_NOTE,
+    },
+  ],
+});
+
+const aiDraftRoots: RootEntry[] = [
+  draft({ root: "عبد", meaningEn: "worshipping, serving", past: "عَبَدَ", present: "يَعْبُدُ", imperative: "اُعْبُدْ", place: "مَعْبَد", active: "عَابِد", passive: "مَعْبُود", transliterationBase: "ʿabada", formMeanings: { past: "he worshipped", present: "he worships", imperative: "worship!", place: "a place of worship", active: "a worshipper", passive: "worshipped" } }),
+  draft({ root: "رحم", meaningEn: "mercy, compassion", past: "رَحِمَ", present: "يَرْحَمُ", imperative: "اِرْحَمْ", place: "مَرْحَمَة", active: "رَاحِم", passive: "مَرْحُوم", transliterationBase: "raḥima", formMeanings: { past: "he had mercy", present: "he has mercy", imperative: "have mercy!", place: "mercy or compassion", active: "merciful", passive: "shown mercy" } }),
+  draft({ root: "غفر", meaningEn: "forgiving, covering", past: "غَفَرَ", present: "يَغْفِرُ", imperative: "اِغْفِرْ", place: "مَغْفِرَة", active: "غَافِر", passive: "مَغْفُور", transliterationBase: "ghafara", formMeanings: { past: "he forgave", present: "he forgives", imperative: "forgive!", place: "forgiveness", active: "forgiver", passive: "forgiven" } }),
+  draft({ root: "كفر", meaningEn: "covering, disbelieving", past: "كَفَرَ", present: "يَكْفُرُ", imperative: "اُكْفُرْ", place: "مَكْفَر", active: "كَافِر", passive: "مَكْفُور", transliterationBase: "kafara", formMeanings: { past: "he disbelieved", present: "he disbelieves", imperative: "disbelieve!", place: "a place or act of covering", active: "one who rejects or covers", passive: "covered or denied" } }),
+  draft({ root: "سلم", meaningEn: "peace, safety, surrender", past: "سَلِمَ", present: "يَسْلَمُ", imperative: "اِسْلَمْ", place: "مَسْلَم", active: "سَالِم", passive: "مَسْلُوم", transliterationBase: "salima", formMeanings: { past: "he was safe", present: "he is safe", imperative: "be safe / submit!", place: "a place of safety", active: "safe or sound", passive: "made safe" } }),
+  draft({ root: "عمل", meaningEn: "working, doing", past: "عَمِلَ", present: "يَعْمَلُ", imperative: "اِعْمَلْ", place: "مَعْمَل", active: "عَامِل", passive: "مَعْمُول", transliterationBase: "ʿamila", formMeanings: { past: "he worked", present: "he works", imperative: "work!", place: "workplace", active: "worker", passive: "done or made" } }),
+  draft({ root: "فعل", meaningEn: "doing, acting", past: "فَعَلَ", present: "يَفْعَلُ", imperative: "اِفْعَلْ", place: "مَفْعَل", active: "فَاعِل", passive: "مَفْعُول", transliterationBase: "faʿala", formMeanings: { past: "he did", present: "he does", imperative: "do!", place: "a place or instance of action", active: "doer", passive: "done" } }),
+  draft({ root: "بصر", meaningEn: "seeing, insight", past: "بَصُرَ", present: "يَبْصُرُ", imperative: "اُبْصُرْ", place: "مَبْصَر", active: "بَاصِر", passive: "مَبْصُور", transliterationBase: "baṣura", formMeanings: { past: "he saw clearly", present: "he sees clearly", imperative: "see!", place: "place of seeing", active: "seeing", passive: "seen" } }),
+  draft({ root: "شهد", meaningEn: "witnessing, being present", past: "شَهِدَ", present: "يَشْهَدُ", imperative: "اِشْهَدْ", place: "مَشْهَد", active: "شَاهِد", passive: "مَشْهُود", transliterationBase: "shahida", formMeanings: { past: "he witnessed", present: "he witnesses", imperative: "witness!", place: "scene or place witnessed", active: "witness", passive: "witnessed" } }),
+  draft({ root: "ذكر", meaningEn: "remembering, mentioning", past: "ذَكَرَ", present: "يَذْكُرُ", imperative: "اُذْكُرْ", place: "مَذْكَر", active: "ذَاكِر", passive: "مَذْكُور", transliterationBase: "dhakara", formMeanings: { past: "he remembered", present: "he remembers", imperative: "remember!", place: "place or act of remembrance", active: "remembering", passive: "mentioned" } }),
+  draft({ root: "شكر", meaningEn: "thankfulness", past: "شَكَرَ", present: "يَشْكُرُ", imperative: "اُشْكُرْ", place: "مَشْكَر", active: "شَاكِر", passive: "مَشْكُور", transliterationBase: "shakara", formMeanings: { past: "he thanked", present: "he thanks", imperative: "thank!", place: "place or act of thanking", active: "thankful", passive: "thanked" } }),
+  draft({ root: "حمد", meaningEn: "praising", past: "حَمِدَ", present: "يَحْمَدُ", imperative: "اِحْمَدْ", place: "مَحْمَد", active: "حَامِد", passive: "مَحْمُود", transliterationBase: "ḥamida", formMeanings: { past: "he praised", present: "he praises", imperative: "praise!", place: "place or cause of praise", active: "one who praises", passive: "praised" } }),
+  draft({ root: "سبح", meaningEn: "glorifying, swimming", past: "سَبَحَ", present: "يَسْبَحُ", imperative: "اِسْبَحْ", place: "مَسْبَح", active: "سَابِح", passive: "مَسْبُوح", transliterationBase: "sabaḥa", formMeanings: { past: "he swam or glorified", present: "he swims or glorifies", imperative: "swim / glorify!", place: "swimming place", active: "swimmer or glorifier", passive: "glorified" } }),
+  draft({ root: "سجد", meaningEn: "prostrating", past: "سَجَدَ", present: "يَسْجُدُ", imperative: "اُسْجُدْ", place: "مَسْجِد", active: "سَاجِد", passive: "مَسْجُود", transliterationBase: "sajada", formMeanings: { past: "he prostrated", present: "he prostrates", imperative: "prostrate!", place: "mosque or place of prostration", active: "prostrating", passive: "prostrated to" } }),
+  draft({ root: "ركع", meaningEn: "bowing", past: "رَكَعَ", present: "يَرْكَعُ", imperative: "اِرْكَعْ", place: "مَرْكَع", active: "رَاكِع", passive: "مَرْكُوع", transliterationBase: "rakaʿa", formMeanings: { past: "he bowed", present: "he bows", imperative: "bow!", place: "place of bowing", active: "bowing", passive: "bowed to" } }),
+  draft({ root: "نصر", meaningEn: "helping, victory", past: "نَصَرَ", present: "يَنْصُرُ", imperative: "اُنْصُرْ", place: "مَنْصَر", active: "نَاصِر", passive: "مَنْصُور", transliterationBase: "naṣara", formMeanings: { past: "he helped", present: "he helps", imperative: "help!", place: "place of help", active: "helper", passive: "helped or victorious" } }),
+  draft({ root: "خلق", meaningEn: "creating", past: "خَلَقَ", present: "يَخْلُقُ", imperative: "اُخْلُقْ", place: "مَخْلَق", active: "خَالِق", passive: "مَخْلُوق", transliterationBase: "khalaqa", formMeanings: { past: "he created", present: "he creates", imperative: "create!", place: "place or act of creating", active: "creator", passive: "created" } }),
+  draft({ root: "رزق", meaningEn: "providing, sustenance", past: "رَزَقَ", present: "يَرْزُقُ", imperative: "اُرْزُقْ", place: "مَرْزَق", active: "رَازِق", passive: "مَرْزُوق", transliterationBase: "razaqa", formMeanings: { past: "he provided", present: "he provides", imperative: "provide!", place: "place of provision", active: "provider", passive: "provided for" } }),
+  draft({ root: "ملك", meaningEn: "owning, ruling", past: "مَلَكَ", present: "يَمْلِكُ", imperative: "اِمْلِكْ", place: "مَمْلَك", active: "مَالِك", passive: "مَمْلُوك", transliterationBase: "malaka", formMeanings: { past: "he owned", present: "he owns", imperative: "own!", place: "realm or place of rule", active: "owner", passive: "owned" } }),
+  draft({ root: "حكم", meaningEn: "judging, ruling", past: "حَكَمَ", present: "يَحْكُمُ", imperative: "اُحْكُمْ", place: "مَحْكَم", active: "حَاكِم", passive: "مَحْكُوم", transliterationBase: "ḥakama", formMeanings: { past: "he judged", present: "he judges", imperative: "judge!", place: "court or place of judgement", active: "judge or ruler", passive: "judged or ruled" } }),
+  draft({ root: "عدل", meaningEn: "justice, fairness", past: "عَدَلَ", present: "يَعْدِلُ", imperative: "اِعْدِلْ", place: "مَعْدِل", active: "عَادِل", passive: "مَعْدُول", transliterationBase: "ʿadala", formMeanings: { past: "he was just", present: "he is just", imperative: "be just!", place: "place or way of justice", active: "just", passive: "adjusted or turned aside" } }),
+  draft({ root: "ظلم", meaningEn: "wrongdoing, oppression", past: "ظَلَمَ", present: "يَظْلِمُ", imperative: "اِظْلِمْ", place: "مَظْلِم", active: "ظَالِم", passive: "مَظْلُوم", transliterationBase: "ẓalama", formMeanings: { past: "he wronged", present: "he wrongs", imperative: "wrong!", place: "place of injustice", active: "wrongdoer", passive: "wronged" } }),
+  draft({ root: "صدق", meaningEn: "truthfulness", past: "صَدَقَ", present: "يَصْدُقُ", imperative: "اُصْدُقْ", place: "مَصْدَق", active: "صَادِق", passive: "مَصْدُوق", transliterationBase: "ṣadaqa", formMeanings: { past: "he was truthful", present: "he is truthful", imperative: "be truthful!", place: "place or sign of truth", active: "truthful", passive: "believed or found true" } }),
+  draft({ root: "كذب", meaningEn: "lying, denying", past: "كَذَبَ", present: "يَكْذِبُ", imperative: "اِكْذِبْ", place: "مَكْذَب", active: "كَاذِب", passive: "مَكْذُوب", transliterationBase: "kadhaba", formMeanings: { past: "he lied", present: "he lies", imperative: "lie!", place: "place or instance of lying", active: "liar", passive: "lied about" } }),
+  draft({ root: "صبر", meaningEn: "patience, endurance", past: "صَبَرَ", present: "يَصْبِرُ", imperative: "اِصْبِرْ", place: "مَصْبَر", active: "صَابِر", passive: "مَصْبُور", transliterationBase: "ṣabara", formMeanings: { past: "he was patient", present: "he is patient", imperative: "be patient!", place: "place of endurance", active: "patient", passive: "endured" } }),
+  draft({ root: "ترك", meaningEn: "leaving, abandoning", past: "تَرَكَ", present: "يَتْرُكُ", imperative: "اُتْرُكْ", place: "مَتْرَك", active: "تَارِك", passive: "مَتْرُوك", transliterationBase: "taraka", formMeanings: { past: "he left", present: "he leaves", imperative: "leave!", place: "place of leaving", active: "one who leaves", passive: "left behind" } }),
+  draft({ root: "قرب", meaningEn: "nearness", past: "قَرُبَ", present: "يَقْرُبُ", imperative: "اُقْرُبْ", place: "مَقْرَب", active: "قَارِب", passive: "مَقْرُوب", transliterationBase: "qaruba", formMeanings: { past: "he was near", present: "he is near", imperative: "come near!", place: "place of nearness", active: "near or approaching", passive: "brought near" } }),
+  draft({ root: "بعد", meaningEn: "distance, being far", past: "بَعُدَ", present: "يَبْعُدُ", imperative: "اُبْعُدْ", place: "مَبْعَد", active: "بَاعِد", passive: "مَبْعُود", transliterationBase: "baʿuda", formMeanings: { past: "he was far", present: "he is far", imperative: "go far!", place: "far place", active: "distant", passive: "kept far" } }),
+  draft({ root: "كبر", meaningEn: "greatness, growing large", past: "كَبُرَ", present: "يَكْبُرُ", imperative: "اُكْبُرْ", place: "مَكْبَر", active: "كَابِر", passive: "مَكْبُور", transliterationBase: "kabura", formMeanings: { past: "he grew great", present: "he grows great", imperative: "grow great!", place: "place of greatness", active: "great or elder", passive: "magnified" } }),
+  draft({ root: "حسن", meaningEn: "beauty, goodness", past: "حَسُنَ", present: "يَحْسُنُ", imperative: "اُحْسُنْ", place: "مَحْسَن", active: "حَاسِن", passive: "مَحْسُون", transliterationBase: "ḥasuna", formMeanings: { past: "he was good", present: "he is good", imperative: "be good!", place: "place of beauty", active: "good or beautiful", passive: "made good" } }),
+  draft({ root: "نفع", meaningEn: "benefit", past: "نَفَعَ", present: "يَنْفَعُ", imperative: "اِنْفَعْ", place: "مَنْفَع", active: "نَافِع", passive: "مَنْفُوع", transliterationBase: "nafaʿa", formMeanings: { past: "he benefited", present: "he benefits", imperative: "benefit!", place: "place or source of benefit", active: "beneficial", passive: "benefited" } }),
+  draft({ root: "ضرر", meaningEn: "harm", past: "ضَرَّ", present: "يَضُرُّ", imperative: "ضُرَّ", place: "مَضَرّ", active: "ضَارّ", passive: "مَضْرُور", transliterationBase: "ḍarra", formMeanings: { past: "he harmed", present: "he harms", imperative: "harm!", place: "place or source of harm", active: "harmful", passive: "harmed" } }),
+  draft({ root: "حمل", meaningEn: "carrying, bearing", past: "حَمَلَ", present: "يَحْمِلُ", imperative: "اِحْمِلْ", place: "مَحْمَل", active: "حَامِل", passive: "مَحْمُول", transliterationBase: "ḥamala", formMeanings: { past: "he carried", present: "he carries", imperative: "carry!", place: "place or means of carrying", active: "carrier", passive: "carried" } }),
+  draft({ root: "قبل", meaningEn: "accepting, facing", past: "قَبِلَ", present: "يَقْبَلُ", imperative: "اِقْبَلْ", place: "مَقْبَل", active: "قَابِل", passive: "مَقْبُول", transliterationBase: "qabila", formMeanings: { past: "he accepted", present: "he accepts", imperative: "accept!", place: "approach or front", active: "accepting", passive: "accepted" } }),
+  draft({ root: "دبر", meaningEn: "turning back, managing", past: "دَبَرَ", present: "يَدْبُرُ", imperative: "اُدْبُرْ", place: "مَدْبَر", active: "دَابِر", passive: "مَدْبُور", transliterationBase: "dabara", formMeanings: { past: "he turned back", present: "he turns back", imperative: "turn back!", place: "rear place", active: "departing or last", passive: "managed or turned back" } }),
+  draft({ root: "مسح", meaningEn: "wiping", past: "مَسَحَ", present: "يَمْسَحُ", imperative: "اِمْسَحْ", place: "مَمْسَح", active: "مَاسِح", passive: "مَمْسُوح", transliterationBase: "masaḥa", formMeanings: { past: "he wiped", present: "he wipes", imperative: "wipe!", place: "place or tool of wiping", active: "one who wipes", passive: "wiped" } }),
+  draft({ root: "غسل", meaningEn: "washing", past: "غَسَلَ", present: "يَغْسِلُ", imperative: "اِغْسِلْ", place: "مَغْسَل", active: "غَاسِل", passive: "مَغْسُول", transliterationBase: "ghasala", formMeanings: { past: "he washed", present: "he washes", imperative: "wash!", place: "washing place", active: "washer", passive: "washed" } }),
+  draft({ root: "طهر", meaningEn: "purity, becoming clean", past: "طَهُرَ", present: "يَطْهُرُ", imperative: "اُطْهُرْ", place: "مَطْهَر", active: "طَاهِر", passive: "مَطْهُور", transliterationBase: "ṭahura", formMeanings: { past: "he was pure", present: "he is pure", imperative: "be pure!", place: "place of purification", active: "pure", passive: "purified" } }),
+  draft({ root: "جمع", meaningEn: "gathering", past: "جَمَعَ", present: "يَجْمَعُ", imperative: "اِجْمَعْ", place: "مَجْمَع", active: "جَامِع", passive: "مَجْمُوع", transliterationBase: "jamaʿa", formMeanings: { past: "he gathered", present: "he gathers", imperative: "gather!", place: "gathering place", active: "gatherer", passive: "gathered" } }),
+  draft({ root: "فرق", meaningEn: "separating, distinguishing", past: "فَرَقَ", present: "يَفْرُقُ", imperative: "اُفْرُقْ", place: "مَفْرَق", active: "فَارِق", passive: "مَفْرُوق", transliterationBase: "faraqa", formMeanings: { past: "he separated", present: "he separates", imperative: "separate!", place: "parting place", active: "separator", passive: "separated" } }),
+];
 
 /**
  * Seed dataset. Edit this file to add or correct roots.
@@ -14,6 +157,7 @@ export const roots: RootEntry[] = [
     displayRoot: "س م ع",
     meaningEn: "hearing, listening",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -83,6 +227,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ك ت ب",
     meaningEn: "writing",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -152,6 +297,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ف ت ح",
     meaningEn: "opening",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -223,6 +369,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ع ل م",
     meaningEn: "knowing",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -292,6 +439,7 @@ export const roots: RootEntry[] = [
     displayRoot: "د خ ل",
     meaningEn: "entering",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -363,6 +511,7 @@ export const roots: RootEntry[] = [
     displayRoot: "خ ر ج",
     meaningEn: "exiting, going out",
     status: "reviewed",
+    quranic: true,
     updatedAt: "2026-07-03",
     forms: [
       {
@@ -429,4 +578,5 @@ export const roots: RootEntry[] = [
       },
     ],
   },
+  ...aiDraftRoots,
 ];

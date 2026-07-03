@@ -1,4 +1,5 @@
 export type RootStatus = "reviewed" | "community_suggested" | "ai_draft";
+export type QuranRootStatus = "indexed_only" | "ai_draft" | "reviewed";
 
 export type SarfFormKey =
   | "past"
@@ -28,7 +29,31 @@ export type RootEntry = {
   status: RootStatus;
   forms: SarfForm[];
   notes?: string;
+  quranic?: boolean;
+  quranOccurrenceCount?: number;
+  firstQuranOccurrence?: {
+    surah: number;
+    ayah: number;
+  };
   updatedAt: string;
+};
+
+export type QuranRootIndexEntry = {
+  root: string;
+  displayRoot: string;
+  transliteration?: string;
+  glossEn?: string;
+  occurrenceCount?: number;
+  firstOccurrence?: {
+    surah: number;
+    ayah: number;
+  };
+  source: string;
+  sourceUrl?: string;
+  sourceLicense?: string;
+  hasFullEntry: boolean;
+  status: QuranRootStatus;
+  notes?: string;
 };
 
 export type Submission = {

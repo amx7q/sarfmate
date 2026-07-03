@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "data:validate": "vitest run src/lib/__tests__/roots.test.ts",
+    "import:quran-roots": "node scripts/import-quran-roots.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.42.2",

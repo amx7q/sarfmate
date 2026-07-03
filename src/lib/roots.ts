@@ -52,6 +52,22 @@ const REQUIRED_FORM_FIELDS = [
   "exampleAr",
   "exampleEn",
 ] as const;
+const VALID_STATUSES = ["reviewed", "community_suggested", "ai_draft"] as const;
+const PLACEHOLDER_RE = /\b(todo|tbd|placeholder|lorem ipsum|xxx)\b/i;
+
+export function validateAllRootEntries(entries: RootEntry[] = getAllRoots()): string[] {
+  const errors: string[] = [];
+  const seen = new Set<string>();
+
+  for (const entry of entries) {
+    const key = normaliseArabicInput(entry.root);
+    if (seen.has(key)) errors.push(`duplicate full root entry ${entry.root}`);
+    seen.add(key);
+    errors.push(...validateRootEntry(entry).map((error) => `${entry.root}: ${error}`));
+  }
+
+  return errors;
+}
 
 /** Validates a root entry, returning a list of human-readable problems (empty = valid). */
 export function validateRootEntry(entry: RootEntry): string[] {
@@ -70,8 +86,33 @@ export function validateRootEntry(entry: RootEntry): string[] {
   }
 
   if (!entry.meaningEn) errors.push("meaningEn is missing");
+  if (!VALID_STATUSES.includes(entry.status)) {
+    errors.push(`status "${entry.status}" is invalid`);
+  }
   if (!entry.updatedAt || Number.isNaN(Date.parse(entry.updatedAt))) {
     errors.push("updatedAt is missing or not a parseable date");
+  }
+  if (entry.quranOccurrenceCount !== undefined && entry.quranOccurrenceCount < 0) {
+    errors.push("quranOccurrenceCount must be a positive number when present");
+  }
+  if (entry.firstQuranOccurrence) {
+    if (entry.firstQuranOccurrence.surah < 1 || entry.firstQuranOccurrence.surah > 114) {
+      errors.push("firstQuranOccurrence.surah must be between 1 and 114");
+    }
+    if (entry.firstQuranOccurrence.ayah < 1) {
+      errors.push("firstQuranOccurrence.ayah must be positive");
+    }
+  }
+  if (
+    [entry.meaningEn, entry.notes, ...entry.forms.flatMap((form) => [
+      form.meaningEn,
+      form.exampleEn,
+      form.notes,
+    ])]
+      .filter(Boolean)
+      .some((value) => PLACEHOLDER_RE.test(value!))
+  ) {
+    errors.push("entry contains accidental placeholder text");
   }
 
   if (entry.forms.length !== 6) {
