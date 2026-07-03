@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence } from "framer-motion";
-import type { RootEntry } from "@/lib/types";
 import { normaliseArabicInput } from "@/lib/arabic";
+import { searchRoot } from "@/lib/roots";
 import RootSearch from "@/components/RootSearch";
 import RootResult from "@/components/RootResult";
 import EmptyState from "@/components/EmptyState";
@@ -12,7 +12,7 @@ import SuggestRootDialog from "@/components/SuggestRootDialog";
 
 const EXAMPLE_ROOTS = ["سمع", "كتب", "فتح", "علم", "دخل", "خرج"] as const;
 
-export default function HomeSearch({ roots }: { roots: RootEntry[] }) {
+export default function HomeSearch() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") ?? "";
@@ -21,9 +21,8 @@ export default function HomeSearch({ roots }: { roots: RootEntry[] }) {
   const [suggestOpen, setSuggestOpen] = useState(false);
 
   const normalised = normaliseArabicInput(query);
-  const entry = normalised
-    ? roots.find((r) => normaliseArabicInput(r.root) === normalised)
-    : undefined;
+  const hasQuery = query.trim().length > 0;
+  const entry = hasQuery ? searchRoot(query) : undefined;
 
   function search(value: string) {
     setInput(value);
@@ -49,7 +48,7 @@ export default function HomeSearch({ roots }: { roots: RootEntry[] }) {
             type="button"
             onClick={() => search(root)}
             className={`rounded-full border px-4 py-1.5 font-arabic text-lg transition-colors ${
-              normalised === root
+              entry?.root === root
                 ? "border-secondary bg-secondary/10 text-primary"
                 : "border-border-soft bg-surface text-ink hover:border-secondary hover:text-primary"
             }`}
@@ -65,7 +64,7 @@ export default function HomeSearch({ roots }: { roots: RootEntry[] }) {
         <AnimatePresence mode="wait">
           {entry ? (
             <RootResult key={entry.root} entry={entry} />
-          ) : normalised ? (
+          ) : hasQuery ? (
             <EmptyState
               key="empty"
               query={query.trim()}

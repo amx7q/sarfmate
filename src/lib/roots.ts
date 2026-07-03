@@ -14,6 +14,29 @@ export function findRoot(query: string): RootEntry | undefined {
   return getAllRoots().find((entry) => normaliseArabicInput(entry.root) === q);
 }
 
+const HAS_ARABIC = /[؀-ۿ]/;
+
+/**
+ * Finds a root by Arabic letters or by English meaning.
+ * Arabic input matches the root itself; English input matches the entry's
+ * meaning summary first, then any form's meaning (e.g. "office" finds كتب).
+ */
+export function searchRoot(query: string): RootEntry | undefined {
+  const arabicMatch = findRoot(query);
+  if (arabicMatch) return arabicMatch;
+
+  const q = query.trim().toLowerCase();
+  if (!q || HAS_ARABIC.test(query)) return undefined;
+
+  const all = getAllRoots();
+  return (
+    all.find((entry) => entry.meaningEn.toLowerCase().includes(q)) ??
+    all.find((entry) =>
+      entry.forms.some((form) => form.meaningEn.toLowerCase().includes(q)),
+    )
+  );
+}
+
 /** Returns the entry's forms sorted into the fixed learner order. */
 export function getOrderedForms(entry: RootEntry): SarfForm[] {
   return [...entry.forms].sort((a, b) => a.order - b.order);

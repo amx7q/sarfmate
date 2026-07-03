@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import {
   getAllRoots,
   findRoot,
+  searchRoot,
   getOrderedForms,
   validateRootEntry,
 } from "@/lib/roots";
@@ -25,6 +26,29 @@ describe("findRoot", () => {
   it("returns undefined for unknown roots and empty input", () => {
     expect(findRoot("قرأ")).toBeUndefined();
     expect(findRoot("")).toBeUndefined();
+  });
+});
+
+describe("searchRoot", () => {
+  it("matches Arabic input like findRoot", () => {
+    expect(searchRoot("سَمِعَ")?.root).toBe("سمع");
+  });
+
+  it("matches an English meaning summary", () => {
+    expect(searchRoot("hearing")?.root).toBe("سمع");
+    expect(searchRoot("Writing")?.root).toBe("كتب");
+    expect(searchRoot("knowing")?.root).toBe("علم");
+  });
+
+  it("falls back to per-form English meanings", () => {
+    expect(searchRoot("office")?.root).toBe("كتب");
+    expect(searchRoot("entrance")?.root).toBe("دخل");
+  });
+
+  it("returns undefined for unknown queries in either language", () => {
+    expect(searchRoot("xyzzy")).toBeUndefined();
+    expect(searchRoot("قرأ")).toBeUndefined();
+    expect(searchRoot("")).toBeUndefined();
   });
 });
 
