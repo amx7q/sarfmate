@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Fully static export: every page (including /root/[root] via
+  // generateStaticParams) is prerendered to plain HTML so Cloudflare can
+  // serve the site as static assets with no Worker CPU per request.
+  output: "export",
 };
 
 export default nextConfig;

@@ -1,0 +1,20 @@
+{
+  // Assets-only Worker: `next build` (with output: "export") writes the
+  // fully static site to ./out, and Cloudflare serves it directly from
+  // assets with no Worker code — zero CPU time per request.
+  "name": "sarfmate",
+  "compatibility_date": "2026-07-03",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true
+    },
+    "traces": {
+      "enabled": false
+    }
+  }
+}
