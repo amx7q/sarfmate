@@ -152,6 +152,12 @@ describe("validateRootEntry", () => {
   });
 });
 
+describe("library size", () => {
+  it("keeps at least 100 full root entries", () => {
+    expect(getAllRoots().length).toBeGreaterThanOrEqual(100);
+  });
+});
+
 describe("seed data spelling rules", () => {
   it("spells sound-root imperatives with hamzat wasl, never hamzat qat' (أ/إ)", () => {
     for (const entry of getAllRoots()) {
