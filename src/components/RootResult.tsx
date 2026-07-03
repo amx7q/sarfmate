@@ -32,10 +32,24 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
         </h2>
         <p className="mt-3 text-xl text-accent">{entry.meaningEn}</p>
         <div className="mt-4 flex justify-center">
-          <StatusBadge status={entry.status} />
+          <div className="flex flex-wrap justify-center gap-2">
+            {entry.quranic && (
+              <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-ink">
+                Quranic root
+              </span>
+            )}
+            <StatusBadge status={entry.status} />
+          </div>
         </div>
         {entry.notes && (
           <p className="mx-auto mt-3 max-w-xl text-sm text-muted">{entry.notes}</p>
+        )}
+        {entry.quranic && (
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted">
+            This root appears in the Quranic index. Quranic roots can have rich
+            meanings across different contexts, so SarfMate summaries are learner
+            aids, not a replacement for tafsir or specialist dictionaries.
+          </p>
         )}
         <p className="mt-5 text-sm text-muted">
           Showing the core forms of this Arabic root in a fixed learner-friendly

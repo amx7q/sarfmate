@@ -33,6 +33,8 @@ Open http://localhost:3000.
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
 | `npm run test` | Vitest unit tests (also validates the seed data) |
+| `npm run data:validate` | Run the SarfMate data validation test gate |
+| `npm run import:quran-roots -- <file>` | Import a Quranic root CSV/JSON into `src/data/quranRoots.ts` |
 
 ## Editing root data
 
@@ -45,7 +47,39 @@ All roots live in [`src/data/roots.ts`](src/data/roots.ts) as plain TypeScript o
 
 **Spelling rule:** Form-I imperatives use hamzat waṣl (اِسْمَعْ), never hamzat qaṭʿ (إسمع).
 
-Run `npm run test` after editing — the test suite runs `validateRootEntry` against every seed entry and enforces the hamzat waṣl rule. Mark uncertain forms with a `notes` field; the UI shows a "Needs review" footnote.
+Run `npm run test` or `npm run data:validate` after editing — the test suite runs `validateRootEntry` against every seed entry and enforces the hamzat waṣl rule for sound roots. Mark uncertain forms with a `notes` field; the UI shows a "Needs review" footnote.
+
+## Quranic root index
+
+SarfMate keeps Quranic data in two levels:
+
+- **Quranic root index**: [`src/data/quranRoots.ts`](src/data/quranRoots.ts) lists roots that appear in the Qur'an so they can be browsed and searched even when full forms are not ready.
+- **Full SarfMate entries**: [`src/data/roots.ts`](src/data/roots.ts) contains rich six-form learner entries with Arabic, transliteration, meanings, examples, status, and review notes.
+
+Indexed-only Quranic roots show a clear message: "This Quranic root is in the index, but a full SarfMate entry has not been added yet." Newly generated full entries are marked `ai_draft` and must not be promoted to `reviewed` until an Arabic teacher, native speaker, or qualified reviewer checks them.
+
+The checked-in Quranic index is a partial starter sample. It is not a complete list of Quranic roots. Complete coverage requires importing a reliable, open/public, attributed source file.
+
+### Importing Quranic roots
+
+Use a properly licensed Quranic roots source. Do not scrape copyrighted websites and do not copy proprietary dictionary content.
+
+```bash
+npm run import:quran-roots -- ./path/to/quran-roots.csv
+npm run data:validate
+```
+
+CSV columns:
+
+```text
+root,displayRoot,transliteration,glossEn,occurrenceCount,firstSurah,firstAyah,source,sourceUrl,sourceLicense
+```
+
+The importer normalises roots, removes duplicates, validates Arabic root shape, sorts by occurrence count, preserves attribution fields, and writes `src/data/quranRoots.ts`.
+
+### Reviewing an AI draft
+
+Before changing `status: "ai_draft"` to `status: "reviewed"`, check the root letters, all six forms, vowels, hamzah/weak-letter spelling, transliteration, English meanings, Arabic examples, translations, and Quranic metadata. Quranic roots can have rich meanings across contexts; SarfMate summaries are learner aids, not a replacement for tafsir or specialist dictionaries.
 
 ## Reporting errors & suggesting roots
 
@@ -63,7 +97,8 @@ Community suggestions are reviewed before publishing.
 
 ## Known limitations
 
-- The MVP ships a small curated seed dataset (6 roots).
+- The app ships a small reviewed seed dataset plus AI-draft Quranic learner entries.
+- The Quranic root index is currently partial until imported from a reliable attributed source file.
 - Root-only search can be ambiguous in Arabic — some letter sequences belong to multiple roots or verb forms.
 - Entries require ongoing scholarly review; some forms are explicitly flagged as needing it.
 - Derived Forms II–X, weak/hollow/doubled verbs, Quranic examples, audio pronunciation, and user accounts are future work.

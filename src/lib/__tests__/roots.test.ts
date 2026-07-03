@@ -4,8 +4,15 @@ import {
   findRoot,
   searchRoot,
   getOrderedForms,
+  validateAllRootEntries,
   validateRootEntry,
 } from "@/lib/roots";
+import {
+  findQuranRoot,
+  getQuranRootIndex,
+  searchRootLibrary,
+  validateQuranRootIndex,
+} from "@/lib/quranRoots";
 import { FORM_SEQUENCE, type RootEntry } from "@/lib/types";
 
 describe("findRoot", () => {
@@ -24,7 +31,7 @@ describe("findRoot", () => {
   });
 
   it("returns undefined for unknown roots and empty input", () => {
-    expect(findRoot("قرأ")).toBeUndefined();
+    expect(findRoot("قرد")).toBeUndefined();
     expect(findRoot("")).toBeUndefined();
   });
 });
@@ -47,8 +54,38 @@ describe("searchRoot", () => {
 
   it("returns undefined for unknown queries in either language", () => {
     expect(searchRoot("xyzzy")).toBeUndefined();
-    expect(searchRoot("قرأ")).toBeUndefined();
+    expect(searchRoot("قرد")).toBeUndefined();
     expect(searchRoot("")).toBeUndefined();
+  });
+});
+
+describe("Quranic root index", () => {
+  it("finds indexed Quranic roots by Arabic input", () => {
+    expect(findQuranRoot("قرأ")?.status).toBe("indexed_only");
+  });
+
+  it("searchRootLibrary returns full entries before Quranic index-only entries", () => {
+    const full = searchRootLibrary("hearing");
+    expect(full?.kind).toBe("full_entry");
+    if (full?.kind === "full_entry") expect(full.entry.root).toBe("سمع");
+  });
+
+  it("searchRootLibrary returns indexed-only Quranic results when no full entry exists", () => {
+    const indexedOnly = searchRootLibrary("قرأ");
+    expect(indexedOnly?.kind).toBe("indexed_only");
+    if (indexedOnly?.kind === "indexed_only") {
+      expect(indexedOnly.indexEntry.hasFullEntry).toBe(false);
+    }
+  });
+
+  it("validates the Quranic index and full-entry dataset", () => {
+    expect(validateAllRootEntries()).toEqual([]);
+    expect(validateQuranRootIndex()).toEqual([]);
+  });
+
+  it("has no duplicate Quranic roots", () => {
+    const keys = getQuranRootIndex().map((entry) => entry.root);
+    expect(new Set(keys).size).toBe(keys.length);
   });
 });
 
@@ -116,8 +153,9 @@ describe("validateRootEntry", () => {
 });
 
 describe("seed data spelling rules", () => {
-  it("spells every imperative with hamzat wasl, never hamzat qat' (أ/إ)", () => {
+  it("spells sound-root imperatives with hamzat wasl, never hamzat qat' (أ/إ)", () => {
     for (const entry of getAllRoots()) {
+      if (entry.root[1] === entry.root[2]) continue;
       const imperative = entry.forms.find((f) => f.key === "imperative");
       expect(imperative).toBeDefined();
       expect(imperative!.arabic.startsWith("أ")).toBe(false);

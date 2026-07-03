@@ -1,0 +1,45 @@
+name: New root submission
+description: Submit a complete six-form SarfMate entry
+title: "[New root submission]: "
+labels: ["new-root-submission"]
+body:
+  - type: input
+    id: root
+    attributes:
+      label: Arabic root
+      description: Exactly three Arabic letters, no diacritics.
+      placeholder: نصر
+    validations:
+      required: true
+  - type: input
+    id: meaning
+    attributes:
+      label: English meaning summary
+      placeholder: helping, victory
+    validations:
+      required: true
+  - type: textarea
+    id: six_forms
+    attributes:
+      label: Six forms in SarfMate order
+      description: Include Arabic with vowels, transliteration, English meaning, and example sentence for each form.
+      placeholder: |
+        1. الماضي:
+        2. المضارع:
+        3. الأمر:
+        4. اسم المكان / مصدر ميمي:
+        5. اسم الفاعل:
+        6. اسم المفعول:
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Review status and sources
+      description: Say whether a teacher/native speaker reviewed it and cite references.
+    validations:
+      required: true
+  - type: input
+    id: contributor
+    attributes:
+      label: Your name (optional)
