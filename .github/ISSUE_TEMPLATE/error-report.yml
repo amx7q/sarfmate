@@ -1,0 +1,46 @@
+name: Error report
+description: Report an error in an existing SarfMate entry
+title: "[Error report]: "
+labels: ["error-report"]
+body:
+  - type: input
+    id: root
+    attributes:
+      label: Arabic root
+      placeholder: سمع
+    validations:
+      required: true
+  - type: dropdown
+    id: form
+    attributes:
+      label: Which form?
+      options:
+        - Whole entry / not sure
+        - Past verb (الماضي)
+        - Present verb (المضارع)
+        - Imperative (الأمر)
+        - Place noun / mim-masdar (اسم المكان / مصدر ميمي)
+        - Active participle (اسم الفاعل)
+        - Passive participle (اسم المفعول)
+    validations:
+      required: true
+  - type: input
+    id: current
+    attributes:
+      label: Current value
+      description: What the entry currently shows.
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+    validations:
+      required: true
+  - type: textarea
+    id: explanation
+    attributes:
+      label: Explanation or source (optional)
+      description: Why the current value is wrong, with references if possible.
+  - type: input
+    id: contributor
+    attributes:
+      label: Your name (optional)

@@ -1,0 +1,45 @@
+name: Root suggestion
+description: Suggest a new Arabic root for SarfMate
+title: "[Root suggestion]: "
+labels: ["root-suggestion"]
+body:
+  - type: input
+    id: root
+    attributes:
+      label: Arabic root
+      description: Exactly three Arabic letters, no diacritics.
+      placeholder: قرأ
+    validations:
+      required: true
+  - type: input
+    id: meaning
+    attributes:
+      label: English meaning summary
+      placeholder: reading, reciting
+    validations:
+      required: true
+  - type: textarea
+    id: forms
+    attributes:
+      label: Suggested forms (optional)
+      description: >
+        Any of the six forms you can provide, with vowels: past, present,
+        imperative (hamzat waṣl spelling!), place noun / mim-masdar, active
+        participle, passive participle.
+      placeholder: |
+        past: قَرَأَ (qaraʾa) — he read
+        present: يَقْرَأُ (yaqraʾu) — he reads
+  - type: textarea
+    id: examples
+    attributes:
+      label: Example sentences (optional)
+      description: Arabic example sentences with English translations.
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources (optional)
+      description: Dictionaries, textbooks, or references supporting the forms.
+  - type: input
+    id: contributor
+    attributes:
+      label: Your name (optional)
