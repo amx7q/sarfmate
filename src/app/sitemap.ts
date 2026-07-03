@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { MetadataRoute } from "next";
 import { getAllRoots } from "@/lib/roots";
 import { SITE_URL, rootUrl } from "@/lib/siteConfig";
