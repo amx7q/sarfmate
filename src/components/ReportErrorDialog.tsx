@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FORM_LABELS, FORM_SEQUENCE, type SarfFormKey, type Submission } from "@/lib/types";
-import { submissionsStore } from "@/lib/submissionsStore";
+import { FORM_LABELS, FORM_SEQUENCE, type SarfFormKey } from "@/lib/types";
+import { saveSubmission, type SaveSubmissionResult } from "@/lib/submissionsRemote";
 import Dialog from "@/components/Dialog";
 import SubmissionSuccess from "@/components/SubmissionSuccess";
 
@@ -22,18 +22,22 @@ export default function ReportErrorDialog({
   formKey?: SarfFormKey;
   currentValue?: string;
 }) {
-  const [saved, setSaved] = useState<Submission | null>(null);
+  const [saved, setSaved] = useState<SaveSubmissionResult | null>(null);
+  const [sending, setSending] = useState(false);
 
   function handleClose() {
     setSaved(null);
+    setSending(false);
     onClose();
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sending) return;
+    setSending(true);
     const data = new FormData(event.currentTarget);
     const selectedForm = String(data.get("formKey") ?? "");
-    const submission = submissionsStore.add({
+    const result = await saveSubmission({
       type: "error_report",
       root,
       formKey: (selectedForm || undefined) as SarfFormKey | undefined,
@@ -43,13 +47,18 @@ export default function ReportErrorDialog({
       contributorName: String(data.get("name") ?? "").trim() || undefined,
       contributorEmail: String(data.get("email") ?? "").trim() || undefined,
     });
-    setSaved(submission);
+    setSending(false);
+    setSaved(result);
   }
 
   return (
     <Dialog open={open} onClose={handleClose} title="Notice an error">
       {saved ? (
-        <SubmissionSuccess submission={saved} onDone={handleClose} />
+        <SubmissionSuccess
+          submission={saved.submission}
+          remote={saved.remote}
+          onDone={handleClose}
+        />
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <p className="text-sm text-muted">
@@ -127,9 +136,10 @@ export default function ReportErrorDialog({
           </p>
           <button
             type="submit"
-            className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            disabled={sending}
+            className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60"
           >
-            Save report
+            {sending ? "Sending…" : "Save report"}
           </button>
         </form>
       )}

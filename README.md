@@ -9,7 +9,7 @@ Built for English-speaking students of Arabic, ṣarf (Arabic morphology), Quran
 - **Root search** with lenient input: `سمع`, `س م ع`, `س-م-ع`, and fully voweled words all match.
 - **Fixed six-form layout** in one right-to-left row (الماضي on the far right), scroll-snap carousel on small screens.
 - **English meanings and example sentences** on every form, with copy buttons.
-- **Community review workflow**: suggest roots and report errors in-app; submissions are saved locally with JSON export and email fallback.
+- **Community review workflow**: suggest roots and report errors in-app; submissions are recorded in Supabase (when configured — see [docs/SUPABASE.md](docs/SUPABASE.md)) and always saved locally with JSON export and email fallback.
 - **Status badges** (Reviewed / Community suggested / AI draft) plus per-form "Needs review" notes for honest data quality.
 - Accessible (keyboard-navigable dialogs, screen-reader labels, reduced-motion support) and fully responsive.
 
@@ -83,7 +83,7 @@ Before changing `status: "ai_draft"` to `status: "reviewed"`, check the root let
 
 ## Reporting errors & suggesting roots
 
-- **In the app:** use "Notice an error" on any form card, or "Suggest a root". Submissions are saved to your browser's localStorage; copy the JSON payload or send it by email from the "Your pending suggestions" panel.
+- **In the app:** use "Notice an error" on any form card, or "Suggest a root". Submissions are sent to the SarfMate team (when Supabase is configured) and saved to your browser's localStorage; you can also copy the JSON payload or send it by email from the "Your pending suggestions" panel.
 - **On GitHub:** open an issue with the [root suggestion](.github/ISSUE_TEMPLATE/root-suggestion.yml) or [error report](.github/ISSUE_TEMPLATE/error-report.yml) form.
 
 Community suggestions are reviewed before publishing.

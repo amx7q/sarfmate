@@ -1,7 +1,7 @@
 import type { Submission } from "@/lib/types";
 
 const STORAGE_KEY = "sarfmate.submissions.v1";
-const CONTACT_EMAIL = "suggestions@sarfmate.example";
+const CONTACT_EMAIL = "ammarhaque97@gmail.com";
 
 export type NewSubmission = Omit<Submission, "id" | "createdAt" | "status">;
 
