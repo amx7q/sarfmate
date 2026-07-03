@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllRoots, findRoot } from "@/lib/roots";
+import { SITE_URL, SITE_NAME, rootUrl } from "@/lib/siteConfig";
 import RootResult from "@/components/RootResult";
+import type { RootEntry } from "@/lib/types";
 
 type Params = { root: string };
 
@@ -18,9 +20,40 @@ export async function generateMetadata({
   const { root } = await params;
   const entry = findRoot(decodeURIComponent(root));
   if (!entry) return { title: "Root not found" };
+  const title = `${entry.root} — ${entry.meaningEn}`;
+  const description = `The Arabic root ${entry.displayRoot} (${entry.meaningEn}) with its six core forms, meanings, and example sentences.`;
+  const canonical = `/root/${encodeURIComponent(entry.root)}`;
   return {
-    title: `${entry.root} — ${entry.meaningEn}`,
-    description: `The Arabic root ${entry.displayRoot} (${entry.meaningEn}) with its six core forms, meanings, and example sentences.`,
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: "article",
+    },
+    twitter: {
+      title,
+      description,
+    },
+  };
+}
+
+function rootJsonLd(entry: RootEntry) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "@id": rootUrl(entry.root),
+    url: rootUrl(entry.root),
+    name: entry.displayRoot,
+    description: entry.meaningEn,
+    inLanguage: "ar",
+    inDefinedTermSet: {
+      "@type": "DefinedTermSet",
+      name: `${SITE_NAME} Arabic root library`,
+      url: `${SITE_URL}/browse`,
+    },
   };
 }
 
@@ -35,6 +68,10 @@ export default async function RootPage({
 
   return (
     <div className="py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd(entry)) }}
+      />
       <div className="mb-8">
         <Link
           href="/browse"

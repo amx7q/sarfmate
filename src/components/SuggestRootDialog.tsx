@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Submission } from "@/lib/types";
-import { submissionsStore } from "@/lib/submissionsStore";
+import { saveSubmission, type SaveSubmissionResult } from "@/lib/submissionsRemote";
 import Dialog from "@/components/Dialog";
 import SubmissionSuccess from "@/components/SubmissionSuccess";
 
@@ -18,17 +17,21 @@ export default function SuggestRootDialog({
   onClose: () => void;
   prefillRoot?: string;
 }) {
-  const [saved, setSaved] = useState<Submission | null>(null);
+  const [saved, setSaved] = useState<SaveSubmissionResult | null>(null);
+  const [sending, setSending] = useState(false);
 
   function handleClose() {
     setSaved(null);
+    setSending(false);
     onClose();
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (sending) return;
+    setSending(true);
     const data = new FormData(event.currentTarget);
-    const submission = submissionsStore.add({
+    const result = await saveSubmission({
       type: "root_suggestion",
       root: String(data.get("root") ?? "").trim(),
       suggestedCorrection: String(data.get("suggestion") ?? "").trim(),
@@ -36,13 +39,18 @@ export default function SuggestRootDialog({
       contributorName: String(data.get("name") ?? "").trim() || undefined,
       contributorEmail: String(data.get("email") ?? "").trim() || undefined,
     });
-    setSaved(submission);
+    setSending(false);
+    setSaved(result);
   }
 
   return (
     <Dialog open={open} onClose={handleClose} title="Suggest a root">
       {saved ? (
-        <SubmissionSuccess submission={saved} onDone={handleClose} />
+        <SubmissionSuccess
+          submission={saved.submission}
+          remote={saved.remote}
+          onDone={handleClose}
+        />
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -103,9 +111,10 @@ export default function SuggestRootDialog({
           </p>
           <button
             type="submit"
-            className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            disabled={sending}
+            className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60"
           >
-            Save suggestion
+            {sending ? "Sending…" : "Save suggestion"}
           </button>
         </form>
       )}
