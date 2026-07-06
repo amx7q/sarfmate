@@ -71,7 +71,7 @@ describe("Quranic root index", () => {
   });
 
   it("searchRootLibrary returns indexed-only Quranic results when no full entry exists", () => {
-    const indexedOnly = searchRootLibrary("قرأ");
+    const indexedOnly = searchRootLibrary("ربب");
     expect(indexedOnly?.kind).toBe("indexed_only");
     if (indexedOnly?.kind === "indexed_only") {
       expect(indexedOnly.indexEntry.hasFullEntry).toBe(false);
@@ -150,6 +150,12 @@ describe("validateRootEntry", () => {
     const errors = validateRootEntry({ ...base, forms });
     expect(errors.join(" ")).toContain('missing required field "arabic"');
   });
+
+  it("rejects reviewed entries that still carry AI-draft notes", () => {
+    const base = getAllRoots().find((entry) => entry.status === "ai_draft")!;
+    const errors = validateRootEntry({ ...base, status: "reviewed" });
+    expect(errors.join(" ")).toContain("AI-draft review note");
+  });
 });
 
 describe("library size", () => {
@@ -162,6 +168,7 @@ describe("seed data spelling rules", () => {
   it("spells sound-root imperatives with hamzat wasl, never hamzat qat' (أ/إ)", () => {
     for (const entry of getAllRoots()) {
       if (entry.root[1] === entry.root[2]) continue;
+      if (entry.root.startsWith("أ") || entry.root.startsWith("و")) continue;
       const imperative = entry.forms.find((f) => f.key === "imperative");
       expect(imperative).toBeDefined();
       expect(imperative!.arabic.startsWith("أ")).toBe(false);

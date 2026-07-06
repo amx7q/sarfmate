@@ -51,7 +51,11 @@ export function searchRootLibrary(query: string): RootSearchResult | undefined {
 export function validateQuranRootIndex(): string[] {
   const errors: string[] = [];
   const seen = new Set<string>();
-  const fullRoots = new Set(getAllRoots().map((entry) => normaliseArabicInput(entry.root)));
+  const fullQuranicRoots = new Set(
+    getAllRoots()
+      .filter((entry) => entry.quranic)
+      .map((entry) => normaliseArabicInput(entry.root)),
+  );
 
   for (const entry of getQuranRootIndex()) {
     const key = normaliseArabicInput(entry.root);
@@ -64,7 +68,7 @@ export function validateQuranRootIndex(): string[] {
     if (seen.has(key)) errors.push(`duplicate Quranic index root ${entry.root}`);
     seen.add(key);
 
-    const hasFullEntry = fullRoots.has(key);
+    const hasFullEntry = fullQuranicRoots.has(key);
     if (entry.hasFullEntry !== hasFullEntry) {
       errors.push(
         `Quranic index root ${entry.root} has hasFullEntry=${entry.hasFullEntry} but full entry presence is ${hasFullEntry}`,

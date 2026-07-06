@@ -54,6 +54,7 @@ const REQUIRED_FORM_FIELDS = [
 ] as const;
 const VALID_STATUSES = ["reviewed", "community_suggested", "ai_draft"] as const;
 const PLACEHOLDER_RE = /\b(todo|tbd|placeholder|lorem ipsum|xxx)\b/i;
+const AI_DRAFT_NOTE_RE = /\bAI[- ](?:generated )?draft\b|verify before marking reviewed/i;
 
 export function validateAllRootEntries(entries: RootEntry[] = getAllRoots()): string[] {
   const errors: string[] = [];
@@ -88,6 +89,14 @@ export function validateRootEntry(entry: RootEntry): string[] {
   if (!entry.meaningEn) errors.push("meaningEn is missing");
   if (!VALID_STATUSES.includes(entry.status)) {
     errors.push(`status "${entry.status}" is invalid`);
+  }
+  if (
+    entry.status === "reviewed" &&
+    [entry.notes, ...entry.forms.map((form) => form.notes)]
+      .filter(Boolean)
+      .some((value) => AI_DRAFT_NOTE_RE.test(value!))
+  ) {
+    errors.push("reviewed entry contains AI-draft review note");
   }
   if (!entry.updatedAt || Number.isNaN(Date.parse(entry.updatedAt))) {
     errors.push("updatedAt is missing or not a parseable date");
