@@ -60,9 +60,9 @@ export default function Footer() {
             SarfMate entries are curated and reviewed over time.
           </p>
           <p>
-            Website created by{" "}
+            Website by{" "}
             <a
-              href="https://www.linkedin.com/in/ammar7q"
+              href="https://linktr.ee/ammarabuyahya"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded font-medium text-primary hover:text-secondary"
