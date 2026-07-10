@@ -71,7 +71,7 @@ describe("sendSubmissionToSupabase", () => {
       await loadModule();
     expect(isRemoteSubmissionsEnabled()).toBe(false);
     const result = await sendSubmissionToSupabase(SAMPLE);
-    expect(result.ok).toBe(false);
+    expect(result).toEqual({ ok: false, category: "configuration" });
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
@@ -102,7 +102,19 @@ describe("sendSubmissionToSupabase", () => {
 
     const { sendSubmissionToSupabase } = await loadModule();
     const result = await sendSubmissionToSupabase(SAMPLE);
-    expect(result.ok).toBe(false);
+    expect(result).toEqual({ ok: false, category: "authorization" });
+  });
+
+  it("treats a duplicate client_id response as an already successful retry", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "https://example.supabase.co");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", "anon-key");
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: false, status: 409 }));
+
+    const { sendSubmissionToSupabase } = await loadModule();
+    await expect(sendSubmissionToSupabase(SAMPLE)).resolves.toEqual({
+      ok: true,
+      duplicate: true,
+    });
   });
 
   it("reports failure when fetch throws", async () => {
@@ -112,7 +124,16 @@ describe("sendSubmissionToSupabase", () => {
 
     const { sendSubmissionToSupabase } = await loadModule();
     const result = await sendSubmissionToSupabase(SAMPLE);
-    expect(result).toEqual({ ok: false, error: "offline" });
+    expect(result).toEqual({ ok: false, category: "network" });
+  });
+});
+
+describe("isHoneypotFilled", () => {
+  it("only flags non-empty string values", async () => {
+    const { isHoneypotFilled } = await loadModule();
+    expect(isHoneypotFilled(null)).toBe(false);
+    expect(isHoneypotFilled("   ")).toBe(false);
+    expect(isHoneypotFilled("https://spam.example")).toBe(true);
   });
 });
 

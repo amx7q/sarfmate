@@ -1,7 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { saveSubmission, type SaveSubmissionResult } from "@/lib/submissionsRemote";
+import {
+  isHoneypotFilled,
+  saveSubmission,
+  type SaveSubmissionResult,
+} from "@/lib/submissionsRemote";
 import Dialog from "@/components/Dialog";
 import SubmissionSuccess from "@/components/SubmissionSuccess";
 
@@ -31,6 +35,10 @@ export default function SuggestRootDialog({
     if (sending) return;
     setSending(true);
     const data = new FormData(event.currentTarget);
+    if (isHoneypotFilled(data.get("website"))) {
+      setSending(false);
+      return;
+    }
     const result = await saveSubmission({
       type: "root_suggestion",
       root: String(data.get("root") ?? "").trim(),
@@ -53,6 +61,16 @@ export default function SuggestRootDialog({
         />
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="sr-only" aria-hidden="true">
+            <label htmlFor="suggest-website">Website</label>
+            <input
+              id="suggest-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
           <div>
             <label htmlFor="suggest-root" className="mb-1 block text-sm font-medium text-ink">
               Arabic root <span className="text-accent">*</span>

@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { FORM_LABELS, FORM_SEQUENCE, type SarfFormKey } from "@/lib/types";
-import { saveSubmission, type SaveSubmissionResult } from "@/lib/submissionsRemote";
+import {
+  isHoneypotFilled,
+  saveSubmission,
+  type SaveSubmissionResult,
+} from "@/lib/submissionsRemote";
 import Dialog from "@/components/Dialog";
 import SubmissionSuccess from "@/components/SubmissionSuccess";
 
@@ -36,6 +40,10 @@ export default function ReportErrorDialog({
     if (sending) return;
     setSending(true);
     const data = new FormData(event.currentTarget);
+    if (isHoneypotFilled(data.get("website"))) {
+      setSending(false);
+      return;
+    }
     const selectedForm = String(data.get("formKey") ?? "");
     const result = await saveSubmission({
       type: "error_report",
@@ -61,6 +69,16 @@ export default function ReportErrorDialog({
         />
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="sr-only" aria-hidden="true">
+            <label htmlFor="report-website">Website</label>
+            <input
+              id="report-website"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
           <p className="text-sm text-muted">
             Reporting an issue with the root{" "}
             <span dir="rtl" lang="ar" className="font-arabic text-base text-primary">

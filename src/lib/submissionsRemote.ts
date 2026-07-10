@@ -17,6 +17,15 @@ const REMOTE_TIMEOUT_MS = 10_000;
 
 export type RemoteResult = "sent" | "failed" | "disabled";
 
+export type SubmissionErrorCategory =
+  | "configuration"
+  | "authorization"
+  | "rate_limited"
+  | "server"
+  | "network"
+  | "timeout"
+  | "unknown";
+
 export type SaveSubmissionResult = {
   submission: Submission;
   remote: RemoteResult;
@@ -24,6 +33,18 @@ export type SaveSubmissionResult = {
 
 export function isRemoteSubmissionsEnabled(): boolean {
   return Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);
+}
+
+/** Honeypot values are intentionally never stored, sent, or logged. */
+export function isHoneypotFilled(value: FormDataEntryValue | null): boolean {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function responseErrorCategory(status: number): SubmissionErrorCategory {
+  if (status === 401 || status === 403) return "authorization";
+  if (status === 429) return "rate_limited";
+  if (status >= 500) return "server";
+  return "unknown";
 }
 
 /** Maps the camelCase Submission to the snake_case submissions table row. */
@@ -43,9 +64,9 @@ export function toSupabaseRow(submission: Submission): Record<string, unknown> {
 
 export async function sendSubmissionToSupabase(
   submission: Submission,
-): Promise<{ ok: true } | { ok: false; error: string }> {
+): Promise<{ ok: true; duplicate?: true } | { ok: false; category: SubmissionErrorCategory }> {
   if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-    return { ok: false, error: "Supabase is not configured" };
+    return { ok: false, category: "configuration" };
   }
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REMOTE_TIMEOUT_MS);
@@ -63,14 +84,16 @@ export async function sendSubmissionToSupabase(
       body: JSON.stringify(toSupabaseRow(submission)),
       signal: controller.signal,
     });
-    if (!response.ok) {
-      return { ok: false, error: `Supabase responded with ${response.status}` };
-    }
+    // A retry of a row already accepted by Supabase is a successful delivery
+    // from the visitor's perspective. The unique client_id index makes this
+    // response safe to recognise as an idempotent duplicate.
+    if (response.status === 409) return { ok: true, duplicate: true };
+    if (!response.ok) return { ok: false, category: responseErrorCategory(response.status) };
     return { ok: true };
   } catch (error) {
     return {
       ok: false,
-      error: error instanceof Error ? error.message : "Network error",
+      category: error instanceof Error && error.name === "AbortError" ? "timeout" : "network",
     };
   } finally {
     clearTimeout(timeout);
