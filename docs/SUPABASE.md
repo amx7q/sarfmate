@@ -23,6 +23,16 @@ Security). You read submissions in the Supabase dashboard.
    client bundle when `next build` runs — setting them only as runtime
    secrets will not work. Redeploy after adding them.
 
+### Existing SarfMate databases
+
+If the `submissions` table already exists, do not rerun the full schema.
+Review and run
+[`20260710_submission_client_id_idempotency.sql`](../supabase/migrations/20260710_submission_client_id_idempotency.sql)
+instead. It fills missing legacy client IDs, separates any existing duplicate
+IDs, then makes `client_id` required and unique so browser retries cannot add a
+second row. The migration is idempotent and preserves anonymous INSERT-only
+access.
+
 ## Reading submissions
 
 Open the Supabase dashboard → **Table Editor** → `submissions`. Rows arrive

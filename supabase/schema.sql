@@ -21,7 +21,7 @@ create table public.submissions (
   contributor_email text check (char_length(contributor_email) <= 320),
   -- The submission id generated in the visitor's browser, so a row can be
   -- cross-referenced with the JSON the visitor may also copy or email.
-  client_id text check (char_length(client_id) <= 100),
+  client_id text not null unique check (char_length(client_id) <= 100),
   status text not null default 'pending',
   created_at timestamptz not null default now()
 );
