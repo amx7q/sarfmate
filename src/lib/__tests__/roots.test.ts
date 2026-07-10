@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { importedArabicVerbReport } from "@/data/roots";
 import {
   getAllRoots,
   findRoot,
@@ -14,6 +15,7 @@ import {
   validateQuranRootIndex,
 } from "@/lib/quranRoots";
 import { FORM_SEQUENCE, type RootEntry } from "@/lib/types";
+import { toPublicRootEntry } from "@/lib/publicData";
 
 describe("findRoot", () => {
   it("finds a root from bare letters", () => {
@@ -52,10 +54,56 @@ describe("searchRoot", () => {
     expect(searchRoot("entrance")?.root).toBe("دخل");
   });
 
+  it("matches form transliteration", () => {
+    expect(searchRoot("samiʿa")?.root).toBe("سمع");
+  });
+
+  it("matches compact consonantal root transliteration", () => {
+    expect(searchRoot("ktb")?.root).toBe("كتب");
+    expect(searchRoot("khrj")?.root).toBe("خرج");
+  });
+
   it("returns undefined for unknown queries in either language", () => {
     expect(searchRoot("xyzzy")).toBeUndefined();
     expect(searchRoot("قرد")).toBeUndefined();
     expect(searchRoot("")).toBeUndefined();
+  });
+});
+
+describe("imported Arabic verb variants", () => {
+  it("keeps reviewed root entries intact while adding same-root AI draft variants", () => {
+    const entry = findRoot("علم");
+    expect(entry?.status).toBe("reviewed");
+    const variant = entry?.variants?.find((item) => item.meaningEn === "To teach");
+    expect(variant?.status).toBe("ai_draft");
+    expect(variant?.source?.verifiedFields).toEqual([
+      "meaning_en",
+      "past_3ms",
+      "present_3ms",
+      "imperative_2ms",
+      "masdar",
+    ]);
+  });
+
+  it("publishes source attribution without internal CSV notes", () => {
+    const entry = getAllRoots().find((root) => root.source?.csvNotes)!;
+    const publicEntry = toPublicRootEntry(entry);
+    expect(publicEntry.source).toBeDefined();
+    expect(publicEntry.source?.csvNotes).toBeUndefined();
+  });
+
+  it("accounts for every CSV row in the import report", () => {
+    expect(importedArabicVerbReport.processedRows).toBe(602);
+    expect(importedArabicVerbReport.addedEntries).toBe(515);
+    expect(importedArabicVerbReport.skippedExactDuplicateRows).toBe(4);
+    expect(importedArabicVerbReport.skippedAlreadyRepresentedRows).toBe(82);
+    expect(importedArabicVerbReport.skippedInvalidRows).toEqual([
+      {
+        rowNumber: 305,
+        past: "كاد",
+        reason: "missing required CSV field(s): imperative_2ms, masdar",
+      },
+    ]);
   });
 });
 
@@ -71,7 +119,7 @@ describe("Quranic root index", () => {
   });
 
   it("searchRootLibrary returns indexed-only Quranic results when no full entry exists", () => {
-    const indexedOnly = searchRootLibrary("ربب");
+    const indexedOnly = searchRootLibrary("ليل");
     expect(indexedOnly?.kind).toBe("indexed_only");
     if (indexedOnly?.kind === "indexed_only") {
       expect(indexedOnly.indexEntry.hasFullEntry).toBe(false);
@@ -165,15 +213,68 @@ describe("library size", () => {
 });
 
 describe("seed data spelling rules", () => {
-  it("spells sound-root imperatives with hamzat wasl, never hamzat qat' (أ/إ)", () => {
+  it("spells each entry's imperative correctly for its verb measure", () => {
+    // Measures I/VII/VIII/IX/X take the اِ hamzat-waṣl augment regardless of root shape.
+    // Measures II/III keep the root's own first letter (no augment). Measure IV takes
+    // hamzat qaṭʿ (أ). Measures V/VI take the تَ augment. Form-I doubled roots, roots
+    // whose first letter is already أ/و, and roots with a medial hamza have irregular
+    // imperative formation that a single rule can't capture, so they're spot-checked by
+    // hand in reviewFormNotes/reviewExamples instead of asserted here.
+    const HAMZA_LETTERS = new Set(["أ", "إ", "ء", "ئ"]);
+
     for (const entry of getAllRoots()) {
-      if (entry.root[1] === entry.root[2]) continue;
-      if (entry.root.startsWith("أ") || entry.root.startsWith("و")) continue;
+      if (entry.source) continue;
       const imperative = entry.forms.find((f) => f.key === "imperative");
       expect(imperative).toBeDefined();
-      expect(imperative!.arabic.startsWith("أ")).toBe(false);
-      expect(imperative!.arabic.startsWith("إ")).toBe(false);
-      expect(imperative!.arabic.startsWith("ا")).toBe(true);
+      const arabic = imperative!.arabic;
+      const root = entry.root;
+      const doubled = root[1] === root[2];
+      const initialHamzaOrWaw = root.startsWith("أ") || root.startsWith("و");
+      const medialHamza = HAMZA_LETTERS.has(root[1]);
+      // True hollow (medial-weak, drops to a 2-consonant CVC imperative like قُلْ) only
+      // when the final radical is solid. When the final radical is also weak (e.g. كوي),
+      // the verb conjugates like a defective root and keeps the اِ helper (اِكْوِ).
+      const hollow = (root[1] === "و" || root[1] === "ي") && root[2] !== "و" && root[2] !== "ي";
+
+      switch (entry.measure) {
+        case "I":
+          if (doubled || initialHamzaOrWaw || medialHamza) break;
+          if (hollow) {
+            expect(arabic.startsWith(root[0])).toBe(true);
+          } else {
+            expect(arabic.startsWith("أ")).toBe(false);
+            expect(arabic.startsWith("إ")).toBe(false);
+            expect(arabic.startsWith("ا")).toBe(true);
+          }
+          break;
+        case "II":
+        case "III":
+          expect(arabic.startsWith(root[0])).toBe(true);
+          break;
+        case "IV":
+          expect(arabic.startsWith("أ")).toBe(true);
+          expect(arabic.startsWith("إ")).toBe(false);
+          break;
+        case "V":
+        case "VI":
+          expect(arabic.startsWith("ت")).toBe(true);
+          break;
+        case "VII":
+        case "VIII":
+        case "IX":
+        case "X":
+          expect(arabic.startsWith("أ")).toBe(false);
+          expect(arabic.startsWith("إ")).toBe(false);
+          expect(arabic.startsWith("ا")).toBe(true);
+          break;
+      }
+    }
+  });
+
+  it("keeps every entry's measure as one of the ten classical measures", () => {
+    const VALID_MEASURES = new Set(["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]);
+    for (const entry of getAllRoots()) {
+      expect(VALID_MEASURES.has(entry.measure)).toBe(true);
     }
   });
 });

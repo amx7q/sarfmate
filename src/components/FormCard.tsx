@@ -8,13 +8,16 @@ import CopyButton from "@/components/CopyButton";
 export default function FormCard({
   form,
   index,
+  idPrefix = "form",
   onReportError,
 }: {
   form: SarfForm;
   index: number;
+  idPrefix?: string;
   onReportError: () => void;
 }) {
   const reduced = useReducedMotion() ?? false;
+  const titleId = `${idPrefix}-${form.key}-title`;
 
   return (
     <motion.article
@@ -22,7 +25,7 @@ export default function FormCard({
       animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
       transition={{ duration: reduced ? 0.01 : 0.4, delay: reduced ? 0 : index * 0.07, ease: "easeOut" }}
       className="flex w-[280px] shrink-0 snap-center flex-col rounded-2xl border border-border-soft bg-surface p-5 shadow-sm xl:w-auto xl:min-w-0 xl:flex-1"
-      aria-labelledby={`form-${form.key}-title`}
+      aria-labelledby={titleId}
     >
       <div dir="ltr" className="flex items-start justify-between gap-2">
         <span
@@ -40,7 +43,7 @@ export default function FormCard({
       </div>
 
       <h3
-        id={`form-${form.key}-title`}
+        id={titleId}
         dir="rtl"
         lang="ar"
         className="mt-4 text-center font-arabic text-4xl font-medium leading-snug text-primary"
@@ -62,7 +65,7 @@ export default function FormCard({
             />
             <span>
               <span className="font-medium text-ink">Needs review: </span>
-              {form.notes}
+              This form is still awaiting human review.
             </span>
           </p>
         )}

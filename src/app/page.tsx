@@ -5,6 +5,7 @@ import HomeSearch from "@/components/HomeSearch";
 import FeatureCards from "@/components/FeatureCards";
 import CommunityPanel from "@/components/CommunityPanel";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/siteConfig";
+import { getPublicQuranRootIndex, getPublicRootEntries } from "@/lib/publicData";
 
 export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
@@ -32,6 +33,9 @@ const websiteJsonLd = {
 };
 
 export default function HomePage() {
+  const roots = getPublicRootEntries();
+  const quranRoots = getPublicQuranRootIndex();
+
   return (
     <>
       <script
@@ -40,7 +44,7 @@ export default function HomePage() {
       />
       <Hero />
       <Suspense fallback={null}>
-        <HomeSearch />
+        <HomeSearch roots={roots} quranRoots={quranRoots} />
       </Suspense>
       <FeatureCards />
       <CommunityPanel />

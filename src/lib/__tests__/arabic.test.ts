@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { normaliseArabicInput, formatRoot } from "@/lib/arabic";
+import { formatRoot, matchesRootTransliteration, normaliseArabicInput } from "@/lib/arabic";
 
 describe("normaliseArabicInput", () => {
   it("strips harakat from a fully voweled word", () => {
@@ -45,5 +45,18 @@ describe("formatRoot", () => {
   it("spaces out a three-letter root", () => {
     expect(formatRoot("سمع")).toBe("س م ع");
     expect(formatRoot("كتب")).toBe("ك ت ب");
+  });
+});
+
+describe("matchesRootTransliteration", () => {
+  it("matches compact consonantal root transliteration", () => {
+    expect(matchesRootTransliteration("كتب", "ktb")).toBe(true);
+    expect(matchesRootTransliteration("خرج", "khrj")).toBe(true);
+    expect(matchesRootTransliteration("شكر", "shkr")).toBe(true);
+  });
+
+  it("supports common learner spellings for ayn", () => {
+    expect(matchesRootTransliteration("سمع", "sm3")).toBe(true);
+    expect(matchesRootTransliteration("سمع", "smʿ")).toBe(true);
   });
 });

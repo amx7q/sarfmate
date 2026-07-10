@@ -1,5 +1,5 @@
 import { quranRoots } from "@/data/quranRoots";
-import { normaliseArabicInput } from "@/lib/arabic";
+import { matchesRootTransliteration, normaliseArabicInput } from "@/lib/arabic";
 import { getAllRoots, searchRoot } from "@/lib/roots";
 import type { QuranRootIndexEntry, RootEntry } from "@/lib/types";
 
@@ -26,10 +26,13 @@ export function searchQuranRootIndex(query: string): QuranRootIndexEntry | undef
   const q = query.trim().toLowerCase();
   if (!q || HAS_ARABIC.test(query)) return undefined;
 
-  return getQuranRootIndex().find((entry) =>
-    [entry.glossEn, entry.transliteration]
-      .filter(Boolean)
-      .some((value) => value!.toLowerCase().includes(q)),
+  return (
+    getQuranRootIndex().find((entry) => matchesRootTransliteration(entry.root, q)) ??
+    getQuranRootIndex().find((entry) =>
+      [entry.glossEn, entry.transliteration]
+        .filter(Boolean)
+        .some((value) => value!.toLowerCase().includes(q)),
+    )
   );
 }
 

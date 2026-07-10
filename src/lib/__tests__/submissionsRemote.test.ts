@@ -115,3 +115,16 @@ describe("sendSubmissionToSupabase", () => {
     expect(result).toEqual({ ok: false, error: "offline" });
   });
 });
+
+describe("retrySubmission", () => {
+  it("retries an existing locally saved submission", async () => {
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_URL", "https://example.supabase.co");
+    vi.stubEnv("NEXT_PUBLIC_SUPABASE_ANON_KEY", "anon-key");
+    const fetchSpy = vi.fn().mockResolvedValue({ ok: true, status: 201 });
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const { retrySubmission } = await loadModule();
+    await expect(retrySubmission({ ...SAMPLE, deliveryStatus: "failed" })).resolves.toBe("sent");
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+  });
+});

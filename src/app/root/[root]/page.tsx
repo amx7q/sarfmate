@@ -3,10 +3,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllRoots, findRoot } from "@/lib/roots";
 import { SITE_URL, SITE_NAME, rootUrl } from "@/lib/siteConfig";
+import { toPublicRootEntry } from "@/lib/publicData";
 import RootResult from "@/components/RootResult";
 import type { RootEntry } from "@/lib/types";
 
 type Params = { root: string };
+
+export const dynamicParams = false;
 
 export function generateStaticParams(): Params[] {
   return getAllRoots().map((entry) => ({ root: entry.root }));
@@ -80,7 +83,7 @@ export default async function RootPage({
           ← Back to browse
         </Link>
       </div>
-      <RootResult entry={entry} />
+      <RootResult entry={toPublicRootEntry(entry)} />
     </div>
   );
 }

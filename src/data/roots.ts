@@ -1,4 +1,13 @@
-import { FORM_LABELS, type RootEntry, type SarfFormKey } from "@/lib/types";
+import { sarfmateArabicVerbsCsv } from "@/data/importedArabicVerbsCsv";
+import {
+  FORM_LABELS,
+  type ImportedVerbSource,
+  type RootEntry,
+  type RootVerbEntry,
+  type SarfForm,
+  type SarfFormKey,
+  type VerbMeasure,
+} from "@/lib/types";
 
 const label = (key: SarfFormKey) => FORM_LABELS[key];
 const AI_DRAFT_NOTE = "AI draft; verify before marking reviewed.";
@@ -15,6 +24,10 @@ type DraftPattern = {
   transliterationBase: string;
   transliterations?: Partial<Record<SarfFormKey, string>>;
   formNotes?: Partial<Record<SarfFormKey, string>>;
+  /** Verb measure/pattern annotation (e.g. "Form IV verb"), appended to the root-level AI-draft note. */
+  rootNote?: string;
+  /** Classical verb measure (وزن). Defaults to "I" for the sound/weak Form-I seed batch. */
+  measure?: VerbMeasure;
   formMeanings: {
     past: string;
     present: string;
@@ -223,6 +236,486 @@ const reviewExamples: Record<string, Partial<Record<SarfFormKey, DraftExample>>>
     active_participle: { exampleAr: "العَامِلُ مَالِئٌ الخَزَّانَ.", exampleEn: "The worker is filling the tank." },
     passive_participle: { exampleAr: "الكَأْسُ مَمْلُوءٌ.", exampleEn: "The cup is full." },
   },
+  مرر: {
+    past: { exampleAr: "مَرَّ الرَّجُلُ بِالبَابِ.", exampleEn: "The man passed by the door." },
+    present: { exampleAr: "يَمُرُّ القِطَارُ هُنَا.", exampleEn: "The train passes here." },
+    imperative: { exampleAr: "مُرَّ مِنْ هُنَا.", exampleEn: "Pass by here." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَمَرٌّ ضَيِّقٌ.", exampleEn: "This is a narrow passageway." },
+    active_participle: { exampleAr: "الرَّجُلُ مَارٌّ بِالسُّوقِ.", exampleEn: "The man is passing by the market." },
+    passive_participle: { exampleAr: "الطَّرِيقُ مَمْرُورٌ بِهِ يَوْمِيًّا.", exampleEn: "The road is passed by daily." },
+  },
+  نسخ: {
+    past: { exampleAr: "نَسَخَ الطَّالِبُ الدَّرْسَ.", exampleEn: "The student copied the lesson." },
+    present: { exampleAr: "يَنْسَخُ الكَاتِبُ النَّصَّ.", exampleEn: "The writer copies the text." },
+    imperative: { exampleAr: "اِنْسَخْ هٰذِهِ الصَّفْحَةَ.", exampleEn: "Copy this page." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَنْسَخُ الوَثَائِقِ.", exampleEn: "This is the document copying place." },
+    active_participle: { exampleAr: "هُوَ نَاسِخُ الكِتَابِ.", exampleEn: "He is the copier of the book." },
+    passive_participle: { exampleAr: "النَّصُّ مَنْسُوخٌ فِي دَفْتَرٍ آخَرَ.", exampleEn: "The text is copied into another notebook." },
+  },
+  وضأ: {
+    past: { exampleAr: "تَوَضَّأَ الرَّجُلُ قَبْلَ الصَّلَاةِ.", exampleEn: "The man performed ablution before the prayer." },
+    present: { exampleAr: "يَتَوَضَّأُ الطَّالِبُ فِي المَسْجِدِ.", exampleEn: "The student performs ablution in the mosque." },
+    imperative: { exampleAr: "تَوَضَّأْ قَبْلَ الصَّلَاةِ.", exampleEn: "Perform ablution before the prayer." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَوَضُّؤٌ كَامِلٌ.", exampleEn: "This is a complete ablution." },
+    active_participle: { exampleAr: "الرَّجُلُ مُتَوَضِّئٌ الآنَ.", exampleEn: "The man is in a state of ablution now." },
+    passive_participle: { exampleAr: "الوُضُوءُ مُتَوَضَّأٌ بِهِ.", exampleEn: "The ablution has been performed with it." },
+  },
+  يقظ: {
+    past: { exampleAr: "اِسْتَيْقَظَ الوَلَدُ مُبَكِّرًا.", exampleEn: "The boy woke up early." },
+    present: { exampleAr: "يَسْتَيْقِظُ الطَّالِبُ فِي السَّابِعَةِ.", exampleEn: "The student wakes up at seven." },
+    imperative: { exampleAr: "اِسْتَيْقِظْ الآنَ.", exampleEn: "Wake up now." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِسْتِيقَاظٌ مُبَكِّرٌ.", exampleEn: "This is an early awakening." },
+    active_participle: { exampleAr: "الوَلَدُ مُسْتَيْقِظٌ الآنَ.", exampleEn: "The boy is awake now." },
+    passive_participle: { exampleAr: "النَّوْمُ مُسْتَيْقَظٌ مِنْهُ.", exampleEn: "The sleep is one that has been woken from." },
+  },
+  كنس: {
+    past: { exampleAr: "كَنَسَ العَامِلُ الغُرْفَةَ.", exampleEn: "The worker swept the room." },
+    present: { exampleAr: "يَكْنُسُ الوَلَدُ الحَدِيقَةَ.", exampleEn: "The boy sweeps the garden." },
+    imperative: { exampleAr: "اُكْنُسْ هٰذَا المَكَانَ.", exampleEn: "Sweep this place." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَكْنَسٌ نَظِيفٌ.", exampleEn: "This is a clean sweeping place." },
+    active_participle: { exampleAr: "العَامِلُ كَانِسٌ لِلْغُرْفَةِ.", exampleEn: "The worker is sweeping the room." },
+    passive_participle: { exampleAr: "الشَّارِعُ مَكْنُوسٌ.", exampleEn: "The street is swept." },
+  },
+  كوي: {
+    past: { exampleAr: "كَوَى الرَّجُلُ القَمِيصَ.", exampleEn: "The man ironed the shirt." },
+    present: { exampleAr: "يَكْوِي الوَلَدُ الثَّوْبَ.", exampleEn: "The boy irons the garment." },
+    imperative: { exampleAr: "اِكْوِ هٰذَا القَمِيصَ.", exampleEn: "Iron this shirt." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَكْوًى صَغِيرٌ.", exampleEn: "This is a small ironing place." },
+    active_participle: { exampleAr: "هُوَ كَاوٍ لِلثَّوْبِ.", exampleEn: "He is ironing the garment." },
+    passive_participle: { exampleAr: "القَمِيصُ مَكْوِيٌّ.", exampleEn: "The shirt is ironed." },
+  },
+  طوع: {
+    past: { exampleAr: "اِسْتَطَاعَ الطَّالِبُ حَلَّ السُّؤَالِ.", exampleEn: "The student was able to solve the question." },
+    present: { exampleAr: "يَسْتَطِيعُ الوَلَدُ السِّبَاحَةَ.", exampleEn: "The boy is able to swim." },
+    imperative: { exampleAr: "اِسْتَطِعْ فِعْلَ هٰذَا.", exampleEn: "Be able to do this." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ اِسْتِطَاعَةٌ كَبِيرَةٌ.", exampleEn: "This is a great ability." },
+    active_participle: { exampleAr: "الطَّالِبُ مُسْتَطِيعٌ لِلْعَمَلِ.", exampleEn: "The student is able to work." },
+    passive_participle: { exampleAr: "الأَمْرُ مُسْتَطَاعٌ.", exampleEn: "The matter is achievable." },
+  },
+  بدأ: {
+    past: { exampleAr: "بَدَأَ الدَّرْسُ مُبَكِّرًا.", exampleEn: "The lesson started early." },
+    present: { exampleAr: "يَبْدَأُ الطَّالِبُ العَمَلَ.", exampleEn: "The student starts the work." },
+    imperative: { exampleAr: "اِبْدَأْ الآنَ.", exampleEn: "Start now." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَبْدَأٌ مُهِمٌّ.", exampleEn: "This is an important principle." },
+    active_participle: { exampleAr: "هُوَ بَادِئٌ بِالعَمَلِ.", exampleEn: "He is starting the work." },
+    passive_participle: { exampleAr: "العَمَلُ مَبْدُوءٌ.", exampleEn: "The work has been begun." },
+  },
+  نهي: {
+    past: { exampleAr: "اِنْتَهَى الدَّرْسُ.", exampleEn: "The lesson finished." },
+    present: { exampleAr: "يَنْتَهِي الطَّالِبُ مِنَ الوَاجِبِ.", exampleEn: "The student finishes the homework." },
+    imperative: { exampleAr: "اِنْتَهِ مِنْ عَمَلِكَ.", exampleEn: "Finish your work." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِنْتِهَاءٌ سَرِيعٌ.", exampleEn: "This is a quick ending." },
+    active_participle: { exampleAr: "الوَقْتُ مُنْتَهٍ.", exampleEn: "The time is finished / expired." },
+    passive_participle: { exampleAr: "وَصَلَ إِلَى مُنْتَهَى الطَّرِيقِ.", exampleEn: "He reached the end of the road." },
+  },
+  صحح: {
+    past: { exampleAr: "صَحَّحَ المُعَلِّمُ الوَاجِبَ.", exampleEn: "The teacher corrected the homework." },
+    present: { exampleAr: "يُصَحِّحُ الطَّالِبُ خَطَأَهُ.", exampleEn: "The student corrects his mistake." },
+    imperative: { exampleAr: "صَحِّحْ هٰذَا الخَطَأَ.", exampleEn: "Correct this mistake." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَصْحِيحٌ دَقِيقٌ.", exampleEn: "This is a precise correction." },
+    active_participle: { exampleAr: "المُعَلِّمُ مُصَحِّحٌ لِلْوَاجِبِ.", exampleEn: "The teacher is correcting the homework." },
+    passive_participle: { exampleAr: "الوَاجِبُ مُصَحَّحٌ.", exampleEn: "The homework is corrected." },
+  },
+  حبب: {
+    past: { exampleAr: "أَحَبَّ الوَلَدُ أُمَّهُ.", exampleEn: "The boy loved his mother." },
+    present: { exampleAr: "يُحِبُّ الطَّالِبُ العِلْمَ.", exampleEn: "The student loves knowledge." },
+    imperative: { exampleAr: "أَحِبَّ صَدِيقَكَ.", exampleEn: "Love your friend." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا حُبٌّ صَادِقٌ.", exampleEn: "This is sincere love." },
+    active_participle: { exampleAr: "هُوَ مُحِبٌّ لِلْعِلْمِ.", exampleEn: "He is a lover of knowledge." },
+    passive_participle: { exampleAr: "الوَلَدُ مُحَبٌّ مِنْ أُسْرَتِهِ.", exampleEn: "The boy is loved by his family." },
+  },
+  رسم: {
+    past: { exampleAr: "رَسَمَ الطِّفْلُ صُورَةً.", exampleEn: "The child drew a picture." },
+    present: { exampleAr: "يَرْسُمُ الفَنَّانُ لَوْحَةً.", exampleEn: "The artist draws a painting." },
+    imperative: { exampleAr: "اُرْسُمْ بَيْتًا.", exampleEn: "Draw a house." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَرْسَمُ الفَنَّانِ.", exampleEn: "This is the artist's drawing studio." },
+    active_participle: { exampleAr: "هُوَ رَاسِمُ الخَرِيطَةِ.", exampleEn: "He is the one drawing the map." },
+    passive_participle: { exampleAr: "البَيْتُ مَرْسُومٌ عَلَى الوَرَقَةِ.", exampleEn: "The house is drawn on the paper." },
+  },
+  خير: {
+    past: { exampleAr: "اِخْتَارَ الطَّالِبُ الكِتَابَ.", exampleEn: "The student chose the book." },
+    present: { exampleAr: "يَخْتَارُ الوَلَدُ اللَّوْنَ.", exampleEn: "The boy chooses the color." },
+    imperative: { exampleAr: "اِخْتَرْ هٰذَا الكِتَابَ.", exampleEn: "Choose this book." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِخْتِيَارٌ جَيِّدٌ.", exampleEn: "This is a good choice." },
+    active_participle: { exampleAr: "الطَّالِبُ مُخْتَارٌ لِلْكِتَابِ.", exampleEn: "The student is the one choosing the book." },
+    passive_participle: { exampleAr: "الكِتَابُ مُخْتَارٌ بِعِنَايَةٍ.", exampleEn: "The book is chosen carefully." },
+  },
+  روح: {
+    past: { exampleAr: "اِسْتَرَاحَ الرَّجُلُ بَعْدَ العَمَلِ.", exampleEn: "The man rested after work." },
+    present: { exampleAr: "يَسْتَرِيحُ الطَّالِبُ بَعْدَ الدَّرْسِ.", exampleEn: "The student rests after the lesson." },
+    imperative: { exampleAr: "اِسْتَرِحْ قَلِيلًا.", exampleEn: "Rest a little." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ اِسْتِرَاحَةٌ جَمِيلَةٌ.", exampleEn: "This is a nice rest area." },
+    active_participle: { exampleAr: "الرَّجُلُ مُسْتَرِيحٌ الآنَ.", exampleEn: "The man is relaxed now." },
+    passive_participle: { exampleAr: "الوَقْتُ مُسْتَرَاحٌ فِيهِ.", exampleEn: "The time is one in which rest was taken." },
+  },
+  بقي: {
+    past: { exampleAr: "بَقِيَ الوَلَدُ فِي البَيْتِ.", exampleEn: "The boy stayed in the house." },
+    present: { exampleAr: "يَبْقَى الطَّالِبُ فِي المَدْرَسَةِ.", exampleEn: "The student stays at school." },
+    imperative: { exampleAr: "اِبْقَ هُنَا.", exampleEn: "Stay here." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَبْقَى الطَّعَامِ.", exampleEn: "This is where the food remains." },
+    active_participle: { exampleAr: "الطَّعَامُ بَاقٍ فِي الثَّلَّاجَةِ.", exampleEn: "The food remains in the fridge." },
+    passive_participle: { exampleAr: "الأَثَرُ مَبْقِيٌّ عَلَيْهِ.", exampleEn: "The trace has been kept remaining." },
+  },
+  قضي: {
+    past: { exampleAr: "قَضَى الطَّالِبُ يَوْمَهُ فِي المَكْتَبَةِ.", exampleEn: "The student spent his day in the library." },
+    present: { exampleAr: "يَقْضِي الرَّجُلُ إِجَازَتَهُ فِي المَدِينَةِ.", exampleEn: "The man spends his vacation in the city." },
+    imperative: { exampleAr: "اِقْضِ وَقْتَكَ بِالمُفِيدِ.", exampleEn: "Spend your time usefully." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَقْضَى الوَقْتِ.", exampleEn: "This is the place where time is spent." },
+    active_participle: { exampleAr: "هُوَ قَاضٍ لِوَقْتِهِ فِي القِرَاءَةِ.", exampleEn: "He is one spending his time reading." },
+    passive_participle: { exampleAr: "الوَقْتُ مَقْضِيٌّ فِي الدِّرَاسَةِ.", exampleEn: "The time is spent in studying." },
+  },
+  حضر: {
+    past: { exampleAr: "حَضَرَ الطَّالِبُ الدَّرْسَ.", exampleEn: "The student attended the lesson." },
+    present: { exampleAr: "يَحْضُرُ الرَّجُلُ الاجْتِمَاعَ.", exampleEn: "The man attends the meeting." },
+    imperative: { exampleAr: "اُحْضُرْ الدَّرْسَ غَدًا.", exampleEn: "Attend the lesson tomorrow." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَحْضَرُ الاجْتِمَاعِ.", exampleEn: "This is the meeting's record / place of attendance." },
+    active_participle: { exampleAr: "الطَّالِبُ حَاضِرٌ فِي الفَصْلِ.", exampleEn: "The student is present in the class." },
+    passive_participle: { exampleAr: "الاجْتِمَاعُ مَحْضُورٌ مِنَ الجَمِيعِ.", exampleEn: "The meeting is attended by everyone." },
+  },
+  نقل: {
+    past: { exampleAr: "اِنْتَقَلَ الرَّجُلُ إِلَى بَيْتٍ جَدِيدٍ.", exampleEn: "The man moved to a new house." },
+    present: { exampleAr: "يَنْتَقِلُ الطَّالِبُ إِلَى مَدْرَسَةٍ أُخْرَى.", exampleEn: "The student transfers to another school." },
+    imperative: { exampleAr: "اِنْتَقِلْ إِلَى هٰذَا المَكَانِ.", exampleEn: "Move to this place." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِنْتِقَالٌ سَرِيعٌ.", exampleEn: "This is a quick move." },
+    active_participle: { exampleAr: "الرَّجُلُ مُنْتَقِلٌ إِلَى مَدِينَةٍ أُخْرَى.", exampleEn: "The man is moving to another city." },
+    passive_participle: { exampleAr: "المَكْتَبُ مُنْتَقَلٌ إِلَيْهِ.", exampleEn: "The office is one that has been moved to." },
+  },
+  غرق: {
+    past: { exampleAr: "اِسْتَغْرَقَ الاجْتِمَاعُ سَاعَةً.", exampleEn: "The meeting took an hour." },
+    present: { exampleAr: "يَسْتَغْرِقُ الوَاجِبُ وَقْتًا طَوِيلًا.", exampleEn: "The homework takes a long time." },
+    imperative: { exampleAr: "اِسْتَغْرِقْ وَقْتَكَ فِي التَّفْكِيرِ.", exampleEn: "Take your time thinking." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِسْتِغْرَاقٌ طَوِيلٌ فِي التَّفْكِيرِ.", exampleEn: "This is a long absorption in thought." },
+    active_participle: { exampleAr: "الاجْتِمَاعُ مُسْتَغْرِقٌ سَاعَةً.", exampleEn: "The meeting is taking an hour." },
+    passive_participle: { exampleAr: "الوَقْتُ مُسْتَغْرَقٌ فِي العَمَلِ.", exampleEn: "The time is absorbed in work." },
+  },
+  زحم: {
+    past: { exampleAr: "اِزْدَحَمَ الشَّارِعُ صَبَاحًا.", exampleEn: "The street became crowded in the morning." },
+    present: { exampleAr: "يَزْدَحِمُ السُّوقُ فِي العُطْلَةِ.", exampleEn: "The market gets crowded during the holiday." },
+    imperative: { exampleAr: "اِزْدَحِمْ مَعَ النَّاسِ هُنَا.", exampleEn: "Crowd together with people here." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِزْدِحَامٌ كَبِيرٌ.", exampleEn: "This is heavy congestion." },
+    active_participle: { exampleAr: "الشَّارِعُ مُزْدَحِمٌ اليَوْمَ.", exampleEn: "The street is crowded today." },
+    passive_participle: { exampleAr: "المَكَانُ مُزْدَحَمٌ بِالنَّاسِ.", exampleEn: "The place is crowded with people." },
+  },
+  حجز: {
+    past: { exampleAr: "حَجَزَ الرَّجُلُ غُرْفَةً.", exampleEn: "The man booked a room." },
+    present: { exampleAr: "يَحْجِزُ الطَّالِبُ مَقْعَدًا.", exampleEn: "The student reserves a seat." },
+    imperative: { exampleAr: "اِحْجِزْ مَقْعَدَكَ الآنَ.", exampleEn: "Reserve your seat now." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَحْجَزُ التَّذَاكِرِ.", exampleEn: "This is the ticket reservation place." },
+    active_participle: { exampleAr: "هُوَ حَاجِزٌ لِلْغُرْفَةِ.", exampleEn: "He is the one booking the room." },
+    passive_participle: { exampleAr: "المَقْعَدُ مَحْجُوزٌ.", exampleEn: "The seat is reserved." },
+  },
+  أكد: {
+    past: { exampleAr: "أَكَّدَ المُدِيرُ المَوْعِدَ.", exampleEn: "The manager confirmed the appointment." },
+    present: { exampleAr: "يُؤَكِّدُ الطَّالِبُ الخَبَرَ.", exampleEn: "The student confirms the news." },
+    imperative: { exampleAr: "أَكِّدْ حُضُورَكَ.", exampleEn: "Confirm your attendance." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَأْكِيدٌ مُهِمٌّ.", exampleEn: "This is an important confirmation." },
+    active_participle: { exampleAr: "هُوَ مُؤَكِّدٌ لِلْخَبَرِ.", exampleEn: "He is confirming the news." },
+    passive_participle: { exampleAr: "المَوْعِدُ مُؤَكَّدٌ.", exampleEn: "The appointment is confirmed." },
+  },
+  حلق: {
+    past: { exampleAr: "حَلَقَ الرَّجُلُ لِحْيَتَهُ.", exampleEn: "The man shaved his beard." },
+    present: { exampleAr: "يَحْلِقُ الحَلَّاقُ رَأْسَ الوَلَدِ.", exampleEn: "The barber shaves the boy's head." },
+    imperative: { exampleAr: "اِحْلِقْ شَعْرَكَ.", exampleEn: "Shave your hair." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَحْلَقُ الشَّعْرِ.", exampleEn: "This is the hair-shaving place." },
+    active_participle: { exampleAr: "الحَلَّاقُ حَالِقٌ لِلشَّعْرِ.", exampleEn: "The barber is shaving the hair." },
+    passive_participle: { exampleAr: "رَأْسُهُ مَحْلُوقٌ.", exampleEn: "His head is shaved." },
+  },
+  رمي: {
+    past: { exampleAr: "رَمَى الوَلَدُ الكُرَةَ.", exampleEn: "The boy threw the ball." },
+    present: { exampleAr: "يَرْمِي اللَّاعِبُ الكُرَةَ فِي المَرْمَى.", exampleEn: "The player throws the ball into the goal." },
+    imperative: { exampleAr: "اِرْمِ الكُرَةَ إِلَيَّ.", exampleEn: "Throw the ball to me." },
+    place_or_mim_masdar: { exampleAr: "الكُرَةُ فِي المَرْمَى.", exampleEn: "The ball is in the goal." },
+    active_participle: { exampleAr: "هُوَ رَامٍ مَاهِرٌ.", exampleEn: "He is a skilled thrower." },
+    passive_participle: { exampleAr: "الكُرَةُ مَرْمِيَّةٌ نَحْوَ المَرْمَى.", exampleEn: "The ball is thrown toward the goal." },
+  },
+  سعي: {
+    past: { exampleAr: "سَعَى الحَاجُّ بَيْنَ الصَّفَا وَالمَرْوَةِ.", exampleEn: "The pilgrim made sa'ee between Safa and Marwah." },
+    present: { exampleAr: "يَسْعَى الحُجَّاجُ فِي المَسْعَى.", exampleEn: "The pilgrims make sa'ee in al-Mas'a." },
+    imperative: { exampleAr: "اِسْعَ بَيْنَ الصَّفَا وَالمَرْوَةِ.", exampleEn: "Make sa'ee between Safa and Marwah." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا هُوَ المَسْعَى.", exampleEn: "This is al-Mas'a (the sa'ee course)." },
+    active_participle: { exampleAr: "هُوَ سَاعٍ فِي طَلَبِ العِلْمِ.", exampleEn: "He is striving in seeking knowledge." },
+    passive_participle: { exampleAr: "الأَمْرُ مَسْعِيٌّ إِلَيْهِ.", exampleEn: "The matter is one that is being pursued." },
+  },
+  خلع: {
+    past: { exampleAr: "خَلَعَ الرَّجُلُ حِذَاءَهُ.", exampleEn: "The man took off his shoes." },
+    present: { exampleAr: "يَخْلَعُ الوَلَدُ مِعْطَفَهُ.", exampleEn: "The boy takes off his coat." },
+    imperative: { exampleAr: "اِخْلَعْ حِذَاءَكَ.", exampleEn: "Take off your shoes." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَخْلَعُ الأَحْذِيَةِ.", exampleEn: "This is the place for taking off shoes." },
+    active_participle: { exampleAr: "هُوَ خَالِعٌ حِذَاءَهُ.", exampleEn: "He is taking off his shoes." },
+    passive_participle: { exampleAr: "الحِذَاءُ مَخْلُوعٌ عِنْدَ البَابِ.", exampleEn: "The shoes are taken off by the door." },
+  },
+  رفع: {
+    past: { exampleAr: "اِرْتَفَعَ السِّعْرُ فَجْأَةً.", exampleEn: "The price rose suddenly." },
+    present: { exampleAr: "يَرْتَفِعُ المَبْنَى فَوْقَ الأَشْجَارِ.", exampleEn: "The building rises above the trees." },
+    imperative: { exampleAr: "اِرْتَفِعْ عَنْ هٰذَا المُسْتَوَى.", exampleEn: "Rise above this level." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا اِرْتِفَاعٌ كَبِيرٌ.", exampleEn: "This is a great height." },
+    active_participle: { exampleAr: "الجَبَلُ مُرْتَفِعٌ جِدًّا.", exampleEn: "The mountain is very high." },
+    passive_participle: { exampleAr: "وَقَفَ عَلَى مُرْتَفَعٍ قُرْبَ البَحْرِ.", exampleEn: "He stood on a highland near the sea." },
+  },
+  شفي: {
+    past: { exampleAr: "شَفَى الطَّبِيبُ المَرِيضَ.", exampleEn: "The doctor cured the patient." },
+    present: { exampleAr: "يَشْفِي الدَّوَاءُ المَرِيضَ.", exampleEn: "The medicine heals the patient." },
+    imperative: { exampleAr: "اِشْفِ هٰذَا المَرِيضَ.", exampleEn: "Heal this patient." },
+    place_or_mim_masdar: { exampleAr: "ذَهَبَ إِلَى المَشْفَى.", exampleEn: "He went to the hospital." },
+    active_participle: { exampleAr: "هٰذَا دَوَاءٌ شَافٍ.", exampleEn: "This is a curative medicine." },
+    passive_participle: { exampleAr: "المَرِيضُ مَشْفِيٌّ الآنَ.", exampleEn: "The patient is healed now." },
+  },
+  فحص: {
+    past: { exampleAr: "فَحَصَ الطَّبِيبُ المَرِيضَ.", exampleEn: "The doctor examined the patient." },
+    present: { exampleAr: "يَفْحَصُ المُهَنْدِسُ السَّيَّارَةَ.", exampleEn: "The engineer inspects the car." },
+    imperative: { exampleAr: "اِفْحَصْ هٰذَا الجِهَازَ.", exampleEn: "Examine this device." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَفْحَصُ السَّيَّارَاتِ.", exampleEn: "This is the car inspection place." },
+    active_participle: { exampleAr: "الطَّبِيبُ فَاحِصٌ لِلْمَرِيضِ.", exampleEn: "The doctor is examining the patient." },
+    passive_participle: { exampleAr: "المَرِيضُ مَفْحُوصٌ.", exampleEn: "The patient has been examined." },
+  },
+  عود: {
+    past: { exampleAr: "أَعَادَ الطَّالِبُ الكِتَابَ إِلَى المَكْتَبَةِ.", exampleEn: "The student returned the book to the library." },
+    present: { exampleAr: "يُعِيدُ المُعَلِّمُ السُّؤَالَ.", exampleEn: "The teacher repeats the question." },
+    imperative: { exampleAr: "أَعِدْ هٰذَا الكِتَابَ.", exampleEn: "Return this book." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ إِعَادَةٌ لِلدَّرْسِ.", exampleEn: "This is a repetition of the lesson." },
+    active_participle: { exampleAr: "هُوَ مُعِيدٌ فِي الجَامِعَةِ.", exampleEn: "He is a teaching assistant at the university." },
+    passive_participle: { exampleAr: "الوَرَقُ مُعَادٌ تَدْوِيرُهُ.", exampleEn: "The paper is recycled." },
+  },
+  شور: {
+    past: { exampleAr: "أَشَارَ الرَّجُلُ إِلَى البَابِ.", exampleEn: "The man pointed to the door." },
+    present: { exampleAr: "يُشِيرُ المُعَلِّمُ إِلَى السَّبُّورَةِ.", exampleEn: "The teacher points to the board." },
+    imperative: { exampleAr: "أَشِرْ إِلَى المَكَانِ.", exampleEn: "Point to the place." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ إِشَارَةُ المُرُورِ.", exampleEn: "This is the traffic signal." },
+    active_participle: { exampleAr: "هُوَ مُشِيرٌ إِلَى الخَرِيطَةِ.", exampleEn: "He is pointing to the map." },
+    passive_participle: { exampleAr: "الأَمْرُ المُشَارُ إِلَيْهِ وَاضِحٌ.", exampleEn: "The aforementioned matter is clear." },
+  },
+  قول: {
+    past: { exampleAr: "قَالَ الرَّجُلُ الحَقِيقَةَ.", exampleEn: "The man told the truth." },
+    present: { exampleAr: "يَقُولُ الطَّالِبُ رَأْيَهُ.", exampleEn: "The student says his opinion." },
+    imperative: { exampleAr: "قُلْ الحَقِيقَةَ.", exampleEn: "Say the truth." },
+    place_or_mim_masdar: { exampleAr: "قَرَأْتُ مَقَالًا مُفِيدًا.", exampleEn: "I read a useful article." },
+    active_participle: { exampleAr: "هُوَ قَائِلُ هٰذَا الكَلَامِ.", exampleEn: "He is the one who said these words." },
+    passive_participle: { exampleAr: "هٰذَا كَلَامٌ مَقُولٌ مِنْ قَبْلُ.", exampleEn: "This is something already said before." },
+  },
+  رتب: {
+    past: { exampleAr: "رَتَّبَ الوَلَدُ كُتُبَهُ.", exampleEn: "The boy arranged his books." },
+    present: { exampleAr: "يُرَتِّبُ العَامِلُ الطَّاوِلَةَ.", exampleEn: "The worker arranges the table." },
+    imperative: { exampleAr: "رَتِّبْ غُرْفَتَكَ.", exampleEn: "Arrange your room." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَرْتِيبٌ جَمِيلٌ.", exampleEn: "This is a nice arrangement." },
+    active_participle: { exampleAr: "هُوَ مُرَتِّبٌ لِلْكُتُبِ.", exampleEn: "He is arranging the books." },
+    passive_participle: { exampleAr: "يَأْخُذُ العَامِلُ مُرَتَّبَهُ.", exampleEn: "The worker takes his salary." },
+  },
+  بدل: {
+    past: { exampleAr: "تَبَادَلَ الصَّدِيقَانِ الهَدَايَا.", exampleEn: "The two friends exchanged gifts." },
+    present: { exampleAr: "يَتَبَادَلُ الطُّلَّابُ الكُتُبَ.", exampleEn: "The students exchange books." },
+    imperative: { exampleAr: "تَبَادَلْ الأَفْكَارَ مَعَهُ.", exampleEn: "Exchange ideas with him." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَبَادُلٌ مُفِيدٌ.", exampleEn: "This is a useful exchange." },
+    active_participle: { exampleAr: "هُنَاكَ اِحْتِرَامٌ مُتَبَادِلٌ بَيْنَهُمَا.", exampleEn: "There is mutual respect between them." },
+    passive_participle: { exampleAr: "الهَدَايَا مُتَبَادَلَةٌ بَيْنَ الصَّدِيقَيْنِ.", exampleEn: "The gifts are exchanged between the two friends." },
+  },
+  جوب: {
+    past: { exampleAr: "أَجَابَ الطَّالِبُ عَنِ السُّؤَالِ.", exampleEn: "The student answered the question." },
+    present: { exampleAr: "يُجِيبُ المُعَلِّمُ عَنْ أَسْئِلَةِ الطُّلَّابِ.", exampleEn: "The teacher answers the students' questions." },
+    imperative: { exampleAr: "أَجِبْ عَنِ السُّؤَالِ.", exampleEn: "Answer the question." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ إِجَابَةٌ صَحِيحَةٌ.", exampleEn: "This is a correct answer." },
+    active_participle: { exampleAr: "هُوَ مُجِيبٌ عَنِ الأَسْئِلَةِ.", exampleEn: "He is answering the questions." },
+    passive_participle: { exampleAr: "دُعَاؤُهُ مُجَابٌ.", exampleEn: "His prayer is answered." },
+  },
+  صلو: {
+    past: { exampleAr: "صَلَّى الرَّجُلُ فِي المَسْجِدِ.", exampleEn: "The man prayed in the mosque." },
+    present: { exampleAr: "يُصَلِّي الطَّالِبُ فِي البَيْتِ.", exampleEn: "The student prays at home." },
+    imperative: { exampleAr: "صَلِّ فِي وَقْتِهَا.", exampleEn: "Pray on time." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ صَلَاةُ الظُّهْرِ.", exampleEn: "This is the noon prayer." },
+    active_participle: { exampleAr: "هُوَ مُصَلٍّ فِي المَسْجِدِ.", exampleEn: "He is one praying in the mosque." },
+    passive_participle: { exampleAr: "ذَهَبَ إِلَى المُصَلَّى.", exampleEn: "He went to the prayer area." },
+  },
+  رود: {
+    past: { exampleAr: "أَرَادَ الوَلَدُ أَنْ يَلْعَبَ.", exampleEn: "The boy wanted to play." },
+    present: { exampleAr: "يُرِيدُ الطَّالِبُ النَّجَاحَ.", exampleEn: "The student wants success." },
+    imperative: { exampleAr: "أَرِدْ الخَيْرَ لِنَفْسِكَ.", exampleEn: "Wish good for yourself." },
+    place_or_mim_masdar: { exampleAr: "عِنْدَهُ إِرَادَةٌ قَوِيَّةٌ.", exampleEn: "He has strong willpower." },
+    active_participle: { exampleAr: "هُوَ مُرِيدٌ لِلْعِلْمِ.", exampleEn: "He is a seeker of knowledge." },
+    passive_participle: { exampleAr: "هٰذَا هُوَ المُرَادُ بِالكَلَامِ.", exampleEn: "This is what is meant by the statement." },
+  },
+  نوم: {
+    past: { exampleAr: "نَامَ الطِّفْلُ مُبَكِّرًا.", exampleEn: "The child slept early." },
+    present: { exampleAr: "يَنَامُ الوَلَدُ فِي غُرْفَتِهِ.", exampleEn: "The boy sleeps in his room." },
+    imperative: { exampleAr: "نَمْ الآنَ.", exampleEn: "Sleep now." },
+    place_or_mim_masdar: { exampleAr: "رَأَيْتُ ذٰلِكَ فِي المَنَامِ.", exampleEn: "I saw that in a dream." },
+    active_participle: { exampleAr: "الطِّفْلُ نَائِمٌ الآنَ.", exampleEn: "The child is asleep now." },
+    passive_participle: { exampleAr: "الطِّفْلُ مَنُومٌ مُبَكِّرًا.", exampleEn: "The child is put to sleep early." },
+  },
+  فضل: {
+    past: { exampleAr: "فَضَّلَ الطَّالِبُ القِرَاءَةَ.", exampleEn: "The student preferred reading." },
+    present: { exampleAr: "يُفَضِّلُ الوَلَدُ اللَّعِبَ.", exampleEn: "The boy prefers playing." },
+    imperative: { exampleAr: "فَضِّلْ الصِّدْقَ دَائِمًا.", exampleEn: "Always prefer honesty." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَفْضِيلٌ شَخْصِيٌّ.", exampleEn: "This is a personal preference." },
+    active_participle: { exampleAr: "هُوَ مُفَضِّلٌ لِلْقِرَاءَةِ.", exampleEn: "He is one who prefers reading." },
+    passive_participle: { exampleAr: "هٰذَا لَوْنِي المُفَضَّلُ.", exampleEn: "This is my favorite color." },
+  },
+  حول: {
+    past: { exampleAr: "حَوَّلَ الرَّجُلُ المَالَ إِلَى حِسَابِهِ.", exampleEn: "The man transferred the money to his account." },
+    present: { exampleAr: "يُحَوِّلُ البَنْكُ المَبْلَغَ.", exampleEn: "The bank transfers the amount." },
+    imperative: { exampleAr: "حَوِّلْ المَالَ الآنَ.", exampleEn: "Transfer the money now." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَحْوِيلٌ بَنْكِيٌّ.", exampleEn: "This is a bank transfer." },
+    active_participle: { exampleAr: "هٰذَا مُحَوِّلٌ كَهْرَبَائِيٌّ.", exampleEn: "This is an electrical transformer." },
+    passive_participle: { exampleAr: "المَبْلَغُ مُحَوَّلٌ إِلَى الحِسَابِ.", exampleEn: "The amount is transferred to the account." },
+  },
+  سفر: {
+    past: { exampleAr: "سَافَرَ الرَّجُلُ إِلَى مِصْرَ.", exampleEn: "The man traveled to Egypt." },
+    present: { exampleAr: "يُسَافِرُ الطَّالِبُ فِي الصَّيْفِ.", exampleEn: "The student travels in the summer." },
+    imperative: { exampleAr: "سَافِرْ بِأَمَانٍ.", exampleEn: "Travel safely." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا سَفَرٌ طَوِيلٌ.", exampleEn: "This is a long journey." },
+    active_participle: { exampleAr: "هُوَ مُسَافِرٌ إِلَى القَاهِرَةِ.", exampleEn: "He is traveling to Cairo." },
+    passive_participle: { exampleAr: "الطَّرِيقُ مُسَافَرٌ فِيهِ كَثِيرًا.", exampleEn: "The road is one that is much traveled." },
+  },
+  كون: {
+    past: { exampleAr: "كَانَ الجَوُّ جَمِيلًا.", exampleEn: "The weather was beautiful." },
+    present: { exampleAr: "يَكُونُ الدَّرْسُ صَعْبًا أَحْيَانًا.", exampleEn: "The lesson is sometimes difficult." },
+    imperative: { exampleAr: "كُنْ صَادِقًا.", exampleEn: "Be honest." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَكَانٌ جَمِيلٌ.", exampleEn: "This is a beautiful place." },
+    active_participle: { exampleAr: "هٰذَا الكَائِنُ صَغِيرٌ.", exampleEn: "This being is small." },
+    passive_participle: { exampleAr: "الأَمْرُ مَكُونٌ عَلَيْهِ كَذٰلِكَ.", exampleEn: "The matter has been thus (artificial example)." },
+  },
+  كمل: {
+    past: { exampleAr: "أَكْمَلَ الطَّالِبُ وَاجِبَهُ.", exampleEn: "The student completed his homework." },
+    present: { exampleAr: "يُكْمِلُ العَامِلُ عَمَلَهُ.", exampleEn: "The worker completes his work." },
+    imperative: { exampleAr: "أَكْمِلْ عَمَلَكَ.", exampleEn: "Complete your work." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا إِكْمَالٌ لِلْمَشْرُوعِ.", exampleEn: "This is a completion of the project." },
+    active_participle: { exampleAr: "هُوَ مُكْمِلٌ لِلْعَمَلِ.", exampleEn: "He is completing the work." },
+    passive_participle: { exampleAr: "العَمَلُ مُكْمَلٌ.", exampleEn: "The work is completed." },
+  },
+  صبح: {
+    past: { exampleAr: "أَصْبَحَ الجَوُّ بَارِدًا.", exampleEn: "The weather became cold." },
+    present: { exampleAr: "يُصْبِحُ الوَلَدُ طَبِيبًا.", exampleEn: "The boy becomes a doctor." },
+    imperative: { exampleAr: "أَصْبِحْ قَوِيًّا.", exampleEn: "Become strong." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا إِصْبَاحٌ مُبَكِّرٌ.", exampleEn: "This is an early morning." },
+    active_participle: { exampleAr: "هُوَ مُصْبِحٌ قَوِيًّا.", exampleEn: "He is becoming strong." },
+    passive_participle: { exampleAr: "الأَمْرُ مُصْبَحٌ عَلَيْهِ.", exampleEn: "The matter has come to be thus (artificial example)." },
+  },
+  سوق: {
+    past: { exampleAr: "تَسَوَّقَتِ الأُسْرَةُ فِي السُّوقِ.", exampleEn: "The family shopped at the market." },
+    present: { exampleAr: "يَتَسَوَّقُ الوَلَدُ مَعَ أُمِّهِ.", exampleEn: "The boy shops with his mother." },
+    imperative: { exampleAr: "تَسَوَّقْ مَعِي غَدًا.", exampleEn: "Shop with me tomorrow." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَسَوُّقٌ أُسْبُوعِيٌّ.", exampleEn: "This is a weekly shopping trip." },
+    active_participle: { exampleAr: "هُوَ مُتَسَوِّقٌ فِي المَرْكَزِ.", exampleEn: "He is shopping in the mall." },
+    passive_participle: { exampleAr: "السُّوقُ مُتَسَوَّقٌ فِيهِ كَثِيرًا.", exampleEn: "The market is much shopped in." },
+  },
+  مطر: {
+    past: { exampleAr: "أَمْطَرَتِ السَّمَاءُ لَيْلًا.", exampleEn: "The sky rained at night." },
+    present: { exampleAr: "تُمْطِرُ السَّمَاءُ اليَوْمَ.", exampleEn: "The sky is raining today." },
+    imperative: { exampleAr: "أَمْطِرِي يَا سَمَاءُ!", exampleEn: "Rain, o sky!" },
+    place_or_mim_masdar: { exampleAr: "هٰذَا إِمْطَارٌ غَزِيرٌ.", exampleEn: "This is heavy rain." },
+    active_participle: { exampleAr: "اليَوْمُ مُمْطِرٌ.", exampleEn: "Today is rainy." },
+    passive_participle: { exampleAr: "الأَرْضُ مُمْطَرَةٌ.", exampleEn: "The ground is rained upon." },
+  },
+  كلم: {
+    past: { exampleAr: "تَكَلَّمَ الطَّالِبُ أَمَامَ الصَّفِّ.", exampleEn: "The student spoke in front of the class." },
+    present: { exampleAr: "يَتَكَلَّمُ الرَّجُلُ بِالعَرَبِيَّةِ.", exampleEn: "The man speaks in Arabic." },
+    imperative: { exampleAr: "تَكَلَّمْ بِوُضُوحٍ.", exampleEn: "Speak clearly." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَكَلُّمٌ وَاضِحٌ.", exampleEn: "This is clear speaking." },
+    active_participle: { exampleAr: "هُوَ مُتَكَلِّمٌ بِالعَرَبِيَّةِ.", exampleEn: "He is speaking in Arabic." },
+    passive_participle: { exampleAr: "الأَمْرُ مُتَكَلَّمٌ فِيهِ.", exampleEn: "The matter is one being spoken about." },
+  },
+  زوج: {
+    past: { exampleAr: "تَزَوَّجَ الرَّجُلُ فِي الصَّيْفِ.", exampleEn: "The man got married in the summer." },
+    present: { exampleAr: "يَتَزَوَّجُ صَدِيقِي غَدًا.", exampleEn: "My friend is getting married tomorrow." },
+    imperative: { exampleAr: "تَزَوَّجْ عِنْدَمَا تَسْتَعِدُّ.", exampleEn: "Get married when you're ready." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَزَوُّجٌ مُبَكِّرٌ.", exampleEn: "This is an early marriage." },
+    active_participle: { exampleAr: "هُوَ رَجُلٌ مُتَزَوِّجٌ.", exampleEn: "He is a married man." },
+    passive_participle: { exampleAr: "الفَتَاةُ مُتَزَوَّجٌ بِهَا مِنْ رَجُلٍ طَيِّبٍ.", exampleEn: "The girl has been married by a good man." },
+  },
+  زور: {
+    past: { exampleAr: "زَارَ الرَّجُلُ صَدِيقَهُ.", exampleEn: "The man visited his friend." },
+    present: { exampleAr: "يَزُورُ الطَّالِبُ المَكْتَبَةَ.", exampleEn: "The student visits the library." },
+    imperative: { exampleAr: "زُرْ جَدَّكَ.", exampleEn: "Visit your grandfather." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَزَارٌ مَشْهُورٌ.", exampleEn: "This is a famous shrine." },
+    active_participle: { exampleAr: "هُوَ زَائِرٌ لِلْمَدِينَةِ.", exampleEn: "He is a visitor to the city." },
+    passive_participle: { exampleAr: "المَكَانُ مَزُورٌ كَثِيرًا.", exampleEn: "The place is much visited." },
+  },
+  لوث: {
+    past: { exampleAr: "تَلَوَّثَ الهَوَاءُ فِي المَدِينَةِ.", exampleEn: "The air became polluted in the city." },
+    present: { exampleAr: "يَتَلَوَّثُ النَّهْرُ بِالنِّفَايَاتِ.", exampleEn: "The river gets polluted by waste." },
+    imperative: { exampleAr: "تَلَوَّثْ بِالطِّينِ فِي اللَّعِبِ.", exampleEn: "Get muddy while playing." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَلَوُّثٌ خَطِيرٌ.", exampleEn: "This is dangerous pollution." },
+    active_participle: { exampleAr: "الهَوَاءُ مُتَلَوِّثٌ.", exampleEn: "The air is polluted." },
+    passive_participle: { exampleAr: "المَكَانُ مُتَلَوَّثٌ بِالقُمَامَةِ.", exampleEn: "The place is polluted with garbage." },
+  },
+  قوم: {
+    past: { exampleAr: "أَقَامَ الرَّجُلُ فِي المَدِينَةِ.", exampleEn: "The man resided in the city." },
+    present: { exampleAr: "يُقِيمُ الطَّالِبُ فِي السَّكَنِ الجَامِعِيِّ.", exampleEn: "The student resides in the dormitory." },
+    imperative: { exampleAr: "أَقِمْ عِنْدَنَا.", exampleEn: "Stay with us." },
+    place_or_mim_masdar: { exampleAr: "عِنْدَهُ إِقَامَةٌ فِي البَلَدِ.", exampleEn: "He has residency in the country." },
+    active_participle: { exampleAr: "هُوَ مُقِيمٌ فِي هٰذِهِ المَدِينَةِ.", exampleEn: "He is residing in this city." },
+    passive_participle: { exampleAr: "الحَفْلُ مُقَامٌ فِي القَاعَةِ.", exampleEn: "The event is being held in the hall." },
+  },
+  غدر: {
+    past: { exampleAr: "غَادَرَ الرَّجُلُ البَيْتَ صَبَاحًا.", exampleEn: "The man left the house in the morning." },
+    present: { exampleAr: "يُغَادِرُ الطَّالِبُ المَدْرَسَةَ ظُهْرًا.", exampleEn: "The student leaves school at noon." },
+    imperative: { exampleAr: "غَادِرْ الآنَ.", exampleEn: "Depart now." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ مُغَادَرَةٌ سَرِيعَةٌ.", exampleEn: "This is a quick departure." },
+    active_participle: { exampleAr: "الرُّكَّابُ المُغَادِرُونَ فِي الصَّالَةِ.", exampleEn: "The departing passengers are in the hall." },
+    passive_participle: { exampleAr: "المَكَانُ مُغَادَرٌ مِنَ الجَمِيعِ.", exampleEn: "The place is one that everyone has departed from." },
+  },
+  صوم: {
+    past: { exampleAr: "صَامَ المُسْلِمُ فِي رَمَضَانَ.", exampleEn: "The Muslim fasted in Ramadan." },
+    present: { exampleAr: "يَصُومُ النَّاسُ فِي رَمَضَانَ.", exampleEn: "People fast in Ramadan." },
+    imperative: { exampleAr: "صُمْ يَوْمَ الاثْنَيْنِ.", exampleEn: "Fast on Monday." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا مَصَامٌ طَوِيلٌ.", exampleEn: "This is a long period of fasting." },
+    active_participle: { exampleAr: "هُوَ صَائِمٌ اليَوْمَ.", exampleEn: "He is fasting today." },
+    passive_participle: { exampleAr: "اليَوْمُ مَصُومٌ فِيهِ.", exampleEn: "The day is one that is fasted in." },
+  },
+  طوف: {
+    past: { exampleAr: "طَافَ الحَاجُّ حَوْلَ الكَعْبَةِ.", exampleEn: "The pilgrim circled the Kaaba (made tawaf)." },
+    present: { exampleAr: "يَطُوفُ الحُجَّاجُ حَوْلَ الكَعْبَةِ.", exampleEn: "The pilgrims make tawaf around the Kaaba." },
+    imperative: { exampleAr: "طُفْ حَوْلَ الكَعْبَةِ.", exampleEn: "Make tawaf around the Kaaba." },
+    place_or_mim_masdar: { exampleAr: "ذَهَبُوا إِلَى المَطَافِ.", exampleEn: "They went to the tawaf area." },
+    active_participle: { exampleAr: "هُوَ طَائِفٌ حَوْلَ الكَعْبَةِ.", exampleEn: "He is circling the Kaaba." },
+    passive_participle: { exampleAr: "البَيْتُ مَطُوفٌ حَوْلَهُ.", exampleEn: "The House is one that is circled around." },
+  },
+  لبي: {
+    past: { exampleAr: "لَبَّى الحَاجُّ عِنْدَ الإِحْرَامِ.", exampleEn: "The pilgrim said the Talbiyah at the state of ihram." },
+    present: { exampleAr: "يُلَبِّي الحُجَّاجُ بِصَوْتٍ عَالٍ.", exampleEn: "The pilgrims say the Talbiyah loudly." },
+    imperative: { exampleAr: "لَبِّ بِصَوْتٍ عَالٍ.", exampleEn: "Say the Talbiyah loudly." },
+    place_or_mim_masdar: { exampleAr: "هٰذِهِ تَلْبِيَةُ الحَجِّ.", exampleEn: "This is the Hajj Talbiyah." },
+    active_participle: { exampleAr: "الحَاجُّ مُلَبٍّ عِنْدَ الإِحْرَامِ.", exampleEn: "The pilgrim is one saying the Talbiyah at ihram." },
+    passive_participle: { exampleAr: "النِّدَاءُ مُلَبًّى مِنَ الحُجَّاجِ.", exampleEn: "The call is answered by the pilgrims." },
+  },
+  صوب: {
+    past: { exampleAr: "أَصَابَ المَرَضُ الرَّجُلَ.", exampleEn: "The illness afflicted the man." },
+    present: { exampleAr: "يُصِيبُ البَرْدُ الأَطْفَالَ فِي الشِّتَاءِ.", exampleEn: "The cold afflicts children in winter." },
+    imperative: { exampleAr: "أَصِبْ هَدَفَكَ.", exampleEn: "Hit your target." },
+    place_or_mim_masdar: { exampleAr: "عِنْدَهُ إِصَابَةٌ فِي رِجْلِهِ.", exampleEn: "He has an injury in his leg." },
+    active_participle: { exampleAr: "رَأْيُهُ مُصِيبٌ.", exampleEn: "His opinion is correct." },
+    passive_participle: { exampleAr: "هُوَ مُصَابٌ بِمَرَضٍ.", exampleEn: "He is afflicted with an illness." },
+  },
+  غيب: {
+    past: { exampleAr: "تَغَيَّبَ الطَّالِبُ عَنِ الدَّرْسِ.", exampleEn: "The student was absent from the lesson." },
+    present: { exampleAr: "يَتَغَيَّبُ الوَلَدُ عَنِ المَدْرَسَةِ أَحْيَانًا.", exampleEn: "The boy is sometimes absent from school." },
+    imperative: { exampleAr: "تَغَيَّبْ إِذَا كُنْتَ مَرِيضًا.", exampleEn: "Be absent if you are sick." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا تَغَيُّبٌ مُتَكَرِّرٌ.", exampleEn: "This is repeated absence." },
+    active_participle: { exampleAr: "الطَّالِبُ مُتَغَيِّبٌ اليَوْمَ.", exampleEn: "The student is absent today." },
+    passive_participle: { exampleAr: "اليَوْمُ مُتَغَيَّبٌ عَنْهُ.", exampleEn: "The day is one that has been absented from." },
+  },
+  عطو: {
+    past: { exampleAr: "أَعْطَى الرَّجُلُ الفَقِيرَ مَالًا.", exampleEn: "The man gave the poor man money." },
+    present: { exampleAr: "يُعْطِي المُعَلِّمُ الطَّالِبَ كِتَابًا.", exampleEn: "The teacher gives the student a book." },
+    imperative: { exampleAr: "أَعْطِنِي القَلَمَ.", exampleEn: "Give me the pen." },
+    place_or_mim_masdar: { exampleAr: "هٰذَا عَطَاءٌ كَبِيرٌ.", exampleEn: "This is a great gift." },
+    active_participle: { exampleAr: "هُوَ مُعْطٍ لِلْفُقَرَاءِ.", exampleEn: "He is a giver to the poor." },
+    passive_participle: { exampleAr: "هٰذَا مُعْطًى مُهِمٌّ فِي البَحْثِ.", exampleEn: "This is an important datum in the research." },
+  },
+  سعد: {
+    past: { exampleAr: "سَاعَدَ الرَّجُلُ جَارَهُ.", exampleEn: "The man helped his neighbor." },
+    present: { exampleAr: "يُسَاعِدُ الطَّالِبُ زَمِيلَهُ.", exampleEn: "The student helps his classmate." },
+    imperative: { exampleAr: "سَاعِدْنِي فِي هٰذَا.", exampleEn: "Help me with this." },
+    place_or_mim_masdar: { exampleAr: "أَحْتَاجُ إِلَى مُسَاعَدَةٍ.", exampleEn: "I need help." },
+    active_participle: { exampleAr: "هُوَ مُسَاعِدُ المُدِيرِ.", exampleEn: "He is the manager's assistant." },
+    passive_participle: { exampleAr: "الطَّالِبُ مُسَاعَدٌ مِنْ مُعَلِّمِهِ.", exampleEn: "The student is helped by his teacher." },
+  },
+  رأي: {
+    past: { exampleAr: "رَأَى الوَلَدُ طَائِرًا.", exampleEn: "The boy saw a bird." },
+    present: { exampleAr: "يَرَى الطَّالِبُ المُعَلِّمَ.", exampleEn: "The student sees the teacher." },
+    imperative: { exampleAr: "رَ الجَمَالَ حَوْلَكَ.", exampleEn: "See the beauty around you." },
+    place_or_mim_masdar: { exampleAr: "عِنْدَهُ رُؤْيَةٌ وَاضِحَةٌ.", exampleEn: "He has a clear vision." },
+    active_participle: { exampleAr: "هُوَ رَاءٍ لِلْحَقِيقَةِ.", exampleEn: "He is one who sees the truth." },
+    passive_participle: { exampleAr: "البَرْنَامَجُ مَرْئِيٌّ.", exampleEn: "The program is visual/televised." },
+  },
 };
 
 const reviewFormNotes: Record<string, Partial<Record<SarfFormKey, string>>> = {
@@ -307,6 +800,241 @@ const reviewFormNotes: Record<string, Partial<Record<SarfFormKey, string>>> = {
     place_or_mim_masdar: "مَمْلَأ is pattern-based and uncommon for beginners; مِلْء is the more familiar noun for fullness/filling.",
     active_participle: "Final-hamza active participle; verify spelling and case behavior in connected phrases.",
   },
+  مرر: {
+    passive_participle: "مَرَّ is usually intransitive (pass by, often with بِـ); a standalone passive participle is pattern-based and rarely used.",
+  },
+  نسخ: {
+    active_participle: "نَاسِخ and its passive مَنْسُوخ also carry the classical/tafsir sense of an abrogating/abrogated ruling; verify the beginner-facing meaning.",
+    passive_participle: "مَنْسُوخ also commonly means abrogated in classical usage; verify the beginner-facing meaning.",
+  },
+  وضأ: {
+    imperative: "Form V verb; the root وضأ starts with و, so it is exempt from the seed-data hamzat-waṣl imperative check even though تَوَضَّأْ itself starts with ت.",
+    place_or_mim_masdar: "Form V verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَوَضُّؤ instead of a fabricated place noun.",
+    passive_participle: "تَوَضَّأَ is reflexive/intransitive, so a standalone passive participle is pattern-based and essentially unused in practice.",
+  },
+  يقظ: {
+    place_or_mim_masdar: "Form X verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِسْتِيقَاظ instead of a fabricated place noun.",
+    passive_participle: "اِسْتَيْقَظَ is intransitive, so a standalone passive participle is pattern-based and rarely used.",
+  },
+  كنس: {
+    place_or_mim_masdar: "مَكْنَس is pattern-based; the everyday word for the tool is مِكْنَسَة (broom), not this place noun.",
+  },
+  كوي: {
+    place_or_mim_masdar: "مَكْوًى is pattern-based and uncommon; the everyday word for the tool is مِكْوَاة (iron).",
+  },
+  طوع: {
+    imperative: "اِسْتَطَاعَ is a modal/stative verb (to be able), so a command form is grammatically valid but rarely used naturally.",
+    place_or_mim_masdar: "Form X verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِسْتِطَاعَة instead of a fabricated place noun.",
+    passive_participle: "اِسْتَطَاعَ is intransitive/modal, so a standalone passive participle is pattern-based and rarely used.",
+  },
+  بدأ: {
+    passive_participle: "مَبْدُوء is grammatically valid but uncommon as a standalone passive participle; verify before review.",
+  },
+  نهي: {
+    place_or_mim_masdar: "Form VIII verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِنْتِهَاء instead of a fabricated place noun.",
+    active_participle: "مُنْتَهٍ is common in the set phrase مُنْتَهِي الصَّلَاحِيَة (expired); verify the plain beginner-facing gloss.",
+    passive_participle: "مُنْتَهًى functions more as a noun (utmost/endpoint, e.g. بِمُنْتَهَى الدِّقَّة) than a literal passive participle; verify the framing before review.",
+  },
+  صحح: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَصْحِيح instead of a fabricated place noun.",
+  },
+  حبب: {
+    imperative: "The imperative of a verb of state/emotion like أَحَبَّ is grammatically valid but rarely used as a real command.",
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar حُبّ instead of a fabricated place noun.",
+    passive_participle: "مَحْبُوب (Form I pattern) is the far more common word for beloved in everyday use; مُحَبّ is the grammatically regular but comparatively rare Form IV passive participle shown here.",
+  },
+  رسم: {
+    place_or_mim_masdar: "مَرْسَم (studio) is pattern-based and less common than the masdar رَسْم; verify before review.",
+    passive_participle: "مَرْسُوم very commonly means a (royal/official) decree; verify the plain drawn sense is clear in context.",
+  },
+  خير: {
+    place_or_mim_masdar: "Form VIII verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِخْتِيَار instead of a fabricated place noun.",
+    passive_participle: "For this hollow Form VIII root, the active and passive participles share the identical written shape مُخْتَار; only context distinguishes chooser from chosen. This is not a typo.",
+  },
+  روح: {
+    place_or_mim_masdar: "Form X verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِسْتِرَاحَة, which also commonly means a roadside rest stop.",
+    passive_participle: "اِسْتَرَاحَ is intransitive, so a standalone passive participle is pattern-based and rarely used.",
+  },
+  بقي: {
+    place_or_mim_masdar: "مَبْقًى is pattern-based and rare; verify before review.",
+    passive_participle: "بَقِيَ is intransitive (to remain), so a standalone passive participle is pattern-based, awkward, and rarely used.",
+  },
+  قضي: {
+    active_participle: "قَاضٍ overwhelmingly means judge in everyday and religious usage; verify this narrower spending-time gloss is clear in context.",
+    passive_participle: "مَقْضِيّ commonly carries the classical sense of decreed/decided (e.g. أَمْرًا مَقْضِيًّا); verify the plain spent sense is clear in context.",
+  },
+  حضر: {
+    place_or_mim_masdar: "مَحْضَر also commonly means an official record or minutes (e.g. of a meeting); verify the beginner-facing gloss.",
+    passive_participle: "حَضَرَ is typically intransitive (to attend/be present), so a standalone passive participle is pattern-based and uncommon.",
+  },
+  نقل: {
+    place_or_mim_masdar: "Form VIII verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِنْتِقَال instead of a fabricated place noun.",
+    passive_participle: "مُنْتَقَل is grammatically valid but uncommon as a standalone passive participle; verify before review.",
+  },
+  غرق: {
+    imperative: "اِسْتَغْرَقَ (to take/absorb time) is rarely commanded in practice; the imperative shown is grammatically valid but pattern-based.",
+    place_or_mim_masdar: "Form X verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِسْتِغْرَاق instead of a fabricated place noun.",
+    passive_participle: "مُسْتَغْرَق is grammatically valid but uncommon as a standalone passive participle; verify before review.",
+  },
+  زحم: {
+    imperative: "اِزْدَحَمَ (to be crowded) is rarely commanded in practice; the imperative shown is grammatically valid but pattern-based.",
+    place_or_mim_masdar: "Form VIII verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِزْدِحَام instead of a fabricated place noun. The ت of the اِفْتَعَلَ pattern regularly assimilates to د after ز.",
+  },
+  حجز: {
+    place_or_mim_masdar: "مَحْجَز is pattern-based and uncertain; verify before review.",
+    active_participle: "حَاجِز very commonly means barrier/obstacle; verify the booking sense is clear in context.",
+  },
+  أكد: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَأْكِيد instead of a fabricated place noun.",
+  },
+  حلق: {
+    place_or_mim_masdar: "مَحْلَق is pattern-based and uncommon; the everyday phrase for a barbershop is مَحَلّ حِلَاقَة.",
+  },
+  رمي: {
+    passive_participle: "مَرْمِيّ is grammatically regular but less commonly used standalone than the active/place forms; verify before review.",
+  },
+  سعي: {
+    active_participle: "سَاعٍ also commonly means courier/postal carrier (e.g. سَاعِي البَرِيد); verify the striving sense is clear in context.",
+    passive_participle: "مَسْعِيّ is pattern-based and rare; verify before review.",
+  },
+  خلع: {
+    passive_participle: "مَخْلُوع commonly means deposed (of a ruler); verify the plain taken-off sense is clear in context.",
+  },
+  رفع: {
+    imperative: "اِرْتَفَعَ (to rise) is rarely commanded in practice; the imperative shown is grammatically valid but pattern-based.",
+    place_or_mim_masdar: "Form VIII verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar اِرْتِفَاع instead of a fabricated place noun.",
+    passive_participle: "مُرْتَفَع is a common standalone noun for highland/elevated area, not a strict passive sense of being raised; verify the framing before review.",
+  },
+  شفي: {
+    imperative: "This verb is classically most common in supplication (e.g. اللّٰهُمَّ اشْفِهِ); a plain command form is grammatical but less natural.",
+    passive_participle: "مَشْفِيّ is grammatically valid but uncommon as a standalone passive participle; verify before review.",
+  },
+  فحص: {
+    place_or_mim_masdar: "مَفْحَص is pattern-based and rare; verify before review.",
+  },
+  عود: {
+    active_participle: "مُعِيد commonly means teaching assistant/instructor at a university, alongside the plain sense of one who repeats; verify the gloss shown fits the card's context.",
+    passive_participle: "مُعَاد also commonly means recycled in modern usage; verify the plain returned sense is clear in context.",
+  },
+  شور: {
+    active_participle: "مُشِير is also the term for the military rank Field Marshal; verify the plain indicating sense is clear in context.",
+    passive_participle: "مُشَار is mainly seen in the fixed legal/formal phrase المُشَار إِلَيْهِ (the aforementioned); verify the framing before review.",
+    place_or_mim_masdar: "إِشَارَة also commonly means a traffic signal/sign; verify the beginner-facing gloss.",
+  },
+  قول: {
+    place_or_mim_masdar: "مَقَال is the everyday word for a written article, one step removed from a literal place noun; verify before review.",
+    passive_participle: "مَقُول is grammatically valid but not very common as a standalone passive participle; verify before review.",
+  },
+  رتب: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَرْتِيب instead of a fabricated place noun.",
+    passive_participle: "مُرَتَّب very commonly means salary/wages in everyday usage, alongside the plain arranged sense; verify the gloss shown fits the card's context.",
+  },
+  بدل: {
+    place_or_mim_masdar: "Form VI verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَبَادُل instead of a fabricated place noun.",
+    active_participle: "مُتَبَادِل functions mainly as the adjective mutual/reciprocal (e.g. اِحْتِرَام مُتَبَادِل) rather than literally one who exchanges; verify the framing before review.",
+    passive_participle: "For this reciprocal Form VI verb, the active and passive participles overlap heavily in everyday usage; verify before review.",
+  },
+  جوب: {
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِجَابَة instead of a fabricated place noun.",
+  },
+  صلو: {
+    place_or_mim_masdar: "صَلَاة is an irregular/lexicalized masdar (the regular Form II pattern would be تَصْلِيَة); use صَلَاة exactly as given by the source vocabulary list.",
+    active_participle: "Defective Form II active participle; drops the final radical in the indefinite nominative (مُصَلٍّ).",
+    passive_participle: "مُصَلًّى is a very common noun for a prayer room/prayer area, functioning more as a place noun than a literal passive participle; verify the framing before review.",
+  },
+  رود: {
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِرَادَة instead of a fabricated place noun.",
+    active_participle: "مُرِيد also commonly means a Sufi disciple/devotee; verify the plain wanting sense is clear in context.",
+  },
+  نوم: {
+    passive_participle: "نَامَ is intransitive, so a standalone passive participle is pattern-based, awkward, and essentially unused; verify before review.",
+  },
+  فضل: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَفْضِيل instead of a fabricated place noun.",
+  },
+  حول: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَحْوِيل instead of a fabricated place noun.",
+  },
+  سفر: {
+    place_or_mim_masdar: "The source gives both مُسَافَرَة and سَفَر as the masdar; سَفَر (journey) is used here as the more common everyday word.",
+    passive_participle: "سَافَرَ is typically intransitive (to travel), so a standalone passive participle is pattern-based and rarely used.",
+  },
+  كون: {
+    active_participle: "كَائِن (being, entity) is common in phrases like الكَائِنَات الحَيَّة (living beings); verify the plain gloss fits the card's context.",
+    place_or_mim_masdar: "مَكَان is the ordinary word for place in general; its link to this specific verb is etymological rather than a regular Form-I pattern for كان.",
+    passive_participle: "كَانَ functions as a copula/auxiliary verb and has essentially no standalone passive participle in real usage; this form is included only to satisfy the six-form structure and should not be treated as a real word to teach.",
+  },
+  كمل: {
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِكْمَال instead of a fabricated place noun.",
+  },
+  صبح: {
+    imperative: "أَصْبَحَ functions as an auxiliary/stative verb (a kaana-sister), so a command form is grammatically valid but essentially never used.",
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِصْبَاح, itself an unusual/rarely invoked noun since أَصْبَحَ mainly functions as an auxiliary.",
+    active_participle: "مُصْبِح is grammatically valid but essentially unused standalone, since أَصْبَحَ is mainly an auxiliary/stative verb; verify before review.",
+    passive_participle: "أَصْبَحَ has no natural passive participle in real usage; this form is included only to satisfy the six-form structure and should not be treated as a real word to teach.",
+  },
+  سوق: {
+    place_or_mim_masdar: "Form V verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَسَوُّق instead of a fabricated place noun.",
+    passive_participle: "تَسَوَّقَ is intransitive/reflexive, so a standalone passive participle is pattern-based and rarely used.",
+  },
+  مطر: {
+    imperative: "أَمْطَرَ is an impersonal weather verb, so a command form is grammatically valid but only ever used figuratively/poetically, never as a real instruction.",
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِمْطَار instead of a fabricated place noun.",
+  },
+  كلم: {
+    place_or_mim_masdar: "Form V verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَكَلُّم instead of a fabricated place noun.",
+    active_participle: "مُتَكَلِّم also specifically means grammatical first person (ضَمِير المُتَكَلِّم) and, in classical theology, a scholastic theologian; verify the plain speaking sense is clear in context.",
+    passive_participle: "تَكَلَّمَ is typically intransitive, so a standalone passive participle is pattern-based and rarely used; verify before review.",
+  },
+  زوج: {
+    place_or_mim_masdar: "The source gives both تَزَوُّج and زَوَاج as the masdar; تَزَوُّج (the regular Form V pattern) is used here, with زَوَاج noted as the more common everyday word for marriage.",
+    passive_participle: "Native speakers typically use the verb تُزُوِّجَتْ rather than this participle; مُتَزَوَّج is pattern-based and rarely used standalone. Verify before review.",
+  },
+  لوث: {
+    imperative: "تَلَوَّثَ (to become polluted) is rarely commanded in practice; the example given uses a loose, informal 'get muddy' sense to keep the sentence natural.",
+    place_or_mim_masdar: "Form V verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَلَوُّث instead of a fabricated place noun.",
+  },
+  قوم: {
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِقَامَة instead of a fabricated place noun.",
+    passive_participle: "مُقَام is also a common noun for a shrine, rank, or station, not only a strict passive of held/established; verify the framing before review.",
+  },
+  غدر: {
+    place_or_mim_masdar: "Form III verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar مُغَادَرَة instead of a fabricated place noun.",
+    passive_participle: "غَادَرَ is typically intransitive (to depart), so a standalone passive participle is pattern-based and rarely used.",
+  },
+  صوم: {
+    place_or_mim_masdar: "مَصَام is pattern-based and not a standard word; there is no common place noun for this root. Verify before review.",
+    passive_participle: "صَامَ is intransitive (to fast), so a standalone passive participle is pattern-based, awkward, and essentially unused.",
+  },
+  طوف: {
+    place_or_mim_masdar: "المَطَاف is the well-known name for the tawaf area around the Kaaba; a strong, source-independent everyday word.",
+    passive_participle: "مَطُوف is grammatically valid but uncommon as a standalone passive participle; verify before review.",
+  },
+  لبي: {
+    place_or_mim_masdar: "Form II verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَلْبِيَة instead of a fabricated place noun.",
+    active_participle: "Defective Form II active participle, specialized to Hajj/Umrah contexts; drops the final radical in the indefinite nominative (مُلَبٍّ).",
+    passive_participle: "مُلَبًّى is pattern-based and rare; verify before review.",
+  },
+  صوب: {
+    imperative: "أَصَابَ in the afflicted/hit sense is rarely commanded; the example instead uses the related hit-a-target sense, which is more naturally a command.",
+    place_or_mim_masdar: "Form IV verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar إِصَابَة instead of a fabricated place noun.",
+    active_participle: "مُصِيب very commonly means correct/right (of an opinion or answer), which is actually more frequent in everyday use than the afflicting sense; verify the gloss shown fits the card's context.",
+  },
+  غيب: {
+    place_or_mim_masdar: "Form V verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar تَغَيُّب instead of a fabricated place noun.",
+    passive_participle: "تَغَيَّبَ is typically intransitive, so a standalone passive participle is pattern-based and rarely used; verify before review.",
+  },
+  عطو: {
+    place_or_mim_masdar: "The source gives both عَطَاء and إِعْطَاء as the masdar; عَطَاء is used here as the more common everyday word for a gift/grant.",
+    passive_participle: "مُعْطًى is also the everyday word for a datum/given (plural مُعْطَيَات, data), a very common modern academic usage; verify the gloss shown fits the card's context.",
+  },
+  سعد: {
+    place_or_mim_masdar: "Form III verbs have no distinct place-noun pattern; this slot reuses the source-verified masdar مُسَاعَدَة instead of a fabricated place noun.",
+  },
+  رأي: {
+    imperative: "The source itself flags this imperative as grammatically valid but uncommon for learners; اُنْظُرْ (look!) is what learners typically meet instead. Kept here exactly as given.",
+    active_participle: "رَاءٍ is a rare/classical word; everyday Arabic more often expresses this idea with a full clause rather than a participle. Verify before review.",
+  },
 };
 
 const exampleFor = (
@@ -329,8 +1057,9 @@ const draft = (
   displayRoot: [...pattern.root].join(" "),
   meaningEn: pattern.meaningEn,
   status: "ai_draft",
+  measure: pattern.measure ?? "I",
   ...(options.includeQuranicMetadata === false ? {} : { quranic: true }),
-  notes: AI_DRAFT_NOTE,
+  notes: pattern.rootNote ? `${AI_DRAFT_NOTE} ${pattern.rootNote}` : AI_DRAFT_NOTE,
   updatedAt: "2026-07-03",
   forms: [
     {
@@ -418,6 +1147,476 @@ const draft = (
     },
   ],
 });
+
+type ImportedArabicVerbRow = {
+  rowNumber: number;
+  chapter: string;
+  sourcePage: string;
+  meaningEn: string;
+  past: string;
+  present: string;
+  imperative: string;
+  masdar: string;
+  notes?: string;
+};
+
+type ImportedArabicVerbReport = {
+  processedRows: number;
+  addedEntries: number;
+  skippedExactDuplicateRows: number;
+  skippedAlreadyRepresentedRows: number;
+  skippedInvalidRows: { rowNumber: number; reason: string; past: string }[];
+};
+
+const IMPORT_UPDATED_AT = "2026-07-09";
+const IMPORT_VERIFIED_FIELDS: ImportedVerbSource["verifiedFields"] = [
+  "meaning_en",
+  "past_3ms",
+  "present_3ms",
+  "imperative_2ms",
+  "masdar",
+];
+const GENERATED_FORM_NOTE =
+  "AI draft; generated from Arabic pattern. The CSV/PDF did not verify this form; verify before marking reviewed.";
+const MASDAR_SLOT_NOTE =
+  "AI draft; the CSV/PDF verifies this masdar, but SarfMate's fourth slot is a place noun / mim-masdar slot, so this row reuses the masdar here.";
+
+const HARAKAT_RE = /[\u064b-\u065f\u0670]/g;
+const ARABIC_LETTER_RE = /[ء-ي]/;
+const ROOT_RE = /^[ء-ي]{3}$/;
+
+function parseImportedArabicVerbCsv(csv: string): ImportedArabicVerbRow[] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let field = "";
+  let quoted = false;
+
+  for (let index = 0; index < csv.length; index += 1) {
+    const char = csv[index];
+    const next = csv[index + 1];
+    if (quoted) {
+      if (char === '"' && next === '"') {
+        field += '"';
+        index += 1;
+      } else if (char === '"') {
+        quoted = false;
+      } else {
+        field += char;
+      }
+    } else if (char === '"') {
+      quoted = true;
+    } else if (char === ",") {
+      row.push(field);
+      field = "";
+    } else if (char === "\n") {
+      row.push(field.replace(/\r$/, ""));
+      rows.push(row);
+      row = [];
+      field = "";
+    } else {
+      field += char;
+    }
+  }
+  if (field || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  const [headers, ...body] = rows;
+  const cleanHeaders = headers.map((header) => header.replace(/^\uFEFF/, ""));
+  const indexFor = (name: string) => cleanHeaders.indexOf(name);
+
+  return body
+    .filter((cells) => cells.some((cell) => cell.trim()))
+    .map((cells, index) => ({
+      rowNumber: index + 2,
+      chapter: cells[indexFor("chapter")]?.trim() ?? "",
+      sourcePage: cells[indexFor("source_page")]?.trim() ?? "",
+      meaningEn: cells[indexFor("meaning_en")]?.trim() ?? "",
+      past: cells[indexFor("past_3ms")]?.trim() ?? "",
+      present: cells[indexFor("present_3ms")]?.trim() ?? "",
+      imperative: cells[indexFor("imperative_2ms")]?.trim() ?? "",
+      masdar: cells[indexFor("masdar")]?.trim() ?? "",
+      notes: cells[indexFor("notes")]?.trim() || undefined,
+    }));
+}
+
+function arabicLetters(value: string): string {
+  return [...value.replace(HARAKAT_RE, "").replace(/ـ/g, "")]
+    .filter((char) => ARABIC_LETTER_RE.test(char))
+    .map((char) => (char === "ى" ? "ي" : char === "آ" || char === "إ" ? "أ" : char))
+    .join("");
+}
+
+function normaliseImportedArabic(value: string): string {
+  return arabicLetters(value).replace(/[اأإآ]/g, "ا");
+}
+
+function inferMeasure(row: ImportedArabicVerbRow): VerbMeasure {
+  const past = arabicLetters(row.past);
+  const pastChars = [...past];
+  const masdar = arabicLetters(row.masdar);
+  const rawMasdar = row.masdar.trim();
+
+  if (past.startsWith("است")) return "X";
+  if (past.startsWith("ان")) return "VII";
+  if (past.startsWith("ا")) return "VIII";
+  if (past.startsWith("ت")) {
+    return pastChars[2] === "ا" || pastChars[2] === "و" ? "VI" : "V";
+  }
+  if (past.startsWith("أ") && /^[إا]/.test(rawMasdar)) return "IV";
+  if (pastChars[1] === "ا") return "III";
+  if (row.past.includes("ّ") || masdar.startsWith("ت")) return "II";
+  return "I";
+}
+
+function threeLetters(value: string): string {
+  const chars = [...value];
+  if (chars.length === 2) return `${chars[0]}${chars[1]}${chars[1]}`;
+  return chars.slice(0, 3).join("");
+}
+
+function inferRoot(row: ImportedArabicVerbRow): string {
+  const measure = inferMeasure(row);
+  const past = arabicLetters(row.past);
+  const pastChars = [...past];
+  const presentBase = arabicLetters(row.present).replace(/^[يتنأ]/, "");
+  const presentChars = [...presentBase];
+  const masdar = arabicLetters(row.masdar);
+
+  if (measure === "I") {
+    if (pastChars.length === 2) return `${pastChars[0]}${pastChars[1]}${pastChars[1]}`;
+    if (pastChars.length >= 3 && (pastChars[2] === "ا" || pastChars[2] === "ي")) {
+      return `${pastChars[0]}${pastChars[1]}${presentChars[2] ?? "ي"}`;
+    }
+    if (pastChars.length >= 3 && pastChars[1] === "ا") {
+      const weak =
+        presentChars[1] === "ي" || presentChars[1] === "و"
+          ? presentChars[1]
+          : masdar.includes("و")
+            ? "و"
+            : "ي";
+      return `${pastChars[0]}${weak}${pastChars[2]}`;
+    }
+    return threeLetters(past);
+  }
+
+  if (measure === "II") return threeLetters(past);
+  if (measure === "III") return `${pastChars[0]}${pastChars[2] ?? ""}${pastChars[3] ?? pastChars[2] ?? ""}`;
+
+  if (measure === "IV") {
+    const stem = [...past.slice(1)];
+    if (stem[1] === "ا") {
+      const weak =
+        presentChars[1] === "ي" || presentChars[1] === "و"
+          ? presentChars[1]
+          : masdar.includes("و")
+            ? "و"
+            : "ي";
+      return `${stem[0]}${weak}${stem[2]}`;
+    }
+    return threeLetters(past.slice(1));
+  }
+
+  if (measure === "V") return threeLetters(past.slice(1));
+  if (measure === "VI") return `${pastChars[1]}${pastChars[3] ?? ""}${pastChars[4] ?? pastChars[3] ?? ""}`;
+  if (measure === "VII") return threeLetters(past.slice(2));
+
+  if (measure === "VIII") {
+    const afterPrefix = [...past.slice(1)];
+    if (afterPrefix[1] === "ت") {
+      return `${afterPrefix[0]}${afterPrefix[2] ?? ""}${afterPrefix[3] ?? afterPrefix[2] ?? ""}`;
+    }
+    return threeLetters(afterPrefix.join(""));
+  }
+
+  if (measure === "X") return threeLetters(past.slice(3));
+  return threeLetters(past);
+}
+
+const TRANSLITERATION_MAP: Record<string, string> = {
+  ء: "ʾ",
+  ا: "a",
+  أ: "ʾ",
+  ب: "b",
+  ت: "t",
+  ث: "th",
+  ج: "j",
+  ح: "ḥ",
+  خ: "kh",
+  د: "d",
+  ذ: "dh",
+  ر: "r",
+  ز: "z",
+  س: "s",
+  ش: "sh",
+  ص: "ṣ",
+  ض: "ḍ",
+  ط: "ṭ",
+  ظ: "ẓ",
+  ع: "ʿ",
+  غ: "gh",
+  ف: "f",
+  ق: "q",
+  ك: "k",
+  ل: "l",
+  م: "m",
+  ن: "n",
+  ه: "h",
+  و: "w",
+  ي: "y",
+};
+
+function transliterate(value: string): string {
+  return [...arabicLetters(value)].map((char) => TRANSLITERATION_MAP[char] ?? char).join("-");
+}
+
+function preferredMasdar(value: string): string {
+  return value.split("/")[0]?.trim() || value.trim();
+}
+
+function generatedParticiples(root: string, measure: VerbMeasure, row: ImportedArabicVerbRow) {
+  const rootChars = [...root];
+  const past = arabicLetters(row.past);
+  const presentStem = arabicLetters(row.present).replace(/^[يتنأ]/, "");
+
+  if (measure === "I") {
+    return {
+      active: `${rootChars[0]}ا${rootChars[1]}${rootChars[2]}`,
+      passive: `م${rootChars[0]}${rootChars[1]}و${rootChars[2]}`,
+    };
+  }
+
+  if (measure === "V" || measure === "VI") {
+    return { active: `م${past}`, passive: `م${past}` };
+  }
+
+  return { active: `م${presentStem}`, passive: `م${presentStem}` };
+}
+
+function importedForm(
+  order: number,
+  key: SarfFormKey,
+  arabic: string,
+  meaningEn: string,
+  exampleAr: string,
+  exampleEn: string,
+  notes: string,
+): SarfForm {
+  return {
+    order,
+    key,
+    ...label(key),
+    arabic,
+    transliteration: transliterate(arabic),
+    meaningEn,
+    exampleAr,
+    exampleEn,
+    notes,
+  };
+}
+
+function csvRowToVerbEntry(row: ImportedArabicVerbRow, root: string): RootVerbEntry {
+  const measure = inferMeasure(row);
+  const masdar = preferredMasdar(row.masdar);
+  const participles = generatedParticiples(root, measure, row);
+  const source: ImportedVerbSource = {
+    chapter: row.chapter,
+    sourcePage: row.sourcePage,
+    verifiedFields: IMPORT_VERIFIED_FIELDS,
+    ...(row.notes ? { csvNotes: row.notes } : {}),
+  };
+  const sourceNote = `CSV source: ${row.chapter}, ${row.sourcePage}. The CSV/PDF verifies only the English meaning, past, present, imperative, and masdar fields.`;
+  const notes = [
+    AI_DRAFT_NOTE,
+    sourceNote,
+    row.notes ? `CSV note: ${row.notes}.` : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return {
+    id: `${root}-csv-${row.rowNumber}`,
+    meaningEn: row.meaningEn,
+    status: "ai_draft",
+    measure,
+    source,
+    notes,
+    updatedAt: IMPORT_UPDATED_AT,
+    forms: [
+      importedForm(
+        1,
+        "past",
+        row.past,
+        `Past form for: ${row.meaningEn}`,
+        `${row.past} الطَّالِبُ.`,
+        `The student did the action: ${row.meaningEn}.`,
+        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the past 3ms form; example and transliteration are AI draft.`,
+      ),
+      importedForm(
+        2,
+        "present",
+        row.present,
+        `Present form for: ${row.meaningEn}`,
+        `${row.present} الطَّالِبُ.`,
+        `The student does the action: ${row.meaningEn}.`,
+        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the present 3ms form; example and transliteration are AI draft.`,
+      ),
+      importedForm(
+        3,
+        "imperative",
+        row.imperative,
+        `Command form for: ${row.meaningEn}`,
+        `${row.imperative} يَا صَدِيقِي.`,
+        `My friend, do this action: ${row.meaningEn}.`,
+        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the masculine singular imperative; example and transliteration are AI draft.`,
+      ),
+      importedForm(
+        4,
+        "place_or_mim_masdar",
+        masdar,
+        `Masdar from CSV: ${row.masdar}`,
+        `هٰذَا ${masdar}.`,
+        `This is the masdar listed for: ${row.meaningEn}.`,
+        MASDAR_SLOT_NOTE,
+      ),
+      importedForm(
+        5,
+        "active_participle",
+        participles.active,
+        `AI-generated active participle for: ${row.meaningEn}`,
+        `هُوَ ${participles.active}.`,
+        `He is connected with the action: ${row.meaningEn}.`,
+        GENERATED_FORM_NOTE,
+      ),
+      importedForm(
+        6,
+        "passive_participle",
+        participles.passive,
+        `AI-generated passive participle for: ${row.meaningEn}`,
+        `الأَمْرُ ${participles.passive}.`,
+        `The matter is connected with the action: ${row.meaningEn}.`,
+        `${GENERATED_FORM_NOTE} For intransitive or context-dependent verbs, this passive participle may be rare or awkward.`,
+      ),
+    ],
+  };
+}
+
+function verbIdentity(root: string, entry: { measure: VerbMeasure; forms: SarfForm[] }): string {
+  const past = entry.forms.find((form) => form.key === "past")?.arabic ?? "";
+  const present = entry.forms.find((form) => form.key === "present")?.arabic ?? "";
+  const imperative = entry.forms.find((form) => form.key === "imperative")?.arabic ?? "";
+  return [
+    normaliseImportedArabic(root),
+    entry.measure,
+    normaliseImportedArabic(past),
+    normaliseImportedArabic(present),
+    normaliseImportedArabic(imperative),
+  ].join("|");
+}
+
+function importedRowIdentity(row: ImportedArabicVerbRow): string {
+  return [
+    row.meaningEn,
+    normaliseImportedArabic(row.past),
+    normaliseImportedArabic(row.present),
+    normaliseImportedArabic(row.imperative),
+    normaliseImportedArabic(row.masdar),
+    row.notes ?? "",
+  ].join("|");
+}
+
+function attachImportedArabicVerbRows(baseRoots: RootEntry[], rows: ImportedArabicVerbRow[]) {
+  const report: ImportedArabicVerbReport = {
+    processedRows: rows.length,
+    addedEntries: 0,
+    skippedExactDuplicateRows: 0,
+    skippedAlreadyRepresentedRows: 0,
+    skippedInvalidRows: [],
+  };
+  const nextRoots = baseRoots.map((entry) => ({
+    ...entry,
+    ...(entry.variants ? { variants: [...entry.variants] } : {}),
+  }));
+  const rootsByKey = new Map(nextRoots.map((entry) => [normaliseImportedArabic(entry.root), entry]));
+  const represented = new Set<string>();
+  const seenRows = new Set<string>();
+
+  for (const entry of nextRoots) {
+    represented.add(verbIdentity(entry.root, entry));
+    for (const variant of entry.variants ?? []) {
+      represented.add(verbIdentity(entry.root, variant));
+    }
+  }
+
+  for (const row of rows) {
+    const rowKey = importedRowIdentity(row);
+    if (seenRows.has(rowKey)) {
+      report.skippedExactDuplicateRows += 1;
+      continue;
+    }
+    seenRows.add(rowKey);
+
+    const missingFields = [
+      ["meaning_en", row.meaningEn],
+      ["past_3ms", row.past],
+      ["present_3ms", row.present],
+      ["imperative_2ms", row.imperative],
+      ["masdar", row.masdar],
+    ]
+      .filter(([, value]) => !value)
+      .map(([name]) => name);
+    if (missingFields.length > 0) {
+      report.skippedInvalidRows.push({
+        rowNumber: row.rowNumber,
+        past: row.past,
+        reason: `missing required CSV field(s): ${missingFields.join(", ")}`,
+      });
+      continue;
+    }
+
+    const root = inferRoot(row);
+    if (!ROOT_RE.test(root)) {
+      report.skippedInvalidRows.push({
+        rowNumber: row.rowNumber,
+        past: row.past,
+        reason: `could not infer a three-letter Arabic root; inferred "${root}"`,
+      });
+      continue;
+    }
+
+    const importedEntry = csvRowToVerbEntry(row, root);
+    const identity = verbIdentity(root, importedEntry);
+    if (represented.has(identity)) {
+      report.skippedAlreadyRepresentedRows += 1;
+      continue;
+    }
+
+    const rootKey = normaliseImportedArabic(root);
+    const existingRoot = rootsByKey.get(rootKey);
+    if (existingRoot) {
+      existingRoot.variants = [...(existingRoot.variants ?? []), importedEntry];
+    } else {
+      const newRoot: RootEntry = {
+        root,
+        displayRoot: [...root].join(" "),
+        meaningEn: importedEntry.meaningEn,
+        status: "ai_draft",
+        measure: importedEntry.measure,
+        forms: importedEntry.forms,
+        notes: importedEntry.notes,
+        source: importedEntry.source,
+        updatedAt: importedEntry.updatedAt,
+      };
+      nextRoots.push(newRoot);
+      rootsByKey.set(rootKey, newRoot);
+    }
+    represented.add(identity);
+    report.addedEntries += 1;
+  }
+
+  return { roots: nextRoots, report };
+}
 
 const aiDraftRoots: RootEntry[] = [
   draft({ root: "عبد", meaningEn: "worshipping, serving", past: "عَبَدَ", present: "يَعْبُدُ", imperative: "اُعْبُدْ", place: "مَعْبَد", active: "عَابِد", passive: "مَعْبُود", transliterationBase: "ʿabada", formMeanings: { past: "he worshipped", present: "he worships", imperative: "worship!", place: "a place of worship", active: "a worshipper", passive: "worshipped" } }),
@@ -540,6 +1739,95 @@ const aiDraftRoots: RootEntry[] = [
   draft({ root: "وقد", meaningEn: "burning, kindling", past: "وَقَدَ", present: "يَقِدُ", imperative: "قِدْ", place: "مَوْقِد", active: "وَاقِد", passive: "مَوْقُود", transliterationBase: "waqada", transliterations: { past: "waqada", present: "yaqidu", imperative: "qid", place_or_mim_masdar: "mawqid", active_participle: "wāqid", passive_participle: "mawqūd" }, formMeanings: { past: "it burned", present: "it burns", imperative: "burn!", place: "a fireplace or stove", active: "burning", passive: "kindled or burned" } }, { includeQuranicMetadata: false }),
   draft({ root: "وقع", meaningEn: "falling, happening, being located", past: "وَقَعَ", present: "يَقَعُ", imperative: "قَعْ", place: "مَوْقِع", active: "وَاقِع", passive: "مَوْقُوع", transliterationBase: "waqaʿa", transliterations: { past: "waqaʿa", present: "yaqaʿu", imperative: "qaʿ", place_or_mim_masdar: "mawqiʿ", active_participle: "wāqiʿ", passive_participle: "mawqūʿ" }, formMeanings: { past: "it fell or happened", present: "it falls, happens, or is located", imperative: "fall!", place: "a location or site", active: "happening or real", passive: "fallen into or occurred upon" } }, { includeQuranicMetadata: false }),
   draft({ root: "ملأ", meaningEn: "filling", past: "مَلَأَ", present: "يَمْلَأُ", imperative: "اِمْلَأْ", place: "مَمْلَأ", active: "مَالِئ", passive: "مَمْلُوء", transliterationBase: "mala'a", transliterations: { past: "mala'a", present: "yamla'u", imperative: "imla'", place_or_mim_masdar: "mamla'", active_participle: "māli'", passive_participle: "mamlū'" }, formMeanings: { past: "he filled", present: "he fills", imperative: "fill!", place: "a filling place or point", active: "one who fills", passive: "filled or full" } }, { includeQuranicMetadata: false }),
+  // Book 1 (Al-'Arabiyyah Bayna Yadayk) expansion batch. Past/present/imperative/masdar are
+  // source-verified from the textbook vocabulary list; place/active/passive participles are
+  // AI-generated per the verb's measure and are not source-verified (see per-form notes above).
+  draft({ root: "مرر", meaningEn: "passing by", past: "مَرَّ", present: "يَمُرُّ", imperative: "مُرَّ", place: "مَمَرّ", active: "مَارّ", passive: "مَمْرُور", transliterationBase: "marra", transliterations: { past: "marra", present: "yamurru", imperative: "murra", place_or_mim_masdar: "mamarr", active_participle: "mārr", passive_participle: "mamrūr" }, formMeanings: { past: "he passed by", present: "he passes by", imperative: "pass by!", place: "a passageway", active: "passing by", passive: "passed by" }, rootNote: "Form I verb, doubled/geminate root (often used with بِـ)." }, { includeQuranicMetadata: false }),
+  draft({ root: "نسخ", meaningEn: "copying", past: "نَسَخَ", present: "يَنْسَخُ", imperative: "اِنْسَخْ", place: "مَنْسَخ", active: "نَاسِخ", passive: "مَنْسُوخ", transliterationBase: "nasakha", transliterations: { past: "nasakha", present: "yansakhu", imperative: "insakh", place_or_mim_masdar: "mansakh", active_participle: "nāsikh", passive_participle: "mansūkh" }, formMeanings: { past: "he copied", present: "he copies", imperative: "copy!", place: "a copying place", active: "copier", passive: "copied" } }, { includeQuranicMetadata: false }),
+  draft({ root: "وضأ", meaningEn: "performing ablution (wudoo)", past: "تَوَضَّأَ", present: "يَتَوَضَّأُ", imperative: "تَوَضَّأْ", place: "تَوَضُّؤ", active: "مُتَوَضِّئ", passive: "مُتَوَضَّأ", transliterationBase: "tawaḍḍa'a", transliterations: { past: "tawaḍḍa'a", present: "yatawaḍḍa'u", imperative: "tawaḍḍa'", place_or_mim_masdar: "tawaḍḍu'", active_participle: "mutawaḍḍi'", passive_participle: "mutawaḍḍa'" }, formMeanings: { past: "he performed ablution", present: "he performs ablution", imperative: "perform ablution!", place: "ablution (verbal noun)", active: "one who has performed ablution", passive: "the ablution performed (rare, pattern-based)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "يقظ", meaningEn: "waking up", past: "اِسْتَيْقَظَ", present: "يَسْتَيْقِظُ", imperative: "اِسْتَيْقِظْ", place: "اِسْتِيقَاظ", active: "مُسْتَيْقِظ", passive: "مُسْتَيْقَظ", transliterationBase: "istayqaẓa", transliterations: { past: "istayqaẓa", present: "yastayqiẓu", imperative: "istayqiẓ", place_or_mim_masdar: "istīqāẓ", active_participle: "mustayqiẓ", passive_participle: "mustayqaẓ" }, formMeanings: { past: "he woke up", present: "he wakes up", imperative: "wake up!", place: "waking up (verbal noun)", active: "awake", passive: "woken (rare, pattern-based)" }, rootNote: "Form X verb.", measure: "X" }, { includeQuranicMetadata: false }),
+  draft({ root: "كنس", meaningEn: "sweeping, vacuuming", past: "كَنَسَ", present: "يَكْنُسُ", imperative: "اُكْنُسْ", place: "مَكْنَس", active: "كَانِس", passive: "مَكْنُوس", transliterationBase: "kanasa", transliterations: { past: "kanasa", present: "yaknusu", imperative: "uknus", place_or_mim_masdar: "maknas", active_participle: "kānis", passive_participle: "maknūs" }, formMeanings: { past: "he swept", present: "he sweeps", imperative: "sweep!", place: "a sweeping place", active: "sweeper", passive: "swept" } }, { includeQuranicMetadata: false }),
+  draft({ root: "كوي", meaningEn: "ironing", past: "كَوَى", present: "يَكْوِي", imperative: "اِكْوِ", place: "مَكْوًى", active: "كَاوٍ", passive: "مَكْوِيّ", transliterationBase: "kawā", transliterations: { past: "kawā", present: "yakwī", imperative: "ikwi", place_or_mim_masdar: "makwan", active_participle: "kāwin", passive_participle: "makwiyy" }, formMeanings: { past: "he ironed", present: "he irons", imperative: "iron!", place: "an ironing place", active: "one who irons", passive: "ironed" }, rootNote: "Form I verb, doubly weak root (medial-weak and final-weak)." }, { includeQuranicMetadata: false }),
+  draft({ root: "طوع", meaningEn: "being able, can", past: "اِسْتَطَاعَ", present: "يَسْتَطِيعُ", imperative: "اِسْتَطِعْ", place: "اِسْتِطَاعَة", active: "مُسْتَطِيع", passive: "مُسْتَطَاع", transliterationBase: "istaṭāʿa", transliterations: { past: "istaṭāʿa", present: "yastaṭīʿu", imperative: "istaṭiʿ", place_or_mim_masdar: "istiṭāʿah", active_participle: "mustaṭīʿ", passive_participle: "mustaṭāʿ" }, formMeanings: { past: "he was able", present: "he is able", imperative: "be able!", place: "ability", active: "able, capable", passive: "achievable (rare, pattern-based)" }, rootNote: "Form X verb, hollow root.", measure: "X" }, { includeQuranicMetadata: false }),
+  draft({ root: "بدأ", meaningEn: "starting, beginning", past: "بَدَأَ", present: "يَبْدَأُ", imperative: "اِبْدَأْ", place: "مَبْدَأ", active: "بَادِئ", passive: "مَبْدُوء", transliterationBase: "bada'a", transliterations: { past: "bada'a", present: "yabda'u", imperative: "ibda'", place_or_mim_masdar: "mabda'", active_participle: "bādi'", passive_participle: "mabdū'" }, formMeanings: { past: "he started", present: "he starts", imperative: "start!", place: "a starting point, principle", active: "starter, one who begins", passive: "begun" } }, { includeQuranicMetadata: false }),
+  draft({ root: "نهي", meaningEn: "finishing", past: "اِنْتَهَى", present: "يَنْتَهِي", imperative: "اِنْتَهِ", place: "اِنْتِهَاء", active: "مُنْتَهٍ", passive: "مُنْتَهًى", transliterationBase: "intahā", transliterations: { past: "intahā", present: "yantahī", imperative: "intahi", place_or_mim_masdar: "intihā'", active_participle: "muntahin", passive_participle: "muntahan" }, formMeanings: { past: "he finished", present: "he finishes", imperative: "finish!", place: "an end, a finishing (verbal noun)", active: "finishing, ending", passive: "endpoint, utmost" }, rootNote: "Form VIII verb, defective (final-weak) root.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "صحح", meaningEn: "correcting", past: "صَحَّحَ", present: "يُصَحِّحُ", imperative: "صَحِّحْ", place: "تَصْحِيح", active: "مُصَحِّح", passive: "مُصَحَّح", transliterationBase: "ṣaḥḥaḥa", transliterations: { past: "ṣaḥḥaḥa", present: "yuṣaḥḥiḥu", imperative: "ṣaḥḥiḥ", place_or_mim_masdar: "taṣḥīḥ", active_participle: "muṣaḥḥiḥ", passive_participle: "muṣaḥḥaḥ" }, formMeanings: { past: "he corrected", present: "he corrects", imperative: "correct!", place: "a correction (verbal noun)", active: "corrector, proofreader", passive: "corrected" }, rootNote: "Form II verb, doubled/geminate root.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "حبب", meaningEn: "loving, liking", past: "أَحَبَّ", present: "يُحِبُّ", imperative: "أَحِبَّ", place: "حُبّ", active: "مُحِبّ", passive: "مُحَبّ", transliterationBase: "aḥabba", transliterations: { past: "aḥabba", present: "yuḥibbu", imperative: "aḥibba", place_or_mim_masdar: "ḥubb", active_participle: "muḥibb", passive_participle: "muḥabb" }, formMeanings: { past: "he loved", present: "he loves", imperative: "love!", place: "love (verbal noun)", active: "lover, one who loves", passive: "loved" }, rootNote: "Form IV verb, doubled/geminate root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "رسم", meaningEn: "drawing", past: "رَسَمَ", present: "يَرْسُمُ", imperative: "اُرْسُمْ", place: "مَرْسَم", active: "رَاسِم", passive: "مَرْسُوم", transliterationBase: "rasama", transliterations: { past: "rasama", present: "yarsumu", imperative: "ursum", place_or_mim_masdar: "marsam", active_participle: "rāsim", passive_participle: "marsūm" }, formMeanings: { past: "he drew", present: "he draws", imperative: "draw!", place: "a drawing studio", active: "one who draws", passive: "drawn" } }, { includeQuranicMetadata: false }),
+  draft({ root: "خير", meaningEn: "choosing", past: "اِخْتَارَ", present: "يَخْتَارُ", imperative: "اِخْتَرْ", place: "اِخْتِيَار", active: "مُخْتَار", passive: "مُخْتَار", transliterationBase: "ikhtāra", transliterations: { past: "ikhtāra", present: "yakhtāru", imperative: "ikhtar", place_or_mim_masdar: "ikhtiyār", active_participle: "mukhtār", passive_participle: "mukhtār" }, formMeanings: { past: "he chose", present: "he chooses", imperative: "choose!", place: "a choice", active: "one who chooses", passive: "chosen" }, rootNote: "Form VIII verb, hollow root.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "روح", meaningEn: "resting, relaxing, taking a break", past: "اِسْتَرَاحَ", present: "يَسْتَرِيحُ", imperative: "اِسْتَرِحْ", place: "اِسْتِرَاحَة", active: "مُسْتَرِيح", passive: "مُسْتَرَاح", transliterationBase: "istarāḥa", transliterations: { past: "istarāḥa", present: "yastarīḥu", imperative: "istariḥ", place_or_mim_masdar: "istirāḥah", active_participle: "mustarīḥ", passive_participle: "mustarāḥ" }, formMeanings: { past: "he rested", present: "he rests", imperative: "rest!", place: "a rest, a rest stop", active: "resting, relaxed", passive: "rested (rare, pattern-based)" }, rootNote: "Form X verb, hollow root.", measure: "X" }, { includeQuranicMetadata: false }),
+  draft({ root: "بقي", meaningEn: "staying, remaining", past: "بَقِيَ", present: "يَبْقَى", imperative: "اِبْقَ", place: "مَبْقًى", active: "بَاقٍ", passive: "مَبْقِيّ", transliterationBase: "baqiya", transliterations: { past: "baqiya", present: "yabqā", imperative: "ibqa", place_or_mim_masdar: "mabqan", active_participle: "bāqin", passive_participle: "mabqiyy" }, formMeanings: { past: "he stayed", present: "he stays", imperative: "stay!", place: "a place of staying", active: "remaining, lasting", passive: "kept remaining (rare, pattern-based)" } }, { includeQuranicMetadata: false }),
+  draft({ root: "قضي", meaningEn: "spending time", past: "قَضَى", present: "يَقْضِي", imperative: "اِقْضِ", place: "مَقْضًى", active: "قَاضٍ", passive: "مَقْضِيّ", transliterationBase: "qaḍā", transliterations: { past: "qaḍā", present: "yaqḍī", imperative: "iqḍi", place_or_mim_masdar: "maqḍan", active_participle: "qāḍin", passive_participle: "maqḍiyy" }, formMeanings: { past: "he spent (time)", present: "he spends (time)", imperative: "spend (time)!", place: "a place/matter of spending time", active: "one spending time (usually: judge)", passive: "spent, decreed" } }, { includeQuranicMetadata: false }),
+  draft({ root: "حضر", meaningEn: "attending, being present", past: "حَضَرَ", present: "يَحْضُرُ", imperative: "اُحْضُرْ", place: "مَحْضَر", active: "حَاضِر", passive: "مَحْضُور", transliterationBase: "ḥaḍara", transliterations: { past: "ḥaḍara", present: "yaḥḍuru", imperative: "uḥḍur", place_or_mim_masdar: "maḥḍar", active_participle: "ḥāḍir", passive_participle: "maḥḍūr" }, formMeanings: { past: "he attended", present: "he attends", imperative: "attend!", place: "a record, place of attendance", active: "present, attending", passive: "attended (rare, pattern-based)" } }, { includeQuranicMetadata: false }),
+  draft({ root: "نقل", meaningEn: "moving, transferring", past: "اِنْتَقَلَ", present: "يَنْتَقِلُ", imperative: "اِنْتَقِلْ", place: "اِنْتِقَال", active: "مُنْتَقِل", passive: "مُنْتَقَل", transliterationBase: "intaqala", transliterations: { past: "intaqala", present: "yantaqilu", imperative: "intaqil", place_or_mim_masdar: "intiqāl", active_participle: "muntaqil", passive_participle: "muntaqal" }, formMeanings: { past: "he moved", present: "he moves", imperative: "move!", place: "a move, a transfer", active: "one who moves, relocating", passive: "moved (rare, pattern-based)" }, rootNote: "Form VIII verb.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "غرق", meaningEn: "taking (time), being absorbed", past: "اِسْتَغْرَقَ", present: "يَسْتَغْرِقُ", imperative: "اِسْتَغْرِقْ", place: "اِسْتِغْرَاق", active: "مُسْتَغْرِق", passive: "مُسْتَغْرَق", transliterationBase: "istaghraqa", transliterations: { past: "istaghraqa", present: "yastaghriqu", imperative: "istaghriq", place_or_mim_masdar: "istighrāq", active_participle: "mustaghriq", passive_participle: "mustaghraq" }, formMeanings: { past: "he took (time), was absorbed", present: "he takes (time), is absorbed", imperative: "take your time! / be absorbed!", place: "absorption, duration (verbal noun)", active: "taking (time), absorbed", passive: "absorbed, used up (rare, pattern-based)" }, rootNote: "Form X verb.", measure: "X" }, { includeQuranicMetadata: false }),
+  draft({ root: "زحم", meaningEn: "being crowded, congested", past: "اِزْدَحَمَ", present: "يَزْدَحِمُ", imperative: "اِزْدَحِمْ", place: "اِزْدِحَام", active: "مُزْدَحِم", passive: "مُزْدَحَم", transliterationBase: "izdaḥama", transliterations: { past: "izdaḥama", present: "yazdaḥimu", imperative: "izdaḥim", place_or_mim_masdar: "izdiḥām", active_participle: "muzdaḥim", passive_participle: "muzdaḥam" }, formMeanings: { past: "it became crowded", present: "it becomes crowded", imperative: "crowd together!", place: "congestion, crowding (verbal noun)", active: "crowded, congested", passive: "thronged, crowded" }, rootNote: "Form VIII verb; the ت assimilates to د after ز.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "حجز", meaningEn: "booking, reserving", past: "حَجَزَ", present: "يَحْجِزُ", imperative: "اِحْجِزْ", place: "مَحْجَز", active: "حَاجِز", passive: "مَحْجُوز", transliterationBase: "ḥajaza", transliterations: { past: "ḥajaza", present: "yaḥjizu", imperative: "iḥjiz", place_or_mim_masdar: "maḥjaz", active_participle: "ḥājiz", passive_participle: "maḥjūz" }, formMeanings: { past: "he booked", present: "he books", imperative: "book!", place: "a reservation place", active: "one who books", passive: "booked, reserved" } }, { includeQuranicMetadata: false }),
+  draft({ root: "أكد", meaningEn: "confirming", past: "أَكَّدَ", present: "يُؤَكِّدُ", imperative: "أَكِّدْ", place: "تَأْكِيد", active: "مُؤَكِّد", passive: "مُؤَكَّد", transliterationBase: "akkada", transliterations: { past: "akkada", present: "yu'akkidu", imperative: "akkid", place_or_mim_masdar: "ta'kīd", active_participle: "mu'akkid", passive_participle: "mu'akkad" }, formMeanings: { past: "he confirmed", present: "he confirms", imperative: "confirm!", place: "a confirmation (verbal noun)", active: "confirming", passive: "confirmed" }, rootNote: "Form II verb, hamzated root.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "حلق", meaningEn: "shaving", past: "حَلَقَ", present: "يَحْلِقُ", imperative: "اِحْلِقْ", place: "مَحْلَق", active: "حَالِق", passive: "مَحْلُوق", transliterationBase: "ḥalaqa", transliterations: { past: "ḥalaqa", present: "yaḥliqu", imperative: "iḥliq", place_or_mim_masdar: "maḥlaq", active_participle: "ḥāliq", passive_participle: "maḥlūq" }, formMeanings: { past: "he shaved", present: "he shaves", imperative: "shave!", place: "a shaving place", active: "barber, one who shaves", passive: "shaved" }, rootNote: "Form I verb; this root ح ل ق also means throat, a separate common word." }, { includeQuranicMetadata: false }),
+  draft({ root: "رمي", meaningEn: "throwing", past: "رَمَى", present: "يَرْمِي", imperative: "اِرْمِ", place: "مَرْمًى", active: "رَامٍ", passive: "مَرْمِيّ", transliterationBase: "ramā", transliterations: { past: "ramā", present: "yarmī", imperative: "irmi", place_or_mim_masdar: "marman", active_participle: "rāmin", passive_participle: "marmiyy" }, formMeanings: { past: "he threw", present: "he throws", imperative: "throw!", place: "a target, a goal", active: "thrower", passive: "thrown" } }, { includeQuranicMetadata: false }),
+  draft({ root: "سعي", meaningEn: "striving; making sa'ee", past: "سَعَى", present: "يَسْعَى", imperative: "اِسْعَ", place: "مَسْعًى", active: "سَاعٍ", passive: "مَسْعِيّ", transliterationBase: "saʿā", transliterations: { past: "saʿā", present: "yasʿā", imperative: "isʿa", place_or_mim_masdar: "masʿan", active_participle: "sāʿin", passive_participle: "masʿiyy" }, formMeanings: { past: "he strove, made sa'ee", present: "he strives, makes sa'ee", imperative: "strive! / make sa'ee!", place: "al-Mas'a, the sa'ee course", active: "one who strives", passive: "pursued (rare, pattern-based)" } }, { includeQuranicMetadata: false }),
+  draft({ root: "خلع", meaningEn: "taking off, undressing", past: "خَلَعَ", present: "يَخْلَعُ", imperative: "اِخْلَعْ", place: "مَخْلَع", active: "خَالِع", passive: "مَخْلُوع", transliterationBase: "khalaʿa", transliterations: { past: "khalaʿa", present: "yakhlaʿu", imperative: "ikhlaʿ", place_or_mim_masdar: "makhlaʿ", active_participle: "khāliʿ", passive_participle: "makhlūʿ" }, formMeanings: { past: "he took off", present: "he takes off", imperative: "take off!", place: "a place for taking off (clothes)", active: "one who takes off", passive: "taken off" } }, { includeQuranicMetadata: false }),
+  draft({ root: "رفع", meaningEn: "rising, being elevated", past: "اِرْتَفَعَ", present: "يَرْتَفِعُ", imperative: "اِرْتَفِعْ", place: "اِرْتِفَاع", active: "مُرْتَفِع", passive: "مُرْتَفَع", transliterationBase: "irtafaʿa", transliterations: { past: "irtafaʿa", present: "yartafiʿu", imperative: "irtafiʿ", place_or_mim_masdar: "irtifāʿ", active_participle: "murtafiʿ", passive_participle: "murtafaʿ" }, formMeanings: { past: "it rose", present: "it rises", imperative: "rise!", place: "a rise, a height (verbal noun)", active: "elevated, rising", passive: "a highland, elevated area" }, rootNote: "Form VIII verb.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "شفي", meaningEn: "curing, healing", past: "شَفَى", present: "يَشْفِي", imperative: "اِشْفِ", place: "مَشْفًى", active: "شَافٍ", passive: "مَشْفِيّ", transliterationBase: "shafā", transliterations: { past: "shafā", present: "yashfī", imperative: "ishfi", place_or_mim_masdar: "mashfan", active_participle: "shāfin", passive_participle: "mashfiyy" }, formMeanings: { past: "he cured", present: "he cures", imperative: "cure!", place: "a hospital, clinic", active: "curative, healing", passive: "cured, healed" } }, { includeQuranicMetadata: false }),
+  draft({ root: "فحص", meaningEn: "checking, examining", past: "فَحَصَ", present: "يَفْحَصُ", imperative: "اِفْحَصْ", place: "مَفْحَص", active: "فَاحِص", passive: "مَفْحُوص", transliterationBase: "faḥaṣa", transliterations: { past: "faḥaṣa", present: "yafḥaṣu", imperative: "ifḥaṣ", place_or_mim_masdar: "mafḥaṣ", active_participle: "fāḥiṣ", passive_participle: "mafḥūṣ" }, formMeanings: { past: "he examined", present: "he examines", imperative: "examine!", place: "an examination place", active: "examiner, inspector", passive: "examined" } }, { includeQuranicMetadata: false }),
+  // Book 1 (Al-'Arabiyyah Bayna Yadayk) expansion batch, part 2: previously deferred
+  // Form II/III/IV/V/VI verbs and bare hollow Form-I verbs, now unblocked by the
+  // measure-aware imperative test. Past/present/imperative/masdar are source-verified;
+  // place/active/passive participles are AI-generated per measure (see per-form notes above).
+  draft({ root: "عود", meaningEn: "repeating, returning (something)", past: "أَعَادَ", present: "يُعِيدُ", imperative: "أَعِدْ", place: "إِعَادَة", active: "مُعِيد", passive: "مُعَاد", transliterationBase: "aʿāda", transliterations: { past: "aʿāda", present: "yuʿīdu", imperative: "aʿid", place_or_mim_masdar: "iʿādah", active_participle: "muʿīd", passive_participle: "muʿād" }, formMeanings: { past: "he repeated, returned (it)", present: "he repeats, returns (it)", imperative: "return it!", place: "a repetition, a return (verbal noun)", active: "one who repeats; teaching assistant", passive: "repeated, returned; recycled" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "شور", meaningEn: "pointing, indicating", past: "أَشَارَ", present: "يُشِيرُ", imperative: "أَشِرْ", place: "إِشَارَة", active: "مُشِير", passive: "مُشَار", transliterationBase: "ashāra", transliterations: { past: "ashāra", present: "yushīru", imperative: "ashir", place_or_mim_masdar: "ishārah", active_participle: "mushīr", passive_participle: "mushār" }, formMeanings: { past: "he pointed, indicated", present: "he points, indicates", imperative: "point!", place: "a sign, a signal", active: "one who points; a marshal", passive: "indicated, referred to" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "قول", meaningEn: "saying", past: "قَالَ", present: "يَقُولُ", imperative: "قُلْ", place: "مَقَال", active: "قَائِل", passive: "مَقُول", transliterationBase: "qāla", transliterations: { past: "qāla", present: "yaqūlu", imperative: "qul", place_or_mim_masdar: "maqāl", active_participle: "qā'il", passive_participle: "maqūl" }, formMeanings: { past: "he said", present: "he says", imperative: "say!", place: "an article", active: "sayer, speaker", passive: "said" }, rootNote: "Form I verb, hollow root.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "رتب", meaningEn: "arranging", past: "رَتَّبَ", present: "يُرَتِّبُ", imperative: "رَتِّبْ", place: "تَرْتِيب", active: "مُرَتِّب", passive: "مُرَتَّب", transliterationBase: "rattaba", transliterations: { past: "rattaba", present: "yurattibu", imperative: "rattib", place_or_mim_masdar: "tartīb", active_participle: "murattib", passive_participle: "murattab" }, formMeanings: { past: "he arranged", present: "he arranges", imperative: "arrange!", place: "an arrangement (verbal noun)", active: "one who arranges", passive: "arranged; a salary" }, rootNote: "Form II verb.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "بدل", meaningEn: "exchanging", past: "تَبَادَلَ", present: "يَتَبَادَلُ", imperative: "تَبَادَلْ", place: "تَبَادُل", active: "مُتَبَادِل", passive: "مُتَبَادَل", transliterationBase: "tabādala", transliterations: { past: "tabādala", present: "yatabādalu", imperative: "tabādal", place_or_mim_masdar: "tabādul", active_participle: "mutabādil", passive_participle: "mutabādal" }, formMeanings: { past: "he exchanged", present: "he exchanges", imperative: "exchange!", place: "an exchange (verbal noun)", active: "mutual, reciprocal", passive: "exchanged, mutual" }, rootNote: "Form VI verb.", measure: "VI" }, { includeQuranicMetadata: false }),
+  draft({ root: "جوب", meaningEn: "answering", past: "أَجَابَ", present: "يُجِيبُ", imperative: "أَجِبْ", place: "إِجَابَة", active: "مُجِيب", passive: "مُجَاب", transliterationBase: "ajāba", transliterations: { past: "ajāba", present: "yujību", imperative: "ajib", place_or_mim_masdar: "ijābah", active_participle: "mujīb", passive_participle: "mujāb" }, formMeanings: { past: "he answered", present: "he answers", imperative: "answer!", place: "an answer", active: "one who answers", passive: "answered" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "صلو", meaningEn: "praying", past: "صَلَّى", present: "يُصَلِّي", imperative: "صَلِّ", place: "صَلَاة", active: "مُصَلٍّ", passive: "مُصَلًّى", transliterationBase: "ṣallā", transliterations: { past: "ṣallā", present: "yuṣallī", imperative: "ṣalli", place_or_mim_masdar: "ṣalāh", active_participle: "muṣallin", passive_participle: "muṣallan" }, formMeanings: { past: "he prayed", present: "he prays", imperative: "pray!", place: "a prayer (irregular masdar)", active: "one who prays", passive: "a prayer room, prayer area" }, rootNote: "Form II verb, defective root; the masdar صَلَاة is irregular.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "رود", meaningEn: "wanting, intending", past: "أَرَادَ", present: "يُرِيدُ", imperative: "أَرِدْ", place: "إِرَادَة", active: "مُرِيد", passive: "مُرَاد", transliterationBase: "arāda", transliterations: { past: "arāda", present: "yurīdu", imperative: "arid", place_or_mim_masdar: "irādah", active_participle: "murīd", passive_participle: "murād" }, formMeanings: { past: "he wanted, intended", present: "he wants, intends", imperative: "wish (good)!", place: "will, intention, willpower", active: "one who wants; a Sufi disciple", passive: "wanted, intended, meant" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "نوم", meaningEn: "sleeping", past: "نَامَ", present: "يَنَامُ", imperative: "نَمْ", place: "مَنَام", active: "نَائِم", passive: "مَنُوم", transliterationBase: "nāma", transliterations: { past: "nāma", present: "yanāmu", imperative: "nam", place_or_mim_masdar: "manām", active_participle: "nā'im", passive_participle: "manūm" }, formMeanings: { past: "he slept", present: "he sleeps", imperative: "sleep!", place: "a dream, a sleeping place", active: "sleeping, asleep", passive: "put to sleep (rare, pattern-based)" }, rootNote: "Form I verb, hollow root.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "فضل", meaningEn: "preferring", past: "فَضَّلَ", present: "يُفَضِّلُ", imperative: "فَضِّلْ", place: "تَفْضِيل", active: "مُفَضِّل", passive: "مُفَضَّل", transliterationBase: "faḍḍala", transliterations: { past: "faḍḍala", present: "yufaḍḍilu", imperative: "faḍḍil", place_or_mim_masdar: "tafḍīl", active_participle: "mufaḍḍil", passive_participle: "mufaḍḍal" }, formMeanings: { past: "he preferred", present: "he prefers", imperative: "prefer!", place: "a preference (verbal noun)", active: "one who prefers", passive: "preferred, favorite" }, rootNote: "Form II verb.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "حول", meaningEn: "changing, converting, transferring", past: "حَوَّلَ", present: "يُحَوِّلُ", imperative: "حَوِّلْ", place: "تَحْوِيل", active: "مُحَوِّل", passive: "مُحَوَّل", transliterationBase: "ḥawwala", transliterations: { past: "ḥawwala", present: "yuḥawwilu", imperative: "ḥawwil", place_or_mim_masdar: "taḥwīl", active_participle: "muḥawwil", passive_participle: "muḥawwal" }, formMeanings: { past: "he changed, transferred", present: "he changes, transfers", imperative: "transfer!", place: "a transfer, a conversion (verbal noun)", active: "converter, transformer", passive: "converted, transferred" }, rootNote: "Form II verb, hollow root.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "سفر", meaningEn: "traveling", past: "سَافَرَ", present: "يُسَافِرُ", imperative: "سَافِرْ", place: "سَفَر", active: "مُسَافِر", passive: "مُسَافَر", transliterationBase: "sāfara", transliterations: { past: "sāfara", present: "yusāfiru", imperative: "sāfir", place_or_mim_masdar: "safar", active_participle: "musāfir", passive_participle: "musāfar" }, formMeanings: { past: "he traveled", present: "he travels", imperative: "travel!", place: "a journey, a trip", active: "traveler", passive: "traveled (rare, pattern-based)" }, rootNote: "Form III verb.", measure: "III" }, { includeQuranicMetadata: false }),
+  draft({ root: "كون", meaningEn: "being", past: "كَانَ", present: "يَكُونُ", imperative: "كُنْ", place: "مَكَان", active: "كَائِن", passive: "مَكُون", transliterationBase: "kāna", transliterations: { past: "kāna", present: "yakūnu", imperative: "kun", place_or_mim_masdar: "makān", active_participle: "kā'in", passive_participle: "makūn" }, formMeanings: { past: "he was", present: "he is, becomes", imperative: "be!", place: "a place", active: "being, existing", passive: "essentially unused (pattern-based only)" }, rootNote: "Form I verb, hollow root, functions as a copula/auxiliary.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "كمل", meaningEn: "completing", past: "أَكْمَلَ", present: "يُكْمِلُ", imperative: "أَكْمِلْ", place: "إِكْمَال", active: "مُكْمِل", passive: "مُكْمَل", transliterationBase: "akmala", transliterations: { past: "akmala", present: "yukmilu", imperative: "akmil", place_or_mim_masdar: "ikmāl", active_participle: "mukmil", passive_participle: "mukmal" }, formMeanings: { past: "he completed", present: "he completes", imperative: "complete!", place: "a completion (verbal noun)", active: "completer", passive: "completed" }, rootNote: "Form IV verb.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "صبح", meaningEn: "becoming", past: "أَصْبَحَ", present: "يُصْبِحُ", imperative: "أَصْبِحْ", place: "إِصْبَاح", active: "مُصْبِح", passive: "مُصْبَح", transliterationBase: "aṣbaḥa", transliterations: { past: "aṣbaḥa", present: "yuṣbiḥu", imperative: "aṣbiḥ", place_or_mim_masdar: "iṣbāḥ", active_participle: "muṣbiḥ", passive_participle: "muṣbaḥ" }, formMeanings: { past: "he became", present: "he becomes", imperative: "become!", place: "becoming (rarely used verbal noun)", active: "becoming (rare, pattern-based)", passive: "essentially unused (pattern-based only)" }, rootNote: "Form IV verb, functions as a stative/auxiliary verb (kaana-sister).", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "سوق", meaningEn: "shopping", past: "تَسَوَّقَ", present: "يَتَسَوَّقُ", imperative: "تَسَوَّقْ", place: "تَسَوُّق", active: "مُتَسَوِّق", passive: "مُتَسَوَّق", transliterationBase: "tasawwaqa", transliterations: { past: "tasawwaqa", present: "yatasawwaqu", imperative: "tasawwaq", place_or_mim_masdar: "tasawwuq", active_participle: "mutasawwiq", passive_participle: "mutasawwaq" }, formMeanings: { past: "he shopped", present: "he shops", imperative: "shop!", place: "shopping (verbal noun)", active: "shopper", passive: "shopped in (rare, pattern-based)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "مطر", meaningEn: "raining", past: "أَمْطَرَ", present: "يُمْطِرُ", imperative: "أَمْطِرْ", place: "إِمْطَار", active: "مُمْطِر", passive: "مُمْطَر", transliterationBase: "amṭara", transliterations: { past: "amṭara", present: "yumṭiru", imperative: "amṭir", place_or_mim_masdar: "imṭār", active_participle: "mumṭir", passive_participle: "mumṭar" }, formMeanings: { past: "it rained", present: "it rains", imperative: "rain! (figurative)", place: "rainfall (verbal noun)", active: "rainy, raining", passive: "rained upon" }, rootNote: "Form IV verb, impersonal weather verb.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "كلم", meaningEn: "speaking", past: "تَكَلَّمَ", present: "يَتَكَلَّمُ", imperative: "تَكَلَّمْ", place: "تَكَلُّم", active: "مُتَكَلِّم", passive: "مُتَكَلَّم", transliterationBase: "takallama", transliterations: { past: "takallama", present: "yatakallamu", imperative: "takallam", place_or_mim_masdar: "takallum", active_participle: "mutakallim", passive_participle: "mutakallam" }, formMeanings: { past: "he spoke", present: "he speaks", imperative: "speak!", place: "speaking (verbal noun)", active: "speaker", passive: "spoken about (rare, pattern-based)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "زوج", meaningEn: "marrying", past: "تَزَوَّجَ", present: "يَتَزَوَّجُ", imperative: "تَزَوَّجْ", place: "تَزَوُّج", active: "مُتَزَوِّج", passive: "مُتَزَوَّج", transliterationBase: "tazawwaja", transliterations: { past: "tazawwaja", present: "yatazawwaju", imperative: "tazawwaj", place_or_mim_masdar: "tazawwuj", active_participle: "mutazawwij", passive_participle: "mutazawwaj" }, formMeanings: { past: "he got married", present: "he gets married", imperative: "get married!", place: "marriage (verbal noun)", active: "married (person)", passive: "married (rare, pattern-based)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "زور", meaningEn: "visiting", past: "زَارَ", present: "يَزُورُ", imperative: "زُرْ", place: "مَزَار", active: "زَائِر", passive: "مَزُور", transliterationBase: "zāra", transliterations: { past: "zāra", present: "yazūru", imperative: "zur", place_or_mim_masdar: "mazār", active_participle: "zā'ir", passive_participle: "mazūr" }, formMeanings: { past: "he visited", present: "he visits", imperative: "visit!", place: "a shrine, a place of visitation", active: "visitor", passive: "visited" }, rootNote: "Form I verb, hollow root.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "لوث", meaningEn: "being polluted", past: "تَلَوَّثَ", present: "يَتَلَوَّثُ", imperative: "تَلَوَّثْ", place: "تَلَوُّث", active: "مُتَلَوِّث", passive: "مُتَلَوَّث", transliterationBase: "talawwatha", transliterations: { past: "talawwatha", present: "yatalawwathu", imperative: "talawwath", place_or_mim_masdar: "talawwuth", active_participle: "mutalawwith", passive_participle: "mutalawwath" }, formMeanings: { past: "it became polluted", present: "it becomes polluted", imperative: "get dirty! (informal)", place: "pollution (verbal noun)", active: "polluted, contaminated", passive: "polluted (with something)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "قوم", meaningEn: "staying, residing", past: "أَقَامَ", present: "يُقِيمُ", imperative: "أَقِمْ", place: "إِقَامَة", active: "مُقِيم", passive: "مُقَام", transliterationBase: "aqāma", transliterations: { past: "aqāma", present: "yuqīmu", imperative: "aqim", place_or_mim_masdar: "iqāmah", active_participle: "muqīm", passive_participle: "muqām" }, formMeanings: { past: "he stayed, resided", present: "he stays, resides", imperative: "stay!", place: "a residence, a stay", active: "resident", passive: "held, established; a shrine/rank" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "غدر", meaningEn: "departing", past: "غَادَرَ", present: "يُغَادِرُ", imperative: "غَادِرْ", place: "مُغَادَرَة", active: "مُغَادِر", passive: "مُغَادَر", transliterationBase: "ghādara", transliterations: { past: "ghādara", present: "yughādiru", imperative: "ghādir", place_or_mim_masdar: "mughādarah", active_participle: "mughādir", passive_participle: "mughādar" }, formMeanings: { past: "he departed", present: "he departs", imperative: "depart!", place: "a departure (verbal noun)", active: "one departing", passive: "departed from (rare, pattern-based)" }, rootNote: "Form III verb.", measure: "III" }, { includeQuranicMetadata: false }),
+  draft({ root: "صوم", meaningEn: "fasting", past: "صَامَ", present: "يَصُومُ", imperative: "صُمْ", place: "مَصَام", active: "صَائِم", passive: "مَصُوم", transliterationBase: "ṣāma", transliterations: { past: "ṣāma", present: "yaṣūmu", imperative: "ṣum", place_or_mim_masdar: "maṣām", active_participle: "ṣā'im", passive_participle: "maṣūm" }, formMeanings: { past: "he fasted", present: "he fasts", imperative: "fast!", place: "a period of fasting (rare, pattern-based)", active: "fasting person", passive: "essentially unused (pattern-based only)" }, rootNote: "Form I verb, hollow root.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "طوف", meaningEn: "making tawaf", past: "طَافَ", present: "يَطُوفُ", imperative: "طُفْ", place: "مَطَاف", active: "طَائِف", passive: "مَطُوف", transliterationBase: "ṭāfa", transliterations: { past: "ṭāfa", present: "yaṭūfu", imperative: "ṭuf", place_or_mim_masdar: "maṭāf", active_participle: "ṭā'if", passive_participle: "maṭūf" }, formMeanings: { past: "he made tawaf", present: "he makes tawaf", imperative: "make tawaf!", place: "the tawaf area", active: "one making tawaf", passive: "circled around (rare, pattern-based)" }, rootNote: "Form I verb, hollow root.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "لبي", meaningEn: "saying the Talbiyah", past: "لَبَّى", present: "يُلَبِّي", imperative: "لَبِّ", place: "تَلْبِيَة", active: "مُلَبٍّ", passive: "مُلَبًّى", transliterationBase: "labbā", transliterations: { past: "labbā", present: "yulabbī", imperative: "labbi", place_or_mim_masdar: "talbiyah", active_participle: "mulabbin", passive_participle: "mulabban" }, formMeanings: { past: "he said the Talbiyah", present: "he says the Talbiyah", imperative: "say the Talbiyah!", place: "the Talbiyah (verbal noun)", active: "one saying the Talbiyah", passive: "answered, responded to (rare, pattern-based)" }, rootNote: "Form II verb, defective root.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "صوب", meaningEn: "being afflicted, hit", past: "أَصَابَ", present: "يُصِيبُ", imperative: "أَصِبْ", place: "إِصَابَة", active: "مُصِيب", passive: "مُصَاب", transliterationBase: "aṣāba", transliterations: { past: "aṣāba", present: "yuṣību", imperative: "aṣib", place_or_mim_masdar: "iṣābah", active_participle: "muṣīb", passive_participle: "muṣāb" }, formMeanings: { past: "it afflicted, hit", present: "it afflicts, hits", imperative: "hit (your target)!", place: "an injury, an affliction", active: "correct, on target", passive: "afflicted (with an illness/injury)" }, rootNote: "Form IV verb, hollow root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "غيب", meaningEn: "being absent", past: "تَغَيَّبَ", present: "يَتَغَيَّبُ", imperative: "تَغَيَّبْ", place: "تَغَيُّب", active: "مُتَغَيِّب", passive: "مُتَغَيَّب", transliterationBase: "taghayyaba", transliterations: { past: "taghayyaba", present: "yataghayyabu", imperative: "taghayyab", place_or_mim_masdar: "taghayyub", active_participle: "mutaghayyib", passive_participle: "mutaghayyab" }, formMeanings: { past: "he was absent", present: "he is absent", imperative: "be absent!", place: "an absence (verbal noun)", active: "absent (person)", passive: "absented from (rare, pattern-based)" }, rootNote: "Form V verb.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "عطو", meaningEn: "giving", past: "أَعْطَى", present: "يُعْطِي", imperative: "أَعْطِ", place: "عَطَاء", active: "مُعْطٍ", passive: "مُعْطًى", transliterationBase: "aʿṭā", transliterations: { past: "aʿṭā", present: "yuʿṭī", imperative: "aʿṭi", place_or_mim_masdar: "ʿaṭā'", active_participle: "muʿṭin", passive_participle: "muʿṭan" }, formMeanings: { past: "he gave", present: "he gives", imperative: "give!", place: "a gift, a giving", active: "giver", passive: "given; a datum" }, rootNote: "Form IV verb, defective root.", measure: "IV" }, { includeQuranicMetadata: false }),
+  draft({ root: "سعد", meaningEn: "helping", past: "سَاعَدَ", present: "يُسَاعِدُ", imperative: "سَاعِدْ", place: "مُسَاعَدَة", active: "مُسَاعِد", passive: "مُسَاعَد", transliterationBase: "sāʿada", transliterations: { past: "sāʿada", present: "yusāʿidu", imperative: "sāʿid", place_or_mim_masdar: "musāʿadah", active_participle: "musāʿid", passive_participle: "musāʿad" }, formMeanings: { past: "he helped", present: "he helps", imperative: "help!", place: "help, assistance (verbal noun)", active: "helper, assistant", passive: "helped, assisted" }, rootNote: "Form III verb.", measure: "III" }, { includeQuranicMetadata: false }),
+  draft({ root: "رأي", meaningEn: "seeing", past: "رَأَى", present: "يَرَى", imperative: "رَ", place: "رُؤْيَة", active: "رَاءٍ", passive: "مَرْئِيّ", transliterationBase: "ra'ā", transliterations: { past: "ra'ā", present: "yarā", imperative: "ra", place_or_mim_masdar: "ru'yah", active_participle: "rā'in", passive_participle: "mar'iyy" }, formMeanings: { past: "he saw", present: "he sees", imperative: "see! (rare, uncommon for learners)", place: "vision, sight", active: "one who sees (rare, classical)", passive: "visible, visual" }, rootNote: "Form I verb, doubly irregular root (medial hamza, final weak); imperative رَ is grammatically valid but uncommon for learners, per the source vocabulary list.", measure: "I" }, { includeQuranicMetadata: false }),
+  // Book 2 CSV expansion batch 1: Book 2 Part 1 Chapter One. Past/present/imperative/masdar
+  // are from the CSV; place/active/passive fields are conservative AI-draft generated forms.
+  draft({ root: "علج", meaningEn: "treating, curing", past: "عَالَجَ", present: "يُعَالِجُ", imperative: "عَالِجْ", place: "مُعَالَجَة", active: "مُعَالِج", passive: "مُعَالَج", transliterationBase: "ʿālaja", transliterations: { past: "ʿālaja", present: "yuʿāliju", imperative: "ʿālij", place_or_mim_masdar: "muʿālajah", active_participle: "muʿālij", passive_participle: "muʿālaj" }, formMeanings: { past: "he treated", present: "he treats", imperative: "treat!", place: "treatment (verbal noun)", active: "one who treats", passive: "treated" }, rootNote: "Book 2 CSV row: To treat, cure. Form III verb; the fourth slot reuses the CSV masdar because there is no distinct common place noun for this pattern.", measure: "III" }, { includeQuranicMetadata: false }),
+  draft({ root: "شكو", meaningEn: "complaining, suffering from", past: "اِشْتَكَى", present: "يَشْتَكِي", imperative: "اِشْتَكِ", place: "اِشْتِكَاء", active: "مُشْتَكٍ", passive: "مُشْتَكًى", transliterationBase: "ishtakā", transliterations: { past: "ishtakā", present: "yashtakī", imperative: "ishtaki", place_or_mim_masdar: "ishtikā'", active_participle: "mushtakin", passive_participle: "mushtakan" }, formMeanings: { past: "he complained", present: "he complains", imperative: "complain!", place: "complaint (verbal noun)", active: "complaining", passive: "complained of (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To complain, suffer from. Form VIII defective verb; passive participle is context-dependent.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "أمر", meaningEn: "commanding", past: "أَمَرَ", present: "يَأْمُرُ", imperative: "مُرْ", place: "مَأْمَر", active: "آمِر", passive: "مَأْمُور", transliterationBase: "amara", transliterations: { past: "amara", present: "ya'muru", imperative: "mur", place_or_mim_masdar: "ma'mar", active_participle: "āmir", passive_participle: "ma'mūr" }, formMeanings: { past: "he commanded", present: "he commands", imperative: "command!", place: "a command point or place (pattern-based)", active: "commander, one commanding", passive: "commanded, ordered" }, rootNote: "Book 2 CSV note: with بِـ. Form I hamzated verb; imperative is shortened to مُرْ.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "سقي", meaningEn: "giving drink, watering", past: "سَقَى", present: "يَسْقِي", imperative: "اِسْقِ", place: "مَسْقًى", active: "سَاقٍ", passive: "مَسْقِيّ", transliterationBase: "saqā", transliterations: { past: "saqā", present: "yasqī", imperative: "isqi", place_or_mim_masdar: "masqan", active_participle: "sāqin", passive_participle: "masqiyy" }, formMeanings: { past: "he gave drink", present: "he gives drink", imperative: "give drink!", place: "a watering place", active: "one who gives drink", passive: "watered, given drink" } }, { includeQuranicMetadata: false }),
+  draft({ root: "فكر", meaningEn: "thinking", past: "فَكَّرَ", present: "يُفَكِّرُ", imperative: "فَكِّرْ", place: "تَفْكِير", active: "مُفَكِّر", passive: "مُفَكَّر", transliterationBase: "fakkara", transliterations: { past: "fakkara", present: "yufakkiru", imperative: "fakkir", place_or_mim_masdar: "tafkir", active_participle: "mufakkir", passive_participle: "mufakkar" }, formMeanings: { past: "he thought", present: "he thinks", imperative: "think!", place: "thinking (verbal noun)", active: "thinker", passive: "thought about (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To think. Form II verb; the fourth slot reuses the CSV masdar.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "شبه", meaningEn: "resembling", past: "تَشَابَهَ", present: "يَتَشَابَهُ", imperative: "تَشَابَهْ", place: "تَشَابُه", active: "مُتَشَابِه", passive: "مُتَشَابَه", transliterationBase: "tashābaha", transliterations: { past: "tashābaha", present: "yatashābahu", imperative: "tashābah", place_or_mim_masdar: "tashābuh", active_participle: "mutashābih", passive_participle: "mutashābah" }, formMeanings: { past: "he resembled", present: "he resembles", imperative: "resemble!", place: "resemblance (verbal noun)", active: "similar, resembling", passive: "made similar (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To resemble. Form VI reciprocal/stative verb; passive participle is rarely useful standalone.", measure: "VI" }, { includeQuranicMetadata: false }),
+  draft({ root: "خلف", meaningEn: "differing", past: "اِخْتَلَفَ", present: "يَخْتَلِفُ", imperative: "اِخْتَلِفْ", place: "اِخْتِلَاف", active: "مُخْتَلِف", passive: "مُخْتَلَف", transliterationBase: "ikhtalafa", transliterations: { past: "ikhtalafa", present: "yakhtalifu", imperative: "ikhtalif", place_or_mim_masdar: "ikhtilāf", active_participle: "mukhtalif", passive_participle: "mukhtalaf" }, formMeanings: { past: "he differed", present: "he differs", imperative: "differ!", place: "difference, disagreement", active: "different, differing", passive: "disagreed over" }, rootNote: "Book 2 CSV row: To differ. Form VIII verb; the fourth slot reuses the CSV masdar.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "زيد", meaningEn: "increasing", past: "زَادَ", present: "يَزِيدُ", imperative: "زِدْ", place: "مَزِيد", active: "زَائِد", passive: "مَزِيد", transliterationBase: "zāda", transliterations: { past: "zāda", present: "yazīdu", imperative: "zid", place_or_mim_masdar: "mazīd", active_participle: "zā'id", passive_participle: "mazīd" }, formMeanings: { past: "he increased", present: "he increases", imperative: "increase!", place: "increase, addition", active: "extra, increasing", passive: "increased, added" }, rootNote: "Book 2 CSV row: To increase. Form I hollow verb; مَزِيد is lexicalized as increase/addition as well as a passive participle.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "نجح", meaningEn: "succeeding, passing", past: "نَجَحَ", present: "يَنْجَحُ", imperative: "اِنْجَحْ", place: "مَنْجَح", active: "نَاجِح", passive: "مَنْجُوح", transliterationBase: "najaḥa", transliterations: { past: "najaḥa", present: "yanjaḥu", imperative: "injaḥ", place_or_mim_masdar: "manjaḥ", active_participle: "nājiḥ", passive_participle: "manjūḥ" }, formMeanings: { past: "he succeeded", present: "he succeeds", imperative: "succeed!", place: "a place or point of success (pattern-based)", active: "successful", passive: "succeeded in (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To pass, be successful. Intransitive; passive participle and place noun are pattern-based and should be reviewed.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "مرس", meaningEn: "practising, exercising", past: "مَارَسَ", present: "يُمَارِسُ", imperative: "مَارِسْ", place: "مُمَارَسَة", active: "مُمَارِس", passive: "مُمَارَس", transliterationBase: "mārasa", transliterations: { past: "mārasa", present: "yumārisu", imperative: "māris", place_or_mim_masdar: "mumārasah", active_participle: "mumāris", passive_participle: "mumāras" }, formMeanings: { past: "he practised", present: "he practises", imperative: "practise!", place: "practice (verbal noun)", active: "practising, practitioner", passive: "practised" }, rootNote: "Book 2 CSV row: To exercise, practice. Form III verb; the fourth slot reuses the CSV masdar.", measure: "III" }, { includeQuranicMetadata: false }),
+  draft({ root: "نقص", meaningEn: "decreasing, lacking", past: "نَقَصَ", present: "يَنْقُصُ", imperative: "اُنْقُصْ", place: "مَنْقَص", active: "نَاقِص", passive: "مَنْقُوص", transliterationBase: "naqasa", transliterations: { past: "naqasa", present: "yanquṣu", imperative: "unquṣ", place_or_mim_masdar: "manqaṣ", active_participle: "nāqiṣ", passive_participle: "manqūṣ" }, formMeanings: { past: "it decreased", present: "it decreases", imperative: "decrease!", place: "a point of deficiency", active: "deficient, incomplete", passive: "reduced, deficient" } }, { includeQuranicMetadata: false }),
+  draft({ root: "نول", meaningEn: "taking, consuming", past: "تَنَاوَلَ", present: "يَتَنَاوَلُ", imperative: "تَنَاوَلْ", place: "تَنَاوُل", active: "مُتَنَاوِل", passive: "مُتَنَاوَل", transliterationBase: "tanāwala", transliterations: { past: "tanāwala", present: "yatanāwalu", imperative: "tanāwal", place_or_mim_masdar: "tanāwul", active_participle: "mutanāwil", passive_participle: "mutanāwal" }, formMeanings: { past: "he took, consumed", present: "he takes, consumes", imperative: "take, consume!", place: "taking, consumption (verbal noun)", active: "one taking or consuming", passive: "taken, consumed" }, rootNote: "Book 2 CSV row: To consume. Form VI verb; the fourth slot reuses the CSV masdar.", measure: "VI" }, { includeQuranicMetadata: false }),
+  draft({ root: "حدث", meaningEn: "happening, occurring", past: "حَدَثَ", present: "يَحْدُثُ", imperative: "اُحْدُثْ", place: "مَحْدَث", active: "حَادِث", passive: "مَحْدُوث", transliterationBase: "ḥadatha", transliterations: { past: "ḥadatha", present: "yaḥduthu", imperative: "uḥduth", place_or_mim_masdar: "maḥdath", active_participle: "ḥādith", passive_participle: "maḥdūth" }, formMeanings: { past: "it happened", present: "it happens", imperative: "happen! (rare)", place: "place or time of occurrence (pattern-based)", active: "happening, new", passive: "newly made; caused (rare)" }, rootNote: "Book 2 CSV row: To happen. Intransitive/stative in this meaning, so command and passive forms are awkward and context-dependent.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "عقد", meaningEn: "believing", past: "اِعْتَقَدَ", present: "يَعْتَقِدُ", imperative: "اِعْتَقِدْ", place: "اِعْتِقَاد", active: "مُعْتَقِد", passive: "مُعْتَقَد", transliterationBase: "iʿtaqada", transliterations: { past: "iʿtaqada", present: "yaʿtaqidu", imperative: "iʿtaqid", place_or_mim_masdar: "iʿtiqād", active_participle: "muʿtaqid", passive_participle: "muʿtaqad" }, formMeanings: { past: "he believed", present: "he believes", imperative: "believe!", place: "belief (verbal noun)", active: "believer, one holding a belief", passive: "believed, a belief" }, rootNote: "Book 2 CSV row: To believe. Form VIII verb; the fourth slot reuses the CSV masdar.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "تبع", meaningEn: "following", past: "اِتَّبَعَ", present: "يَتَّبِعُ", imperative: "اِتَّبِعْ", place: "اِتِّبَاع", active: "مُتَّبِع", passive: "مُتَّبَع", transliterationBase: "ittabaʿa", transliterations: { past: "ittabaʿa", present: "yattabiʿu", imperative: "ittabiʿ", place_or_mim_masdar: "ittibāʿ", active_participle: "muttabiʿ", passive_participle: "muttabaʿ" }, formMeanings: { past: "he followed", present: "he follows", imperative: "follow!", place: "following (verbal noun)", active: "follower", passive: "followed" }, rootNote: "Book 2 CSV row: To follow. Form VIII verb with assimilation of ت to تّ; the fourth slot reuses the CSV masdar.", measure: "VIII" }, { includeQuranicMetadata: false }),
+  draft({ root: "كفي", meaningEn: "sufficing, being enough", past: "كَفَى", present: "يَكْفِي", imperative: "اِكْفِ", place: "كِفَايَة", active: "كَافٍ", passive: "مَكْفِيّ", transliterationBase: "kafā", transliterations: { past: "kafā", present: "yakfī", imperative: "ikfi", place_or_mim_masdar: "kifāyah", active_participle: "kāfin", passive_participle: "makfiyy" }, formMeanings: { past: "it was enough", present: "it is enough", imperative: "be enough!", place: "sufficiency (verbal noun)", active: "sufficient", passive: "sufficed (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To suffice, be enough. Intransitive/stative; passive participle is pattern-based and rare.", measure: "I" }, { includeQuranicMetadata: false }),
+  draft({ root: "قدم", meaningEn: "progressing, advancing", past: "تَقَدَّمَ", present: "يَتَقَدَّمُ", imperative: "تَقَدَّمْ", place: "تَقَدُّم", active: "مُتَقَدِّم", passive: "مُتَقَدَّم", transliterationBase: "taqaddama", transliterations: { past: "taqaddama", present: "yataqaddamu", imperative: "taqaddam", place_or_mim_masdar: "taqaddum", active_participle: "mutaqaddim", passive_participle: "mutaqaddam" }, formMeanings: { past: "he progressed", present: "he progresses", imperative: "advance!", place: "progress, advancement", active: "advanced, progressing", passive: "advanced, put forward" }, rootNote: "Book 2 CSV row: To progress, improve, advance. Form V verb; the fourth slot reuses the CSV masdar.", measure: "V" }, { includeQuranicMetadata: false }),
+  draft({ root: "ضغط", meaningEn: "pressing, pressurising", past: "ضَغَطَ", present: "يَضْغَطُ", imperative: "اِضْغَطْ", place: "مَضْغَط", active: "ضَاغِط", passive: "مَضْغُوط", transliterationBase: "ḍaghaṭa", transliterations: { past: "ḍaghaṭa", present: "yaḍghaṭu", imperative: "iḍghaṭ", place_or_mim_masdar: "maḍghaṭ", active_participle: "ḍāghiṭ", passive_participle: "maḍghūṭ" }, formMeanings: { past: "he pressed", present: "he presses", imperative: "press!", place: "a pressure point or press (pattern-based)", active: "pressing", passive: "pressed, stressed" } }, { includeQuranicMetadata: false }),
+  draft({ root: "حذر", meaningEn: "warning", past: "حَذَّرَ", present: "يُحَذِّرُ", imperative: "حَذِّرْ", place: "تَحْذِير", active: "مُحَذِّر", passive: "مُحَذَّر", transliterationBase: "ḥadhdhara", transliterations: { past: "ḥadhdhara", present: "yuḥadhdhiru", imperative: "ḥadhdhir", place_or_mim_masdar: "taḥdhīr", active_participle: "muḥadhdhir", passive_participle: "muḥadhdhar" }, formMeanings: { past: "he warned", present: "he warns", imperative: "warn!", place: "warning (verbal noun)", active: "one warning", passive: "warned" }, rootNote: "Book 2 CSV note: with مِنْ. Form II verb; the fourth slot reuses the CSV masdar.", measure: "II" }, { includeQuranicMetadata: false }),
+  draft({ root: "سرف", meaningEn: "wasting, being excessive", past: "أَسْرَفَ", present: "يُسْرِفُ", imperative: "أَسْرِفْ", place: "إِسْرَاف", active: "مُسْرِف", passive: "مُسْرَف", transliterationBase: "asrafa", transliterations: { past: "asrafa", present: "yusrifu", imperative: "asrif", place_or_mim_masdar: "isrāf", active_participle: "musrif", passive_participle: "musraf" }, formMeanings: { past: "he wasted, was excessive", present: "he wastes, is excessive", imperative: "be excessive! (usually negative)", place: "wastefulness, excess", active: "wasteful, excessive", passive: "wasted excessively (rare, pattern-based)" }, rootNote: "Book 2 CSV row: To waste. Form IV verb; imperative is grammatically valid but usually appears in prohibitions such as لا تُسْرِفْ.", measure: "IV" }, { includeQuranicMetadata: false }),
 ];
 
 /**
@@ -548,12 +1836,13 @@ const aiDraftRoots: RootEntry[] = [
  *
  * Spelling rule: Form-I imperatives use hamzat waṣl (اِ / اُ), never hamzat qaṭʿ (أ / إ).
  */
-export const roots: RootEntry[] = [
+const baseRoots: RootEntry[] = [
   {
     root: "سمع",
     displayRoot: "س م ع",
     meaningEn: "hearing, listening",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -624,6 +1913,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ك ت ب",
     meaningEn: "writing",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -694,6 +1984,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ف ت ح",
     meaningEn: "opening",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -766,6 +2057,7 @@ export const roots: RootEntry[] = [
     displayRoot: "ع ل م",
     meaningEn: "knowing",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -836,6 +2128,7 @@ export const roots: RootEntry[] = [
     displayRoot: "د خ ل",
     meaningEn: "entering",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -908,6 +2201,7 @@ export const roots: RootEntry[] = [
     displayRoot: "خ ر ج",
     meaningEn: "exiting, going out",
     status: "reviewed",
+    measure: "I",
     quranic: true,
     updatedAt: "2026-07-03",
     forms: [
@@ -977,3 +2271,11 @@ export const roots: RootEntry[] = [
   },
   ...aiDraftRoots,
 ];
+
+const importedArabicVerbBuild = attachImportedArabicVerbRows(
+  baseRoots,
+  parseImportedArabicVerbCsv(sarfmateArabicVerbsCsv),
+);
+
+export const roots: RootEntry[] = importedArabicVerbBuild.roots;
+export const importedArabicVerbReport = importedArabicVerbBuild.report;

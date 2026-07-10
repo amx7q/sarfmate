@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { RootEntry } from "@/lib/types";
-import { normaliseArabicInput } from "@/lib/arabic";
-import { getQuranRootIndex } from "@/lib/quranRoots";
+import type { QuranRootIndexEntry, RootEntry, RootVerbEntry } from "@/lib/types";
+import { matchesRootTransliteration, normaliseArabicInput } from "@/lib/arabic";
 import StatusBadge from "@/components/StatusBadge";
+import SuggestRootDialog from "@/components/SuggestRootDialog";
 
 type BrowseFilter =
   | "all"
@@ -34,11 +34,32 @@ type BrowseItem =
       source: string;
     };
 
-export default function BrowseRoots({ roots }: { roots: RootEntry[] }) {
+function getRootVerbEntries(entry: RootEntry): RootVerbEntry[] {
+  return [
+    {
+      id: `${entry.root}-main`,
+      meaningEn: entry.meaningEn,
+      status: entry.status,
+      measure: entry.measure,
+      forms: entry.forms,
+      updatedAt: entry.updatedAt,
+    },
+    ...(entry.variants ?? []),
+  ];
+}
+
+export default function BrowseRoots({
+  roots,
+  quranRoots,
+}: {
+  roots: RootEntry[];
+  quranRoots: QuranRootIndexEntry[];
+}) {
   const [filter, setFilter] = useState("");
   const [activeFilter, setActiveFilter] = useState<BrowseFilter>("all");
+  const [suggestedRoot, setSuggestedRoot] = useState<string | null>(null);
   const fullKeys = new Set(roots.map((entry) => normaliseArabicInput(entry.root)));
-  const indexedOnlyItems: BrowseItem[] = getQuranRootIndex()
+  const indexedOnlyItems: BrowseItem[] = quranRoots
     .filter((entry) => !fullKeys.has(normaliseArabicInput(entry.root)))
     .map((entry) => ({
       kind: "indexed",
@@ -59,14 +80,27 @@ export default function BrowseRoots({ roots }: { roots: RootEntry[] }) {
     if (activeFilter === "full" && item.kind !== "full") return false;
     if (activeFilter === "indexed" && item.kind !== "indexed") return false;
     if (activeFilter === "reviewed" && (item.kind !== "full" || item.entry.status !== "reviewed")) return false;
-    if (activeFilter === "ai_draft" && (item.kind !== "full" || item.entry.status !== "ai_draft")) return false;
+    if (
+      activeFilter === "ai_draft" &&
+      (item.kind !== "full" ||
+        !getRootVerbEntries(item.entry).some((verbEntry) => verbEntry.status === "ai_draft"))
+    ) {
+      return false;
+    }
     if (!filter.trim()) return true;
     const root = item.kind === "full" ? item.entry.root : item.root;
-    const meaning = item.kind === "full" ? item.entry.meaningEn : item.meaningEn;
+    const searchableText =
+      item.kind === "full"
+        ? getRootVerbEntries(item.entry).flatMap((verbEntry) => [
+            verbEntry.meaningEn,
+            ...verbEntry.forms.flatMap((form) => [form.meaningEn, form.transliteration]),
+          ])
+        : [item.meaningEn];
     return (
       (normalisedFilter &&
         normaliseArabicInput(root).includes(normalisedFilter)) ||
-      meaning.toLowerCase().includes(englishFilter)
+      matchesRootTransliteration(root, englishFilter) ||
+      searchableText.some((value) => value.toLowerCase().includes(englishFilter))
     );
   });
 
@@ -112,27 +146,37 @@ export default function BrowseRoots({ roots }: { roots: RootEntry[] }) {
         {filtered.map((item) => (
           <li key={`${item.kind}-${item.root}`}>
             {item.kind === "full" ? (
-              <Link
-                href={`/root/${encodeURIComponent(item.entry.root)}`}
-                className="flex h-full flex-col rounded-2xl border border-border-soft bg-surface p-5 shadow-sm transition-colors hover:border-secondary"
-              >
-                <span
-                  dir="rtl"
-                  lang="ar"
-                  className="font-arabic text-3xl font-medium text-primary"
-                >
-                  {item.entry.displayRoot}
-                </span>
-                <span className="mt-2 text-sm text-muted">{item.entry.meaningEn}</span>
-                <span className="mt-4 flex flex-wrap gap-2">
-                  {item.entry.quranic && (
-                    <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-ink">
-                      Quranic root
+              (() => {
+                const verbEntryCount = getRootVerbEntries(item.entry).length;
+                return (
+                  <Link
+                    href={`/root/${encodeURIComponent(item.entry.root)}`}
+                    className="flex h-full flex-col rounded-2xl border border-border-soft bg-surface p-5 shadow-sm transition-colors hover:border-secondary"
+                  >
+                    <span
+                      dir="rtl"
+                      lang="ar"
+                      className="font-arabic text-3xl font-medium text-primary"
+                    >
+                      {item.entry.displayRoot}
                     </span>
-                  )}
-                  <StatusBadge status={item.entry.status} />
-                </span>
-              </Link>
+                    <span className="mt-2 text-sm text-muted">{item.entry.meaningEn}</span>
+                    {verbEntryCount > 1 && (
+                      <span className="mt-2 text-xs font-medium text-accent">
+                        {verbEntryCount} verb entries
+                      </span>
+                    )}
+                    <span className="mt-4 flex flex-wrap gap-2">
+                      {item.entry.quranic && (
+                        <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-medium text-ink">
+                          Quranic root
+                        </span>
+                      )}
+                      <StatusBadge status={item.entry.status} />
+                    </span>
+                  </Link>
+                );
+              })()
             ) : (
               <div className="flex h-full flex-col rounded-2xl border border-accent/30 bg-surface p-5 shadow-sm">
                 <span
@@ -149,6 +193,7 @@ export default function BrowseRoots({ roots }: { roots: RootEntry[] }) {
                 </p>
                 <button
                   type="button"
+                  onClick={() => setSuggestedRoot(item.root)}
                   className="mt-4 self-start rounded-full border border-secondary/30 bg-secondary/10 px-3 py-1.5 text-xs font-semibold text-primary"
                 >
                   Help add this root
@@ -165,6 +210,12 @@ export default function BrowseRoots({ roots }: { roots: RootEntry[] }) {
           root from the home page.
         </p>
       )}
+
+      <SuggestRootDialog
+        open={suggestedRoot !== null}
+        onClose={() => setSuggestedRoot(null)}
+        prefillRoot={suggestedRoot ?? ""}
+      />
     </div>
   );
 }

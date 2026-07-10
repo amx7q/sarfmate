@@ -86,8 +86,24 @@ export async function saveSubmission(
 ): Promise<SaveSubmissionResult> {
   const submission = submissionsStore.add(input);
   if (!isRemoteSubmissionsEnabled()) {
-    return { submission, remote: "disabled" };
+    submissionsStore.updateDelivery(submission.id, "disabled");
+    return { submission: { ...submission, deliveryStatus: "disabled" }, remote: "disabled" };
   }
   const result = await sendSubmissionToSupabase(submission);
-  return { submission, remote: result.ok ? "sent" : "failed" };
+  const remote = result.ok ? "sent" : "failed";
+  submissionsStore.updateDelivery(submission.id, remote);
+  return { submission: { ...submission, deliveryStatus: remote }, remote };
+}
+
+/** Retries remote delivery for a submission already saved on this device. */
+export async function retrySubmission(submission: Submission): Promise<RemoteResult> {
+  if (!isRemoteSubmissionsEnabled()) {
+    submissionsStore.updateDelivery(submission.id, "disabled");
+    return "disabled";
+  }
+  submissionsStore.updateDelivery(submission.id, "pending");
+  const result = await sendSubmissionToSupabase(submission);
+  const remote = result.ok ? "sent" : "failed";
+  submissionsStore.updateDelivery(submission.id, remote);
+  return remote;
 }

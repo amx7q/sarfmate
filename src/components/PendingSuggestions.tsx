@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   submissionsStore,
   subscribeToSubmissions,
@@ -8,10 +8,12 @@ import {
   submissionToJson,
   submissionMailtoHref,
 } from "@/lib/submissionsStore";
+import { retrySubmission } from "@/lib/submissionsRemote";
 import CopyButton from "@/components/CopyButton";
 
 /** Lists locally saved submissions, kept in sync with the store. */
 export default function PendingSuggestions() {
+  const [retryingId, setRetryingId] = useState<string | null>(null);
   const submissions = useSyncExternalStore(
     subscribeToSubmissions,
     submissionsStore.getAll,
@@ -20,11 +22,21 @@ export default function PendingSuggestions() {
 
   if (submissions.length === 0) return null;
 
+  const awaitingDelivery = submissions.filter(
+    (submission) => submission.deliveryStatus !== "sent",
+  ).length;
+
+  async function handleRetry(submission: (typeof submissions)[number]) {
+    setRetryingId(submission.id);
+    await retrySubmission(submission);
+    setRetryingId(null);
+  }
+
   return (
     <div className="mt-6 rounded-2xl border border-border-soft bg-surface p-5">
       <div className="flex items-center justify-between gap-4">
         <h3 className="text-sm font-semibold text-primary">
-          Your pending suggestions ({submissions.length})
+          Your saved submissions ({submissions.length})
         </h3>
         <button
           type="button"
@@ -49,7 +61,32 @@ export default function PendingSuggestions() {
             <span className="text-xs text-muted">
               {new Date(submission.createdAt).toLocaleDateString()}
             </span>
+            <span
+              className={`rounded-full px-2 py-1 text-xs font-semibold ${
+                submission.deliveryStatus === "sent"
+                  ? "bg-secondary/10 text-primary"
+                  : submission.deliveryStatus === "pending"
+                    ? "bg-accent/10 text-ink"
+                    : "bg-background text-muted"
+              }`}
+            >
+              {submission.deliveryStatus === "sent"
+                ? "Sent"
+                : submission.deliveryStatus === "pending"
+                  ? "Sending…"
+                  : "Needs sending"}
+            </span>
             <span className="ms-auto flex items-center gap-1">
+              {submission.deliveryStatus !== "sent" && (
+                <button
+                  type="button"
+                  disabled={retryingId === submission.id}
+                  onClick={() => handleRetry(submission)}
+                  className="rounded-lg px-2 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/5 disabled:cursor-wait disabled:opacity-60"
+                >
+                  {retryingId === submission.id ? "Sending…" : "Retry"}
+                </button>
+              )}
               <CopyButton
                 text={submissionToJson(submission)}
                 ariaLabel={`Copy JSON for ${submission.root} submission`}
@@ -74,8 +111,9 @@ export default function PendingSuggestions() {
         ))}
       </ul>
       <p className="mt-3 text-xs text-muted">
-        Suggestions are stored on this device. Copy the JSON or email it to
-        share with the SarfMate team.
+        {awaitingDelivery === 0
+          ? "All saved submissions have been sent. Copies remain on this device until you remove them."
+          : `${awaitingDelivery} saved ${awaitingDelivery === 1 ? "submission still needs" : "submissions still need"} to be sent. You can retry, copy the JSON, or use email.`}
       </p>
     </div>
   );

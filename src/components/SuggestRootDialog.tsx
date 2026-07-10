@@ -63,6 +63,7 @@ export default function SuggestRootDialog({
               dir="rtl"
               lang="ar"
               required
+              maxLength={40}
               defaultValue={prefillRoot}
               placeholder="مثال: قرأ"
               className={`${inputClass} font-arabic text-lg`}
@@ -76,6 +77,7 @@ export default function SuggestRootDialog({
               id="suggest-suggestion"
               name="suggestion"
               required
+              maxLength={2000}
               rows={3}
               placeholder="e.g. reading, reciting — past قَرَأَ, present يَقْرَأُ …"
               className={inputClass}
@@ -89,6 +91,7 @@ export default function SuggestRootDialog({
               id="suggest-explanation"
               name="explanation"
               rows={2}
+              maxLength={2000}
               className={inputClass}
             />
           </div>
@@ -97,13 +100,13 @@ export default function SuggestRootDialog({
               <label htmlFor="suggest-name" className="mb-1 block text-sm font-medium text-ink">
                 Your name (optional)
               </label>
-              <input id="suggest-name" name="name" className={inputClass} />
+              <input id="suggest-name" name="name" maxLength={200} className={inputClass} />
             </div>
             <div>
               <label htmlFor="suggest-email" className="mb-1 block text-sm font-medium text-ink">
                 Email (optional)
               </label>
-              <input id="suggest-email" name="email" type="email" className={inputClass} />
+              <input id="suggest-email" name="email" type="email" maxLength={320} className={inputClass} />
             </div>
           </div>
           <p className="text-xs text-muted">

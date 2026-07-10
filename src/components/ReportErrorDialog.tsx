@@ -94,6 +94,7 @@ export default function ReportErrorDialog({
               id="report-current"
               name="currentValue"
               defaultValue={currentValue ?? ""}
+              maxLength={500}
               className={`${inputClass} font-arabic`}
               dir="auto"
             />
@@ -106,6 +107,7 @@ export default function ReportErrorDialog({
               id="report-correction"
               name="correction"
               required
+              maxLength={2000}
               rows={2}
               className={inputClass}
               dir="auto"
@@ -115,20 +117,20 @@ export default function ReportErrorDialog({
             <label htmlFor="report-explanation" className="mb-1 block text-sm font-medium text-ink">
               Explanation or source (optional)
             </label>
-            <textarea id="report-explanation" name="explanation" rows={2} className={inputClass} />
+            <textarea id="report-explanation" name="explanation" rows={2} maxLength={2000} className={inputClass} />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor="report-name" className="mb-1 block text-sm font-medium text-ink">
                 Your name (optional)
               </label>
-              <input id="report-name" name="name" className={inputClass} />
+              <input id="report-name" name="name" maxLength={200} className={inputClass} />
             </div>
             <div>
               <label htmlFor="report-email" className="mb-1 block text-sm font-medium text-ink">
                 Email (optional)
               </label>
-              <input id="report-email" name="email" type="email" className={inputClass} />
+              <input id="report-email" name="email" type="email" maxLength={320} className={inputClass} />
             </div>
           </div>
           <p className="text-xs text-muted">

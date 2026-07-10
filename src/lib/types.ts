@@ -1,6 +1,9 @@
 export type RootStatus = "reviewed" | "community_suggested" | "ai_draft";
 export type QuranRootStatus = "indexed_only" | "ai_draft" | "reviewed";
 
+/** Classical Arabic verb measure (وزن) that this entry's forms conjugate. */
+export type VerbMeasure = "I" | "II" | "III" | "IV" | "V" | "VI" | "VII" | "VIII" | "IX" | "X";
+
 export type SarfFormKey =
   | "past"
   | "present"
@@ -22,13 +25,42 @@ export type SarfForm = {
   notes?: string;
 };
 
+export type ImportedVerbSource = {
+  chapter: string;
+  sourcePage: string;
+  verifiedFields: readonly [
+    "meaning_en",
+    "past_3ms",
+    "present_3ms",
+    "imperative_2ms",
+    "masdar",
+  ];
+  csvNotes?: string;
+};
+
+export type RootVerbEntry = {
+  id: string;
+  meaningEn: string;
+  status: RootStatus;
+  /** Verb measure (وزن) that this entry's six forms conjugate, e.g. "I" or "VIII". */
+  measure: VerbMeasure;
+  forms: SarfForm[];
+  notes?: string;
+  source?: ImportedVerbSource;
+  updatedAt: string;
+};
+
 export type RootEntry = {
   root: string;
   displayRoot: string;
   meaningEn: string;
   status: RootStatus;
+  /** Verb measure (وزن) that this entry's six forms conjugate, e.g. "I" or "VIII". */
+  measure: VerbMeasure;
   forms: SarfForm[];
+  variants?: RootVerbEntry[];
   notes?: string;
+  source?: ImportedVerbSource;
   quranic?: boolean;
   quranOccurrenceCount?: number;
   firstQuranOccurrence?: {
@@ -68,6 +100,8 @@ export type Submission = {
   contributorEmail?: string;
   createdAt: string;
   status: "pending";
+  deliveryStatus?: "pending" | "sent" | "failed" | "disabled";
+  deliveredAt?: string;
 };
 
 /** The fixed learner-friendly order of the six core forms. */

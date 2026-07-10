@@ -12,6 +12,7 @@ export type NewSubmission = Omit<Submission, "id" | "createdAt" | "status">;
 export interface SubmissionsStore {
   add(input: NewSubmission): Submission;
   getAll(): Submission[];
+  updateDelivery(id: string, deliveryStatus: NonNullable<Submission["deliveryStatus"]>): void;
   remove(id: string): void;
   clear(): void;
 }
@@ -65,11 +66,25 @@ export const submissionsStore: SubmissionsStore = {
           : `${Date.now()}-${Math.random().toString(36).slice(2)}`,
       createdAt: new Date().toISOString(),
       status: "pending",
+      deliveryStatus: "pending",
     };
     writeAll([submission, ...readAll()]);
     return submission;
   },
   getAll: readAll,
+  updateDelivery(id, deliveryStatus) {
+    writeAll(
+      readAll().map((submission) =>
+        submission.id === id
+          ? {
+              ...submission,
+              deliveryStatus,
+              ...(deliveryStatus === "sent" ? { deliveredAt: new Date().toISOString() } : {}),
+            }
+          : submission,
+      ),
+    );
+  },
   remove(id) {
     writeAll(readAll().filter((s) => s.id !== id));
   },
