@@ -54,7 +54,7 @@ function searchRoot(roots: RootEntry[], query: string): RootEntry | undefined {
           verbEntry.meaningEn.toLowerCase().includes(q) ||
           verbEntry.forms.some(
             (form) =>
-              form.meaningEn.toLowerCase().includes(q) ||
+              form.meaningEn?.toLowerCase().includes(q) ||
               form.arabic.includes(query.trim()),
           ),
       ),
@@ -137,34 +137,47 @@ export default function HomeSearch({
   }
 
   return (
-    <section aria-label="Root search" id="search">
-      <RootSearch
-        value={input}
-        onChange={setInput}
-        onSubmit={() => search(input)}
-      />
+    <section aria-labelledby="root-search-heading" id="search">
+      <div className="mx-auto max-w-2xl">
+        <div className="mb-4 flex flex-col items-center justify-between gap-2 text-center sm:flex-row sm:text-left">
+          <div>
+            <h2 id="root-search-heading" className="text-xl font-semibold text-primary">
+              Find a root
+            </h2>
+            <p className="mt-1 text-sm text-muted">Search in Arabic, transliteration, or English.</p>
+          </div>
+          <a href="/browse" className="text-sm font-semibold text-secondary hover:text-primary">
+            Browse all roots →
+          </a>
+        </div>
+        <RootSearch
+          value={input}
+          onChange={setInput}
+          onSubmit={() => search(input)}
+        />
 
-      <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
-        <span className="text-sm text-muted">Try a root:</span>
-        {EXAMPLE_ROOTS.map((root) => (
-          <button
-            key={root}
-            type="button"
-            onClick={() => search(root)}
-            className={`rounded-full border px-4 py-1.5 font-arabic text-lg transition-colors ${
-              result?.kind === "full_entry" && result.entry.root === root
-                ? "border-secondary bg-secondary/10 text-primary"
-                : "border-border-soft bg-surface text-ink hover:border-secondary hover:text-primary"
-            }`}
-            dir="rtl"
-            lang="ar"
-          >
-            {root}
-          </button>
-        ))}
+        <div className="mt-4 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
+          <span className="text-sm text-muted">Try:</span>
+          {EXAMPLE_ROOTS.map((root) => (
+            <button
+              key={root}
+              type="button"
+              onClick={() => search(root)}
+              className={`rounded-full border px-3.5 py-1 font-arabic text-lg transition-[color,background-color,border-color,transform] duration-200 ${
+                result?.kind === "full_entry" && result.entry.root === root
+                  ? "border-secondary bg-secondary/10 text-primary"
+                  : "border-border-soft bg-surface text-ink hover:border-secondary hover:text-primary"
+              }`}
+              dir="rtl"
+              lang="ar"
+            >
+              {root}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div aria-live="polite" className="mt-10">
+      <div aria-live="polite" className="mt-12">
         <AnimatePresence mode="wait">
           {result?.kind === "full_entry" ? (
             <RootResult key={result.entry.root} entry={result.entry} />

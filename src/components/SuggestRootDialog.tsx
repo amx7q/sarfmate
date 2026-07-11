@@ -73,7 +73,7 @@ export default function SuggestRootDialog({
           </div>
           <div>
             <label htmlFor="suggest-root" className="mb-1 block text-sm font-medium text-ink">
-              Arabic root <span className="text-accent">*</span>
+              Arabic root <span className="text-danger">*</span>
             </label>
             <input
               id="suggest-root"
@@ -89,7 +89,7 @@ export default function SuggestRootDialog({
           </div>
           <div>
             <label htmlFor="suggest-suggestion" className="mb-1 block text-sm font-medium text-ink">
-              English meaning or suggested forms <span className="text-accent">*</span>
+              English meaning or suggested forms <span className="text-danger">*</span>
             </label>
             <textarea
               id="suggest-suggestion"

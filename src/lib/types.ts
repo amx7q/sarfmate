@@ -19,9 +19,10 @@ export type SarfForm = {
   transliteration: string;
   labelAr: string;
   labelEn: string;
-  meaningEn: string;
-  exampleAr: string;
-  exampleEn: string;
+  meaningEn?: string;
+  exampleAr?: string;
+  exampleEn?: string;
+  reviewState?: "reviewed" | "source_backed" | "pending";
   notes?: string;
 };
 

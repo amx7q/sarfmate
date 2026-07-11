@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { importedArabicVerbReport } from "@/data/roots";
+import { importedArabicVerbReport, importedPlaceholderCleanupAudit } from "@/data/roots";
 import {
   getAllRoots,
   findRoot,
@@ -94,14 +94,34 @@ describe("imported Arabic verb variants", () => {
 
   it("accounts for every CSV row in the import report", () => {
     expect(importedArabicVerbReport.processedRows).toBe(602);
-    expect(importedArabicVerbReport.addedEntries).toBe(515);
+    expect(importedArabicVerbReport.addedEntries).toBe(504);
     expect(importedArabicVerbReport.skippedExactDuplicateRows).toBe(4);
-    expect(importedArabicVerbReport.skippedAlreadyRepresentedRows).toBe(82);
+    expect(importedArabicVerbReport.skippedAlreadyRepresentedRows).toBe(89);
     expect(importedArabicVerbReport.skippedInvalidRows).toEqual([
+      {
+        rowNumber: 98,
+        past: "ترجم",
+        reason: 'could not infer a three-letter Arabic root; inferred "ترجم"',
+      },
+      {
+        rowNumber: 240,
+        past: "اطمأنّ",
+        reason: 'could not infer a three-letter Arabic root; inferred "طمأن"',
+      },
+      {
+        rowNumber: 257,
+        past: "هيمن",
+        reason: 'could not infer a three-letter Arabic root; inferred "هيمن"',
+      },
       {
         rowNumber: 305,
         past: "كاد",
         reason: "missing required CSV field(s): imperative_2ms, masdar",
+      },
+      {
+        rowNumber: 577,
+        past: "اكفهر",
+        reason: 'could not infer a three-letter Arabic root; inferred "كفهر"',
       },
     ]);
   });
@@ -109,7 +129,9 @@ describe("imported Arabic verb variants", () => {
 
 describe("Quranic root index", () => {
   it("finds indexed Quranic roots by Arabic input", () => {
-    expect(findQuranRoot("قرأ")?.status).toBe("indexed_only");
+    // ليل has no naturally-attested beginner verb, so it's deliberately kept indexed-only
+    // rather than forcing a fabricated six-form entry (see roots.ts's Quranic expansion notes).
+    expect(findQuranRoot("ليل")?.status).toBe("indexed_only");
   });
 
   it("searchRootLibrary returns full entries before Quranic index-only entries", () => {
@@ -196,7 +218,7 @@ describe("validateRootEntry", () => {
       f.order === 1 ? { ...f, arabic: "" } : f,
     );
     const errors = validateRootEntry({ ...base, forms });
-    expect(errors.join(" ")).toContain('missing required field "arabic"');
+    expect(errors.join(" ")).toContain('reviewed form "past" is missing learner content');
   });
 
   it("rejects reviewed entries that still carry AI-draft notes", () => {
@@ -276,5 +298,64 @@ describe("seed data spelling rules", () => {
     for (const entry of getAllRoots()) {
       expect(VALID_MEASURES.has(entry.measure)).toBe(true);
     }
+  });
+});
+
+describe("imported draft content", () => {
+  it("audits every entry cleaned by the shared importer fix", () => {
+    expect(importedPlaceholderCleanupAudit.affectedEntries).toBe(504);
+    expect(importedPlaceholderCleanupAudit.cleanedLearnerFields).toBe(10_080);
+    expect(importedPlaceholderCleanupAudit.items).toHaveLength(504 * 6);
+  });
+
+  it("keeps unsupported imported participles pending instead of generating them", () => {
+    const imported = getAllRoots()
+      .flatMap((entry) => entry.variants ?? [])
+      .find((entry) => entry.source);
+    expect(imported).toBeDefined();
+    for (const key of ["active_participle", "passive_participle"] as const) {
+      const form = imported!.forms.find((candidate) => candidate.key === key)!;
+      expect(form.reviewState).toBe("pending");
+      expect(form.arabic).toBe("");
+      expect(form.meaningEn).toBeUndefined();
+      expect(form.exampleEn).toBeUndefined();
+    }
+  });
+
+  it("uses the source masdar as a verbal noun, not a place noun", () => {
+    const imported = getAllRoots()
+      .flatMap((entry) => entry.variants ?? [])
+      .find((entry) => entry.source)!;
+    const masdar = imported.forms.find((form) => form.key === "place_or_mim_masdar")!;
+    expect(masdar.labelAr).toBe("المصدر");
+    expect(masdar.labelEn).toBe("Verbal noun");
+    expect(masdar.reviewState).toBe("source_backed");
+  });
+
+  it("rejects learner-facing placeholder templates with field context", () => {
+    const base = getAllRoots()[0];
+    const forms = base.forms.map((form) =>
+      form.key === "past" ? { ...form, meaningEn: "Past form for: test" } : form,
+    );
+    expect(validateRootEntry({ ...base, forms }).join(" ")).toContain(
+      'form "past" field "meaningEn" contains rejected placeholder pattern',
+    );
+  });
+
+  it("keeps the تخرّج regression entry free of generic action prose", () => {
+    const graduate = findRoot("خرج")?.variants?.find((entry) => entry.meaningEn === "To graduate");
+    expect(graduate).toBeDefined();
+    const learnerText = graduate!.forms
+      .flatMap((form) => [form.meaningEn, form.exampleEn])
+      .filter(Boolean)
+      .join(" ");
+    expect(learnerText).not.toMatch(/action:|AI-generated|Masdar from CSV|masdar listed for/i);
+  });
+
+  it("does not publish internal form notes as learner meanings", () => {
+    const entry = getAllRoots().find((root) => root.variants?.some((variant) => variant.source))!;
+    const publicEntry = toPublicRootEntry(entry);
+    const imported = publicEntry.variants!.find((variant) => variant.source)!;
+    expect(imported.forms.every((form) => form.notes === undefined)).toBe(true);
   });
 });

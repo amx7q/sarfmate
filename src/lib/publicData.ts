@@ -2,14 +2,10 @@ import { getAllRoots, getRootVerbEntries } from "@/lib/roots";
 import { getQuranRootIndex } from "@/lib/quranRoots";
 import type { ImportedVerbSource, QuranRootIndexEntry, RootEntry, RootVerbEntry, SarfForm } from "@/lib/types";
 
-const PUBLIC_REVIEW_NOTE = "Needs human review.";
-
 function publicForm(form: SarfForm): SarfForm {
-  const { notes, ...rest } = form;
-  return {
-    ...rest,
-    ...(notes ? { notes: PUBLIC_REVIEW_NOTE } : {}),
-  };
+  const { notes: _internalNotes, ...rest } = form;
+  void _internalNotes;
+  return rest;
 }
 
 function publicSource(source: ImportedVerbSource): ImportedVerbSource {

@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mt-16 border-t border-border-soft bg-surface">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+    <footer className="mt-20 border-t border-border-soft bg-surface">
+      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:grid-cols-[1fr_auto] sm:items-center sm:px-6 lg:grid-cols-[1fr_auto_auto]">
         <div>
           <p className="text-sm font-semibold text-primary">
             SarfMate{" "}
@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
         <nav aria-label="Footer navigation">
-          <ul className="flex items-center gap-4 text-sm text-muted">
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted">
             <li>
               <Link href="/browse" className="rounded hover:text-primary">
                 Browse roots
@@ -37,24 +37,20 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-      </div>
-      <div className="border-t border-border-soft">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p className="max-w-2xl text-sm text-muted">
-            Found SarfMate useful?
-          </p>
+          <div className="flex flex-col items-start gap-2 sm:items-end">
+            <p className="text-xs text-muted">Found SarfMate useful?</p>
           <a
             href="https://buymeacoffee.com/ammarabuyahya"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-fit items-center justify-center rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-[#caa229] focus-visible:outline-secondary"
+            className="inline-flex w-fit items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus-visible:outline-secondary"
           >
             Buy Me a Coffee
           </a>
-        </div>
+          </div>
       </div>
       <div className="border-t border-border-soft">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs leading-5 text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>
             Arabic morphology can vary by verb form, context, and usage.
             SarfMate entries are curated and reviewed over time.

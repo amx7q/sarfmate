@@ -36,7 +36,7 @@ export default function RootSearch({
           event.preventDefault();
           onSubmit();
         }}
-        className="flex items-center gap-2 rounded-2xl border border-border-soft bg-surface p-2 shadow-sm focus-within:border-secondary"
+        className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-1.5 rounded-2xl border border-border-soft bg-surface p-2 shadow-sm transition-[border-color,box-shadow] duration-200 focus-within:border-secondary focus-within:shadow-md min-[380px]:flex sm:gap-2"
       >
         <label htmlFor={inputId} className="sr-only">
           Search a root in Arabic or by English meaning
@@ -51,7 +51,7 @@ export default function RootSearch({
           placeholder="اكتب جذرًا مثل سمع — or type in English"
           autoComplete="off"
           spellCheck={false}
-          className="min-w-0 flex-1 bg-transparent px-3 py-2 font-arabic text-lg text-ink outline-none placeholder:text-muted"
+          className="min-h-11 min-w-0 flex-1 bg-transparent px-2 py-2 font-arabic text-base text-ink outline-none placeholder:font-sans placeholder:text-sm placeholder:text-muted sm:px-3 sm:text-lg sm:placeholder:text-base"
         />
         <button
           type="button"
@@ -62,7 +62,7 @@ export default function RootSearch({
               ? "Hide on-screen Arabic keyboard"
               : "Show on-screen Arabic keyboard"
           }
-          className={`shrink-0 rounded-xl border px-3 py-2.5 text-base transition-colors ${
+          className={`min-h-11 shrink-0 rounded-xl border px-2.5 py-2.5 text-base transition-[color,background-color,border-color,transform] duration-200 sm:px-3 ${
             keyboardOpen
               ? "border-secondary bg-secondary/10 text-primary"
               : "border-border-soft bg-surface text-muted hover:text-primary"
@@ -72,7 +72,7 @@ export default function RootSearch({
         </button>
         <button
           type="submit"
-          className="shrink-0 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+          className="col-span-2 min-h-11 shrink-0 whitespace-nowrap rounded-xl bg-primary px-3.5 py-2.5 text-sm font-medium text-white transition-[background-color,transform] duration-200 hover:bg-primary/90 min-[380px]:col-auto sm:px-5"
         >
           Search
         </button>

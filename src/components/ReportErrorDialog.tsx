@@ -28,16 +28,19 @@ export default function ReportErrorDialog({
 }) {
   const [saved, setSaved] = useState<SaveSubmissionResult | null>(null);
   const [sending, setSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function handleClose() {
     setSaved(null);
     setSending(false);
+    setSubmitError(null);
     onClose();
   }
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (sending) return;
+    setSubmitError(null);
     setSending(true);
     const data = new FormData(event.currentTarget);
     if (isHoneypotFilled(data.get("website"))) {
@@ -45,22 +48,29 @@ export default function ReportErrorDialog({
       return;
     }
     const selectedForm = String(data.get("formKey") ?? "");
-    const result = await saveSubmission({
-      type: "error_report",
-      root,
-      formKey: (selectedForm || undefined) as SarfFormKey | undefined,
-      currentValue: String(data.get("currentValue") ?? "").trim() || undefined,
-      suggestedCorrection: String(data.get("correction") ?? "").trim(),
-      explanation: String(data.get("explanation") ?? "").trim() || undefined,
-      contributorName: String(data.get("name") ?? "").trim() || undefined,
-      contributorEmail: String(data.get("email") ?? "").trim() || undefined,
-    });
-    setSending(false);
-    setSaved(result);
+    try {
+      const result = await saveSubmission({
+        type: "error_report",
+        root,
+        formKey: (selectedForm || undefined) as SarfFormKey | undefined,
+        currentValue: String(data.get("currentValue") ?? "").trim() || undefined,
+        suggestedCorrection: String(data.get("correction") ?? "").trim(),
+        explanation: String(data.get("explanation") ?? "").trim() || undefined,
+        contributorName: String(data.get("name") ?? "").trim() || undefined,
+        contributorEmail: String(data.get("email") ?? "").trim() || undefined,
+      });
+      setSaved(result);
+    } catch {
+      setSubmitError(
+        "Your report could not be saved. Check that browser storage is available, then try again.",
+      );
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
-    <Dialog open={open} onClose={handleClose} title="Notice an error">
+    <Dialog open={open} onClose={handleClose} title="Report an error">
       {saved ? (
         <SubmissionSuccess
           submission={saved.submission}
@@ -119,7 +129,7 @@ export default function ReportErrorDialog({
           </div>
           <div>
             <label htmlFor="report-correction" className="mb-1 block text-sm font-medium text-ink">
-              Suggested correction <span className="text-accent">*</span>
+              Suggested correction <span className="text-danger">*</span>
             </label>
             <textarea
               id="report-correction"
@@ -154,9 +164,19 @@ export default function ReportErrorDialog({
           <p className="text-xs text-muted">
             Community suggestions are reviewed before publishing.
           </p>
+          {submitError && (
+            <p
+              id="report-submit-error"
+              role="alert"
+              className="rounded-xl border border-danger/30 bg-danger/5 p-3 text-sm text-danger"
+            >
+              {submitError}
+            </p>
+          )}
           <button
             type="submit"
             disabled={sending}
+            aria-describedby={submitError ? "report-submit-error" : undefined}
             className="w-full rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90 disabled:cursor-wait disabled:opacity-60"
           >
             {sending ? "Sending…" : "Save report"}
