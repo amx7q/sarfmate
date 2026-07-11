@@ -5,8 +5,17 @@ import { useEffect, useState } from "react";
 import { getDailyCardForms, getLocalDateKey, selectDailyRoot } from "@/lib/dailyRoot";
 import type { RootEntry } from "@/lib/types";
 
-export default function DailyRootCard({ roots }: { roots: RootEntry[] }) {
-  const [entry, setEntry] = useState<RootEntry>();
+export default function DailyRootCard({
+  roots,
+  initialEntry,
+}: {
+  roots: RootEntry[];
+  initialEntry?: RootEntry;
+}) {
+  // Seeded with the server-computed root so the first client render matches
+  // the static HTML exactly (no hydration mismatch); the effect below then
+  // corrects to the visitor's actual local date once mounted.
+  const [entry, setEntry] = useState<RootEntry | undefined>(initialEntry);
   const [shareMessage, setShareMessage] = useState("");
 
   useEffect(() => {

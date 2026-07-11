@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { getPublicQuranRootIndex, getPublicRootEntries } from "@/lib/publicData";
 import BrowseRoots from "@/components/BrowseRoots";
+import { pageMetadata } from "@/lib/siteConfig";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Browse roots",
   description:
     "Browse the SarfMate library of Arabic roots with English meanings and status badges.",
-};
+});
 
 export default function BrowsePage() {
   const roots = getPublicRootEntries();

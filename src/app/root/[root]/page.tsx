@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllRoots, findRoot } from "@/lib/roots";
-import { SITE_URL, SITE_NAME, rootUrl } from "@/lib/siteConfig";
+import { SITE_URL, SITE_NAME, rootUrl, breadcrumbJsonLd, pageMetadata } from "@/lib/siteConfig";
 import { toPublicRootEntry } from "@/lib/publicData";
 import RootResult from "@/components/RootResult";
 import type { RootEntry } from "@/lib/types";
@@ -26,20 +26,11 @@ export async function generateMetadata({
   const title = `${entry.root} — ${entry.meaningEn}`;
   const description = `The Arabic root ${entry.displayRoot} (${entry.meaningEn}) with its six core forms, meanings, and example sentences.`;
   const canonical = `/root/${encodeURIComponent(entry.root)}`;
+  const base = pageMetadata({ title, description, type: "article" });
   return {
-    title,
-    description,
+    ...base,
     alternates: { canonical },
-    openGraph: {
-      title,
-      description,
-      url: canonical,
-      type: "article",
-    },
-    twitter: {
-      title,
-      description,
-    },
+    openGraph: { ...base.openGraph, url: canonical },
   };
 }
 
@@ -69,11 +60,21 @@ export default async function RootPage({
   const entry = findRoot(decodeURIComponent(root));
   if (!entry) notFound();
 
+  const breadcrumb = breadcrumbJsonLd([
+    { name: "Home", url: `${SITE_URL}/` },
+    { name: "Browse roots", url: `${SITE_URL}/browse` },
+    { name: entry.displayRoot, url: rootUrl(entry.root) },
+  ]);
+
   return (
     <div className="py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(rootJsonLd(entry)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
       <div className="mb-8">
         <Link

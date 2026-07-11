@@ -111,7 +111,9 @@ The code is structured so a backend can be added without a rewrite:
 - Submissions go through the `SubmissionsStore` interface in [`src/lib/submissionsStore.ts`](src/lib/submissionsStore.ts) — replace the localStorage implementation with Supabase or similar.
 - The `RootEntry` / `SarfForm` / `Submission` types are backend-shape-agnostic.
 
-Planned directions: Supabase database, admin review dashboard, user accounts, audio pronunciation, Forms I–X, root maps, quizzes, flashcards, teacher tools, multilingual definitions, and API access.
+Already shipped: Supabase-backed submissions, a practice quiz (`/practice`) with daily and review modes, and a streak-based Daily Root Challenge (`/daily-root-challenge`) with shareable result images.
+
+Planned directions: admin review dashboard, user accounts, audio pronunciation, Forms II–X coverage, root maps, teacher tools, multilingual definitions, and API access.
 
 ## License
 

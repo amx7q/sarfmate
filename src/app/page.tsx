@@ -7,6 +7,7 @@ import CommunityPanel from "@/components/CommunityPanel";
 import DailyRootCard from "@/components/DailyRootCard";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/siteConfig";
 import { getPublicQuranRootIndex, getPublicRootEntries } from "@/lib/publicData";
+import { getLocalDateKey, selectDailyRoot } from "@/lib/dailyRoot";
 
 export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
@@ -36,6 +37,7 @@ const websiteJsonLd = {
 export default function HomePage() {
   const roots = getPublicRootEntries();
   const quranRoots = getPublicQuranRootIndex();
+  const initialDailyEntry = selectDailyRoot(roots, getLocalDateKey());
 
   return (
     <>
@@ -47,7 +49,7 @@ export default function HomePage() {
       <Suspense fallback={null}>
         <HomeSearch roots={roots} quranRoots={quranRoots} />
       </Suspense>
-      <DailyRootCard roots={roots} />
+      <DailyRootCard roots={roots} initialEntry={initialDailyEntry} />
       <FeatureCards />
       <CommunityPanel />
     </>
