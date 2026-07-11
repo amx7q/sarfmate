@@ -6,11 +6,18 @@
   --color-primary: #0f4d4a;
   --color-secondary: #14a37f;
   --color-accent: #d4af37;
+  --color-danger: #b54747;
   --color-ink: #102a2a;
   --color-muted: #667085;
   --color-border-soft: rgba(15, 77, 74, 0.12);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-arabic: var(--font-noto-naskh), "Noto Naskh Arabic", serif;
+}
+
+:root {
+  --ease-out-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-ui: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-ui: 180ms;
 }
 
 body {
@@ -26,6 +33,21 @@ body {
 
 ::selection {
   background-color: rgba(20, 163, 127, 0.2);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled),
+a {
+  transition-timing-function: var(--ease-out-ui);
+}
+
+button:not(:disabled):active,
+a:active {
+  transform: scale(0.97);
 }
 
 @media (prefers-reduced-motion: reduce) {

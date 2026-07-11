@@ -83,8 +83,8 @@ export default function Dialog({
             initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.96 }}
             animate={reduced ? { opacity: 1 } : { opacity: 1, scale: 1 }}
             exit={reduced ? { opacity: 0 } : { opacity: 0, scale: 0.96 }}
-            transition={{ duration: reduced ? 0.01 : 0.18, ease: "easeOut" }}
-            className="relative max-h-[85vh] w-full max-w-lg overflow-y-auto rounded-2xl border border-border-soft bg-surface p-6 shadow-xl"
+            transition={{ duration: reduced ? 0.01 : 0.2, ease: [0.23, 1, 0.32, 1] }}
+            className="relative mt-auto max-h-[85vh] w-full max-w-lg origin-bottom overflow-y-auto rounded-t-2xl border border-border-soft bg-surface p-5 shadow-xl sm:my-auto sm:origin-center sm:rounded-2xl sm:p-6"
           >
             <div className="mb-4 flex items-start justify-between gap-4">
               <h2 id={titleId} className="text-lg font-semibold text-primary">

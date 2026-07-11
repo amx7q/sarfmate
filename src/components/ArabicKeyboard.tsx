@@ -8,8 +8,10 @@ const KEY_ROWS: string[][] = [
   ["ذ", "ء", "ؤ", "ر", "ى", "ة", "و", "ز", "ظ", "أ", "إ"],
 ];
 
+const DIACRITICS = ["َ", "ِ", "ُ", "ْ", "ّ", "ً", "ٍ", "ٌ"];
+
 const keyClass =
-  "flex h-10 min-w-9 flex-1 items-center justify-center rounded-lg border border-border-soft bg-surface font-arabic text-lg text-ink shadow-sm transition-colors hover:bg-background active:scale-95 active:bg-background";
+  "flex h-10 min-w-0 flex-1 items-center justify-center rounded-lg border border-border-soft bg-surface font-arabic text-lg text-ink shadow-sm transition-colors hover:bg-background active:scale-95 active:bg-background sm:min-w-9";
 
 /**
  * Floating on-screen Arabic keyboard for users without an Arabic layout.
@@ -19,10 +21,12 @@ export default function ArabicKeyboard({
   open,
   onKey,
   onBackspace,
+  includeDiacritics = false,
 }: {
   open: boolean;
   onKey: (char: string) => void;
   onBackspace: () => void;
+  includeDiacritics?: boolean;
 }) {
   const reduced = useReducedMotion() ?? false;
 
@@ -33,13 +37,29 @@ export default function ArabicKeyboard({
           initial={reduced ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
           animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
           exit={reduced ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
-          transition={{ duration: reduced ? 0.01 : 0.2, ease: "easeOut" }}
+          transition={{ duration: reduced ? 0.01 : 0.18, ease: [0.23, 1, 0.32, 1] }}
           className="absolute inset-x-0 top-full z-30 mt-3 rounded-2xl border border-border-soft bg-surface/95 p-3 shadow-xl backdrop-blur"
           role="group"
           aria-label="On-screen Arabic keyboard"
           dir="rtl"
         >
           <div className="space-y-2">
+            {includeDiacritics && (
+              <div className="flex gap-1.5" aria-label="Arabic vowel marks">
+                {DIACRITICS.map((mark) => (
+                  <button
+                    key={mark}
+                    type="button"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => onKey(mark)}
+                    className={keyClass}
+                    aria-label={`Arabic vowel mark ${mark}`}
+                  >
+                    <span className="font-arabic text-2xl">ـ{mark}</span>
+                  </button>
+                ))}
+              </div>
+            )}
             {KEY_ROWS.map((row, rowIndex) => (
               <div key={rowIndex} className="flex gap-1.5">
                 {row.map((char) => (

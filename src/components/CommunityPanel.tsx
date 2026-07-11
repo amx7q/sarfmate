@@ -10,11 +10,11 @@ export default function CommunityPanel() {
   return (
     <section
       aria-label="Community"
-      className="my-10 rounded-3xl border border-border-soft bg-surface p-6 shadow-sm sm:p-8"
+      className="mb-4 mt-12 rounded-2xl border border-border-soft bg-surface p-6 shadow-sm sm:p-8"
     >
       <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-primary">
+          <h2 className="text-2xl font-bold tracking-tight text-primary">
             Join the community
           </h2>
           <p className="mt-1 max-w-md text-sm text-muted">
@@ -28,12 +28,12 @@ export default function CommunityPanel() {
             onClick={() => setSuggestOpen(true)}
             className="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
           >
-            💡 Suggest a root
+            Suggest a root
           </button>
         </div>
       </div>
       <p className="mt-4 text-xs text-muted">
-        ✓ Community suggestions are reviewed before publishing.
+        Community suggestions are reviewed before publishing.
       </p>
 
       <PendingSuggestions />

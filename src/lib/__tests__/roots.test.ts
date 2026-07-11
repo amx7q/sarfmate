@@ -94,14 +94,34 @@ describe("imported Arabic verb variants", () => {
 
   it("accounts for every CSV row in the import report", () => {
     expect(importedArabicVerbReport.processedRows).toBe(602);
-    expect(importedArabicVerbReport.addedEntries).toBe(515);
+    expect(importedArabicVerbReport.addedEntries).toBe(504);
     expect(importedArabicVerbReport.skippedExactDuplicateRows).toBe(4);
-    expect(importedArabicVerbReport.skippedAlreadyRepresentedRows).toBe(82);
+    expect(importedArabicVerbReport.skippedAlreadyRepresentedRows).toBe(89);
     expect(importedArabicVerbReport.skippedInvalidRows).toEqual([
+      {
+        rowNumber: 98,
+        past: "ترجم",
+        reason: 'could not infer a three-letter Arabic root; inferred "ترجم"',
+      },
+      {
+        rowNumber: 240,
+        past: "اطمأنّ",
+        reason: 'could not infer a three-letter Arabic root; inferred "طمأن"',
+      },
+      {
+        rowNumber: 257,
+        past: "هيمن",
+        reason: 'could not infer a three-letter Arabic root; inferred "هيمن"',
+      },
       {
         rowNumber: 305,
         past: "كاد",
         reason: "missing required CSV field(s): imperative_2ms, masdar",
+      },
+      {
+        rowNumber: 577,
+        past: "اكفهر",
+        reason: 'could not infer a three-letter Arabic root; inferred "كفهر"',
       },
     ]);
   });
@@ -109,7 +129,9 @@ describe("imported Arabic verb variants", () => {
 
 describe("Quranic root index", () => {
   it("finds indexed Quranic roots by Arabic input", () => {
-    expect(findQuranRoot("قرأ")?.status).toBe("indexed_only");
+    // ليل has no naturally-attested beginner verb, so it's deliberately kept indexed-only
+    // rather than forcing a fabricated six-form entry (see roots.ts's Quranic expansion notes).
+    expect(findQuranRoot("ليل")?.status).toBe("indexed_only");
   });
 
   it("searchRootLibrary returns full entries before Quranic index-only entries", () => {
@@ -276,5 +298,50 @@ describe("seed data spelling rules", () => {
     for (const entry of getAllRoots()) {
       expect(VALID_MEASURES.has(entry.measure)).toBe(true);
     }
+  });
+});
+
+describe("generated participles for weak-radical CSV-imported Form I roots", () => {
+  // Regression guard for a bug where the CSV importer's generated (unvocalized) active/
+  // passive participles were built by naively concatenating root letters into the plain
+  // فاعل/مفعول template, which produces impossible/wrong Arabic for defective (رمي، دعو),
+  // hollow (قول، بيع), and hamza-initial (أخذ) Form I roots — e.g. "ناجو" instead of "ناجٍ",
+  // or "أامن" instead of "آمن". These checks encode the correct patterns generatedParticiples
+  // must follow instead, without depending on its unexported internals.
+  const HAMZA_LETTERS = new Set(["أ", "إ", "ء", "ئ", "ؤ"]);
+
+  it("never reproduces the naive-concatenation bug for defective, hollow, or hamza-initial roots", () => {
+    let checked = 0;
+    for (const entry of getAllRoots()) {
+      const candidates = [
+        { measure: entry.measure, forms: entry.forms, source: entry.source },
+        ...(entry.variants ?? []),
+      ];
+      const [r1, r2, r3] = [...entry.root];
+      const isDefective = r3 === "و" || r3 === "ي";
+      const isHollow = r2 === "و" || r2 === "ي" || HAMZA_LETTERS.has(r2);
+      const isHamzaInitial = HAMZA_LETTERS.has(r1);
+      if (!isDefective && !isHollow && !isHamzaInitial) continue;
+
+      for (const verbEntry of candidates) {
+        if (verbEntry.measure !== "I" || !verbEntry.source) continue;
+        checked += 1;
+        const active = verbEntry.forms.find((f) => f.key === "active_participle")!.arabic;
+        const passive = verbEntry.forms.find((f) => f.key === "passive_participle")!.arabic;
+
+        if (isDefective) {
+          expect(active.endsWith(r3)).toBe(false);
+          expect(passive.endsWith(r3)).toBe(true);
+        }
+        if (isHollow && !isDefective) {
+          expect(active.includes("ئ")).toBe(true);
+        }
+        if (isHamzaInitial) {
+          expect(active.startsWith("آ")).toBe(true);
+        }
+      }
+    }
+    // Sanity-check the guard itself actually exercised the weak-radical branches.
+    expect(checked).toBeGreaterThan(0);
   });
 });

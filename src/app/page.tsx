@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import HomeSearch from "@/components/HomeSearch";
 import FeatureCards from "@/components/FeatureCards";
 import CommunityPanel from "@/components/CommunityPanel";
+import DailyRootCard from "@/components/DailyRootCard";
 import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/siteConfig";
 import { getPublicQuranRootIndex, getPublicRootEntries } from "@/lib/publicData";
 
@@ -46,6 +47,7 @@ export default function HomePage() {
       <Suspense fallback={null}>
         <HomeSearch roots={roots} quranRoots={quranRoots} />
       </Suspense>
+      <DailyRootCard roots={roots} />
       <FeatureCards />
       <CommunityPanel />
     </>
