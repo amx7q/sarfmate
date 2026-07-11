@@ -20,10 +20,10 @@ export default function FormRow({
     <ul
       dir="rtl"
       aria-label="Verb forms, ordered 1 to 6"
-      className="grid list-none gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6"
+      className="grid w-full grid-cols-[minmax(0,1fr)] list-none gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6"
     >
         {forms.map((form, index) => (
-          <li key={form.key} className="flex min-w-0">
+          <li key={form.key} className="flex w-full min-w-0">
             <FormCard
               form={form}
               index={index}

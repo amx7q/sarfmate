@@ -139,7 +139,7 @@ export default function DailyRootChallenge({ roots }: { roots: RootEntry[] }) {
     event.preventDefault();
     const graded = Object.fromEntries(entry!.forms.map((form) => [form.key, {
       arabic: gradeArabicAnswer(answers[form.key]?.arabic ?? "", form.arabic),
-      english: gradeEnglishAnswer(answers[form.key]?.english ?? "", form.meaningEn),
+      english: gradeEnglishAnswer(answers[form.key]?.english ?? "", form.meaningEn!),
     }])) as Record<string, Result>;
     setResults(graded);
     setActiveKeyboard(null);

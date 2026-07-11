@@ -156,6 +156,9 @@ function createQuestion(
   random: () => number,
 ): PracticeQuestion | null {
   const { form } = source;
+  if (!form.arabic || !form.meaningEn) return null;
+  const formArabic = form.arabic;
+  const formMeaning = form.meaningEn;
   const id = `${type}:${source.root}:${form.key}`;
   const base = {
     id,
@@ -163,20 +166,20 @@ function createQuestion(
     root: source.root,
     formKey: form.key,
     explanation: {
-      arabic: form.arabic,
-      meaningEn: form.meaningEn,
+      arabic: formArabic,
+      meaningEn: formMeaning,
       formLabelEn: form.labelEn,
       formLabelAr: form.labelAr,
     },
   };
 
   if (type === "arabic_to_english") {
-    const options = makeOptions(source, allSources, (item) => item.form.meaningEn, random);
+    const options = makeOptions(source, allSources, (item) => item.form.meaningEn ?? "", random);
     if (!options) return null;
     return {
       ...base,
       prompt: "What does this form mean?",
-      promptArabic: form.arabic,
+      promptArabic: formArabic,
       optionLanguage: "english",
       options,
       correctOptionId: optionId(source),
@@ -184,14 +187,14 @@ function createQuestion(
   }
 
   if (type === "sentence_to_english") {
-    if (!form.exampleAr.includes(form.arabic)) return null;
-    const options = makeOptions(source, allSources, (item) => item.form.meaningEn, random);
+    if (!form.exampleAr?.includes(formArabic)) return null;
+    const options = makeOptions(source, allSources, (item) => item.form.meaningEn ?? "", random);
     if (!options) return null;
     return {
       ...base,
       prompt: "What does the highlighted form mean in this sentence?",
       sentenceArabic: form.exampleAr,
-      targetArabic: form.arabic,
+      targetArabic: formArabic,
       optionLanguage: "english",
       options,
       correctOptionId: optionId(source),
@@ -204,7 +207,7 @@ function createQuestion(
     return {
       ...base,
       prompt: "Which type of form is shown?",
-      promptArabic: form.arabic,
+      promptArabic: formArabic,
       optionLanguage: "english",
       options,
       correctOptionId: optionId(source),
@@ -213,7 +216,7 @@ function createQuestion(
 
   const sameMeaning = new Set(
     allSources
-      .filter((item) => normaliseLabel(item.form.meaningEn) === normaliseLabel(form.meaningEn))
+      .filter((item) => normaliseLabel(item.form.meaningEn ?? "") === normaliseLabel(formMeaning))
       .map(optionId),
   );
   const uniqueMeaningSources = allSources.filter((item) => !sameMeaning.has(optionId(item)) || optionId(item) === optionId(source));
@@ -221,7 +224,7 @@ function createQuestion(
   if (!options) return null;
   return {
     ...base,
-    prompt: `Which form means “${form.meaningEn}”?`,
+    prompt: `Which form means “${formMeaning}”?`,
     optionLanguage: "arabic",
     options,
     correctOptionId: optionId(source),

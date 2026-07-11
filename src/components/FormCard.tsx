@@ -26,7 +26,7 @@ export default function FormCard({
       transition={{ duration: reduced ? 0.01 : 0.24, delay: reduced ? 0 : index * 0.04, ease: [0.23, 1, 0.32, 1] }}
       dir="ltr"
       lang="en"
-      className="flex min-w-0 flex-col rounded-2xl border border-border-soft bg-surface p-5 text-left shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-md"
+      className="flex w-full min-w-0 max-w-none flex-col rounded-2xl border border-border-soft bg-surface p-5 text-left shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-md"
       aria-labelledby={titleId}
     >
       <div dir="ltr" className="flex items-start justify-between gap-2">
@@ -44,38 +44,31 @@ export default function FormCard({
         </div>
       </div>
 
-      <h3
-        id={titleId}
-        dir="rtl"
-        lang="ar"
-        className="mt-4 text-center font-arabic text-4xl font-medium leading-snug text-primary"
-      >
-        {form.arabic}
-      </h3>
-      <p className="mt-3 text-sm text-muted">
-        {form.transliteration}
-      </p>
-      <p className="mb-4 mt-1 text-base font-medium leading-6 text-ink">{form.meaningEn}</p>
+      {form.arabic ? (
+        <h3
+          id={titleId}
+          dir="rtl"
+          lang="ar"
+          className="mt-4 text-center font-arabic text-4xl font-medium leading-snug text-primary"
+        >
+          {form.arabic}
+        </h3>
+      ) : (
+        <p id={titleId} className="mt-5 text-sm font-medium text-muted">Form pending review</p>
+      )}
+      {form.transliteration && <p className="mt-3 text-sm text-muted">{form.transliteration}</p>}
+      {form.meaningEn && (
+        <p className="mb-4 mt-1 text-base font-medium leading-6 text-ink">{form.meaningEn}</p>
+      )}
 
       <div className="mt-auto">
-        <ExampleSentence arabic={form.exampleAr} english={form.exampleEn} />
-        {form.notes && (
-          <p className="mt-3 flex items-start gap-1.5 text-xs text-muted">
-            <span
-              className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
-              aria-hidden="true"
-            />
-            <span>
-              <span className="font-medium text-ink">Needs review: </span>
-              This form is still awaiting human review.
-            </span>
-          </p>
+        {form.exampleAr && form.exampleEn && (
+          <ExampleSentence arabic={form.exampleAr} english={form.exampleEn} />
         )}
         <div className="mt-4 flex flex-col gap-2 border-t border-border-soft pt-3 min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between">
-          <CopyButton
-            text={form.arabic}
-            ariaLabel={`Copy Arabic word ${form.arabic}`}
-          />
+          {form.arabic && (
+            <CopyButton text={form.arabic} ariaLabel={`Copy Arabic word ${form.arabic}`} />
+          )}
           <button
             type="button"
             onClick={onReportError}

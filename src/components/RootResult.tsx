@@ -49,7 +49,7 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
         <h2
           dir="rtl"
           lang="ar"
-          className="font-arabic text-6xl font-medium tracking-wide text-primary sm:text-7xl"
+          className="whitespace-nowrap font-arabic text-6xl font-medium tracking-wide text-primary sm:text-7xl"
         >
           {entry.displayRoot}
         </h2>
@@ -106,9 +106,10 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
                   </div>
                 </div>
               )}
-              {!isMainEntry && verbEntry.source && (
+              {verbEntry.status === "ai_draft" && (
                 <p className="mb-4 text-sm text-muted">
-                  Source-backed entry; learner examples may still need human review.
+                  <span className="font-medium text-ink">Draft entry.</span>{" "}
+                  Some forms and examples are still being reviewed.
                 </p>
               )}
               <FormRow

@@ -52,7 +52,7 @@ export function searchRoot(query: string): RootEntry | undefined {
     getRootVerbEntries(entry).flatMap((verbEntry) => [
       verbEntry.meaningEn,
       ...verbEntry.forms.flatMap((form) => [form.meaningEn, form.transliteration]),
-    ]).map((value) => value.toLowerCase());
+    ]).filter((value): value is string => Boolean(value)).map((value) => value.toLowerCase());
 
   return (
     all.find((entry) => matchesRootTransliteration(entry.root, q)) ??
@@ -73,16 +73,22 @@ export function getOrderedForms(entry: { forms: SarfForm[] }): SarfForm[] {
 
 const ARABIC_LETTER = /^[ء-ي]{3}$/;
 const REQUIRED_FORM_FIELDS = [
-  "arabic",
-  "transliteration",
   "labelAr",
   "labelEn",
-  "meaningEn",
-  "exampleAr",
-  "exampleEn",
 ] as const;
 const VALID_STATUSES = ["reviewed", "community_suggested", "ai_draft"] as const;
 const PLACEHOLDER_RE = /\b(todo|tbd|placeholder|lorem ipsum|xxx)\b/i;
+export const LEARNER_PLACEHOLDER_PATTERNS = [
+  /AI-generated/i,
+  /Masdar from CSV/i,
+  /form for:/i,
+  /did the action:/i,
+  /does the action:/i,
+  /do this action:/i,
+  /connected with the action:/i,
+  /masdar listed for:/i,
+  /still awaiting human review/i,
+] as const;
 const AI_DRAFT_NOTE_RE = /\bAI[- ](?:generated )?draft\b|verify before marking reviewed/i;
 const IMPORT_VERIFIED_FIELDS = [
   "meaning_en",
@@ -164,19 +170,9 @@ export function validateRootEntry(entry: RootEntry): string[] {
       errors.push("firstQuranOccurrence.ayah must be positive");
     }
   }
-  if (
-    [entry.meaningEn, entry.notes, ...entry.forms.flatMap((form) => [
-      form.meaningEn,
-      form.exampleEn,
-      form.notes,
-    ])]
-      .filter(Boolean)
-      .some((value) => PLACEHOLDER_RE.test(value!))
-  ) {
-    errors.push("entry contains accidental placeholder text");
-  }
+  errors.push(...validateLearnerContent(entry.forms));
 
-  errors.push(...validateForms(entry.forms));
+  errors.push(...validateForms(entry.forms, entry.status));
   for (const variant of entry.variants ?? []) {
     errors.push(...validateRootVerbEntry(variant).map((error) => `variant ${variant.id}: ${error}`));
   }
@@ -212,23 +208,30 @@ export function validateRootVerbEntry(entry: RootVerbEntry): string[] {
   ) {
     errors.push("reviewed entry contains AI-draft review note");
   }
-  if (
-    [entry.meaningEn, entry.notes, ...entry.forms.flatMap((form) => [
-      form.meaningEn,
-      form.exampleEn,
-      form.notes,
-    ])]
-      .filter(Boolean)
-      .some((value) => PLACEHOLDER_RE.test(value!))
-  ) {
-    errors.push("entry contains accidental placeholder text");
-  }
+  errors.push(...validateLearnerContent(entry.forms));
 
-  errors.push(...validateForms(entry.forms));
+  errors.push(...validateForms(entry.forms, entry.status));
   return errors;
 }
 
-function validateForms(forms: SarfForm[]): string[] {
+function validateLearnerContent(forms: SarfForm[]): string[] {
+  const errors: string[] = [];
+  for (const form of forms) {
+    for (const field of ["meaningEn", "exampleEn"] as const) {
+      const value = form[field];
+      if (!value) continue;
+      const rejected = LEARNER_PLACEHOLDER_PATTERNS.find((pattern) => pattern.test(value));
+      if (rejected || PLACEHOLDER_RE.test(value)) {
+        errors.push(
+          `form "${form.key}" field "${field}" contains rejected placeholder pattern "${rejected?.source ?? PLACEHOLDER_RE.source}"`,
+        );
+      }
+    }
+  }
+  return errors;
+}
+
+function validateForms(forms: SarfForm[], status: RootEntry["status"]): string[] {
   const errors: string[] = [];
 
   if (forms.length !== 6) {
@@ -255,6 +258,16 @@ function validateForms(forms: SarfForm[]): string[] {
       if (!form[field]) {
         errors.push(`form "${form.key}" is missing required field "${field}"`);
       }
+    }
+    const missingLearnerContent = !form.arabic || !form.transliteration || !form.meaningEn;
+    if (status === "reviewed" && missingLearnerContent) {
+      errors.push(`reviewed form "${form.key}" is missing learner content`);
+    }
+    if (missingLearnerContent && form.reviewState !== "pending") {
+      errors.push(`form "${form.key}" with missing learner content must be marked pending`);
+    }
+    if (form.reviewState === "source_backed" && (!form.arabic || !form.meaningEn)) {
+      errors.push(`source-backed form "${form.key}" is missing source-backed content`);
     }
   }
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { importedArabicVerbReport } from "@/data/roots";
+import { importedArabicVerbReport, importedPlaceholderCleanupAudit } from "@/data/roots";
 import {
   getAllRoots,
   findRoot,
@@ -218,7 +218,7 @@ describe("validateRootEntry", () => {
       f.order === 1 ? { ...f, arabic: "" } : f,
     );
     const errors = validateRootEntry({ ...base, forms });
-    expect(errors.join(" ")).toContain('missing required field "arabic"');
+    expect(errors.join(" ")).toContain('reviewed form "past" is missing learner content');
   });
 
   it("rejects reviewed entries that still carry AI-draft notes", () => {
@@ -301,47 +301,61 @@ describe("seed data spelling rules", () => {
   });
 });
 
-describe("generated participles for weak-radical CSV-imported Form I roots", () => {
-  // Regression guard for a bug where the CSV importer's generated (unvocalized) active/
-  // passive participles were built by naively concatenating root letters into the plain
-  // فاعل/مفعول template, which produces impossible/wrong Arabic for defective (رمي، دعو),
-  // hollow (قول، بيع), and hamza-initial (أخذ) Form I roots — e.g. "ناجو" instead of "ناجٍ",
-  // or "أامن" instead of "آمن". These checks encode the correct patterns generatedParticiples
-  // must follow instead, without depending on its unexported internals.
-  const HAMZA_LETTERS = new Set(["أ", "إ", "ء", "ئ", "ؤ"]);
+describe("imported draft content", () => {
+  it("audits every entry cleaned by the shared importer fix", () => {
+    expect(importedPlaceholderCleanupAudit.affectedEntries).toBe(504);
+    expect(importedPlaceholderCleanupAudit.cleanedLearnerFields).toBe(10_080);
+    expect(importedPlaceholderCleanupAudit.items).toHaveLength(504 * 6);
+  });
 
-  it("never reproduces the naive-concatenation bug for defective, hollow, or hamza-initial roots", () => {
-    let checked = 0;
-    for (const entry of getAllRoots()) {
-      const candidates = [
-        { measure: entry.measure, forms: entry.forms, source: entry.source },
-        ...(entry.variants ?? []),
-      ];
-      const [r1, r2, r3] = [...entry.root];
-      const isDefective = r3 === "و" || r3 === "ي";
-      const isHollow = r2 === "و" || r2 === "ي" || HAMZA_LETTERS.has(r2);
-      const isHamzaInitial = HAMZA_LETTERS.has(r1);
-      if (!isDefective && !isHollow && !isHamzaInitial) continue;
-
-      for (const verbEntry of candidates) {
-        if (verbEntry.measure !== "I" || !verbEntry.source) continue;
-        checked += 1;
-        const active = verbEntry.forms.find((f) => f.key === "active_participle")!.arabic;
-        const passive = verbEntry.forms.find((f) => f.key === "passive_participle")!.arabic;
-
-        if (isDefective) {
-          expect(active.endsWith(r3)).toBe(false);
-          expect(passive.endsWith(r3)).toBe(true);
-        }
-        if (isHollow && !isDefective) {
-          expect(active.includes("ئ")).toBe(true);
-        }
-        if (isHamzaInitial) {
-          expect(active.startsWith("آ")).toBe(true);
-        }
-      }
+  it("keeps unsupported imported participles pending instead of generating them", () => {
+    const imported = getAllRoots()
+      .flatMap((entry) => entry.variants ?? [])
+      .find((entry) => entry.source);
+    expect(imported).toBeDefined();
+    for (const key of ["active_participle", "passive_participle"] as const) {
+      const form = imported!.forms.find((candidate) => candidate.key === key)!;
+      expect(form.reviewState).toBe("pending");
+      expect(form.arabic).toBe("");
+      expect(form.meaningEn).toBeUndefined();
+      expect(form.exampleEn).toBeUndefined();
     }
-    // Sanity-check the guard itself actually exercised the weak-radical branches.
-    expect(checked).toBeGreaterThan(0);
+  });
+
+  it("uses the source masdar as a verbal noun, not a place noun", () => {
+    const imported = getAllRoots()
+      .flatMap((entry) => entry.variants ?? [])
+      .find((entry) => entry.source)!;
+    const masdar = imported.forms.find((form) => form.key === "place_or_mim_masdar")!;
+    expect(masdar.labelAr).toBe("المصدر");
+    expect(masdar.labelEn).toBe("Verbal noun");
+    expect(masdar.reviewState).toBe("source_backed");
+  });
+
+  it("rejects learner-facing placeholder templates with field context", () => {
+    const base = getAllRoots()[0];
+    const forms = base.forms.map((form) =>
+      form.key === "past" ? { ...form, meaningEn: "Past form for: test" } : form,
+    );
+    expect(validateRootEntry({ ...base, forms }).join(" ")).toContain(
+      'form "past" field "meaningEn" contains rejected placeholder pattern',
+    );
+  });
+
+  it("keeps the تخرّج regression entry free of generic action prose", () => {
+    const graduate = findRoot("خرج")?.variants?.find((entry) => entry.meaningEn === "To graduate");
+    expect(graduate).toBeDefined();
+    const learnerText = graduate!.forms
+      .flatMap((form) => [form.meaningEn, form.exampleEn])
+      .filter(Boolean)
+      .join(" ");
+    expect(learnerText).not.toMatch(/action:|AI-generated|Masdar from CSV|masdar listed for/i);
+  });
+
+  it("does not publish internal form notes as learner meanings", () => {
+    const entry = getAllRoots().find((root) => root.variants?.some((variant) => variant.source))!;
+    const publicEntry = toPublicRootEntry(entry);
+    const imported = publicEntry.variants!.find((variant) => variant.source)!;
+    expect(imported.forms.every((form) => form.notes === undefined)).toBe(true);
   });
 });

@@ -54,7 +54,7 @@ function searchRoot(roots: RootEntry[], query: string): RootEntry | undefined {
           verbEntry.meaningEn.toLowerCase().includes(q) ||
           verbEntry.forms.some(
             (form) =>
-              form.meaningEn.toLowerCase().includes(q) ||
+              form.meaningEn?.toLowerCase().includes(q) ||
               form.arabic.includes(query.trim()),
           ),
       ),

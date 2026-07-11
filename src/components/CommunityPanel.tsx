@@ -26,7 +26,7 @@ export default function CommunityPanel() {
           <button
             type="button"
             onClick={() => setSuggestOpen(true)}
-            className="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+            className="min-h-11 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
           >
             Suggest a root
           </button>

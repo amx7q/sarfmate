@@ -1514,11 +1514,6 @@ const IMPORT_VERIFIED_FIELDS: ImportedVerbSource["verifiedFields"] = [
   "imperative_2ms",
   "masdar",
 ];
-const GENERATED_FORM_NOTE =
-  "AI draft; generated from Arabic pattern. The CSV/PDF did not verify this form; verify before marking reviewed.";
-const MASDAR_SLOT_NOTE =
-  "AI draft; the CSV/PDF verifies this masdar, but SarfMate's fourth slot is a place noun / mim-masdar slot, so this row reuses the masdar here.";
-
 const HARAKAT_RE = /[\u064b-\u065f\u0670]/g;
 const ARABIC_LETTER_RE = /[ء-ي]/;
 const ROOT_RE = /^[ء-ي]{3}$/;
@@ -1782,83 +1777,28 @@ function preferredMasdar(value: string): string {
   return value.split("/")[0]?.trim() || value.trim();
 }
 
-const HAMZA_LETTERS = new Set(["أ", "إ", "ء", "ئ", "ؤ"]);
-
-function generatedParticiples(root: string, measure: VerbMeasure, row: ImportedArabicVerbRow) {
-  const rootChars = [...root];
-  const past = arabicLetters(row.past);
-  const presentStem = arabicLetters(row.present).replace(/^[يتنأ]/, "");
-
-  if (measure === "I") {
-    const [r1, r2, r3] = rootChars;
-    const isDefective = r3 === "و" || r3 === "ي";
-    // Hollow roots and roots whose middle radical is itself a hamza consonant both spell
-    // that slot as a hamza on a ya seat in the active participle (قَائِل، ثَائِر).
-    const isWeakMiddle = r2 === "و" || r2 === "ي" || HAMZA_LETTERS.has(r2);
-    const isGeminate = r2 === r3;
-    // The فاعل augment ا fuses with a hamza-initial root into آ (آخِذ، آكِل، آمِن).
-    const activeHead = HAMZA_LETTERS.has(r1) ? "آ" : `${r1}ا`;
-
-    let active: string;
-    if (isDefective) {
-      // فَاعٍ: the final weak radical drops to a bare tanwīn in the indefinite form, so its
-      // unvocalized skeleton omits it entirely (قَاضٍ، دَاعٍ، رَامٍ، شَاكٍ).
-      active = `${activeHead}${r2}`;
-    } else if (isWeakMiddle) {
-      active = `${activeHead}ئ${r3}`;
-    } else if (isGeminate) {
-      // فَاعّ: the doubled final radical collapses to a single written letter (مَارّ).
-      active = `${activeHead}${r2}`;
-    } else {
-      active = `${activeHead}${r2}${r3}`;
-    }
-
-    let passive: string;
-    if (isDefective || r2 === "و" || r2 === "ي") {
-      // Defective roots merge the مفعول template's و with the root's own final weak
-      // radical (مَرْمِيّ، مَدْعُوّ); hollow roots use their own resolved radical directly
-      // instead of a literal و (مَقُول، مَبِيع).
-      passive = `م${r1}${r2}${r3}`;
-    } else {
-      passive = `م${r1}${r2}و${r3}`;
-    }
-
-    return { active, passive };
-  }
-
-  if (measure === "V" || measure === "VI") {
-    return { active: `م${past}`, passive: `م${past}` };
-  }
-
-  return { active: `م${presentStem}`, passive: `م${presentStem}` };
-}
-
 function importedForm(
   order: number,
   key: SarfFormKey,
   arabic: string,
-  meaningEn: string,
-  exampleAr: string,
-  exampleEn: string,
-  notes: string,
+  reviewState: NonNullable<SarfForm["reviewState"]>,
+  meaningEn?: string,
+  labels?: { labelAr: string; labelEn: string },
 ): SarfForm {
   return {
     order,
     key,
-    ...label(key),
+    ...(labels ?? label(key)),
     arabic,
-    transliteration: transliterate(arabic),
-    meaningEn,
-    exampleAr,
-    exampleEn,
-    notes,
+    transliteration: arabic ? transliterate(arabic) : "",
+    reviewState,
+    ...(meaningEn ? { meaningEn } : {}),
   };
 }
 
 function csvRowToVerbEntry(row: ImportedArabicVerbRow, root: string): RootVerbEntry {
   const measure = inferMeasure(row);
   const masdar = preferredMasdar(row.masdar);
-  const participles = generatedParticiples(root, measure, row);
   const source: ImportedVerbSource = {
     chapter: row.chapter,
     sourcePage: row.sourcePage,
@@ -1883,60 +1823,15 @@ function csvRowToVerbEntry(row: ImportedArabicVerbRow, root: string): RootVerbEn
     notes,
     updatedAt: IMPORT_UPDATED_AT,
     forms: [
-      importedForm(
-        1,
-        "past",
-        row.past,
-        `Past form for: ${row.meaningEn}`,
-        `${row.past} الطَّالِبُ.`,
-        `The student did the action: ${row.meaningEn}.`,
-        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the past 3ms form; example and transliteration are AI draft.`,
-      ),
-      importedForm(
-        2,
-        "present",
-        row.present,
-        `Present form for: ${row.meaningEn}`,
-        `${row.present} الطَّالِبُ.`,
-        `The student does the action: ${row.meaningEn}.`,
-        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the present 3ms form; example and transliteration are AI draft.`,
-      ),
-      importedForm(
-        3,
-        "imperative",
-        row.imperative,
-        `Command form for: ${row.meaningEn}`,
-        `${row.imperative} يَا صَدِيقِي.`,
-        `My friend, do this action: ${row.meaningEn}.`,
-        `${AI_DRAFT_NOTE} Verified from the CSV/PDF row as the masculine singular imperative; example and transliteration are AI draft.`,
-      ),
-      importedForm(
-        4,
-        "place_or_mim_masdar",
-        masdar,
-        `Masdar from CSV: ${row.masdar}`,
-        `هٰذَا ${masdar}.`,
-        `This is the masdar listed for: ${row.meaningEn}.`,
-        MASDAR_SLOT_NOTE,
-      ),
-      importedForm(
-        5,
-        "active_participle",
-        participles.active,
-        `AI-generated active participle for: ${row.meaningEn}`,
-        `هُوَ ${participles.active}.`,
-        `He is connected with the action: ${row.meaningEn}.`,
-        GENERATED_FORM_NOTE,
-      ),
-      importedForm(
-        6,
-        "passive_participle",
-        participles.passive,
-        `AI-generated passive participle for: ${row.meaningEn}`,
-        `الأَمْرُ ${participles.passive}.`,
-        `The matter is connected with the action: ${row.meaningEn}.`,
-        `${GENERATED_FORM_NOTE} For intransitive or context-dependent verbs, this passive participle may be rare or awkward.`,
-      ),
+      importedForm(1, "past", row.past, "source_backed", row.meaningEn),
+      importedForm(2, "present", row.present, "source_backed", row.meaningEn),
+      importedForm(3, "imperative", row.imperative, "source_backed", row.meaningEn),
+      importedForm(4, "place_or_mim_masdar", masdar, "source_backed", row.meaningEn, {
+        labelAr: "المصدر",
+        labelEn: "Verbal noun",
+      }),
+      importedForm(5, "active_participle", "", "pending"),
+      importedForm(6, "passive_participle", "", "pending"),
     ],
   };
 }
@@ -2888,3 +2783,36 @@ export const roots: RootEntry[] = applyQuranicFlags(
   attachExtraVariants(importedArabicVerbBuild.roots),
 );
 export const importedArabicVerbReport = importedArabicVerbBuild.report;
+
+const cleanedImportedEntries = roots.flatMap((entry) =>
+  [
+    ...(entry.source ? [{ root: entry.root, entry }] : []),
+    ...(entry.variants ?? [])
+      .filter((variant) => variant.source)
+      .map((variant) => ({ root: entry.root, entry: variant })),
+  ],
+);
+
+/** Internal audit summary for the 2026-07 placeholder-content cleanup. */
+export const importedPlaceholderCleanupAudit = {
+  affectedRoots: new Set(cleanedImportedEntries.map(({ root }) => root)).size,
+  affectedEntries: cleanedImportedEntries.length,
+  cleanedLearnerFields: cleanedImportedEntries.length * 20,
+  items: cleanedImportedEntries.flatMap(({ root, entry }) =>
+    entry.forms.map((form) => ({
+      root,
+      entryId: "id" in entry ? entry.id : `${root}-main`,
+      formKey: form.key,
+      affectedFields:
+        form.reviewState === "pending"
+          ? ["arabic", "meaningEn", "exampleAr", "exampleEn"]
+          : ["meaningEn", "exampleAr", "exampleEn"],
+      actionTaken:
+        form.reviewState === "pending"
+          ? "Removed unsupported generated content and marked the form pending."
+          : "Kept source-backed Arabic and gloss; removed fabricated examples.",
+      evidenceUsed: form.reviewState === "source_backed" ? ["original_source"] : [],
+      humanReviewRequired: form.reviewState === "pending" || !form.exampleEn,
+    })),
+  ),
+} as const;

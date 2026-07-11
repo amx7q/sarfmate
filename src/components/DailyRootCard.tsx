@@ -57,8 +57,8 @@ export default function DailyRootCard({
       <div className="flex flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <div>
           <h2 id="daily-root-heading" className="text-base font-semibold text-accent">Root of the day</h2>
-          <div className="mt-2 flex items-baseline justify-center gap-4 sm:justify-start">
-            <p dir="rtl" lang="ar" className="font-arabic text-6xl font-medium leading-none text-primary">{entry.displayRoot}</p>
+          <div className="mt-2 flex flex-col items-center gap-1 sm:flex-row sm:items-baseline sm:justify-start sm:gap-4">
+            <p dir="rtl" lang="ar" className="whitespace-nowrap font-arabic text-6xl font-medium leading-none text-primary">{entry.displayRoot}</p>
             <p className="text-xl text-ink">{entry.meaningEn}</p>
           </div>
           <p className="mt-3 max-w-lg text-sm leading-6 text-muted">
@@ -70,9 +70,9 @@ export default function DailyRootCard({
           <Link href="/practice#daily-activities" className="px-2 py-1 text-center text-sm font-semibold text-secondary hover:text-primary">Take today’s daily quiz →</Link>
         </div>
       </div>
-      <div className="mt-7 grid border-y border-border-soft sm:grid-cols-3">
+      <div className="mt-7 grid grid-cols-3 border-y border-border-soft">
         {forms.map((form) => (
-          <article key={form.key} className="border-b border-border-soft p-4 text-center last:border-b-0 sm:border-b-0 sm:border-l sm:first:border-l-0">
+          <article key={form.key} className="min-w-0 border-l border-border-soft px-2 py-4 text-center first:border-l-0 sm:p-4">
             <p dir="rtl" lang="ar" className="font-arabic text-4xl text-primary">{form.arabic}</p>
             <h3 className="mt-2 text-sm font-semibold text-ink">{form.labelEn}</h3>
             <p className="mt-1 text-sm text-muted">{form.meaningEn}</p>

@@ -100,7 +100,7 @@ export default function BrowseRoots({
       (normalisedFilter &&
         normaliseArabicInput(root).includes(normalisedFilter)) ||
       matchesRootTransliteration(root, englishFilter) ||
-      searchableText.some((value) => value.toLowerCase().includes(englishFilter))
+      searchableText.some((value) => value?.toLowerCase().includes(englishFilter))
     );
   });
 

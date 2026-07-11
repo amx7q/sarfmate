@@ -16,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
         <nav aria-label="Footer navigation">
-          <ul className="flex items-center gap-4 text-sm text-muted">
+          <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted">
             <li>
               <Link href="/browse" className="rounded hover:text-primary">
                 Browse roots
