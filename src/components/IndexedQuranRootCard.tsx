@@ -10,8 +10,8 @@ export default function IndexedQuranRootCard({
   onSuggest?: () => void;
 }) {
   return (
-    <section className="rounded-3xl border border-accent/30 bg-surface p-6 text-center shadow-sm">
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+    <section className="rounded-2xl border border-accent/30 bg-surface p-6 text-center shadow-sm">
+      <p className="text-sm font-semibold text-accent">
         Quranic root · Indexed only
       </p>
       <h2
@@ -36,7 +36,7 @@ export default function IndexedQuranRootCard({
       <button
         type="button"
         onClick={onSuggest}
-        className="mt-6 rounded-full border border-secondary/30 bg-secondary/10 px-5 py-2 text-sm font-semibold text-primary transition-colors hover:border-secondary"
+        className="mt-6 rounded-xl border border-border-soft bg-surface px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:border-secondary hover:bg-background"
       >
         Request full entry
       </button>

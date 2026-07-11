@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import type { RootEntry, RootVerbEntry, SarfForm, SarfFormKey } from "@/lib/types";
 import StatusBadge from "@/components/StatusBadge";
@@ -41,10 +42,10 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
       key={entry.root}
       initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12 }}
       animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-      transition={{ duration: reduced ? 0.01 : 0.4, ease: "easeOut" }}
+      transition={{ duration: reduced ? 0.01 : 0.22, ease: [0.23, 1, 0.32, 1] }}
       aria-label={`Root result for ${entry.displayRoot}`}
     >
-      <div className="text-center">
+      <div className="mx-auto max-w-2xl text-center">
         <h2
           dir="rtl"
           lang="ar"
@@ -52,7 +53,7 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
         >
           {entry.displayRoot}
         </h2>
-        <p className="mt-3 text-xl text-accent">{entry.meaningEn}</p>
+        <p className="mt-3 text-xl text-ink">{entry.meaningEn}</p>
         <div className="mt-4 flex justify-center">
           <div className="flex flex-wrap justify-center gap-2">
             {entry.quranic && (
@@ -70,13 +71,17 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
             aids, not a replacement for tafsir or specialist dictionaries.
           </p>
         )}
-        <p className="mt-5 text-sm text-muted">
-          Showing the core forms of this Arabic root in a fixed learner-friendly
-          order.
-        </p>
+        {entry.status === "reviewed" && (
+          <Link
+            href={`/practice?root=${encodeURIComponent(entry.root)}`}
+            className="mt-5 inline-flex rounded-xl border border-border-soft bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-background"
+          >
+            Practice this root
+          </Link>
+        )}
       </div>
 
-      <div className="mt-8 space-y-8">
+      <div className="mt-7 space-y-10">
         {verbEntries.map((verbEntry, index) => {
           const forms = getOrderedForms(verbEntry);
           const isMainEntry = index === 0;
@@ -89,7 +94,7 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
               {!isMainEntry && (
                 <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <p className="text-sm font-semibold text-accent">
+                    <p className="text-sm font-semibold text-muted">
                       Additional verb entry · Form {verbEntry.measure}
                     </p>
                     <h3 className="mt-1 text-xl font-semibold text-ink">
@@ -101,18 +106,10 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
                   </div>
                 </div>
               )}
-              {verbEntry.source && (
-                <div className="mb-4 rounded-2xl border border-accent/30 bg-accent/5 p-4 text-sm leading-6 text-ink">
-                  <p className="font-semibold text-primary">Source and review status</p>
-                  <p className="mt-1">
-                    The source verifies the English meaning, past, present, imperative,
-                    and maṣdar for this entry. Transliteration, examples, participles,
-                    and root/measure inference still need human review.
-                  </p>
-                  <p className="mt-1 text-xs text-muted">
-                    {verbEntry.source.chapter} · {verbEntry.source.sourcePage}
-                  </p>
-                </div>
+              {!isMainEntry && verbEntry.source && (
+                <p className="mb-4 text-sm text-muted">
+                  Source-backed entry; learner examples may still need human review.
+                </p>
               )}
               <FormRow
                 forms={forms}

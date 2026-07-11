@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 
 export default function Hero() {
@@ -9,8 +8,8 @@ export default function Hero() {
     <motion.section
       initial={reduced ? { opacity: 0 } : { opacity: 0, y: 20 }}
       animate={reduced ? { opacity: 1 } : { opacity: 1, y: 0 }}
-      transition={{ duration: reduced ? 0.01 : 0.55, ease: "easeOut" }}
-      className="py-14 text-center sm:py-20"
+      transition={{ duration: reduced ? 0.01 : 0.28, ease: [0.23, 1, 0.32, 1] }}
+      className="pb-9 pt-12 text-center sm:pb-11 sm:pt-16"
     >
       <p className="mb-4 text-sm font-medium uppercase tracking-widest text-accent">
         Arabic roots &amp; forms
@@ -22,21 +21,7 @@ export default function Hero() {
         Type an Arabic root and see its core forms, meanings, and examples in
         one clean learner-friendly view.
       </p>
-      <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-        <a
-          href="#search"
-          className="rounded-xl bg-primary px-6 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-primary/90"
-        >
-          Search a root
-        </a>
-        <Link
-          href="/browse"
-          className="rounded-xl border border-border-soft bg-surface px-6 py-3 text-sm font-medium text-primary transition-colors hover:bg-background"
-        >
-          Browse examples
-        </Link>
-      </div>
-      <p className="mt-6 text-sm text-muted">
+      <p className="mt-5 text-sm text-muted">
         Built for students of Arabic, ṣarf, and Quranic vocabulary.
       </p>
     </motion.section>
