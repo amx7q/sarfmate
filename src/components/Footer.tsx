@@ -37,17 +37,25 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-          <div className="flex flex-col items-start gap-2 sm:items-end">
-            <p className="text-xs text-muted">Found SarfMate useful?</p>
+        <div className="flex flex-col items-start gap-2 sm:items-end">
+          <p className="text-xs text-muted">Support a good cause</p>
+          <a
+            href="https://www.osflondon.org.uk/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 w-fit items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus-visible:outline-secondary"
+          >
+            Sponsor an Orphan Today
+          </a>
           <a
             href="https://buymeacoffee.com/ammarabuyahya"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-fit items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus-visible:outline-secondary"
+            className="rounded px-1 py-1 text-sm font-medium text-primary hover:text-secondary"
           >
             Buy Me a Coffee
           </a>
-          </div>
+        </div>
       </div>
       <div className="border-t border-border-soft">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs leading-5 text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">

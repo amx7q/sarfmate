@@ -36,13 +36,13 @@ export default function EmptyState({
         <button
           type="button"
           onClick={onSuggest}
-          className="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+          className="min-h-11 rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-primary/90"
         >
           Suggest this root
         </button>
         <Link
           href="/browse"
-          className="rounded-xl border border-border-soft bg-surface px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-background"
+          className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border-soft bg-surface px-5 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-background"
         >
           Browse available roots
         </Link>

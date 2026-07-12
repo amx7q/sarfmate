@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { play } from "cuelume";
 import { getDailyCardForms, getLocalDateKey, selectDailyRoot } from "@/lib/dailyRoot";
 import type { RootEntry } from "@/lib/types";
 
@@ -44,6 +45,7 @@ export default function DailyRootCard({
     try {
       if (canShare) await navigator.share({ title: "SarfMate Root of the Day", text: shareText, url: `${window.location.origin}/root/${encodeURIComponent(entry!.root)}` });
       else await navigator.clipboard.writeText(shareText);
+      play("success");
       setShareMessage(canShare ? "Shared." : "Root copied.");
     } catch (error) {
       if (error instanceof DOMException && error.name === "AbortError") return;
@@ -56,7 +58,7 @@ export default function DailyRootCard({
       <div className="absolute inset-x-0 top-0 h-1 bg-accent" aria-hidden="true" />
       <div className="flex flex-col gap-6 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
         <div>
-          <h2 id="daily-root-heading" className="text-base font-semibold text-accent">Root of the day</h2>
+          <h2 id="daily-root-heading" className="text-base font-semibold text-accent-strong">Root of the day</h2>
           <div className="mt-2 flex flex-col items-center gap-1 sm:flex-row sm:items-baseline sm:justify-start sm:gap-4">
             <p dir="rtl" lang="ar" className="whitespace-nowrap font-arabic text-6xl font-medium leading-none text-primary">{entry.displayRoot}</p>
             <p className="text-xl text-ink">{entry.meaningEn}</p>
@@ -81,7 +83,7 @@ export default function DailyRootCard({
       </div>
       <div className="mt-5 flex flex-col items-center justify-between gap-3 sm:flex-row">
         <Link href={`/practice?root=${encodeURIComponent(entry.root)}`} className="text-sm font-semibold text-primary hover:text-secondary">Practice this root →</Link>
-        <button type="button" onClick={share} aria-label="Share today’s root" className="rounded-xl border border-border-soft px-4 py-2 text-sm font-semibold text-primary hover:bg-background">Share root</button>
+        <button type="button" onClick={share} data-cuelume-press="" data-cuelume-release="" aria-label="Share today’s root" className="min-h-11 rounded-xl border border-border-soft px-4 py-2 text-sm font-semibold text-primary hover:bg-background">Share root</button>
       </div>
       <p aria-live="polite" className="mt-3 min-h-5 text-center text-sm text-muted">{shareMessage}</p>
     </section>

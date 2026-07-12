@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { play } from "cuelume";
 
 export default function CopyButton({
   text,
@@ -25,6 +26,7 @@ export default function CopyButton({
   async function handleCopy() {
     try {
       await navigator.clipboard.writeText(text);
+      play("success");
       setCopied(true);
       if (timer.current) clearTimeout(timer.current);
       timer.current = setTimeout(() => setCopied(false), 1500);
@@ -37,9 +39,11 @@ export default function CopyButton({
     <motion.button
       type="button"
       onClick={handleCopy}
+      data-cuelume-press=""
+      data-cuelume-release=""
       aria-label={ariaLabel}
       whileTap={reduced ? undefined : { scale: 0.96 }}
-      className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-xs font-medium text-primary transition-colors hover:bg-primary/5"
+      className="inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-xs font-medium text-primary transition-colors hover:bg-primary/5"
     >
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (

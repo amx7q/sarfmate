@@ -29,15 +29,15 @@ export default function FormCard({
       className="flex w-full min-w-0 max-w-none flex-col rounded-2xl border border-border-soft bg-surface p-5 text-left shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-md"
       aria-labelledby={titleId}
     >
-      <div dir="ltr" className="flex items-start justify-between gap-2">
+      <div dir="ltr" className="flex items-start gap-3">
         <span
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white"
+          className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-white"
           aria-hidden="true"
         >
           {form.order}
         </span>
-        <div className="min-w-0 text-left">
-          <p dir="rtl" lang="ar" className="text-right font-arabic text-sm font-medium text-muted">
+        <div className="min-w-0 flex-1 text-left">
+          <p dir="rtl" lang="ar" className="text-left font-arabic text-sm font-medium text-muted">
             {form.labelAr}
           </p>
           <p className="text-xs text-muted">{form.labelEn}</p>

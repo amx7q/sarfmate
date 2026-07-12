@@ -260,7 +260,7 @@ export default function DailyRootChallenge({ roots }: { roots: RootEntry[] }) {
           <Dialog open={shareOpen} onClose={() => setShareOpen(false)} title="Share your Daily Root Challenge result">
             <div className="rounded-2xl border border-border-soft bg-surface p-5 text-ink">
               <div className="p-5">
-                <div className="flex items-center justify-between gap-3"><p className="text-lg font-bold text-primary">SarfMate</p><span className="text-sm font-semibold text-accent">Daily root challenge</span></div>
+                <div className="flex items-center justify-between gap-3"><p className="text-lg font-bold text-primary">SarfMate</p><span className="text-sm font-semibold text-accent-strong">Daily root challenge</span></div>
                 <h3 className="mt-5 text-3xl font-bold">I scored {score}/12 today</h3>
                 <p className="mt-2 text-sm text-muted">Six Arabic forms and their English meanings.</p>
                 <div className="mt-5 border-t border-border-soft pt-3 text-primary"><p className="text-sm text-muted">Current challenge streak</p><p className="mt-1 text-2xl font-bold text-secondary">{progress.streak} day{progress.streak === 1 ? "" : "s"}</p></div>

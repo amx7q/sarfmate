@@ -162,7 +162,7 @@ export default function BrowseRoots({
                     </span>
                     <span className="mt-2 text-sm text-muted">{item.entry.meaningEn}</span>
                     {verbEntryCount > 1 && (
-                      <span className="mt-2 text-xs font-medium text-accent">
+                      <span className="mt-2 text-xs font-medium text-accent-strong">
                         {verbEntryCount} verb entries
                       </span>
                     )}

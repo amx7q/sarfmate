@@ -331,6 +331,8 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
               <button
                 type="button"
                 onClick={() => startSession("practice")}
+                data-cuelume-press=""
+                data-cuelume-release=""
                 className="min-h-11 w-full shrink-0 rounded-xl bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary/90 lg:w-auto"
               >
                 Start practice
@@ -340,13 +342,13 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
 
           <section id="daily-activities" aria-labelledby="daily-activities-heading" className="scroll-mt-24">
             <div className="max-w-2xl">
-              <p className="text-sm font-semibold text-accent">Return each day</p>
+              <p className="text-sm font-semibold text-accent-strong">Return each day</p>
               <h2 id="daily-activities-heading" className="mt-1 text-2xl font-bold text-primary">Daily activities</h2>
               <p className="mt-2 text-muted">Two shared challenges for practicing recognition and active recall.</p>
             </div>
             <div className="mt-5 grid items-stretch gap-5 md:grid-cols-2">
               <article className="flex h-full flex-col rounded-2xl border border-border-soft bg-surface p-6 shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-md">
-                <p className="text-sm font-semibold text-accent">Daily quiz</p>
+                <p className="text-sm font-semibold text-accent-strong">Daily quiz</p>
                 <h3 className="mt-2 text-xl font-bold text-primary">Five mixed questions</h3>
                 <p className="mt-3 leading-7 text-muted">
                   Recognise Arabic forms and meanings in a balanced quiz that changes at midnight UTC.
@@ -364,13 +366,15 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
                 <button
                   type="button"
                   onClick={() => startSession("daily")}
+                  data-cuelume-press=""
+                  data-cuelume-release=""
                   className="mt-auto inline-flex min-h-11 items-end pt-5 text-left text-sm font-semibold text-primary hover:text-secondary"
                 >
                   {completedToday ? "Replay today's quiz →" : "Start daily quiz →"}
                 </button>
               </article>
               <article className="flex h-full flex-col rounded-2xl border border-border-soft bg-surface p-6 shadow-sm transition-[border-color,box-shadow] duration-200 hover:border-primary/20 hover:shadow-md">
-                <p className="text-sm font-semibold text-accent">Daily root challenge</p>
+                <p className="text-sm font-semibold text-accent-strong">Daily root challenge</p>
                 <h3 className="mt-2 text-xl font-bold text-primary">Build all six forms</h3>
                 <p className="mt-3 leading-7 text-muted">
                   Recall the vowelled Arabic forms and their English meanings for today’s reviewed root.
@@ -629,7 +633,7 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
               <div>
                 <div className="flex items-center justify-between gap-3">
                   <p className="text-lg font-bold">SarfMate</p>
-                  <span className="text-sm font-semibold text-accent">
+                  <span className="text-sm font-semibold text-accent-strong">
                     Daily Arabic Quiz
                   </span>
                 </div>
@@ -776,6 +780,8 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
             <button
               key={option.id}
               type="button"
+              data-cuelume-press=""
+              data-cuelume-release=""
               disabled={answered}
               aria-pressed={isSelected}
               onClick={() => answerQuestion(option.id)}
@@ -800,7 +806,7 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
             <p dir="rtl" lang="ar" className="font-arabic text-lg text-muted">{question.explanation.formLabelAr}</p>
             <p className="mt-1 text-sm text-muted">{question.explanation.meaningEn}</p>
           </div>
-          <button type="button" onClick={nextQuestion} className="mt-5 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary/90">
+          <button type="button" onClick={nextQuestion} data-cuelume-press="" data-cuelume-release="" className="mt-5 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-primary/90">
             {questionIndex === session.questions.length - 1 ? "See results" : "Next question"}
           </button>
         </div>

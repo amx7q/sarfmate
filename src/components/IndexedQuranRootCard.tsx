@@ -11,7 +11,7 @@ export default function IndexedQuranRootCard({
 }) {
   return (
     <section className="rounded-2xl border border-accent/30 bg-surface p-6 text-center shadow-sm">
-      <p className="text-sm font-semibold text-accent">
+      <p className="text-sm font-semibold text-accent-strong">
         Quranic root · Indexed only
       </p>
       <h2

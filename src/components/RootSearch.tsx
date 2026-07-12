@@ -56,6 +56,7 @@ export default function RootSearch({
         <button
           type="button"
           onClick={() => setKeyboardOpen((open) => !open)}
+          data-cuelume-toggle=""
           aria-pressed={keyboardOpen}
           aria-label={
             keyboardOpen
@@ -72,6 +73,8 @@ export default function RootSearch({
         </button>
         <button
           type="submit"
+          data-cuelume-press=""
+          data-cuelume-release=""
           className="col-span-2 min-h-11 shrink-0 whitespace-nowrap rounded-xl bg-primary px-3.5 py-2.5 text-sm font-medium text-white transition-[background-color,transform] duration-200 hover:bg-primary/90 min-[380px]:col-auto sm:px-5"
         >
           Search

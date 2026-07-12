@@ -51,7 +51,7 @@ export default function Logo({ showTagline = true }: { showTagline?: boolean }) 
           Sarf<span className="text-secondary">Mate</span>
         </span>
         {showTagline && (
-          <span className="text-xs text-accent font-medium">
+          <span className="text-xs text-accent-strong font-medium">
             Arabic roots &amp; forms
           </span>
         )}
