@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="mt-20 border-t border-border-soft bg-surface">
-      <div className="mx-auto grid max-w-6xl gap-6 px-4 py-8 sm:grid-cols-[1fr_auto] sm:items-center sm:px-6 lg:grid-cols-[1fr_auto_auto]">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 sm:grid-cols-[1fr_auto] sm:items-center sm:px-6 lg:grid-cols-[1fr_auto_auto]">
         <div>
           <p className="text-sm font-semibold text-primary">
             SarfMate{" "}
@@ -37,43 +37,45 @@ export default function Footer() {
             </li>
           </ul>
         </nav>
-        <div className="flex flex-col items-start gap-2 sm:items-end">
+        <div className="flex flex-col items-start gap-2 sm:col-span-2 lg:col-span-1 lg:items-end">
           <p className="text-xs text-muted">Support a good cause</p>
           <a
             href="https://www.osflondon.org.uk/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-11 w-fit items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus-visible:outline-secondary"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90 focus-visible:outline-secondary sm:w-fit"
           >
             Sponsor an Orphan Today
-          </a>
-          <a
-            href="https://buymeacoffee.com/ammarabuyahya"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded px-1 py-1 text-sm font-medium text-primary hover:text-secondary"
-          >
-            Buy Me a Coffee
           </a>
         </div>
       </div>
       <div className="border-t border-border-soft">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-4 text-xs leading-5 text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 text-xs leading-5 text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>
             Arabic morphology can vary by verb form, context, and usage.
             SarfMate entries are curated and reviewed over time.
           </p>
-          <p>
-            Website by{" "}
+          <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+            <p>
+              Website by{" "}
+              <a
+                href="https://linktr.ee/ammarabuyahya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded font-medium text-primary hover:text-secondary"
+              >
+                Abu Yahya
+              </a>
+            </p>
             <a
-              href="https://linktr.ee/ammarabuyahya"
+              href="https://buymeacoffee.com/ammarabuyahya"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded font-medium text-primary hover:text-secondary"
+              className="inline-flex min-h-11 items-center justify-center rounded-lg border border-border-soft px-3 py-2 text-xs font-semibold text-primary transition-colors hover:border-primary/30 hover:bg-background focus-visible:outline-secondary"
             >
-              Abu Yahya
+              Buy Me a Coffee
             </a>
-          </p>
+          </div>
         </div>
       </div>
     </footer>
