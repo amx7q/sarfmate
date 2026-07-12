@@ -29,6 +29,7 @@ import {
   recordAttempt,
 } from "@/lib/practiceAttempts";
 import type { RootEntry } from "@/lib/types";
+import { usePublicRoots } from "@/lib/usePublicRoots";
 
 const DIFFICULTIES: Array<{
   id: PracticeDifficulty;
@@ -192,7 +193,7 @@ async function copyShareCaption(caption: string): Promise<void> {
   if (!copied) throw new Error("Copy is not supported.");
 }
 
-export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
+function PracticeSessionContent({ roots }: { roots: RootEntry[] }) {
   const searchParams = useSearchParams();
   const priorityRoot = searchParams.get("root") ?? undefined;
   const today = getUtcDateKey();
@@ -813,4 +814,16 @@ export default function PracticeSession({ roots }: { roots: RootEntry[] }) {
       )}
     </section>
   );
+}
+
+export default function PracticeSession({ roots: initialRoots }: { roots?: RootEntry[] }) {
+  const { roots, error } = usePublicRoots(initialRoots);
+
+  if (error) {
+    return <p className="text-center text-sm text-danger">Practice data could not be loaded. Please refresh and try again.</p>;
+  }
+  if (!roots) {
+    return <p className="text-center text-sm text-muted">Loading practice…</p>;
+  }
+  return <PracticeSessionContent roots={roots} />;
 }

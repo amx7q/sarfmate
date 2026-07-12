@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import DailyRootChallenge from "@/components/DailyRootChallenge";
-import { getPublicRootEntries } from "@/lib/publicData";
 import { pageMetadata } from "@/lib/siteConfig";
 
 export const metadata: Metadata = pageMetadata({
@@ -12,7 +11,7 @@ export const metadata: Metadata = pageMetadata({
 export default function DailyRootChallengePage() {
   return (
     <div className="py-4">
-      <DailyRootChallenge roots={getPublicRootEntries()} />
+      <DailyRootChallenge />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import PracticeSession from "@/components/PracticeSession";
-import { getPublicRootEntries } from "@/lib/publicData";
 import { pageMetadata } from "@/lib/siteConfig";
 
 export const metadata: Metadata = pageMetadata({
@@ -14,7 +13,7 @@ export default function PracticePage() {
   return (
     <div className="py-12 sm:py-16">
       <Suspense fallback={<p className="text-center text-muted">Loading practice…</p>}>
-        <PracticeSession roots={getPublicRootEntries()} />
+        <PracticeSession />
       </Suspense>
     </div>
   );

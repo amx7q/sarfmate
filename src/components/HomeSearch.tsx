@@ -10,6 +10,7 @@ import RootResult from "@/components/RootResult";
 import IndexedQuranRootCard from "@/components/IndexedQuranRootCard";
 import EmptyState from "@/components/EmptyState";
 import SuggestRootDialog from "@/components/SuggestRootDialog";
+import { usePublicRoots } from "@/lib/usePublicRoots";
 
 const EXAMPLE_ROOTS = ["سمع", "كتب", "فتح", "علم", "دخل", "خرج"] as const;
 const HAS_ARABIC = /[\u0600-\u06ff]/;
@@ -110,7 +111,7 @@ function searchRootLibrary(
   return undefined;
 }
 
-export default function HomeSearch({
+function HomeSearchContent({
   roots,
   quranRoots,
 }: {
@@ -204,4 +205,22 @@ export default function HomeSearch({
       />
     </section>
   );
+}
+
+export default function HomeSearch({
+  roots: initialRoots,
+  quranRoots,
+}: {
+  roots?: RootEntry[];
+  quranRoots: QuranRootIndexEntry[];
+}) {
+  const { roots, error } = usePublicRoots(initialRoots);
+
+  if (error) {
+    return <p className="text-center text-sm text-danger">The root library could not be loaded. Please refresh and try again.</p>;
+  }
+  if (!roots) {
+    return <p className="text-center text-sm text-muted">Loading root search…</p>;
+  }
+  return <HomeSearchContent roots={roots} quranRoots={quranRoots} />;
 }

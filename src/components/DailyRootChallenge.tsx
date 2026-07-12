@@ -20,6 +20,7 @@ import {
   type DailyRootChallengeProgress,
 } from "@/lib/dailyRootChallenge";
 import type { RootEntry } from "@/lib/types";
+import { usePublicRoots } from "@/lib/usePublicRoots";
 
 const STORAGE_KEY = "sarfmate-daily-root-challenge-v1";
 type Answers = Record<string, { arabic: string; english: string }>;
@@ -94,7 +95,7 @@ function downloadImage(blob: Blob, dateKey: string) {
   URL.revokeObjectURL(url);
 }
 
-export default function DailyRootChallenge({ roots }: { roots: RootEntry[] }) {
+function DailyRootChallengeContent({ roots }: { roots: RootEntry[] }) {
   const [dateKey, setDateKey] = useState("");
   const [entry, setEntry] = useState<RootEntry>();
   const [answers, setAnswers] = useState<Answers>({});
@@ -279,4 +280,16 @@ export default function DailyRootChallenge({ roots }: { roots: RootEntry[] }) {
       </div>
     </section>
   );
+}
+
+export default function DailyRootChallenge({ roots: initialRoots }: { roots?: RootEntry[] }) {
+  const { roots, error } = usePublicRoots(initialRoots);
+
+  if (error) {
+    return <p className="py-12 text-center text-sm text-danger">Challenge data could not be loaded. Please refresh and try again.</p>;
+  }
+  if (!roots) {
+    return <p className="py-12 text-center text-sm text-muted">Loading challenge…</p>;
+  }
+  return <DailyRootChallengeContent roots={roots} />;
 }

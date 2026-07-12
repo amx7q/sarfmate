@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getPublicQuranRootIndex, getPublicRootEntries } from "@/lib/publicData";
+import { getPublicQuranRootIndex } from "@/lib/publicData";
 import BrowseRoots from "@/components/BrowseRoots";
 import { pageMetadata } from "@/lib/siteConfig";
 
@@ -10,7 +10,6 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function BrowsePage() {
-  const roots = getPublicRootEntries();
   const quranRoots = getPublicQuranRootIndex();
 
   return (
@@ -25,7 +24,7 @@ export default function BrowsePage() {
         </p>
       </div>
       <div className="mt-10">
-        <BrowseRoots roots={roots} quranRoots={quranRoots} />
+        <BrowseRoots quranRoots={quranRoots} />
       </div>
     </div>
   );

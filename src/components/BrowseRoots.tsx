@@ -6,6 +6,7 @@ import type { QuranRootIndexEntry, RootEntry, RootVerbEntry } from "@/lib/types"
 import { matchesRootTransliteration, normaliseArabicInput } from "@/lib/arabic";
 import StatusBadge from "@/components/StatusBadge";
 import SuggestRootDialog from "@/components/SuggestRootDialog";
+import { usePublicRoots } from "@/lib/usePublicRoots";
 
 type BrowseFilter =
   | "all"
@@ -48,7 +49,7 @@ function getRootVerbEntries(entry: RootEntry): RootVerbEntry[] {
   ];
 }
 
-export default function BrowseRoots({
+function BrowseRootsContent({
   roots,
   quranRoots,
 }: {
@@ -218,4 +219,22 @@ export default function BrowseRoots({
       />
     </div>
   );
+}
+
+export default function BrowseRoots({
+  roots: initialRoots,
+  quranRoots,
+}: {
+  roots?: RootEntry[];
+  quranRoots: QuranRootIndexEntry[];
+}) {
+  const { roots, error } = usePublicRoots(initialRoots);
+
+  if (error) {
+    return <p className="text-center text-sm text-danger">The root library could not be loaded. Please refresh and try again.</p>;
+  }
+  if (!roots) {
+    return <p className="text-center text-sm text-muted">Loading roots…</p>;
+  }
+  return <BrowseRootsContent roots={roots} quranRoots={quranRoots} />;
 }

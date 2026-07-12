@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import { play } from "cuelume";
 import { getDailyCardForms, getLocalDateKey, selectDailyRoot } from "@/lib/dailyRoot";
 import type { RootEntry } from "@/lib/types";
+import { usePublicRoots } from "@/lib/usePublicRoots";
 
 export default function DailyRootCard({
-  roots,
+  roots: initialRoots,
   initialEntry,
 }: {
-  roots: RootEntry[];
+  roots?: RootEntry[];
   initialEntry?: RootEntry;
 }) {
+  const { roots } = usePublicRoots(initialRoots);
   // Seeded with the server-computed root so the first client render matches
   // the static HTML exactly (no hydration mismatch); the effect below then
   // corrects to the visitor's actual local date once mounted.
@@ -20,6 +22,7 @@ export default function DailyRootCard({
   const [shareMessage, setShareMessage] = useState("");
 
   useEffect(() => {
+    if (!roots) return;
     const refresh = () => setEntry(selectDailyRoot(roots, getLocalDateKey()));
     refresh();
     const onVisible = () => document.visibilityState === "visible" && refresh();

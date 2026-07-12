@@ -47,9 +47,9 @@ export default function HomePage() {
       />
       <Hero />
       <Suspense fallback={null}>
-        <HomeSearch roots={roots} quranRoots={quranRoots} />
+        <HomeSearch quranRoots={quranRoots} />
       </Suspense>
-      <DailyRootCard roots={roots} initialEntry={initialDailyEntry} />
+      <DailyRootCard initialEntry={initialDailyEntry} />
       <FeatureCards />
       <CommunityPanel />
     </>
