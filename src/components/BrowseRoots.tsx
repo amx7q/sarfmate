@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import ArabicKeyboard from "@/components/ArabicKeyboard";
 import type { QuranRootIndexEntry, RootEntry, RootVerbEntry } from "@/lib/types";
 import { matchesRootTransliteration, normaliseArabicInput } from "@/lib/arabic";
 import StatusBadge from "@/components/StatusBadge";
@@ -59,8 +60,20 @@ function BrowseRootsContent({
   quranRoots: QuranRootIndexEntry[];
 }) {
   const [filter, setFilter] = useState("");
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
   const [activeFilter, setActiveFilter] = useState<BrowseFilter>("all");
   const [suggestedRoot, setSuggestedRoot] = useState<string | null>(null);
+  const filterInputRef = useRef<HTMLInputElement>(null);
+
+  function insertFilterCharacter(character: string) {
+    setFilter((current) => current + character);
+    filterInputRef.current?.focus();
+  }
+
+  function removeLastFilterCharacter() {
+    setFilter((current) => [...current].slice(0, -1).join(""));
+    filterInputRef.current?.focus();
+  }
   const fullKeys = new Set(roots.map((entry) => normaliseArabicInput(entry.root)));
   const indexedOnlyItems: BrowseItem[] = quranRoots
     .filter((entry) => !fullKeys.has(normaliseArabicInput(entry.root)))
@@ -116,18 +129,46 @@ function BrowseRootsContent({
 
   return (
     <div>
-      <div className="mx-auto max-w-md">
+      <div className="relative mx-auto max-w-md">
         <label htmlFor="browse-filter" className="sr-only">
           Filter roots by Arabic letters or English meaning
         </label>
-        <input
-          id="browse-filter"
-          type="search"
-          value={filter}
-          onChange={(event) => setFilter(event.target.value)}
-          placeholder="Filter by root (سمع) or meaning (hearing)…"
-          dir="auto"
-          className="w-full rounded-2xl border border-border-soft bg-surface px-4 py-3 text-sm text-ink shadow-sm placeholder:text-muted focus:border-secondary"
+        <div className="flex items-center gap-1.5 rounded-2xl border border-border-soft bg-surface p-2 shadow-sm transition-[border-color,box-shadow] duration-200 focus-within:border-secondary focus-within:shadow-md">
+          <input
+            ref={filterInputRef}
+            id="browse-filter"
+            type="search"
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+            placeholder="Filter by root (سمع) or meaning (hearing)…"
+            dir="auto"
+            autoComplete="off"
+            spellCheck={false}
+            className="min-h-11 min-w-0 flex-1 bg-transparent px-2 py-2 text-sm text-ink outline-none placeholder:text-muted sm:px-3"
+          />
+          <button
+            type="button"
+            onClick={() => setKeyboardOpen((open) => !open)}
+            data-cuelume-toggle=""
+            aria-pressed={keyboardOpen}
+            aria-label={
+              keyboardOpen
+                ? "Hide on-screen Arabic keyboard"
+                : "Show on-screen Arabic keyboard"
+            }
+            className={`min-h-11 shrink-0 rounded-xl border px-2.5 py-2.5 text-base transition-[color,background-color,border-color,transform] duration-200 sm:px-3 ${
+              keyboardOpen
+                ? "border-secondary bg-secondary/10 text-primary"
+                : "border-border-soft bg-surface text-muted hover:text-primary"
+            }`}
+          >
+            <span aria-hidden="true">⌨</span>
+          </button>
+        </div>
+        <ArabicKeyboard
+          open={keyboardOpen}
+          onKey={insertFilterCharacter}
+          onBackspace={removeLastFilterCharacter}
         />
       </div>
 
