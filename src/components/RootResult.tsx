@@ -71,7 +71,7 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
             aids, not a replacement for tafsir or specialist dictionaries.
           </p>
         )}
-        {entry.status === "reviewed" && (
+        {entry.forms.some((form) => form.reviewState === "reviewed") && (
           <Link
             href={`/practice?root=${encodeURIComponent(entry.root)}`}
             className="mt-5 inline-flex rounded-xl border border-border-soft bg-surface px-4 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-background"
@@ -106,10 +106,12 @@ export default function RootResult({ entry }: { entry: RootEntry }) {
                   </div>
                 </div>
               )}
-              {verbEntry.status === "ai_draft" && (
+              {(verbEntry.status === "ai_draft" || verbEntry.status === "partially_reviewed") && (
                 <p className="mb-4 text-sm text-muted">
-                  <span className="font-medium text-ink">Draft entry.</span>{" "}
-                  Some forms and examples are still being reviewed.
+                  <span className="font-medium text-ink">
+                    {verbEntry.status === "partially_reviewed" ? "Partially reviewed entry." : "Draft entry."}
+                  </span>{" "}
+                  Some forms and examples are still being reviewed. Practice only uses reviewed forms.
                 </p>
               )}
               <FormRow

@@ -17,7 +17,7 @@ const SECTIONS = [
   },
   {
     title: "Why entries are reviewed",
-    body: "Arabic morphology can vary by verb form, context, and usage. SarfMate entries are curated and reviewed over time. Each root carries a status badge — Reviewed, Community suggested, or AI draft — and individual forms that still need scholarly review are clearly marked, so you always know how much to trust what you see.",
+    body: "Arabic morphology can vary by verb form, context, and usage. SarfMate entries are curated and reviewed over time. Each root carries a status badge — Reviewed, Partially reviewed, Community suggested, or AI draft — and individual forms that still need scholarly review are clearly marked, so you always know how much to trust what you see.",
   },
   {
     title: "How community corrections help",
@@ -42,6 +42,36 @@ export default function AboutSarfMate() {
             <p className="mt-3 leading-relaxed text-ink">{section.body}</p>
           </section>
         ))}
+        <section>
+          <h2 className="text-xl font-semibold text-primary">Sources and attribution</h2>
+          <p className="mt-3 leading-relaxed text-ink">
+            Conjugated verb forms are checked with{" "}
+            <a className="font-medium text-primary hover:text-secondary" href="https://qutrub.arabeyes.org/">
+              Qutrub
+            </a>
+            . Derived-form lemmas are checked with Birzeit University&rsquo;s{" "}
+            <a className="font-medium text-primary hover:text-secondary" href="https://sina.birzeit.edu/qabas/about">
+              Qabas Arabic Lexicon
+            </a>
+            , by Mustafa Jarrar and Tymaa Hammouda, used under CC BY-ND 4.0.
+            Disputed vowel forms are independently cross-checked with NYU Abu Dhabi&rsquo;s{" "}
+            <a
+              className="font-medium text-primary hover:text-secondary"
+              href="https://camel-tools.readthedocs.io/"
+            >
+              CALIMA-MSA via CAMeL Tools
+            </a>
+            , and unresolved participles are additionally checked with the official open-source{" "}
+            <a
+              className="font-medium text-primary hover:text-secondary"
+              href="https://github.com/otakar-smrz/elixir-fm"
+            >
+              ElixirFM morphology lexicon
+            </a>
+            .
+            Source confirmation does not replace contextual scholarly review.
+          </p>
+        </section>
       </div>
     </article>
   );

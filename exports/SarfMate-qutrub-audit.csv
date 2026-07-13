@@ -1,0 +1,749 @@
+﻿root,verb_entry_id,entry_type,measure,status,meaning,current_past,current_present,current_imperative,qutrub_result,qutrub_future_type,qutrub_past,qutrub_present,qutrub_imperative,past_match,present_match,imperative_match,safe_corrections,qutrub_url
+سمع,سمع-main,Main,I,reviewed,"hearing, listening",سَمِعَ,يَسْمَعُ,اِسْمَعْ,matched_existing_future_type,فتحة,سَمِعَ,يَسْمَعُ,اِسْمَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَمِعَ
+كتب,كتب-main,Main,I,reviewed,writing,كَتَبَ,يَكْتُبُ,اُكْتُبْ,matched_existing_future_type,ضمة,كَتَبَ,يَكْتُبُ,اُكْتُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَتَبَ
+فتح,فتح-main,Main,I,reviewed,opening,فَتَحَ,يَفْتَحُ,اِفْتَحْ,matched_existing_future_type,فتحة,فَتَحَ,يَفْتَحُ,اِفْتَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَتَحَ
+علم,علم-main,Main,I,reviewed,knowing,عَلِمَ,يَعْلَمُ,اِعْلَمْ,matched_existing_future_type,فتحة,عَلِمَ,يَعْلَمُ,اِعْلَمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَلِمَ
+علم,علم-csv-38,Variant,II,ai_draft,To teach,علّم,يعلم,علم,unambiguous,فتحة,عَلَّمَ,يُعَلِّمُ,عَلِّمْ,False,False,False,past=عَلَّمَ; present=يُعَلِّمُ; imperative=عَلِّمْ,https://qutrub.arabeyes.org/?verb=علّم
+علم,علم-csv-139,Variant,V,ai_draft,To learn,تعلّم,يتعلّم,تعلّم,unambiguous,فتحة,تَعَلَّمَ,يَتَعَلَّمُ,تَعَلَّمْ,False,False,False,past=تَعَلَّمَ; present=يَتَعَلَّمُ; imperative=تَعَلَّمْ,https://qutrub.arabeyes.org/?verb=تعلّم
+دخل,دخل-main,Main,I,reviewed,entering,دَخَلَ,يَدْخُلُ,اُدْخُلْ,matched_existing_future_type,ضمة,دَخَلَ,يَدْخُلُ,اُدْخُلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=دَخَلَ
+خرج,خرج-main,Main,I,reviewed,"exiting, going out",خَرَجَ,يَخْرُجُ,اُخْرُجْ,matched_existing_future_type,ضمة,خَرَجَ,يَخْرُجُ,اُخْرُجْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَرَجَ
+خرج,خرج-csv-107,Variant,V,ai_draft,To graduate,تخرّج,يتخرّج,تخرّج,unambiguous,فتحة,تَخَرَّجَ,يَتَخَرَّجُ,تَخَرَّجْ,False,False,False,past=تَخَرَّجَ; present=يَتَخَرَّجُ; imperative=تَخَرَّجْ,https://qutrub.arabeyes.org/?verb=تخرّج
+خرج,خرج-csv-205,Variant,IV,ai_draft,To take out,أخرج,يخرج,أخرج,unambiguous,فتحة,أَخْرَجَ,يُخْرِجُ,أَخْرِجْ,False,False,False,past=أَخْرَجَ; present=يُخْرِجُ; imperative=أَخْرِجْ,https://qutrub.arabeyes.org/?verb=أخرج
+عبد,عبد-main,Main,I,ai_draft,"worshipping, serving",عَبَدَ,يَعْبُدُ,اُعْبُدْ,matched_existing_future_type,ضمة,عَبَدَ,يَعْبُدُ,اُعْبُدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَبَدَ
+عبد,عبد-csv-430,Variant,X,ai_draft,To enslave,استعبد,يستعبد,استعبد,unambiguous,فتحة,اِسْتَعْبَدَ,يَسْتَعْبِدُ,اِسْتَعْبِدْ,False,False,False,past=اِسْتَعْبَدَ; present=يَسْتَعْبِدُ; imperative=اِسْتَعْبِدْ,https://qutrub.arabeyes.org/?verb=استعبد
+رحم,رحم-main,Main,I,ai_draft,"mercy, compassion",رَحِمَ,يَرْحَمُ,اِرْحَمْ,matched_existing_future_type,فتحة,رَحِمَ,يَرْحَمُ,اِرْحَمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَحِمَ
+غفر,غفر-main,Main,I,ai_draft,"forgiving, covering",غَفَرَ,يَغْفِرُ,اِغْفِرْ,matched_existing_future_type,كسرة,غَفَرَ,يَغْفِرُ,اِغْفِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَفَرَ
+غفر,غفر-csv-543,Variant,X,ai_draft,To seek forgiveness,استغفر,يستغفر,استغفر,unambiguous,فتحة,اِسْتَغْفَرَ,يَسْتَغْفِرُ,اِسْتَغْفِرْ,False,False,False,past=اِسْتَغْفَرَ; present=يَسْتَغْفِرُ; imperative=اِسْتَغْفِرْ,https://qutrub.arabeyes.org/?verb=استغفر
+كفر,كفر-main,Main,I,ai_draft,"covering, disbelieving",كَفَرَ,يَكْفُرُ,اُكْفُرْ,matched_existing_future_type,ضمة,كَفَرَ,يَكْفُرُ,اُكْفُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَفَرَ
+سلم,سلم-main,Main,I,ai_draft,"peace, safety, surrender",سَلِمَ,يَسْلَمُ,اِسْلَمْ,matched_existing_future_type,فتحة,سَلِمَ,يَسْلَمُ,اِسْلَمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَلِمَ
+سلم,سلم-csv-130,Variant,II,ai_draft,"To give, submit, hand over",سلّم,يسلم,سلم,unambiguous,فتحة,سَلَّمَ,يُسَلِّمُ,سَلِّمْ,False,False,False,past=سَلَّمَ; present=يُسَلِّمُ; imperative=سَلِّمْ,https://qutrub.arabeyes.org/?verb=سلّم
+سلم,سلم-csv-191,Variant,IV,ai_draft,To embrace Islaam,أسلم,يسلم,أسلم,unambiguous,فتحة,أَسْلَمَ,يُسْلِمُ,أَسْلِمْ,False,False,False,past=أَسْلَمَ; present=يُسْلِمُ; imperative=أَسْلِمْ,https://qutrub.arabeyes.org/?verb=أسلم
+عمل,عمل-main,Main,I,ai_draft,"working, doing",عَمِلَ,يَعْمَلُ,اِعْمَلْ,matched_existing_future_type,فتحة,عَمِلَ,يَعْمَلُ,اِعْمَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَمِلَ
+عمل,عمل-csv-177,Variant,X,ai_draft,To use,استعمل,يستعمل,استعمل,unambiguous,فتحة,اِسْتَعْمَلَ,يَسْتَعْمِلُ,اِسْتَعْمِلْ,False,False,False,past=اِسْتَعْمَلَ; present=يَسْتَعْمِلُ; imperative=اِسْتَعْمِلْ,https://qutrub.arabeyes.org/?verb=استعمل
+عمل,عمل-csv-214,Variant,III,ai_draft,"To deal with, treat",عامل,يعامل,عامل,unambiguous,فتحة,عَامَلَ,يُعَامِلُ,عَامِلْ,False,False,False,past=عَامَلَ; present=يُعَامِلُ; imperative=عَامِلْ,https://qutrub.arabeyes.org/?verb=عامل
+فعل,فعل-main,Main,I,ai_draft,"doing, acting",فَعَلَ,يَفْعَلُ,اِفْعَلْ,matched_existing_future_type,فتحة,فَعَلَ,يَفْعَلُ,اِفْعَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَعَلَ
+فعل,فعل-csv-405,Variant,VII,ai_draft,To be irritable,انفعل,ينفعل,انفعل,unambiguous,فتحة,اِنْفَعَلَ,يَنْفَعِلُ,اِنْفَعِلْ,False,False,False,past=اِنْفَعَلَ; present=يَنْفَعِلُ; imperative=اِنْفَعِلْ,https://qutrub.arabeyes.org/?verb=انفعل
+بصر,بصر-main,Main,I,ai_draft,"seeing, insight",بَصُرَ,يَبْصُرُ,اُبْصُرْ,matched_existing_future_type,ضمة,بَصُرَ,يَبْصُرُ,اُبْصُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَصُرَ
+شهد,شهد-main,Main,I,ai_draft,"witnessing, being present",شَهِدَ,يَشْهَدُ,اِشْهَدْ,matched_existing_future_type,فتحة,شَهِدَ,يَشْهَدُ,اِشْهَدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَهِدَ
+ذكر,ذكر-main,Main,I,ai_draft,"remembering, mentioning",ذَكَرَ,يَذْكُرُ,اُذْكُرْ,matched_existing_future_type,ضمة,ذَكَرَ,يَذْكُرُ,اُذْكُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ذَكَرَ
+ذكر,ذكر-csv-434,Variant,V,ai_draft,"To remember, recall",تذكر,يتذكر,تذكر,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=تذكر
+شكر,شكر-main,Main,I,ai_draft,thankfulness,شَكَرَ,يَشْكُرُ,اُشْكُرْ,matched_existing_future_type,ضمة,شَكَرَ,يَشْكُرُ,اُشْكُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَكَرَ
+حمد,حمد-main,Main,I,ai_draft,praising,حَمِدَ,يَحْمَدُ,اِحْمَدْ,matched_existing_future_type,فتحة,حَمِدَ,يَحْمَدُ,اِحْمَدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَمِدَ
+سبح,سبح-main,Main,I,ai_draft,"swimming, floating",سَبَحَ,يَسْبَحُ,اِسْبَحْ,matched_existing_future_type,فتحة,سَبَحَ,يَسْبَحُ,اِسْبَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَبَحَ
+سجد,سجد-main,Main,I,ai_draft,prostrating,سَجَدَ,يَسْجُدُ,اُسْجُدْ,matched_existing_future_type,ضمة,سَجَدَ,يَسْجُدُ,اُسْجُدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَجَدَ
+ركع,ركع-main,Main,I,ai_draft,bowing,رَكَعَ,يَرْكَعُ,اِرْكَعْ,matched_existing_future_type,فتحة,رَكَعَ,يَرْكَعُ,اِرْكَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَكَعَ
+نصر,نصر-main,Main,I,ai_draft,"helping, victory",نَصَرَ,يَنْصُرُ,اُنْصُرْ,matched_existing_future_type,ضمة,نَصَرَ,يَنْصُرُ,اُنْصُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَصَرَ
+خلق,خلق-main,Main,I,ai_draft,creating,خَلَقَ,يَخْلُقُ,اُخْلُقْ,matched_existing_future_type,ضمة,خَلَقَ,يَخْلُقُ,اُخْلُقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَلَقَ
+رزق,رزق-main,Main,I,ai_draft,"providing, sustenance",رَزَقَ,يَرْزُقُ,اُرْزُقْ,matched_existing_future_type,ضمة,رَزَقَ,يَرْزُقُ,اُرْزُقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَزَقَ
+ملك,ملك-main,Main,I,ai_draft,"owning, ruling",مَلَكَ,يَمْلِكُ,اِمْلِكْ,matched_existing_future_type,كسرة,مَلَكَ,يَمْلِكُ,اِمْلِكْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَلَكَ
+ملك,ملك-csv-421,Variant,VI,ai_draft,To hold (oneself),تمالك,يتمالك,تمالك,unambiguous,فتحة,تَمَالَكَ,يَتَمَالَكُ,تَمَالَكْ,False,False,False,past=تَمَالَكَ; present=يَتَمَالَكُ; imperative=تَمَالَكْ,https://qutrub.arabeyes.org/?verb=تمالك
+حكم,حكم-main,Main,I,ai_draft,"judging, ruling",حَكَمَ,يَحْكُمُ,اُحْكُمْ,matched_existing_future_type,ضمة,حَكَمَ,يَحْكُمُ,اُحْكُمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَكَمَ
+حكم,حكم-csv-408,Variant,V,ai_draft,"To control, dominate",تحكم,يتحكم,تحكم,unambiguous,فتحة,تَحْكَمَ,يُتَحْكِمُ,تَحْكِمْ,False,False,False,past=تَحْكَمَ; present=يُتَحْكِمُ; imperative=تَحْكِمْ,https://qutrub.arabeyes.org/?verb=تحكم
+عدل,عدل-main,Main,I,ai_draft,"justice, fairness",عَدَلَ,يَعْدِلُ,اِعْدِلْ,matched_existing_future_type,كسرة,عَدَلَ,يَعْدِلُ,اِعْدِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَدَلَ
+عدل,عدل-csv-531,Variant,VIII,ai_draft,To be moderate,اعتدل,يعتدل,اعتدل,unambiguous,فتحة,اِعْتَدَلَ,يَعْتَدِلُ,اِعْتَدِلْ,False,False,False,past=اِعْتَدَلَ; present=يَعْتَدِلُ; imperative=اِعْتَدِلْ,https://qutrub.arabeyes.org/?verb=اعتدل
+ظلم,ظلم-main,Main,I,ai_draft,"wrongdoing, oppression",ظَلَمَ,يَظْلِمُ,اِظْلِمْ,matched_existing_future_type,كسرة,ظَلَمَ,يَظْلِمُ,اِظْلِمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ظَلَمَ
+صدق,صدق-main,Main,I,ai_draft,truthfulness,صَدَقَ,يَصْدُقُ,اُصْدُقْ,matched_existing_future_type,ضمة,صَدَقَ,يَصْدُقُ,اُصْدُقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَدَقَ
+صدق,صدق-csv-128,Variant,V,ai_draft,To give charity,تصدّق,يتصدّق,تصدّق,unambiguous,فتحة,تَصَدَّقَ,يَتَصَدَّقُ,تَصَدَّقْ,False,False,False,past=تَصَدَّقَ; present=يَتَصَدَّقُ; imperative=تَصَدَّقْ,https://qutrub.arabeyes.org/?verb=تصدّق
+كذب,كذب-main,Main,I,ai_draft,"lying, denying",كَذَبَ,يَكْذِبُ,اِكْذِبْ,matched_existing_future_type,كسرة,كَذَبَ,يَكْذِبُ,اِكْذِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَذَبَ
+صبر,صبر-main,Main,I,ai_draft,"patience, endurance",صَبَرَ,يَصْبِرُ,اِصْبِرْ,matched_existing_future_type,كسرة,صَبَرَ,يَصْبِرُ,اِصْبِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَبَرَ
+ترك,ترك-main,Main,I,ai_draft,"leaving, abandoning",تَرَكَ,يَتْرُكُ,اُتْرُكْ,matched_existing_future_type,ضمة,تَرَكَ,يَتْرُكُ,اُتْرُكْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَرَكَ
+قرب,قرب-main,Main,I,ai_draft,nearness,قَرُبَ,يَقْرُبُ,اُقْرُبْ,matched_existing_future_type,ضمة,قَرُبَ,يَقْرُبُ,اُقْرُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَرُبَ
+بعد,بعد-main,Main,I,ai_draft,"distance, being far",بَعُدَ,يَبْعُدُ,اُبْعُدْ,matched_existing_future_type,ضمة,بَعُدَ,يَبْعُدُ,اُبْعُدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَعُدَ
+بعد,بعد-csv-119,Variant,IV,ai_draft,"To guard against, to distance",أبعد,يبعد,أبعد,unambiguous,فتحة,أَبْعَدَ,يُبْعِدُ,أَبْعِدْ,False,False,False,past=أَبْعَدَ; present=يُبْعِدُ; imperative=أَبْعِدْ,https://qutrub.arabeyes.org/?verb=أبعد
+كبر,كبر-main,Main,I,ai_draft,"greatness, growing large",كَبُرَ,يَكْبُرُ,اُكْبُرْ,matched_existing_future_type,ضمة,كَبُرَ,يَكْبُرُ,اُكْبُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَبُرَ
+كبر,كبر-csv-517,Variant,III,ai_draft,To contend stubbornly,كابر,يكابر,كابر,unambiguous,فتحة,كَابَرَ,يُكَابِرُ,كَابِرْ,False,False,False,past=كَابَرَ; present=يُكَابِرُ; imperative=كَابِرْ,https://qutrub.arabeyes.org/?verb=كابر
+كبر,كبر-csv-532,Variant,V,ai_draft,To be arrogant,تكبر,يتكبر,تكبر,unambiguous,فتحة,تَكْبَرَ,يُتَكْبِرُ,تَكْبِرْ,False,False,False,past=تَكْبَرَ; present=يُتَكْبِرُ; imperative=تَكْبِرْ,https://qutrub.arabeyes.org/?verb=تكبر
+حسن,حسن-main,Main,I,ai_draft,"beauty, goodness",حَسُنَ,يَحْسُنُ,اُحْسُنْ,matched_existing_future_type,ضمة,حَسُنَ,يَحْسُنُ,اُحْسُنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَسُنَ
+حسن,حسن-csv-20,Variant,IV,ai_draft,To do excellently,أحسن,يحسن,أحسن,unambiguous,فتحة,أَحْسَنَ,يُحْسِنُ,أَحْسِنْ,False,False,False,past=أَحْسَنَ; present=يُحْسِنُ; imperative=أَحْسِنْ,https://qutrub.arabeyes.org/?verb=أحسن
+نفع,نفع-main,Main,I,ai_draft,benefit,نَفَعَ,يَنْفَعُ,اِنْفَعْ,matched_existing_future_type,فتحة,نَفَعَ,يَنْفَعُ,اِنْفَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَفَعَ
+ضرر,ضرر-main,Main,I,ai_draft,harm,ضَرَّ,يَضُرُّ,ضُرَّ,matched_existing_future_type,ضمة,ضَرَّ,يَضُرُّ,اُضْرُرْ,True,True,False,imperative=اُضْرُرْ,https://qutrub.arabeyes.org/?verb=ضَرَّ
+ضرر,ضرر-csv-387,Variant,VIII,ai_draft,"To force, compel",اضطر,يضطر,اضطر,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=اضطر
+ضرر,ضرر-csv-554,Variant,IV,ai_draft,To harm,أضر,يضر,أضر,ambiguous_future_type,,أَضَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أضر
+حمل,حمل-main,Main,I,ai_draft,"carrying, bearing",حَمَلَ,يَحْمِلُ,اِحْمِلْ,matched_existing_future_type,كسرة,حَمَلَ,يَحْمِلُ,اِحْمِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَمَلَ
+حمل,حمل-csv-454,Variant,II,ai_draft,To load (with),حمل,يحمل,حمل,ambiguous_future_type,,حَمَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حمل
+حمل,حمل-csv-571,Variant,V,ai_draft,To bear,تحمل,يتحمل,تحمل,unambiguous,فتحة,تَحْمَلَ,يُتَحْمِلُ,تَحْمِلْ,False,False,False,past=تَحْمَلَ; present=يُتَحْمِلُ; imperative=تَحْمِلْ,https://qutrub.arabeyes.org/?verb=تحمل
+قبل,قبل-main,Main,I,ai_draft,"accepting, facing",قَبِلَ,يَقْبَلُ,اِقْبَلْ,matched_existing_future_type,فتحة,قَبِلَ,يَقْبَلُ,اِقْبَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَبِلَ
+قبل,قبل-csv-315,Variant,X,ai_draft,To face,استقبل,يستقبل,استقبل,unambiguous,فتحة,اِسْتَقْبَلَ,يَسْتَقْبِلُ,اِسْتَقْبِلْ,False,False,False,past=اِسْتَقْبَلَ; present=يَسْتَقْبِلُ; imperative=اِسْتَقْبِلْ,https://qutrub.arabeyes.org/?verb=استقبل
+قبل,قبل-csv-380,Variant,II,ai_draft,To kiss,قبل,يقبل,قبل,ambiguous_future_type,,قَبَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قبل
+دبر,دبر-main,Main,I,ai_draft,"turning back, managing",دَبَرَ,يَدْبُرُ,اُدْبُرْ,matched_existing_future_type,ضمة,دَبَرَ,يَدْبُرُ,اُدْبُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=دَبَرَ
+دبر,دبر-csv-314,Variant,X,ai_draft,To turn the back (to or on),استدبر,يستدبر,استدبر,unambiguous,فتحة,اِسْتَدْبَرَ,يَسْتَدْبِرُ,اِسْتَدْبِرْ,False,False,False,past=اِسْتَدْبَرَ; present=يَسْتَدْبِرُ; imperative=اِسْتَدْبِرْ,https://qutrub.arabeyes.org/?verb=استدبر
+دبر,دبر-csv-569,Variant,II,ai_draft,"To control, be in charge of",دبر,يدبر,دبر,ambiguous_future_type,,دَبَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دبر
+مسح,مسح-main,Main,I,ai_draft,wiping,مَسَحَ,يَمْسَحُ,اِمْسَحْ,matched_existing_future_type,فتحة,مَسَحَ,يَمْسَحُ,اِمْسَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَسَحَ
+غسل,غسل-main,Main,I,ai_draft,washing,غَسَلَ,يَغْسِلُ,اِغْسِلْ,matched_existing_future_type,كسرة,غَسَلَ,يَغْسِلُ,اِغْسِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَسَلَ
+غسل,غسل-csv-178,Variant,VIII,ai_draft,To shower,اغتسل,يغتسل,اغتسل,unambiguous,فتحة,اِغْتَسَلَ,يَغْتَسِلُ,اِغْتَسِلْ,False,False,False,past=اِغْتَسَلَ; present=يَغْتَسِلُ; imperative=اِغْتَسِلْ,https://qutrub.arabeyes.org/?verb=اغتسل
+طهر,طهر-main,Main,I,ai_draft,"purity, becoming clean",طَهُرَ,يَطْهُرُ,اُطْهُرْ,matched_existing_future_type,ضمة,طَهُرَ,يَطْهُرُ,اُطْهُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=طَهُرَ
+طهر,طهر-csv-129,Variant,V,ai_draft,To purify (oneself),تطهّر,يتطهّر,تطهّر,unambiguous,فتحة,تَطَهَّرَ,يَتَطَهَّرُ,تَطَهَّرْ,False,False,False,past=تَطَهَّرَ; present=يَتَطَهَّرُ; imperative=تَطَهَّرْ,https://qutrub.arabeyes.org/?verb=تطهّر
+جمع,جمع-main,Main,I,ai_draft,gathering,جَمَعَ,يَجْمَعُ,اِجْمَعْ,matched_existing_future_type,فتحة,جَمَعَ,يَجْمَعُ,اِجْمَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=جَمَعَ
+جمع,جمع-csv-150,Variant,VIII,ai_draft,To meet,اجتمع,يجتمع,اجتمع,unambiguous,فتحة,اِجْتَمَعَ,يَجْتَمِعُ,اِجْتَمِعْ,False,False,False,past=اِجْتَمَعَ; present=يَجْتَمِعُ; imperative=اِجْتَمِعْ,https://qutrub.arabeyes.org/?verb=اجتمع
+جمع,جمع-csv-352,Variant,IV,ai_draft,To unanimously agree,أجمع,يجمع,أجمع,unambiguous,فتحة,أَجْمَعَ,يُجْمِعُ,أَجْمِعْ,False,False,False,past=أَجْمَعَ; present=يُجْمِعُ; imperative=أَجْمِعْ,https://qutrub.arabeyes.org/?verb=أجمع
+فرق,فرق-main,Main,I,ai_draft,"separating, distinguishing",فَرَقَ,يَفْرُقُ,اُفْرُقْ,matched_existing_future_type,ضمة,فَرَقَ,يَفْرُقُ,اُفْرُقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَرَقَ
+ذهب,ذهب-main,Main,I,ai_draft,going,ذَهَبَ,يَذْهَبُ,اِذْهَبْ,matched_existing_future_type,فتحة,ذَهَبَ,يَذْهَبُ,اِذْهَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ذَهَبَ
+نظر,نظر-main,Main,I,ai_draft,looking,نَظَرَ,يَنْظُرُ,اُنْظُرْ,matched_existing_future_type,ضمة,نَظَرَ,يَنْظُرُ,اُنْظُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَظَرَ
+عقل,عقل-main,Main,I,ai_draft,"understanding, reason",عَقَلَ,يَعْقِلُ,اِعْقِلْ,matched_existing_future_type,كسرة,عَقَلَ,يَعْقِلُ,اِعْقِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَقَلَ
+فقه,فقه-main,Main,I,ai_draft,understanding deeply,فَقِهَ,يَفْقَهُ,اِفْقَهْ,matched_existing_future_type,فتحة,فَقِهَ,يَفْقَهُ,اِفْقَهْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَقِهَ
+قلب,قلب-main,Main,I,ai_draft,"turning, heart",قَلَبَ,يَقْلِبُ,اِقْلِبْ,matched_existing_future_type,كسرة,قَلَبَ,يَقْلِبُ,اِقْلِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَلَبَ
+قلب,قلب-csv-379,Variant,II,ai_draft,To turn over,قلب,يقلب,قلب,ambiguous_future_type,,قَلَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قلب
+قلب,قلب-csv-392,Variant,VII,ai_draft,To turn (into),انقلب,ينقلب,انقلب,unambiguous,فتحة,اِنْقَلَبَ,يَنْقَلِبُ,اِنْقَلِبْ,False,False,False,past=اِنْقَلَبَ; present=يَنْقَلِبُ; imperative=اِنْقَلِبْ,https://qutrub.arabeyes.org/?verb=انقلب
+بعث,بعث-main,Main,I,ai_draft,"raising, sending",بَعَثَ,يَبْعَثُ,اِبْعَثْ,matched_existing_future_type,فتحة,بَعَثَ,يَبْعَثُ,اِبْعَثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَعَثَ
+كره,كره-main,Main,I,ai_draft,disliking,كَرِهَ,يَكْرَهُ,اِكْرَهْ,matched_existing_future_type,فتحة,كَرِهَ,يَكْرَهُ,اِكْرَهْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَرِهَ
+شرب,شرب-main,Main,I,ai_draft,drinking,شَرِبَ,يَشْرَبُ,اِشْرَبْ,matched_existing_future_type,فتحة,شَرِبَ,يَشْرَبُ,اِشْرَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَرِبَ
+لبس,لبس-main,Main,I,ai_draft,"wearing, clothing",لَبِسَ,يَلْبَسُ,اِلْبَسْ,matched_existing_future_type,فتحة,لَبِسَ,يَلْبَسُ,اِلْبَسْ,True,True,True,,https://qutrub.arabeyes.org/?verb=لَبِسَ
+فقد,فقد-main,Main,I,ai_draft,losing,فَقَدَ,يَفْقِدُ,اِفْقِدْ,matched_existing_future_type,كسرة,فَقَدَ,يَفْقِدُ,اِفْقِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَقَدَ
+بخل,بخل-main,Main,I,ai_draft,stinginess,بَخِلَ,يَبْخَلُ,اِبْخَلْ,matched_existing_future_type,فتحة,بَخِلَ,يَبْخَلُ,اِبْخَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَخِلَ
+غلب,غلب-main,Main,I,ai_draft,overcoming,غَلَبَ,يَغْلِبُ,اِغْلِبْ,matched_existing_future_type,كسرة,غَلَبَ,يَغْلِبُ,اِغْلِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَلَبَ
+جنب,جنب-main,Main,I,ai_draft,"side, avoiding",جَنَبَ,يَجْنُبُ,اُجْنُبْ,matched_existing_future_type,ضمة,جَنَبَ,يَجْنُبُ,اُجْنُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=جَنَبَ
+جنب,جنب-csv-319,Variant,V,ai_draft,To avoid,تجنب,يتجنب,تجنب,unambiguous,فتحة,تَجْنَبَ,يُتَجْنِبُ,تَجْنِبْ,False,False,False,past=تَجْنَبَ; present=يُتَجْنِبُ; imperative=تَجْنِبْ,https://qutrub.arabeyes.org/?verb=تجنب
+فجر,فجر-main,Main,I,ai_draft,"bursting forth, dawn",فَجَرَ,يَفْجُرُ,اُفْجُرْ,matched_existing_future_type,ضمة,فَجَرَ,يَفْجُرُ,اُفْجُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَجَرَ
+عصر,عصر-main,Main,I,ai_draft,"pressing, squeezing",عَصَرَ,يَعْصِرُ,اِعْصِرْ,matched_existing_future_type,كسرة,عَصَرَ,يَعْصِرُ,اِعْصِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَصَرَ
+حفظ,حفظ-main,Main,I,ai_draft,"guarding, memorizing",حَفِظَ,يَحْفَظُ,اِحْفَظْ,matched_existing_future_type,فتحة,حَفِظَ,يَحْفَظُ,اِحْفَظْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَفِظَ
+حفظ,حفظ-csv-123,Variant,III,ai_draft,To preserve,حافظ,يحافظ,حافظ,unambiguous,فتحة,حَافَظَ,يُحَافِظُ,حَافِظْ,False,False,False,past=حَافَظَ; present=يُحَافِظُ; imperative=حَافِظْ,https://qutrub.arabeyes.org/?verb=حافظ
+نزل,نزل-main,Main,I,ai_draft,descending,نَزَلَ,يَنْزِلُ,اِنْزِلْ,matched_existing_future_type,كسرة,نَزَلَ,يَنْزِلُ,اِنْزِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَزَلَ
+نزل,نزل-csv-149,Variant,IV,ai_draft,To bring down,أنزل,ينزل,أنزل,unambiguous,فتحة,أَنْزَلَ,يُنْزِلُ,أَنْزِلْ,False,False,False,past=أَنْزَلَ; present=يُنْزِلُ; imperative=أَنْزِلْ,https://qutrub.arabeyes.org/?verb=أنزل
+ضرب,ضرب-main,Main,I,ai_draft,striking,ضَرَبَ,يَضْرِبُ,اِضْرِبْ,matched_existing_future_type,كسرة,ضَرَبَ,يَضْرِبُ,اِضْرِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ضَرَبَ
+قتل,قتل-main,Main,I,ai_draft,killing,قَتَلَ,يَقْتُلُ,اُقْتُلْ,matched_existing_future_type,ضمة,قَتَلَ,يَقْتُلُ,اُقْتُلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَتَلَ
+قتل,قتل-csv-168,Variant,VI,ai_draft,To kill one another,تقاتل,يتقاتل,تقاتل,unambiguous,فتحة,تَقَاتَلَ,يَتَقَاتَلُ,تَقَاتَلْ,False,False,False,past=تَقَاتَلَ; present=يَتَقَاتَلُ; imperative=تَقَاتَلْ,https://qutrub.arabeyes.org/?verb=تقاتل
+سكن,سكن-main,Main,I,ai_draft,"dwelling, being calm",سَكَنَ,يَسْكُنُ,اُسْكُنْ,matched_existing_future_type,ضمة,سَكَنَ,يَسْكُنُ,اُسْكُنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَكَنَ
+عرف,عرف-main,Main,I,ai_draft,"knowing, recognizing",عَرَفَ,يَعْرِفُ,اِعْرِفْ,matched_existing_future_type,كسرة,عَرَفَ,يَعْرِفُ,اِعْرِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَرَفَ
+كسب,كسب-main,Main,I,ai_draft,earning,كَسَبَ,يَكْسِبُ,اِكْسِبْ,matched_existing_future_type,كسرة,كَسَبَ,يَكْسِبُ,اِكْسِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَسَبَ
+كسب,كسب-csv-373,Variant,VIII,ai_draft,"To acquire, gain",اكتسب,يكتسب,اكتسب,unambiguous,فتحة,اِكْتَسَبَ,يَكْتَسِبُ,اِكْتَسِبْ,False,False,False,past=اِكْتَسَبَ; present=يَكْتَسِبُ; imperative=اِكْتَسِبْ,https://qutrub.arabeyes.org/?verb=اكتسب
+رجع,رجع-main,Main,I,ai_draft,returning,رَجَعَ,يَرْجِعُ,اِرْجِعْ,matched_existing_future_type,كسرة,رَجَعَ,يَرْجِعُ,اِرْجِعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَجَعَ
+رجع,رجع-csv-388,Variant,III,ai_draft,"To revise, review",راجع,يراجع,راجع,unambiguous,فتحة,رَاجَعَ,يُرَاجِعُ,رَاجِعْ,False,False,False,past=رَاجَعَ; present=يُرَاجِعُ; imperative=رَاجِعْ,https://qutrub.arabeyes.org/?verb=راجع
+ركب,ركب-main,Main,I,ai_draft,riding,رَكِبَ,يَرْكَبُ,اِرْكَبْ,matched_existing_future_type,فتحة,رَكِبَ,يَرْكَبُ,اِرْكَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَكِبَ
+ركب,ركب-csv-238,Variant,VIII,ai_draft,To commit,ارتكب,يرتكب,ارتكب,unambiguous,فتحة,اِرْتَكَبَ,يَرْتَكِبُ,اِرْتَكِبْ,False,False,False,past=اِرْتَكَبَ; present=يَرْتَكِبُ; imperative=اِرْتَكِبْ,https://qutrub.arabeyes.org/?verb=ارتكب
+سجن,سجن-main,Main,I,ai_draft,imprisoning,سَجَنَ,يَسْجُنُ,اُسْجُنْ,matched_existing_future_type,ضمة,سَجَنَ,يَسْجُنُ,اُسْجُنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَجَنَ
+سبق,سبق-main,Main,I,ai_draft,"preceding, racing ahead",سَبَقَ,يَسْبِقُ,اِسْبِقْ,matched_existing_future_type,كسرة,سَبَقَ,يَسْبِقُ,اِسْبِقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَبَقَ
+سبق,سبق-csv-158,Variant,III,ai_draft,To compete,سابق,يسابق,سابق,unambiguous,فتحة,سَابَقَ,يُسَابِقُ,سَابِقْ,False,False,False,past=سَابَقَ; present=يُسَابِقُ; imperative=سَابِقْ,https://qutrub.arabeyes.org/?verb=سابق
+سرق,سرق-main,Main,I,ai_draft,stealing,سَرَقَ,يَسْرِقُ,اِسْرِقْ,matched_existing_future_type,كسرة,سَرَقَ,يَسْرِقُ,اِسْرِقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَرَقَ
+صرف,صرف-main,Main,I,ai_draft,"turning away, morphology",صَرَفَ,يَصْرِفُ,اِصْرِفْ,matched_existing_future_type,كسرة,صَرَفَ,يَصْرِفُ,اِصْرِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَرَفَ
+صرف,صرف-csv-494,Variant,V,ai_draft,"To act, behave",تصرف,يتصرف,تصرف,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=تصرف
+صنع,صنع-main,Main,I,ai_draft,"making, crafting",صَنَعَ,يَصْنَعُ,اِصْنَعْ,matched_existing_future_type,فتحة,صَنَعَ,يَصْنَعُ,اِصْنَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَنَعَ
+ظهر,ظهر-main,Main,I,ai_draft,appearing,ظَهَرَ,يَظْهَرُ,اِظْهَرْ,matched_existing_future_type,فتحة,ظَهَرَ,يَظْهَرُ,اِظْهَرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ظَهَرَ
+قعد,قعد-main,Main,I,ai_draft,sitting,قَعَدَ,يَقْعُدُ,اُقْعُدْ,matched_existing_future_type,ضمة,قَعَدَ,يَقْعُدُ,اُقْعُدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَعَدَ
+قطع,قطع-main,Main,I,ai_draft,cutting,قَطَعَ,يَقْطَعُ,اِقْطَعْ,matched_existing_future_type,فتحة,قَطَعَ,يَقْطَعُ,اِقْطَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَطَعَ
+قسم,قسم-main,Main,I,ai_draft,"dividing, apportioning",قَسَمَ,يَقْسِمُ,اِقْسِمْ,matched_existing_future_type,كسرة,قَسَمَ,يَقْسِمُ,اِقْسِمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَسَمَ
+قسم,قسم-csv-152,Variant,VII,ai_draft,"To be split, divided",انقسم,ينقسم,انقسم,unambiguous,فتحة,اِنْقَسَمَ,يَنْقَسِمُ,اِنْقَسِمْ,False,False,False,past=اِنْقَسَمَ; present=يَنْقَسِمُ; imperative=اِنْقَسِمْ,https://qutrub.arabeyes.org/?verb=انقسم
+كتم,كتم-main,Main,I,ai_draft,concealing,كَتَمَ,يَكْتُمُ,اُكْتُمْ,matched_existing_future_type,ضمة,كَتَمَ,يَكْتُمُ,اُكْتُمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَتَمَ
+كشف,كشف-main,Main,I,ai_draft,"uncovering, removing",كَشَفَ,يَكْشِفُ,اِكْشِفْ,matched_existing_future_type,كسرة,كَشَفَ,يَكْشِفُ,اِكْشِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَشَفَ
+لعب,لعب-main,Main,I,ai_draft,playing,لَعِبَ,يَلْعَبُ,اِلْعَبْ,matched_existing_future_type,فتحة,لَعِبَ,يَلْعَبُ,اِلْعَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=لَعِبَ
+لبث,لبث-main,Main,I,ai_draft,"remaining, staying",لَبِثَ,يَلْبَثُ,اِلْبَثْ,matched_existing_future_type,فتحة,لَبِثَ,يَلْبَثُ,اِلْبَثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=لَبِثَ
+مكث,مكث-main,Main,I,ai_draft,"staying, waiting",مَكَثَ,يَمْكُثُ,اُمْكُثْ,matched_existing_future_type,ضمة,مَكَثَ,يَمْكُثُ,اُمْكُثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَكَثَ
+منع,منع-main,Main,I,ai_draft,preventing,مَنَعَ,يَمْنَعُ,اِمْنَعْ,matched_existing_future_type,فتحة,مَنَعَ,يَمْنَعُ,اِمْنَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَنَعَ
+منع,منع-csv-495,Variant,VIII,ai_draft,To abstain,امتنع,يمتنع,امتنع,unambiguous,فتحة,اِمْتَنَعَ,يَمْتَنِعُ,اِمْتَنِعْ,False,False,False,past=اِمْتَنَعَ; present=يَمْتَنِعُ; imperative=اِمْتَنِعْ,https://qutrub.arabeyes.org/?verb=امتنع
+نصح,نصح-main,Main,I,ai_draft,advising sincerely,نَصَحَ,يَنْصَحُ,اِنْصَحْ,matched_existing_future_type,فتحة,نَصَحَ,يَنْصَحُ,اِنْصَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَصَحَ
+نطق,نطق-main,Main,I,ai_draft,"speaking, uttering",نَطَقَ,يَنْطِقُ,اِنْطِقْ,matched_existing_future_type,كسرة,نَطَقَ,يَنْطِقُ,اِنْطِقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَطَقَ
+نفخ,نفخ-main,Main,I,ai_draft,blowing,نَفَخَ,يَنْفُخُ,اُنْفُخْ,matched_existing_future_type,ضمة,نَفَخَ,يَنْفُخُ,اُنْفُخْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَفَخَ
+هجر,هجر-main,Main,I,ai_draft,"abandoning, emigrating",هَجَرَ,يَهْجُرُ,اُهْجُرْ,matched_existing_future_type,ضمة,هَجَرَ,يَهْجُرُ,اُهْجُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=هَجَرَ
+هجر,هجر-csv-75,Variant,III,ai_draft,"To move away, migrate",هاجر,يهاجر,هاجر,unambiguous,فتحة,هَاجَرَ,يُهَاجِرُ,هَاجِرْ,False,False,False,past=هَاجَرَ; present=يُهَاجِرُ; imperative=هَاجِرْ,https://qutrub.arabeyes.org/?verb=هاجر
+هلك,هلك-main,Main,I,ai_draft,perishing,هَلَكَ,يَهْلِكُ,اِهْلِكْ,matched_existing_future_type,كسرة,هَلَكَ,يَهْلِكُ,اِهْلِكْ,True,True,True,,https://qutrub.arabeyes.org/?verb=هَلَكَ
+هلك,هلك-csv-268,Variant,X,ai_draft,To consume,استهلك,يستهلك,استهلك,unambiguous,فتحة,اِسْتَهْلَكَ,يَسْتَهْلِكُ,اِسْتَهْلِكْ,False,False,False,past=اِسْتَهْلَكَ; present=يَسْتَهْلِكُ; imperative=اِسْتَهْلِكْ,https://qutrub.arabeyes.org/?verb=استهلك
+خسر,خسر-main,Main,I,ai_draft,"losing, incurring loss",خَسِرَ,يَخْسَرُ,اِخْسَرْ,matched_existing_future_type,فتحة,خَسِرَ,يَخْسَرُ,اِخْسَرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَسِرَ
+خلد,خلد-main,Main,I,ai_draft,abiding forever,خَلَدَ,يَخْلُدُ,اُخْلُدْ,matched_existing_future_type,ضمة,خَلَدَ,يَخْلُدُ,اُخْلُدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَلَدَ
+درس,درس-main,Main,I,ai_draft,studying,دَرَسَ,يَدْرُسُ,اُدْرُسْ,matched_existing_future_type,ضمة,دَرَسَ,يَدْرُسُ,اُدْرُسْ,True,True,True,,https://qutrub.arabeyes.org/?verb=دَرَسَ
+ذبح,ذبح-main,Main,I,ai_draft,slaughtering,ذَبَحَ,يَذْبَحُ,اِذْبَحْ,matched_existing_future_type,فتحة,ذَبَحَ,يَذْبَحُ,اِذْبَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ذَبَحَ
+شرح,شرح-main,Main,I,ai_draft,"expanding, explaining",شَرَحَ,يَشْرَحُ,اِشْرَحْ,matched_existing_future_type,فتحة,شَرَحَ,يَشْرَحُ,اِشْرَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَرَحَ
+شعر,شعر-main,Main,I,ai_draft,"perceiving, feeling",شَعَرَ,يَشْعُرُ,اُشْعُرْ,matched_existing_future_type,ضمة,شَعَرَ,يَشْعُرُ,اُشْعُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَعَرَ
+عجب,عجب-main,Main,I,ai_draft,"wondering, marveling",عَجِبَ,يَعْجَبُ,اِعْجَبْ,matched_existing_future_type,فتحة,عَجِبَ,يَعْجَبُ,اِعْجَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَجِبَ
+عجب,عجب-csv-372,Variant,IV,ai_draft,"To delight, excite, appeal to",أعجب,يعجب,أعجب,unambiguous,فتحة,أَعْجَبَ,يُعْجِبُ,أَعْجِبْ,False,False,False,past=أَعْجَبَ; present=يُعْجِبُ; imperative=أَعْجِبْ,https://qutrub.arabeyes.org/?verb=أعجب
+غضب,غضب-main,Main,I,ai_draft,being angry,غَضِبَ,يَغْضَبُ,اِغْضَبْ,matched_existing_future_type,فتحة,غَضِبَ,يَغْضَبُ,اِغْضَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَضِبَ
+غفل,غفل-main,Main,I,ai_draft,being heedless,غَفَلَ,يَغْفُلُ,اُغْفُلْ,matched_existing_future_type,ضمة,غَفَلَ,يَغْفُلُ,اُغْفُلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَفَلَ
+بلغ,بلغ-main,Main,I,ai_draft,reaching,بَلَغَ,يَبْلُغُ,اُبْلُغْ,matched_existing_future_type,ضمة,بَلَغَ,يَبْلُغُ,اُبْلُغْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَلَغَ
+كسر,كسر-main,Main,I,ai_draft,breaking,كَسَرَ,يَكْسِرُ,اِكْسِرْ,matched_existing_future_type,كسرة,كَسَرَ,يَكْسِرُ,اِكْسِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَسَرَ
+أخذ,أخذ-main,Main,I,ai_draft,taking,أَخَذَ,يَأْخُذُ,خُذْ,matched_existing_future_type,ضمة,أَخَذَ,يَأْخُذُ,خُذْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَخَذَ
+أكل,أكل-main,Main,I,ai_draft,eating,أَكَلَ,يَأْكُلُ,كُلْ,matched_existing_future_type,ضمة,أَكَلَ,يَأْكُلُ,كُلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَكَلَ
+حبس,حبس-main,Main,I,ai_draft,"holding back, imprisoning",حَبَسَ,يَحْبِسُ,اِحْبِسْ,matched_existing_future_type,كسرة,حَبَسَ,يَحْبِسُ,اِحْبِسْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَبَسَ
+سأل,سأل-main,Main,I,ai_draft,asking,سَأَلَ,يَسْأَلُ,اِسْأَلْ,matched_existing_future_type,فتحة,سَأَلَ,يَسْأَلُ,اِسْأَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَأَلَ
+طبخ,طبخ-main,Main,I,ai_draft,cooking,طَبَخَ,يَطْبُخُ,اُطْبُخْ,matched_existing_future_type,ضمة,طَبَخَ,يَطْبُخُ,اُطْبُخْ,True,True,True,,https://qutrub.arabeyes.org/?verb=طَبَخَ
+طلب,طلب-main,Main,I,ai_draft,"seeking, requesting",طَلَبَ,يَطْلُبُ,اُطْلُبْ,matched_existing_future_type,ضمة,طَلَبَ,يَطْلُبُ,اُطْلُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=طَلَبَ
+طلب,طلب-csv-444,Variant,III,ai_draft,"To demand, seek",طالب,يطالب,طالب,unambiguous,فتحة,طَالَبَ,يُطَالِبُ,طَالِبْ,False,False,False,past=طَالَبَ; present=يُطَالِبُ; imperative=طَالِبْ,https://qutrub.arabeyes.org/?verb=طالب
+قرأ,قرأ-main,Main,I,ai_draft,"reading, reciting",قَرَأَ,يَقْرَأُ,اِقْرَأْ,matched_existing_future_type,فتحة,قَرَأَ,يَقْرَأُ,اِقْرَأْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَرَأَ
+وضع,وضع-main,Main,I,ai_draft,"putting, placing",وَضَعَ,يَضَعُ,ضَعْ,matched_existing_future_type,فتحة,وَضَعَ,يَضَعُ,ضَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَضَعَ
+وضع,وضع-csv-533,Variant,VI,ai_draft,To be humble,تواضع,يتواضع,تواضع,unambiguous,فتحة,تَوَاضَعَ,يَتَوَاضَعُ,تَوَاضَعْ,False,False,False,past=تَوَاضَعَ; present=يَتَوَاضَعُ; imperative=تَوَاضَعْ,https://qutrub.arabeyes.org/?verb=تواضع
+وعد,وعد-main,Main,I,ai_draft,promising,وَعَدَ,يَعِدُ,عِدْ,matched_existing_future_type,كسرة,وَعَدَ,يَعِدُ,عِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَعَدَ
+وجد,وجد-main,Main,I,ai_draft,finding,وَجَدَ,يَجِدُ,جِدْ,matched_existing_future_type,كسرة,وَجَدَ,يَجِدُ,جِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَجَدَ
+وصل,وصل-main,Main,I,ai_draft,"arriving, connecting",وَصَلَ,يَصِلُ,صِلْ,matched_existing_future_type,كسرة,وَصَلَ,يَصِلُ,صِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَصَلَ
+وصل,وصل-csv-134,Variant,VIII,ai_draft,"To connect, call",اتّصل,يتّصل,اتّصل,unambiguous,فتحة,اِتَّصَلَ,يَتَّصِلُ,اِتَّصِلْ,False,False,False,past=اِتَّصَلَ; present=يَتَّصِلُ; imperative=اِتَّصِلْ,https://qutrub.arabeyes.org/?verb=اتّصل
+وقف,وقف-main,Main,I,ai_draft,"standing, stopping",وَقَفَ,يَقِفُ,قِفْ,matched_existing_future_type,كسرة,وَقَفَ,يَقِفُ,قِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَقَفَ
+وقف,وقف-csv-241,Variant,IV,ai_draft,To stop,أوقف,يوقف,أوقف,unambiguous,فتحة,أَوْقَفَ,يُوقِفُ,أَوْقِفْ,False,False,False,past=أَوْقَفَ; present=يُوقِفُ; imperative=أَوْقِفْ,https://qutrub.arabeyes.org/?verb=أوقف
+وقف,وقف-csv-262,Variant,V,ai_draft,To come to a standstill,توقّف,يتوقّف,توقّف,unambiguous,فتحة,تَوَقَّفَ,يَتَوَقَّفُ,تَوَقَّفْ,False,False,False,past=تَوَقَّفَ; present=يَتَوَقَّفُ; imperative=تَوَقَّفْ,https://qutrub.arabeyes.org/?verb=توقّف
+حسب,حسب-main,Main,I,ai_draft,"calculating, reckoning",حَسَبَ,يَحْسِبُ,اِحْسَبْ,ambiguous_future_type,,حَسَبَ,,,True,,,,https://qutrub.arabeyes.org/?verb=حَسَبَ
+حسب,حسب-csv-195,Variant,III,ai_draft,To hold accountable,حاسب,يحاسب,حاسب,unambiguous,فتحة,حَاسَبَ,يُحَاسِبُ,حَاسِبْ,False,False,False,past=حَاسَبَ; present=يُحَاسِبُ; imperative=حَاسِبْ,https://qutrub.arabeyes.org/?verb=حاسب
+حسب,حسب-quranic-suppose,Variant,I,ai_draft,"thinking, supposing",حَسِبَ,يَحْسَبُ,اِحْسَبْ,matched_existing_future_type,فتحة,حَسِبَ,يَحْسَبُ,اِحْسَبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَسِبَ
+سهر,سهر-main,Main,I,ai_draft,staying awake at night,سَهِرَ,يَسْهَرُ,اِسْهَرْ,matched_existing_future_type,فتحة,سَهِرَ,يَسْهَرُ,اِسْهَرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَهِرَ
+صعب,صعب-main,Main,I,ai_draft,being difficult,صَعُبَ,يَصْعُبُ,اُصْعُبْ,matched_existing_future_type,ضمة,صَعُبَ,يَصْعُبُ,اُصْعُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَعُبَ
+طلق,طلق-main,Main,I,ai_draft,"fluency, release, being free",طَلَقَ,يَطْلُقُ,اُطْلُقْ,matched_existing_future_type,ضمة,طَلَقَ,يَطْلُقُ,اُطْلُقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=طَلَقَ
+طلق,طلق-csv-165,Variant,VII,ai_draft,To depart,انطلق,ينطلق,انطلق,unambiguous,فتحة,اِنْطَلَقَ,يَنْطَلِقُ,اِنْطَلِقْ,False,False,False,past=اِنْطَلَقَ; present=يَنْطَلِقُ; imperative=اِنْطَلِقْ,https://qutrub.arabeyes.org/?verb=انطلق
+عمر,عمر-main,Main,I,ai_draft,"inhabiting, filling, flourishing",عَمَرَ,يَعْمُرُ,اُعْمُرْ,matched_existing_future_type,ضمة,عَمَرَ,يَعْمُرُ,اُعْمُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَمَرَ
+عمر,عمر-csv-137,Variant,X,ai_draft,To colonize,استعمر,يستعمر,استعمر,unambiguous,فتحة,اِسْتَعْمَرَ,يَسْتَعْمِرُ,اِسْتَعْمِرْ,False,False,False,past=اِسْتَعْمَرَ; present=يَسْتَعْمِرُ; imperative=اِسْتَعْمِرْ,https://qutrub.arabeyes.org/?verb=استعمر
+برك,برك-main,Main,I,ai_draft,"kneeling, settling, blessing",بَرَكَ,يَبْرُكُ,اُبْرُكْ,matched_existing_future_type,ضمة,بَرَكَ,يَبْرُكُ,اُبْرُكْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَرَكَ
+جهد,جهد-main,Main,I,ai_draft,"striving, exerting effort",جَهَدَ,يَجْهَدُ,اِجْهَدْ,matched_existing_future_type,فتحة,جَهَدَ,يَجْهَدُ,اِجْهَدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=جَهَدَ
+ورث,ورث-main,Main,I,ai_draft,inheriting,وَرِثَ,يَرِثُ,رِثْ,matched_existing_future_type,كسرة,وَرِثَ,يَرِثُ,رِثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَرِثَ
+وقد,وقد-main,Main,I,ai_draft,"burning, kindling",وَقَدَ,يَقِدُ,قِدْ,matched_existing_future_type,كسرة,وَقَدَ,يَقِدُ,قِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَقَدَ
+وقع,وقع-main,Main,I,ai_draft,"falling, happening, being located",وَقَعَ,يَقَعُ,قَعْ,matched_existing_future_type,فتحة,وَقَعَ,يَقَعُ,قَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=وَقَعَ
+وقع,وقع-csv-572,Variant,V,ai_draft,To expect,توقع,يتوقع,توقع,unambiguous,فتحة,تَوْقَعَ,يُتَوْقِعُ,تَوْقِعْ,False,False,False,past=تَوْقَعَ; present=يُتَوْقِعُ; imperative=تَوْقِعْ,https://qutrub.arabeyes.org/?verb=توقع
+ملأ,ملأ-main,Main,I,ai_draft,filling,مَلَأَ,يَمْلَأُ,اِمْلَأْ,matched_existing_future_type,فتحة,مَلَأَ,يَمْلَأُ,اِمْلَأْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَلَأَ
+مرر,مرر-main,Main,I,ai_draft,passing by,مَرَّ,يَمُرُّ,مُرَّ,matched_existing_future_type,ضمة,مَرَّ,يَمُرُّ,اُمْرُرْ,True,True,False,imperative=اُمْرُرْ,https://qutrub.arabeyes.org/?verb=مَرَّ
+مرر,مرر-csv-83,Variant,X,ai_draft,To continue,استمرّ,يستمرّ,استمرّ,unambiguous,فتحة,اِسْتَمَرَّ,يَسْتَمِرُّ,اِسْتَمْرِرْ,False,False,False,past=اِسْتَمَرَّ; present=يَسْتَمِرُّ; imperative=اِسْتَمْرِرْ,https://qutrub.arabeyes.org/?verb=استمرّ
+نسخ,نسخ-main,Main,I,ai_draft,copying,نَسَخَ,يَنْسَخُ,اِنْسَخْ,matched_existing_future_type,فتحة,نَسَخَ,يَنْسَخُ,اِنْسَخْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَسَخَ
+وضأ,وضأ-main,Main,V,ai_draft,performing ablution (wudoo),تَوَضَّأَ,يَتَوَضَّأُ,تَوَضَّأْ,unambiguous,فتحة,تَوَضَّأَ,يَتَوَضَّأُ,تَوَضَّأْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَوَضَّأَ
+يقظ,يقظ-main,Main,X,ai_draft,waking up,اِسْتَيْقَظَ,يَسْتَيْقِظُ,اِسْتَيْقِظْ,unambiguous,فتحة,اِسْتَيْقَظَ,يَسْتَيْقِظُ,اِسْتَيْقِظْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِسْتَيْقَظَ
+كنس,كنس-main,Main,I,ai_draft,"sweeping, vacuuming",كَنَسَ,يَكْنُسُ,اُكْنُسْ,matched_existing_future_type,ضمة,كَنَسَ,يَكْنُسُ,اُكْنُسْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَنَسَ
+كوي,كوي-main,Main,I,ai_draft,ironing,كَوَى,يَكْوِي,اِكْوِ,matched_existing_future_type,كسرة,كَوَى,يَكْوِي,اِكْوِ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَوَى
+طوع,طوع-main,Main,X,ai_draft,"being able, can",اِسْتَطَاعَ,يَسْتَطِيعُ,اِسْتَطِعْ,unambiguous,فتحة,اِسْتَطَاعَ,يَسْتَطِيعُ,اِسْتَطِعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِسْتَطَاعَ
+طوع,طوع-csv-61,Variant,IV,ai_draft,To obey,أطاع,يطيع,أطع,unambiguous,فتحة,أَطَاعَ,يُطِيعُ,أَطِعْ,False,False,False,past=أَطَاعَ; present=يُطِيعُ; imperative=أَطِعْ,https://qutrub.arabeyes.org/?verb=أطاع
+بدأ,بدأ-main,Main,I,ai_draft,"starting, beginning",بَدَأَ,يَبْدَأُ,اِبْدَأْ,matched_existing_future_type,فتحة,بَدَأَ,يَبْدَأُ,اِبْدَأْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَدَأَ
+نهي,نهي-main,Main,VIII,ai_draft,finishing,اِنْتَهَى,يَنْتَهِي,اِنْتَهِ,unambiguous,فتحة,اِنْتَهَى,يَنْتَهِي,اِنْتَهِ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِنْتَهَى
+نهي,نهي-csv-26,Variant,I,ai_draft,"To forbid, prohibit",نهى,ينهى,انه,ambiguous_future_type,,نَهَى,,,False,,,,https://qutrub.arabeyes.org/?verb=نهى
+نهي,نهي-csv-100,Variant,IV,ai_draft,To finish,أنهى,ينهي,أنه,unambiguous,فتحة,أَنْهَى,يُنْهِي,أَنْهِ,False,False,False,past=أَنْهَى; present=يُنْهِي; imperative=أَنْهِ,https://qutrub.arabeyes.org/?verb=أنهى
+صحح,صحح-main,Main,II,ai_draft,correcting,صَحَّحَ,يُصَحِّحُ,صَحِّحْ,unambiguous,فتحة,صَحَّحَ,يُصَحِّحُ,صَحِّحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَحَّحَ
+صحح,صحح-csv-110,Variant,I,ai_draft,To be correct,صحّ,يصحّ,صحّ,ambiguous_future_type,,صَحَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=صحّ
+حبب,حبب-main,Main,IV,ai_draft,"loving, liking",أَحَبَّ,يُحِبُّ,أَحِبَّ,unambiguous,فتحة,أَحَبَّ,يُحِبُّ,أَحْبِبْ,True,True,False,imperative=أَحْبِبْ,https://qutrub.arabeyes.org/?verb=أَحَبَّ
+رسم,رسم-main,Main,I,ai_draft,drawing,رَسَمَ,يَرْسُمُ,اُرْسُمْ,matched_existing_future_type,ضمة,رَسَمَ,يَرْسُمُ,اُرْسُمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَسَمَ
+خير,خير-main,Main,VIII,ai_draft,choosing,اِخْتَارَ,يَخْتَارُ,اِخْتَرْ,unambiguous,فتحة,اِخْتَارَ,يَخْتَارُ,اِخْتَرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِخْتَارَ
+روح,روح-main,Main,X,ai_draft,"resting, relaxing, taking a break",اِسْتَرَاحَ,يَسْتَرِيحُ,اِسْتَرِحْ,unambiguous,فتحة,اِسْتَرَاحَ,يَسْتَرِيحُ,اِسْتَرِحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِسْتَرَاحَ
+روح,روح-csv-29,Variant,II,ai_draft,"To recreate, relax, refresh",روّح,يروح,روح,unambiguous,فتحة,رَوَّحَ,يُرَوِّحُ,رَوِّحْ,False,False,False,past=رَوَّحَ; present=يُرَوِّحُ; imperative=رَوِّحْ,https://qutrub.arabeyes.org/?verb=روّح
+روح,روح-csv-102,Variant,VI,ai_draft,To range (between),تراوح,يتراوح,تراوح,unambiguous,فتحة,تَرَاوَحَ,يَتَرَاوَحُ,تَرَاوَحْ,False,False,False,past=تَرَاوَحَ; present=يَتَرَاوَحُ; imperative=تَرَاوَحْ,https://qutrub.arabeyes.org/?verb=تراوح
+روح,روح-csv-535,Variant,VIII,ai_draft,"To be happy, pleased",ارتاح,يرتاح,ارتح,unambiguous,فتحة,اِرْتَاحَ,يَرْتَاحُ,اِرْتَحْ,False,False,False,past=اِرْتَاحَ; present=يَرْتَاحُ; imperative=اِرْتَحْ,https://qutrub.arabeyes.org/?verb=ارتاح
+بقي,بقي-main,Main,I,ai_draft,"staying, remaining",بَقِيَ,يَبْقَى,اِبْقَ,matched_existing_future_type,فتحة,بَقِيَ,يَبْقَى,اِبْقَ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَقِيَ
+بقي,بقي-csv-496,Variant,IV,ai_draft,"To maintain, preserve",أبقى,يبقي,أبق,unambiguous,فتحة,أَبْقَى,يُبْقِي,أَبْقِ,False,False,False,past=أَبْقَى; present=يُبْقِي; imperative=أَبْقِ,https://qutrub.arabeyes.org/?verb=أبقى
+قضي,قضي-main,Main,I,ai_draft,spending time,قَضَى,يَقْضِي,اِقْضِ,matched_existing_future_type,كسرة,قَضَى,يَقْضِي,اِقْضِ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَضَى
+حضر,حضر-main,Main,I,ai_draft,"attending, being present",حَضَرَ,يَحْضُرُ,اُحْضُرْ,matched_existing_future_type,ضمة,حَضَرَ,يَحْضُرُ,اُحْضُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَضَرَ
+نقل,نقل-main,Main,VIII,ai_draft,"moving, transferring",اِنْتَقَلَ,يَنْتَقِلُ,اِنْتَقِلْ,unambiguous,فتحة,اِنْتَقَلَ,يَنْتَقِلُ,اِنْتَقِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِنْتَقَلَ
+نقل,نقل-csv-368,Variant,I,ai_draft,To transmit,نقل,ينقل,انقل,ambiguous_future_type,,نَقَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نقل
+غرق,غرق-main,Main,X,ai_draft,"taking (time), being absorbed",اِسْتَغْرَقَ,يَسْتَغْرِقُ,اِسْتَغْرِقْ,unambiguous,فتحة,اِسْتَغْرَقَ,يَسْتَغْرِقُ,اِسْتَغْرِقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِسْتَغْرَقَ
+زحم,زحم-main,Main,VIII,ai_draft,"being crowded, congested",اِزْدَحَمَ,يَزْدَحِمُ,اِزْدَحِمْ,unambiguous,فتحة,اِزْدَحَمَ,يَزْدَحِمُ,اِزْدَحِمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِزْدَحَمَ
+حجز,حجز-main,Main,I,ai_draft,"booking, reserving",حَجَزَ,يَحْجِزُ,اِحْجِزْ,matched_existing_future_type,كسرة,حَجَزَ,يَحْجِزُ,اِحْجِزْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَجَزَ
+أكد,أكد-main,Main,II,ai_draft,confirming,أَكَّدَ,يُؤَكِّدُ,أَكِّدْ,unambiguous,فتحة,أَكَّدَ,يُؤَكِّدُ,أَكِّدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَكَّدَ
+حلق,حلق-main,Main,I,ai_draft,shaving,حَلَقَ,يَحْلِقُ,اِحْلِقْ,matched_existing_future_type,كسرة,حَلَقَ,يَحْلِقُ,اِحْلِقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَلَقَ
+رمي,رمي-main,Main,I,ai_draft,throwing,رَمَى,يَرْمِي,اِرْمِ,matched_existing_future_type,كسرة,رَمَى,يَرْمِي,اِرْمِ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَمَى
+سعي,سعي-main,Main,I,ai_draft,striving; making sa'ee,سَعَى,يَسْعَى,اِسْعَ,matched_existing_future_type,فتحة,سَعَى,يَسْعَى,اِسْعَ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَعَى
+خلع,خلع-main,Main,I,ai_draft,"taking off, undressing",خَلَعَ,يَخْلَعُ,اِخْلَعْ,matched_existing_future_type,فتحة,خَلَعَ,يَخْلَعُ,اِخْلَعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَلَعَ
+رفع,رفع-main,Main,VIII,ai_draft,"rising, being elevated",اِرْتَفَعَ,يَرْتَفِعُ,اِرْتَفِعْ,unambiguous,فتحة,اِرْتَفَعَ,يَرْتَفِعُ,اِرْتَفِعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِرْتَفَعَ
+رفع,رفع-csv-155,Variant,I,ai_draft,To raise,رفع,يرفع,ارفع,ambiguous_future_type,,رَفَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رفع
+شفي,شفي-main,Main,I,ai_draft,"curing, healing",شَفَى,يَشْفِي,اِشْفِ,matched_existing_future_type,كسرة,شَفَى,يَشْفِي,اِشْفِ,True,True,True,,https://qutrub.arabeyes.org/?verb=شَفَى
+فحص,فحص-main,Main,I,ai_draft,"checking, examining",فَحَصَ,يَفْحَصُ,اِفْحَصْ,matched_existing_future_type,فتحة,فَحَصَ,يَفْحَصُ,اِفْحَصْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَحَصَ
+عود,عود-main,Main,IV,ai_draft,"repeating, returning (something)",أَعَادَ,يُعِيدُ,أَعِدْ,unambiguous,فتحة,أَعَادَ,يُعِيدُ,أَعِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَعَادَ
+عود,عود-csv-57,Variant,I,ai_draft,To return,عاد,يعود,عد,ambiguous_future_type,,عَادَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عاد
+عود,عود-csv-565,Variant,VIII,ai_draft,"To get used to, become accustomed to",اعتاد,يعتاد,اعتد,unambiguous,فتحة,اِعْتَادَ,يَعْتَادُ,اِعْتَدْ,False,False,False,past=اِعْتَادَ; present=يَعْتَادُ; imperative=اِعْتَدْ,https://qutrub.arabeyes.org/?verb=اعتاد
+شور,شور-main,Main,IV,ai_draft,"pointing, indicating",أَشَارَ,يُشِيرُ,أَشِرْ,unambiguous,فتحة,أَشَارَ,يُشِيرُ,أَشِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَشَارَ
+قول,قول-main,Main,I,ai_draft,saying,قَالَ,يَقُولُ,قُلْ,matched_existing_future_type,ضمة,قَالَ,يَقُولُ,قُلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَالَ
+رتب,رتب-main,Main,II,ai_draft,arranging,رَتَّبَ,يُرَتِّبُ,رَتِّبْ,unambiguous,فتحة,رَتَّبَ,يُرَتِّبُ,رَتِّبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَتَّبَ
+بدل,بدل-main,Main,VI,ai_draft,exchanging,تَبَادَلَ,يَتَبَادَلُ,تَبَادَلْ,unambiguous,فتحة,تَبَادَلَ,يَتَبَادَلُ,تَبَادَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَبَادَلَ
+جوب,جوب-main,Main,IV,ai_draft,answering,أَجَابَ,يُجِيبُ,أَجِبْ,unambiguous,فتحة,أَجَابَ,يُجِيبُ,أَجِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَجَابَ
+جوب,جوب-csv-182,Variant,I,ai_draft,"To explore, go about",جاب,يجوب,جب,ambiguous_future_type,,جَابَ,,,False,,,,https://qutrub.arabeyes.org/?verb=جاب
+جوب,جوب-csv-296,Variant,X,ai_draft,"To respond, carry out",استجاب,يستجيب,استجب,unambiguous,فتحة,اِسْتَجَابَ,يَسْتَجِيبُ,اِسْتَجِبْ,False,False,False,past=اِسْتَجَابَ; present=يَسْتَجِيبُ; imperative=اِسْتَجِبْ,https://qutrub.arabeyes.org/?verb=استجاب
+جوب,جوب-csv-534,Variant,VI,ai_draft,To comply,تجاوب,يتجاوب,تجاوب,unambiguous,فتحة,تَجَاوَبَ,يَتَجَاوَبُ,تَجَاوَبْ,False,False,False,past=تَجَاوَبَ; present=يَتَجَاوَبُ; imperative=تَجَاوَبْ,https://qutrub.arabeyes.org/?verb=تجاوب
+صلو,صلو-main,Main,II,ai_draft,praying,صَلَّى,يُصَلِّي,صَلِّ,unambiguous,فتحة,صَلَّى,يُصَلِّي,صَلِّ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَلَّى
+رود,رود-main,Main,IV,ai_draft,"wanting, intending",أَرَادَ,يُرِيدُ,أَرِدْ,unambiguous,فتحة,أَرَادَ,يُرِيدُ,أَرِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَرَادَ
+نوم,نوم-main,Main,I,ai_draft,sleeping,نَامَ,يَنَامُ,نَمْ,matched_existing_future_type,فتحة,نَامَ,يَنَامُ,نِمْ,True,True,False,imperative=نِمْ,https://qutrub.arabeyes.org/?verb=نَامَ
+فضل,فضل-main,Main,II,ai_draft,preferring,فَضَّلَ,يُفَضِّلُ,فَضِّلْ,unambiguous,فتحة,فَضَّلَ,يُفَضِّلُ,فَضِّلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَضَّلَ
+حول,حول-main,Main,II,ai_draft,"changing, converting, transferring",حَوَّلَ,يُحَوِّلُ,حَوِّلْ,unambiguous,فتحة,حَوَّلَ,يُحَوِّلُ,حَوِّلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَوَّلَ
+حول,حول-csv-10,Variant,III,ai_draft,To try,حاول,يحاول,حاول,unambiguous,فتحة,حَاوَلَ,يُحَاوِلُ,حَاوِلْ,False,False,False,past=حَاوَلَ; present=يُحَاوِلُ; imperative=حَاوِلْ,https://qutrub.arabeyes.org/?verb=حاول
+سفر,سفر-main,Main,III,ai_draft,traveling,سَافَرَ,يُسَافِرُ,سَافِرْ,unambiguous,فتحة,سَافَرَ,يُسَافِرُ,سَافِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَافَرَ
+كون,كون-main,Main,I,ai_draft,being,كَانَ,يَكُونُ,كُنْ,matched_existing_future_type,ضمة,كَانَ,يَكُونُ,كُنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَانَ
+كمل,كمل-main,Main,IV,ai_draft,completing,أَكْمَلَ,يُكْمِلُ,أَكْمِلْ,unambiguous,فتحة,أَكْمَلَ,يُكْمِلُ,أَكْمِلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَكْمَلَ
+صبح,صبح-main,Main,IV,ai_draft,becoming,أَصْبَحَ,يُصْبِحُ,أَصْبِحْ,unambiguous,فتحة,أَصْبَحَ,يُصْبِحُ,أَصْبِحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَصْبَحَ
+صبح,صبح-csv-578,Variant,II,ai_draft,To wish a good morning,صبح,يصبح,صبح,ambiguous_future_type,,صَبَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صبح
+سوق,سوق-main,Main,V,ai_draft,shopping,تَسَوَّقَ,يَتَسَوَّقُ,تَسَوَّقْ,unambiguous,فتحة,تَسَوَّقَ,يَتَسَوَّقُ,تَسَوَّقْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَسَوَّقَ
+سوق,سوق-csv-457,Variant,I,ai_draft,"To move, transport, drive",ساق,يسوق,سق,ambiguous_future_type,,سَاقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ساق
+مطر,مطر-main,Main,IV,ai_draft,raining,أَمْطَرَ,يُمْطِرُ,أَمْطِرْ,unambiguous,فتحة,أَمْطَرَ,يُمْطِرُ,أَمْطِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَمْطَرَ
+كلم,كلم-main,Main,V,ai_draft,speaking,تَكَلَّمَ,يَتَكَلَّمُ,تَكَلَّمْ,unambiguous,فتحة,تَكَلَّمَ,يَتَكَلَّمُ,تَكَلَّمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَكَلَّمَ
+كلم,كلم-quranic-address,Variant,II,ai_draft,"speaking to, addressing (someone)",كَلَّمَ,يُكَلِّمُ,كَلِّمْ,unambiguous,فتحة,كَلَّمَ,يُكَلِّمُ,كَلِّمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَلَّمَ
+زوج,زوج-main,Main,V,ai_draft,marrying,تَزَوَّجَ,يَتَزَوَّجُ,تَزَوَّجْ,unambiguous,فتحة,تَزَوَّجَ,يَتَزَوَّجُ,تَزَوَّجْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَزَوَّجَ
+زور,زور-main,Main,I,ai_draft,visiting,زَارَ,يَزُورُ,زُرْ,matched_existing_future_type,ضمة,زَارَ,يَزُورُ,زُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=زَارَ
+لوث,لوث-main,Main,V,ai_draft,being polluted,تَلَوَّثَ,يَتَلَوَّثُ,تَلَوَّثْ,unambiguous,فتحة,تَلَوَّثَ,يَتَلَوَّثُ,تَلَوَّثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَلَوَّثَ
+قوم,قوم-main,Main,IV,ai_draft,"staying, residing",أَقَامَ,يُقِيمُ,أَقِمْ,unambiguous,فتحة,أَقَامَ,يُقِيمُ,أَقِمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَقَامَ
+قوم,قوم-csv-69,Variant,I,ai_draft,To do/fulfill,قام,يقوم,قم,ambiguous_future_type,,قَامَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قام
+غدر,غدر-main,Main,III,ai_draft,departing,غَادَرَ,يُغَادِرُ,غَادِرْ,unambiguous,فتحة,غَادَرَ,يُغَادِرُ,غَادِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=غَادَرَ
+صوم,صوم-main,Main,I,ai_draft,fasting,صَامَ,يَصُومُ,صُمْ,matched_existing_future_type,ضمة,صَامَ,يَصُومُ,صُمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=صَامَ
+طوف,طوف-main,Main,I,ai_draft,making tawaf,طَافَ,يَطُوفُ,طُفْ,matched_existing_future_type,ضمة,طَافَ,يَطُوفُ,طُفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=طَافَ
+لبي,لبي-main,Main,II,ai_draft,saying the Talbiyah,لَبَّى,يُلَبِّي,لَبِّ,unambiguous,فتحة,لَبَّى,يُلَبِّي,لَبِّ,True,True,True,,https://qutrub.arabeyes.org/?verb=لَبَّى
+صوب,صوب-main,Main,IV,ai_draft,"being afflicted, hit",أَصَابَ,يُصِيبُ,أَصِبْ,unambiguous,فتحة,أَصَابَ,يُصِيبُ,أَصِبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَصَابَ
+غيب,غيب-main,Main,V,ai_draft,being absent,تَغَيَّبَ,يَتَغَيَّبُ,تَغَيَّبْ,unambiguous,فتحة,تَغَيَّبَ,يَتَغَيَّبُ,تَغَيَّبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَغَيَّبَ
+عطو,عطو-main,Main,IV,ai_draft,giving,أَعْطَى,يُعْطِي,أَعْطِ,unambiguous,فتحة,أَعْطَى,يُعْطِي,أَعْطِ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَعْطَى
+سعد,سعد-main,Main,III,ai_draft,helping,سَاعَدَ,يُسَاعِدُ,سَاعِدْ,unambiguous,فتحة,سَاعَدَ,يُسَاعِدُ,سَاعِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَاعَدَ
+سعد,سعد-csv-200,Variant,IV,ai_draft,To bring happiness,أسعد,يسعد,أسعد,unambiguous,فتحة,أَسْعَدَ,يُسْعِدُ,أَسْعِدْ,False,False,False,past=أَسْعَدَ; present=يُسْعِدُ; imperative=أَسْعِدْ,https://qutrub.arabeyes.org/?verb=أسعد
+رأي,رأي-main,Main,I,ai_draft,seeing,رَأَى,يَرَى,رَ,matched_existing_future_type,فتحة,رَأَى,يَرَى,رَ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَأَى
+علج,علج-main,Main,III,ai_draft,"treating, curing",عَالَجَ,يُعَالِجُ,عَالِجْ,unambiguous,فتحة,عَالَجَ,يُعَالِجُ,عَالِجْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَالَجَ
+شكو,شكو-main,Main,VIII,ai_draft,"complaining, suffering from",اِشْتَكَى,يَشْتَكِي,اِشْتَكِ,unambiguous,فتحة,اِشْتَكَى,يَشْتَكِي,اِشْتَكِ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِشْتَكَى
+شكو,شكو-csv-58,Variant,I,ai_draft,To complain,شكا,يشكو,اشك,ambiguous_future_type,,شَكَا,,,False,,,,https://qutrub.arabeyes.org/?verb=شكا
+أمر,أمر-main,Main,I,ai_draft,commanding,أَمَرَ,يَأْمُرُ,مُرْ,matched_existing_future_type,ضمة,أَمَرَ,يَأْمُرُ,اُؤْمُرْ,True,True,False,imperative=اُؤْمُرْ,https://qutrub.arabeyes.org/?verb=أَمَرَ
+سقي,سقي-main,Main,I,ai_draft,"giving drink, watering",سَقَى,يَسْقِي,اِسْقِ,matched_existing_future_type,كسرة,سَقَى,يَسْقِي,اِسْقِ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَقَى
+فكر,فكر-main,Main,II,ai_draft,thinking,فَكَّرَ,يُفَكِّرُ,فَكِّرْ,unambiguous,فتحة,فَكَّرَ,يُفَكِّرُ,فَكِّرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=فَكَّرَ
+شبه,شبه-main,Main,VI,ai_draft,resembling,تَشَابَهَ,يَتَشَابَهُ,تَشَابَهْ,unambiguous,فتحة,تَشَابَهَ,يَتَشَابَهُ,تَشَابَهْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَشَابَهَ
+خلف,خلف-main,Main,VIII,ai_draft,differing,اِخْتَلَفَ,يَخْتَلِفُ,اِخْتَلِفْ,unambiguous,فتحة,اِخْتَلَفَ,يَخْتَلِفُ,اِخْتَلِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِخْتَلَفَ
+خلف,خلف-csv-208,Variant,III,ai_draft,"To be different from, be contrary to",خالف,يخالف,خالف,unambiguous,فتحة,خَالَفَ,يُخَالِفُ,خَالِفْ,False,False,False,past=خَالَفَ; present=يُخَالِفُ; imperative=خَالِفْ,https://qutrub.arabeyes.org/?verb=خالف
+خلف,خلف-csv-472,Variant,IV,ai_draft,To break a promise or commitment,أخلف,يخلف,أخلف,unambiguous,فتحة,أَخْلَفَ,يُخْلِفُ,أَخْلِفْ,False,False,False,past=أَخْلَفَ; present=يُخْلِفُ; imperative=أَخْلِفْ,https://qutrub.arabeyes.org/?verb=أخلف
+خلف,خلف-quranic-succeed,Variant,I,ai_draft,"succeeding, coming after",خَلَفَ,يَخْلُفُ,اُخْلُفْ,matched_existing_future_type,ضمة,خَلَفَ,يَخْلُفُ,اُخْلُفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=خَلَفَ
+زيد,زيد-main,Main,I,ai_draft,increasing,زَادَ,يَزِيدُ,زِدْ,ambiguous_future_type,,زَادَ,,,True,,,,https://qutrub.arabeyes.org/?verb=زَادَ
+زيد,زيد-csv-74,Variant,VIII,ai_draft,"To grow, increase",ازداد,يزداد,ازدد,unambiguous,فتحة,اِزْدَادَ,يَزْدَادُ,اِزْدَدْ,False,False,False,past=اِزْدَادَ; present=يَزْدَادُ; imperative=اِزْدَدْ,https://qutrub.arabeyes.org/?verb=ازداد
+نجح,نجح-main,Main,I,ai_draft,"succeeding, passing",نَجَحَ,يَنْجَحُ,اِنْجَحْ,matched_existing_future_type,فتحة,نَجَحَ,يَنْجَحُ,اِنْجَحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَجَحَ
+مرس,مرس-main,Main,III,ai_draft,"practising, exercising",مَارَسَ,يُمَارِسُ,مَارِسْ,unambiguous,فتحة,مَارَسَ,يُمَارِسُ,مَارِسْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَارَسَ
+نقص,نقص-main,Main,I,ai_draft,"decreasing, lacking",نَقَصَ,يَنْقُصُ,اُنْقُصْ,matched_existing_future_type,ضمة,نَقَصَ,يَنْقُصُ,اُنْقُصْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَقَصَ
+نول,نول-main,Main,VI,ai_draft,"taking, consuming",تَنَاوَلَ,يَتَنَاوَلُ,تَنَاوَلْ,unambiguous,فتحة,تَنَاوَلَ,يَتَنَاوَلُ,تَنَاوَلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَنَاوَلَ
+حدث,حدث-main,Main,I,ai_draft,"happening, occurring",حَدَثَ,يَحْدُثُ,اُحْدُثْ,matched_existing_future_type,ضمة,حَدَثَ,يَحْدُثُ,اُحْدُثْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَدَثَ
+حدث,حدث-csv-147,Variant,V,ai_draft,To speak,تحدّث,يتحدّث,تحدّث,unambiguous,فتحة,تَحَدَّثَ,يَتَحَدَّثُ,تَحَدَّثْ,False,False,False,past=تَحَدَّثَ; present=يَتَحَدَّثُ; imperative=تَحَدَّثْ,https://qutrub.arabeyes.org/?verb=تحدّث
+حدث,حدث-csv-265,Variant,II,ai_draft,To speak,حدّث,يحدث,حدث,unambiguous,فتحة,حَدَّثَ,يُحَدِّثُ,حَدِّثْ,False,False,False,past=حَدَّثَ; present=يُحَدِّثُ; imperative=حَدِّثْ,https://qutrub.arabeyes.org/?verb=حدّث
+عقد,عقد-main,Main,VIII,ai_draft,believing,اِعْتَقَدَ,يَعْتَقِدُ,اِعْتَقِدْ,unambiguous,فتحة,اِعْتَقَدَ,يَعْتَقِدُ,اِعْتَقِدْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِعْتَقَدَ
+عقد,عقد-csv-504,Variant,II,ai_draft,To complicate,عقد,يعقد,عقد,ambiguous_future_type,,عَقَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عقد
+تبع,تبع-main,Main,VIII,ai_draft,following,اِتَّبَعَ,يَتَّبِعُ,اِتَّبِعْ,unambiguous,فتحة,اِتَّبَعَ,يَتَّبِعُ,اِتَّبِعْ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِتَّبَعَ
+كفي,كفي-main,Main,I,ai_draft,"sufficing, being enough",كَفَى,يَكْفِي,اِكْفِ,matched_existing_future_type,كسرة,كَفَى,يَكْفِي,اِكْفِ,True,True,True,,https://qutrub.arabeyes.org/?verb=كَفَى
+كفي,كفي-csv-188,Variant,VIII,ai_draft,"To be content with, to settle for",اكتفى,يكتفي,اكتف,unambiguous,فتحة,اِكْتَفَى,يَكْتَفِي,اِكْتَفِ,False,False,False,past=اِكْتَفَى; present=يَكْتَفِي; imperative=اِكْتَفِ,https://qutrub.arabeyes.org/?verb=اكتفى
+قدم,قدم-main,Main,V,ai_draft,"progressing, advancing",تَقَدَّمَ,يَتَقَدَّمُ,تَقَدَّمْ,unambiguous,فتحة,تَقَدَّمَ,يَتَقَدَّمُ,تَقَدَّمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَقَدَّمَ
+قدم,قدم-csv-87,Variant,II,ai_draft,To submit,قدّم,يقدم,قدم,unambiguous,فتحة,قَدَّمَ,يُقَدِّمُ,قَدِّمْ,False,False,False,past=قَدَّمَ; present=يُقَدِّمُ; imperative=قَدِّمْ,https://qutrub.arabeyes.org/?verb=قدّم
+ضغط,ضغط-main,Main,I,ai_draft,"pressing, pressurising",ضَغَطَ,يَضْغَطُ,اِضْغَطْ,matched_existing_future_type,فتحة,ضَغَطَ,يَضْغَطُ,اِضْغَطْ,True,True,True,,https://qutrub.arabeyes.org/?verb=ضَغَطَ
+حذر,حذر-main,Main,II,ai_draft,warning,حَذَّرَ,يُحَذِّرُ,حَذِّرْ,unambiguous,فتحة,حَذَّرَ,يُحَذِّرُ,حَذِّرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَذَّرَ
+سرف,سرف-main,Main,IV,ai_draft,"wasting, being excessive",أَسْرَفَ,يُسْرِفُ,أَسْرِفْ,unambiguous,فتحة,أَسْرَفَ,يُسْرِفُ,أَسْرِفْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَسْرَفَ
+موت,موت-main,Main,I,ai_draft,"death, dying",مَاتَ,يَمُوتُ,مُتْ,matched_existing_future_type,ضمة,مَاتَ,يَمُوتُ,مُتْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَاتَ
+ربب,ربب-main,Main,I,ai_draft,"lordship, nurturing",رَبَّ,يَرُبُّ,رُبَّ,matched_existing_future_type,ضمة,رَبَّ,يَرُبُّ,اُرْبُبْ,True,True,False,imperative=اُرْبُبْ,https://qutrub.arabeyes.org/?verb=رَبَّ
+رجو,رجو-main,Main,I,ai_draft,hoping,رَجَا,يَرْجُو,اُرْجُ,matched_existing_future_type,ضمة,رَجَا,يَرْجُو,اُرْجُ,True,True,True,,https://qutrub.arabeyes.org/?verb=رَجَا
+توب,توب-main,Main,I,ai_draft,"turning back, repentance",تَابَ,يَتُوبُ,تُبْ,matched_existing_future_type,ضمة,تَابَ,يَتُوبُ,تُبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَابَ
+جيء,جيء-main,Main,I,ai_draft,coming,جَاءَ,يَجِيءُ,جِئْ,ambiguous_future_type,,جَاءَ,,,True,,,,https://qutrub.arabeyes.org/?verb=جَاءَ
+يمم,يمم-main,Main,V,ai_draft,dry ablution; aiming for,تَيَمَّمَ,يَتَيَمَّمُ,تَيَمَّمْ,unambiguous,فتحة,تَيَمَّمَ,يَتَيَمَّمُ,تَيَمَّمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَيَمَّمَ
+نور,نور-main,Main,IV,ai_draft,light,أَنَارَ,يُنِيرُ,أَنِرْ,unambiguous,فتحة,أَنَارَ,يُنِيرُ,أَنِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَنَارَ
+شيء,شيء-main,Main,I,ai_draft,"will, wanting",شَاءَ,يَشَاءُ,شَأْ,matched_existing_future_type,فتحة,شَاءَ,يَشَاءُ,شِئْ,True,True,False,imperative=شِئْ,https://qutrub.arabeyes.org/?verb=شَاءَ
+وقي,وقي-main,Main,VIII,ai_draft,guarding; God-consciousness,اِتَّقَى,يَتَّقِي,اِتَّقِ,unambiguous,فتحة,اِتَّقَى,يَتَّقِي,اِتَّقِ,True,True,True,,https://qutrub.arabeyes.org/?verb=اِتَّقَى
+عذب,عذب-main,Main,II,ai_draft,"punishment, torment",عَذَّبَ,يُعَذِّبُ,عَذِّبْ,unambiguous,فتحة,عَذَّبَ,يُعَذِّبُ,عَذِّبْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَذَّبَ
+سمو,سمو-main,Main,I,ai_draft,"loftiness, rising high",سَمَا,يَسْمُو,اُسْمُ,matched_existing_future_type,ضمة,سَمَا,يَسْمُو,اُسْمُ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَمَا
+مثل,مثل-main,Main,II,ai_draft,"likeness, parable",مَثَّلَ,يُمَثِّلُ,مَثِّلْ,unambiguous,فتحة,مَثَّلَ,يُمَثِّلُ,مَثِّلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=مَثَّلَ
+نبأ,نبأ-main,Main,II,ai_draft,"news, informing",نَبَّأَ,يُنَبِّئُ,نَبِّئْ,unambiguous,فتحة,نَبَّأَ,يُنَبِّئُ,نَبِّئْ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَبَّأَ
+دنو,دنو-main,Main,I,ai_draft,"nearness, drawing near",دَنَا,يَدْنُو,اُدْنُ,matched_existing_future_type,ضمة,دَنَا,يَدْنُو,اُدْنُ,True,True,True,,https://qutrub.arabeyes.org/?verb=دَنَا
+نذر,نذر-main,Main,IV,ai_draft,warning,أَنْذَرَ,يُنْذِرُ,أَنْذِرْ,unambiguous,فتحة,أَنْذَرَ,يُنْذِرُ,أَنْذِرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَنْذَرَ
+عظم,عظم-main,Main,I,ai_draft,greatness,عَظُمَ,يَعْظُمُ,اُعْظُمْ,matched_existing_future_type,ضمة,عَظُمَ,يَعْظُمُ,اُعْظُمْ,True,True,True,,https://qutrub.arabeyes.org/?verb=عَظُمَ
+بشر,بشر-main,Main,II,ai_draft,"glad tidings, human being",بَشَّرَ,يُبَشِّرُ,بَشِّرْ,unambiguous,فتحة,بَشَّرَ,يُبَشِّرُ,بَشِّرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=بَشَّرَ
+عزز,عزز-main,Main,I,ai_draft,"might, honor",عَزَّ,يَعِزُّ,عِزَّ,matched_existing_future_type,كسرة,عَزَّ,يَعِزُّ,اِعْزِزْ,True,True,False,imperative=اِعْزِزْ,https://qutrub.arabeyes.org/?verb=عَزَّ
+أذن,أذن-main,Main,I,ai_draft,permission,أَذِنَ,يَأْذَنُ,اِئْذَنْ,matched_existing_future_type,فتحة,أَذِنَ,يَأْذَنُ,اِئْذَنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَذِنَ
+دين,دين-main,Main,I,ai_draft,religion; debt,دَانَ,يَدِينُ,دِنْ,ambiguous_future_type,,دَانَ,,,True,,,,https://qutrub.arabeyes.org/?verb=دَانَ
+وحي,وحي-main,Main,IV,ai_draft,revelation,أَوْحَى,يُوحِي,أَوْحِ,unambiguous,فتحة,أَوْحَى,يُوحِي,أَوْحِ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَوْحَى
+وكل,وكل-main,Main,V,ai_draft,"trust, reliance",تَوَكَّلَ,يَتَوَكَّلُ,تَوَكَّلْ,unambiguous,فتحة,تَوَكَّلَ,يَتَوَكَّلُ,تَوَكَّلْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَوَكَّلَ
+تلو,تلو-main,Main,I,ai_draft,"reciting, following",تَلَا,يَتْلُو,اُتْلُ,matched_existing_future_type,ضمة,تَلَا,يَتْلُو,اُتْلُ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَلَا
+زكو,زكو-main,Main,II,ai_draft,"purification, alms",زَكَّى,يُزَكِّي,زَكِّ,unambiguous,فتحة,زَكَّى,يُزَكِّي,زَكِّ,True,True,True,,https://qutrub.arabeyes.org/?verb=زَكَّى
+فلح,فلح-main,Main,IV,ai_draft,"success, prosperity",أَفْلَحَ,يُفْلِحُ,أَفْلِحْ,unambiguous,فتحة,أَفْلَحَ,يُفْلِحُ,أَفْلِحْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَفْلَحَ
+شكي,شكي-main,Main,VIII,ai_draft,"To complain, suffer from",اشتكى,يشتكي,اشتك,unambiguous,فتحة,اِشْتَكَى,يَشْتَكِي,اِشْتَكِ,False,False,False,past=اِشْتَكَى; present=يَشْتَكِي; imperative=اِشْتَكِ,https://qutrub.arabeyes.org/?verb=اشتكى
+حوج,حوج-main,Main,VIII,ai_draft,To need,احتاج,يحتاج,احتج,unambiguous,فتحة,اِحْتَاجَ,يَحْتَاجُ,اِحْتَجْ,False,False,False,past=اِحْتَاجَ; present=يَحْتَاجُ; imperative=اِحْتَجْ,https://qutrub.arabeyes.org/?verb=احتاج
+غمي,غمي-main,Main,IV,ai_draft,"To faint, to cause to faint",أغمي/أغمى,يغمى/يغمي,أغم,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=أغمي/أغمى
+فوق,فوق-main,Main,IV,ai_draft,To recover consciousness,أفاق,يفيق,أفق,unambiguous,فتحة,أَفَاقَ,يُفِيقُ,أَفِقْ,False,False,False,past=أَفَاقَ; present=يُفِيقُ; imperative=أَفِقْ,https://qutrub.arabeyes.org/?verb=أفاق
+غير,غير-main,Main,II,ai_draft,To change,غيّر,يغير,غير,unambiguous,فتحة,غَيَّرَ,يُغَيِّرُ,غَيِّرْ,False,False,False,past=غَيَّرَ; present=يُغَيِّرُ; imperative=غَيِّرْ,https://qutrub.arabeyes.org/?verb=غيّر
+غير,غير-csv-62,Variant,V,ai_draft,To change,تغيّر,يتغيّر,تغيّر,unambiguous,فتحة,تَغَيَّرَ,يَتَغَيَّرُ,تَغَيَّرْ,False,False,False,past=تَغَيَّرَ; present=يَتَغَيَّرُ; imperative=تَغَيَّرْ,https://qutrub.arabeyes.org/?verb=تغيّر
+قصد,قصد-main,Main,I,ai_draft,To intend,قصد,يقصد,اقصد,ambiguous_future_type,,قَصَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قصد
+دعو,دعو-main,Main,I,ai_draft,"To call to, to invite",دعا,يدعو,ادع,ambiguous_future_type,,دَعَا,,,False,,,,https://qutrub.arabeyes.org/?verb=دعا
+دعو,دعو-csv-281,Variant,VIII,ai_draft,To claim,ادّعى,يدّعي,ادّع,unambiguous,فتحة,اِدَّعَى,يَدَّعِي,اِدَّعِ,False,False,False,past=اِدَّعَى; present=يَدَّعِي; imperative=اِدَّعِ,https://qutrub.arabeyes.org/?verb=ادّعى
+ندي,ندي-main,Main,III,ai_draft,To call,نادى,ينادي,ناد,unambiguous,فتحة,نَادَى,يُنَادِي,نَادِ,False,False,False,past=نَادَى; present=يُنَادِي; imperative=نَادِ,https://qutrub.arabeyes.org/?verb=نادى
+نقش,نقش-main,Main,III,ai_draft,To discuss,ناقش,يناقش,ناقش,unambiguous,فتحة,نَاقَشَ,يُنَاقِشُ,نَاقِشْ,False,False,False,past=نَاقَشَ; present=يُنَاقِشُ; imperative=نَاقِشْ,https://qutrub.arabeyes.org/?verb=ناقش
+نصب,نصب-main,Main,I,ai_draft,"To set up, erect",نصب,ينصب,انصب,ambiguous_future_type,,نَصَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نصب
+صيد,صيد-main,Main,VIII,ai_draft,To hunt/to fish,اصطاد,يصطاد,اصطد,unambiguous,فتحة,اِصْطَادَ,يَصْطَادُ,اِصْطَدْ,False,False,False,past=اِصْطَادَ; present=يَصْطَادُ; imperative=اِصْطَدْ,https://qutrub.arabeyes.org/?verb=اصطاد
+صيد,صيد-csv-233,Variant,I,ai_draft,"To hunt, shoot",صاد,يصيد,صد,ambiguous_future_type,,صَادَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صاد
+صور,صور-main,Main,II,ai_draft,To take a picture,صوّر,يصور,صور,unambiguous,فتحة,صَوَّرَ,يُصَوِّرُ,صَوِّرْ,False,False,False,past=صَوَّرَ; present=يُصَوِّرُ; imperative=صَوِّرْ,https://qutrub.arabeyes.org/?verb=صوّر
+مشي,مشي-main,Main,I,ai_draft,To walk,مشى,يمشي,امش,ambiguous_future_type,,مَشَى,,,False,,,,https://qutrub.arabeyes.org/?verb=مشى
+عدد,عدد-main,Main,IV,ai_draft,To prepare,أعدّ,يعدّ,أعدّ,unambiguous,فتحة,أَعَدَّ,يُعِدُّ,أَعْدِدْ,False,False,False,past=أَعَدَّ; present=يُعِدُّ; imperative=أَعْدِدْ,https://qutrub.arabeyes.org/?verb=أعدّ
+عدد,عدد-csv-339,Variant,V,ai_draft,To be multifarious,تعدد,يتعدد,تعدد,unambiguous,فتحة,تَعْدَدَ,يُتَعْدِدُ,تَعْدِدْ,False,False,False,past=تَعْدَدَ; present=يُتَعْدِدُ; imperative=تَعْدِدْ,https://qutrub.arabeyes.org/?verb=تعدد
+قلق,قلق-main,Main,I,ai_draft,To worry,قلق,يقلق,اقلق,ambiguous_future_type,,قَلَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قلق
+نسب,نسب-main,Main,III,ai_draft,To be suitable,ناسب,يناسب,ناسب,unambiguous,فتحة,نَاسَبَ,يُنَاسِبُ,نَاسِبْ,False,False,False,past=نَاسَبَ; present=يُنَاسِبُ; imperative=نَاسِبْ,https://qutrub.arabeyes.org/?verb=ناسب
+حقق,حقق-main,Main,II,ai_draft,"To accomplish, actualize, achieve",حقّق,يحقق,حقق,unambiguous,فتحة,حَقَّقَ,يُحَقِّقُ,حَقِّقْ,False,False,False,past=حَقَّقَ; present=يُحَقِّقُ; imperative=حَقِّقْ,https://qutrub.arabeyes.org/?verb=حقّق
+حقق,حقق-csv-386,Variant,X,ai_draft,To deserve,استحق,يستحق,استحق,unambiguous,فتحة,اِسْتَحَقَ,يَسْتَحِقُ,اِسْتَحِقْ,False,False,False,past=اِسْتَحَقَ; present=يَسْتَحِقُ; imperative=اِسْتَحِقْ,https://qutrub.arabeyes.org/?verb=استحق
+حقق,حقق-quranic-stative,Variant,I,ai_draft,"being true, being realized",حَقَّ,يَحِقُّ,حِقَّ,matched_existing_future_type,كسرة,حَقَّ,يَحِقُّ,اِحْقِقْ,True,True,False,imperative=اِحْقِقْ,https://qutrub.arabeyes.org/?verb=حَقَّ
+عجز,عجز-main,Main,I,ai_draft,To be incapable of,عجز,يعجز,اعجز,ambiguous_future_type,,عَجَزَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عجز
+حلل,حلل-main,Main,I,ai_draft,To solve,حلّ,يحلّ,حلّ,ambiguous_future_type,,حَلَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=حلّ
+حلل,حلل-csv-221,Variant,VIII,ai_draft,"To occupy, seize",احتلّ,يحتلّ,احتلّ,unambiguous,فتحة,اِحْتَلَّ,يَحْتَلُّ,اِحْتَلِلْ,False,False,False,past=اِحْتَلَّ; present=يَحْتَلُّ; imperative=اِحْتَلِلْ,https://qutrub.arabeyes.org/?verb=احتلّ
+حلل,حلل-csv-330,Variant,IV,ai_draft,To make halal (lawful),أحل,يحل,أحل,ambiguous_future_type,,أَحَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أحل
+حلل,حلل-csv-376,Variant,VI,ai_draft,"To change, transition",تحول,يتحول,تحول,unambiguous,فتحة,تَحْوَلَ,يُتَحْوِلُ,تَحْوِلْ,False,False,False,past=تَحْوَلَ; present=يُتَحْوِلُ; imperative=تَحْوِلْ,https://qutrub.arabeyes.org/?verb=تحول
+ثور,ثور-main,Main,I,ai_draft,To become agitated,ثار,يثور,ثر,ambiguous_future_type,,ثَارَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ثار
+ثور,ثور-csv-236,Variant,IV,ai_draft,"To provoke, incite, instigate",أثار,يثير,أثر,unambiguous,فتحة,أَثَارَ,يُثِيرُ,أَثِرْ,False,False,False,past=أَثَارَ; present=يُثِيرُ; imperative=أَثِرْ,https://qutrub.arabeyes.org/?verb=أثار
+حور,حور-main,Main,III,ai_draft,To converse,حاور,يحاور,حاور,unambiguous,فتحة,حَاوَرَ,يُحَاوِرُ,حَاوِرْ,False,False,False,past=حَاوَرَ; present=يُحَاوِرُ; imperative=حَاوِرْ,https://qutrub.arabeyes.org/?verb=حاور
+عيش,عيش-main,Main,I,ai_draft,To live,عاش,يعيش,عش,ambiguous_future_type,,عَاشَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عاش
+دري,دري-main,Main,I,ai_draft,To know,درى,يدري,ادر,ambiguous_future_type,,دَرَى,,,False,,,,https://qutrub.arabeyes.org/?verb=درى
+همل,همل-main,Main,IV,ai_draft,To neglect,أهمل,يهمل,أهمل,unambiguous,فتحة,أَهْمَلَ,يُهْمِلُ,أَهْمِلْ,False,False,False,past=أَهْمَلَ; present=يُهْمِلُ; imperative=أَهْمِلْ,https://qutrub.arabeyes.org/?verb=أهمل
+همم,همم-main,Main,VIII,ai_draft,"To take seriously, give importance to",اهتمّ,يهتمّ,اهتمّ,unambiguous,فتحة,اِهْتَمَّ,يَهْتَمُّ,اِهْتَمِمْ,False,False,False,past=اِهْتَمَّ; present=يَهْتَمُّ; imperative=اِهْتَمِمْ,https://qutrub.arabeyes.org/?verb=اهتمّ
+ضمم,ضمم-main,Main,I,ai_draft,"To contain, consist of",ضمّ,يضمّ,ضمّ,ambiguous_future_type,,ضَمَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=ضمّ
+خفي,خفي-main,Main,VIII,ai_draft,To disappear,اختفى,يختفي,اختف,unambiguous,فتحة,اِخْتَفَى,يَخْتَفِي,اِخْتَفِ,False,False,False,past=اِخْتَفَى; present=يَخْتَفِي; imperative=اِخْتَفِ,https://qutrub.arabeyes.org/?verb=اختفى
+خفي,خفي-csv-501,Variant,IV,ai_draft,To hide,أخفى,يخفي,أخف,unambiguous,فتحة,أَخْفَى,يُخْفِي,أَخْفِ,False,False,False,past=أَخْفَى; present=يُخْفِي; imperative=أَخْفِ,https://qutrub.arabeyes.org/?verb=أخفى
+ضعف,ضعف-main,Main,I,ai_draft,To be weak,ضعف,يضعف,اضعف,ambiguous_future_type,,ضَعَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ضعف
+ضعف,ضعف-csv-260,Variant,IV,ai_draft,To weaken,أضعف,يضعف,أضعف,unambiguous,فتحة,أَضْعَفَ,يُضْعِفُ,أَضْعِفْ,False,False,False,past=أَضْعَفَ; present=يُضْعِفُ; imperative=أَضْعِفْ,https://qutrub.arabeyes.org/?verb=أضعف
+ضعف,ضعف-csv-292,Variant,III,ai_draft,"To double, to multiple",ضاعف,يضاعف,ضاعف,unambiguous,فتحة,ضَاعَفَ,يُضَاعِفُ,ضَاعِفْ,False,False,False,past=ضَاعَفَ; present=يُضَاعِفُ; imperative=ضَاعِفْ,https://qutrub.arabeyes.org/?verb=ضاعف
+رحل,رحل-main,Main,I,ai_draft,"To leave, move, depart",رحل,يرحل,ارحل,ambiguous_future_type,,رَحَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رحل
+خوف,خوف-main,Main,I,ai_draft,To fear,خاف,يخاف,خف,ambiguous_future_type,,خَافَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خاف
+خوف,خوف-csv-237,Variant,IV,ai_draft,To frighten,أخاف,يخيف,أخف,unambiguous,فتحة,أَخَافَ,يُخِيفُ,أَخِفْ,False,False,False,past=أَخَافَ; present=يُخِيفُ; imperative=أَخِفْ,https://qutrub.arabeyes.org/?verb=أخاف
+وجه,وجه-main,Main,III,ai_draft,"To face, encounter",واجه,يواجه,واجه,unambiguous,فتحة,وَاجَهَ,يُوَاجِهُ,وَاجِهْ,False,False,False,past=وَاجَهَ; present=يُوَاجِهُ; imperative=وَاجِهْ,https://qutrub.arabeyes.org/?verb=واجه
+وجه,وجه-csv-81,Variant,VIII,ai_draft,To head towards,اتّجه,يتّجه,اتّجه,unambiguous,فتحة,اِتَّجَهَ,يَتَّجِهُ,اِتَّجِهْ,False,False,False,past=اِتَّجَهَ; present=يَتَّجِهُ; imperative=اِتَّجِهْ,https://qutrub.arabeyes.org/?verb=اتّجه
+وجه,وجه-csv-246,Variant,V,ai_draft,"To proceed to, head for",توجّه,يتوجّه,توجّه,unambiguous,فتحة,تَوَجَّهَ,يَتَوَجَّهُ,تَوَجَّهْ,False,False,False,past=تَوَجَّهَ; present=يَتَوَجَّهُ; imperative=تَوَجَّهْ,https://qutrub.arabeyes.org/?verb=توجّه
+وجه,وجه-csv-505,Variant,II,ai_draft,To direct,وجه,يوجه,وجه,ambiguous_future_type,,وَجَهَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وجه
+وجه,وجه-quranic-towards,Variant,V,ai_draft,"turning oneself, heading (towards)",تَوَجَّهَ,يَتَوَجَّهُ,تَوَجَّهْ,unambiguous,فتحة,تَوَجَّهَ,يَتَوَجَّهُ,تَوَجَّهْ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَوَجَّهَ
+درك,درك-main,Main,IV,ai_draft,To understand,أدرك,يدرك,أدرك,unambiguous,فتحة,أَدْرَكَ,يُدْرِكُ,أَدْرِكْ,False,False,False,past=أَدْرَكَ; present=يُدْرِكُ; imperative=أَدْرِكْ,https://qutrub.arabeyes.org/?verb=أدرك
+بني,بني-main,Main,I,ai_draft,To build,بنى,يبني,ابن,ambiguous_future_type,,بَنَى,,,False,,,,https://qutrub.arabeyes.org/?verb=بنى
+عطف,عطف-main,Main,VII,ai_draft,To turn,انعطف,ينعطف,انعطف,unambiguous,فتحة,اِنْعَطَفَ,يَنْعَطِفُ,اِنْعَطِفْ,False,False,False,past=اِنْعَطَفَ; present=يَنْعَطِفُ; imperative=اِنْعَطِفْ,https://qutrub.arabeyes.org/?verb=انعطف
+عطف,عطف-csv-530,Variant,I,ai_draft,To feel sympathy or compassion for,عطف,يعطف,اعطف,ambiguous_future_type,,عَطَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عطف
+كثر,كثر-main,Main,I,ai_draft,To be numerous,كثر,يكثر,اكثر,ambiguous_future_type,,كَثَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كثر
+كثر,كثر-csv-551,Variant,VI,ai_draft,"To increase, grow, multiply",تكاثر,يتكاثر,تكاثر,unambiguous,فتحة,تَكَاثَرَ,يَتَكَاثَرُ,تَكَاثَرْ,False,False,False,past=تَكَاثَرَ; present=يَتَكَاثَرُ; imperative=تَكَاثَرْ,https://qutrub.arabeyes.org/?verb=تكاثر
+نشأ,نشأ-main,Main,IV,ai_draft,To establish,أنشأ,ينشئ,أنشئ,unambiguous,فتحة,أَنْشَأَ,يُنْشِئُ,أَنْشِئْ,False,False,False,past=أَنْشَأَ; present=يُنْشِئُ; imperative=أَنْشِئْ,https://qutrub.arabeyes.org/?verb=أنشأ
+نشأ,نشأ-csv-144,Variant,I,ai_draft,To originate from,نشأ,ينشأ,انشأ,ambiguous_future_type,,نَشَأَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نشأ
+نشأ,نشأ-csv-336,Variant,IV,ai_draft,To establish,أنشأ,ينشىء,أنشىء,unambiguous,فتحة,أَنْشَأَ,يُنْشِئُ,أَنْشِئْ,False,False,False,past=أَنْشَأَ; present=يُنْشِئُ; imperative=أَنْشِئْ,https://qutrub.arabeyes.org/?verb=أنشأ
+شهر,شهر-main,Main,VIII,ai_draft,To be famous,اشتهر,يشتهر,اشتهر,unambiguous,فتحة,اِشْتَهَرَ,يَشْتَهِرُ,اِشْتَهِرْ,False,False,False,past=اِشْتَهَرَ; present=يَشْتَهِرُ; imperative=اِشْتَهِرْ,https://qutrub.arabeyes.org/?verb=اشتهر
+رغب,رغب-main,Main,I,ai_draft,"To wish for, want",رغب,يرغب,ارغب,ambiguous_future_type,,رَغَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رغب
+لحق,لحق-main,Main,VIII,ai_draft,To join,التحق,يلتحق,التحق,unambiguous,فتحة,اِلْتَحَقَ,يَلْتَحِقُ,اِلْتَحِقْ,False,False,False,past=اِلْتَحَقَ; present=يَلْتَحِقُ; imperative=اِلْتَحِقْ,https://qutrub.arabeyes.org/?verb=التحق
+وفق,وفق-main,Main,III,ai_draft,To agree,وافق,يوافق,وافق,unambiguous,فتحة,وَافَقَ,يُوَافِقُ,وَافِقْ,False,False,False,past=وَافَقَ; present=يُوَافِقُ; imperative=وَافِقْ,https://qutrub.arabeyes.org/?verb=وافق
+وفق,وفق-csv-92,Variant,II,ai_draft,To grant success,وفّق,يوفق,وفق,unambiguous,فتحة,وَفَّقَ,يُوَفِّقُ,وَفِّقْ,False,False,False,past=وَفَّقَ; present=يُوَفِّقُ; imperative=وَفِّقْ,https://qutrub.arabeyes.org/?verb=وفّق
+وفق,وفق-csv-163,Variant,VIII,ai_draft,To agree,اتّفق,يتّفق,اتّفق,unambiguous,فتحة,اِتَّفَقَ,يَتَّفِقُ,اِتَّفِقْ,False,False,False,past=اِتَّفَقَ; present=يَتَّفِقُ; imperative=اِتَّفِقْ,https://qutrub.arabeyes.org/?verb=اتّفق
+تشر,تشر-main,Main,VII,ai_draft,To be widespread,انتشر,ينتشر,انتشر,unambiguous,فتحة,اِنْتَشَرَ,يَنْتَشِرُ,اِنْتَشِرْ,False,False,False,past=اِنْتَشَرَ; present=يَنْتَشِرُ; imperative=اِنْتَشِرْ,https://qutrub.arabeyes.org/?verb=انتشر
+شيع,شيع-main,Main,I,ai_draft,"To circulate, be widespread",شاع,يشيع,شع,ambiguous_future_type,,شَاعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شاع
+عبب,عبب-main,Main,V,ai_draft,To be exhausted,تعب,يتعب,اتعب,ambiguous_future_type,,تَعَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=تعب
+أخر,أخر-main,Main,V,ai_draft,To fall behind,تأخّر,يتأخّر,تأخّر,unambiguous,فتحة,تَأَخَّرَ,يَتَأَخَّرُ,تَأَخَّرْ,False,False,False,past=تَأَخَّرَ; present=يَتَأَخَّرُ; imperative=تَأَخَّرْ,https://qutrub.arabeyes.org/?verb=تأخّر
+أخر,أخر-quranic-delay,Variant,II,ai_draft,"delaying, postponing",أَخَّرَ,يُؤَخِّرُ,أَخِّرْ,unambiguous,فتحة,أَخَّرَ,يُؤَخِّرُ,أَخِّرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَخَّرَ
+أثر,أثر-main,Main,V,ai_draft,To be affected,تأثّر,يتأثّر,تأثّر,unambiguous,فتحة,تَأَثَّرَ,يَتَأَثَّرُ,تَأَثَّرْ,False,False,False,past=تَأَثَّرَ; present=يَتَأَثَّرُ; imperative=تَأَثَّرْ,https://qutrub.arabeyes.org/?verb=تأثّر
+أثر,أثر-csv-135,Variant,II,ai_draft,To affect,أثّر,يؤثر,أثر,unambiguous,فتحة,أَثَّرَ,يُؤَثِّرُ,أَثِّرْ,False,False,False,past=أَثَّرَ; present=يُؤَثِّرُ; imperative=أَثِّرْ,https://qutrub.arabeyes.org/?verb=أثّر
+كنن,كنن-main,Main,VI,ai_draft,To consist of,تكوّن,يتكوّن,تكوّن,unambiguous,فتحة,تَكَوَّنَ,يَتَكَوَّنُ,تَكَوَّنْ,False,False,False,past=تَكَوَّنَ; present=يَتَكَوَّنُ; imperative=تَكَوَّنْ,https://qutrub.arabeyes.org/?verb=تكوّن
+حصل,حصل-main,Main,I,ai_draft,To attain,حصل,يحصل,احصل,ambiguous_future_type,,حَصَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حصل
+شرف,شرف-main,Main,IV,ai_draft,"To supervise, run",أشرف,يشرف,أشرف,unambiguous,فتحة,أَشْرَفَ,يُشْرِفُ,أَشْرِفْ,False,False,False,past=أَشْرَفَ; present=يُشْرِفُ; imperative=أَشْرِفْ,https://qutrub.arabeyes.org/?verb=أشرف
+وفر,وفر-main,Main,II,ai_draft,To provide,وفّر,يوفر,وفر,unambiguous,فتحة,وَفَّرَ,يُوَفِّرُ,وَفِّرْ,False,False,False,past=وَفَّرَ; present=يُوَفِّرُ; imperative=وَفِّرْ,https://qutrub.arabeyes.org/?verb=وفّر
+وفر,وفر-csv-247,Variant,V,ai_draft,To be available,توفّر,يتوفّر,توفّر,unambiguous,فتحة,تَوَفَّرَ,يَتَوَفَّرُ,تَوَفَّرْ,False,False,False,past=تَوَفَّرَ; present=يَتَوَفَّرُ; imperative=تَوَفَّرْ,https://qutrub.arabeyes.org/?verb=توفّر
+فءل,فءل-main,Main,VI,ai_draft,To be optimistic,تفاءل,يتفاءل,تفاءل,unambiguous,فتحة,تَفَاءَلَ,يَتَفَاءَلُ,تَفَاءَلْ,False,False,False,past=تَفَاءَلَ; present=يَتَفَاءَلُ; imperative=تَفَاءَلْ,https://qutrub.arabeyes.org/?verb=تفاءل
+عمم,عمم-main,Main,I,ai_draft,"To be prevalent, widespread",عمّ,يعمّ,عمّ,ambiguous_future_type,,عَمَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=عمّ
+وجب,وجب-main,Main,I,ai_draft,To be obligatory,وجب,يجب,جب,ambiguous_future_type,,وَجَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وجب
+وجب,وجب-csv-337,Variant,IV,ai_draft,To obligate,أوجب,يوجب,أوجب,unambiguous,فتحة,أَوْجَبَ,يُوجِبُ,أَوْجِبْ,False,False,False,past=أَوْجَبَ; present=يُوجِبُ; imperative=أَوْجِبْ,https://qutrub.arabeyes.org/?verb=أوجب
+ربي,ربي-main,Main,II,ai_draft,"To raise, nurture",ربّى,يربي,رب,unambiguous,فتحة,رَبَّى,يُرَبِّي,رَبِّ,False,False,False,past=رَبَّى; present=يُرَبِّي; imperative=رَبِّ,https://qutrub.arabeyes.org/?verb=ربّى
+دور,دور-main,Main,IV,ai_draft,To manage,أدار,يدير,أدر,unambiguous,فتحة,أَدَارَ,يُدِيرُ,أَدِرْ,False,False,False,past=أَدَارَ; present=يُدِيرُ; imperative=أَدِرْ,https://qutrub.arabeyes.org/?verb=أدار
+فسد,فسد-main,Main,IV,ai_draft,"To corrupt, spoil",أفسد,يفسد,أفسد,unambiguous,فتحة,أَفْسَدَ,يُفْسِدُ,أَفْسِدْ,False,False,False,past=أَفْسَدَ; present=يُفْسِدُ; imperative=أَفْسِدْ,https://qutrub.arabeyes.org/?verb=أفسد
+فسد,فسد-csv-203,Variant,I,ai_draft,To be corrupt(ed),فسد,يفسد,افسد,ambiguous_future_type,,فَسَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=فسد
+صلح,صلح-main,Main,IV,ai_draft,To rectify,أصلح,يصلح,أصلح,unambiguous,فتحة,أَصْلَحَ,يُصْلِحُ,أَصْلِحْ,False,False,False,past=أَصْلَحَ; present=يُصْلِحُ; imperative=أَصْلِحْ,https://qutrub.arabeyes.org/?verb=أصلح
+صلح,صلح-csv-204,Variant,I,ai_draft,To be righteous,صلح,يصلح,اصلح,ambiguous_future_type,,صَلَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صلح
+أدي,أدي-main,Main,II,ai_draft,To lead to,أدّى,يؤدي,أد,unambiguous,فتحة,أَدَّى,يُؤَدِّي,أَدِّ,False,False,False,past=أَدَّى; present=يُؤَدِّي; imperative=أَدِّ,https://qutrub.arabeyes.org/?verb=أدّى
+فكك,فكك-main,Main,V,ai_draft,To break up,تفكّك,يتفكّك,تفكّك,unambiguous,فتحة,تَفَكَّكَ,يَتَفَكَّكُ,تَفَكَّكْ,False,False,False,past=تَفَكَّكَ; present=يَتَفَكَّكُ; imperative=تَفَكَّكْ,https://qutrub.arabeyes.org/?verb=تفكّك
+ضيع,ضيع-main,Main,I,ai_draft,"To be squandered, to be wasted, to be lost",ضاع,يضيع,ضع,ambiguous_future_type,,ضَاعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ضاع
+ضيع,ضيع-csv-317,Variant,IV,ai_draft,"To waste, squander",أضاع,يضيع,أضع,unambiguous,فتحة,أَضَاعَ,يُضِيعُ,أَضِعْ,False,False,False,past=أَضَاعَ; present=يُضِيعُ; imperative=أَضِعْ,https://qutrub.arabeyes.org/?verb=أضاع
+ضيع,ضيع-csv-474,Variant,II,ai_draft,"To waste, miss",ضيع,يضيع,ضيع,ambiguous_future_type,,ضَيَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ضيع
+خلط,خلط-main,Main,III,ai_draft,To mix with,خالط,يخالط,خالط,unambiguous,فتحة,خَالَطَ,يُخَالِطُ,خَالِطْ,False,False,False,past=خَالَطَ; present=يُخَالِطُ; imperative=خَالِطْ,https://qutrub.arabeyes.org/?verb=خالط
+خلط,خلط-csv-331,Variant,VIII,ai_draft,"To mix, intermingle",اختلط,يختلط,اختلط,unambiguous,فتحة,اِخْتَلَطَ,يَخْتَلِطُ,اِخْتَلِطْ,False,False,False,past=اِخْتَلَطَ; present=يَخْتَلِطُ; imperative=اِخْتَلِطْ,https://qutrub.arabeyes.org/?verb=اختلط
+غرب,غرب-main,Main,VIII,ai_draft,To migrate,اغترب,يغترب,اغترب,unambiguous,فتحة,اِغْتَرَبَ,يَغْتَرِبُ,اِغْتَرِبْ,False,False,False,past=اِغْتَرَبَ; present=يَغْتَرِبُ; imperative=اِغْتَرِبْ,https://qutrub.arabeyes.org/?verb=اغترب
+صحب,صحب-main,Main,I,ai_draft,To take along,صحب,يصحب,اصحب,ambiguous_future_type,,صَحَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صحب
+نظف,نظف-main,Main,II,ai_draft,To clean,نظّف,ينظف,نظف,unambiguous,فتحة,نَظَّفَ,يُنَظِّفُ,نَظِّفْ,False,False,False,past=نَظَّفَ; present=يُنَظِّفُ; imperative=نَظِّفْ,https://qutrub.arabeyes.org/?verb=نظّف
+عمد,عمد-main,Main,VIII,ai_draft,To rely/depend on,اعتمد,يعتمد,اعتمد,unambiguous,فتحة,اِعْتَمَدَ,يَعْتَمِدُ,اِعْتَمِدْ,False,False,False,past=اِعْتَمَدَ; present=يَعْتَمِدُ; imperative=اِعْتَمِدْ,https://qutrub.arabeyes.org/?verb=اعتمد
+سلل,سلل-main,Main,VI,ai_draft,To beg,تسوّل,يتسوّل,تسوّل,unambiguous,فتحة,تَسَوَّلَ,يَتَسَوَّلُ,تَسَوَّلْ,False,False,False,past=تَسَوَّلَ; present=يَتَسَوَّلُ; imperative=تَسَوَّلْ,https://qutrub.arabeyes.org/?verb=تسوّل
+حطب,حطب-main,Main,VIII,ai_draft,To gather firewood,احتطب,يحتطب,احتطب,unambiguous,فتحة,اِحْتَطَبَ,يَحْتَطِبُ,اِحْتَطِبْ,False,False,False,past=اِحْتَطَبَ; present=يَحْتَطِبُ; imperative=اِحْتَطِبْ,https://qutrub.arabeyes.org/?verb=احتطب
+مسك,مسك-main,Main,IV,ai_draft,To hold,أمسك,يمسك,أمسك,unambiguous,فتحة,أَمْسَكَ,يُمْسِكُ,أَمْسِكْ,False,False,False,past=أَمْسَكَ; present=يُمْسِكُ; imperative=أَمْسِكْ,https://qutrub.arabeyes.org/?verb=أمسك
+دفع,دفع-main,Main,I,ai_draft,"To pay, to push",دفع,يدفع,ادفع,ambiguous_future_type,,دَفَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دفع
+زهر,زهر-main,Main,VIII,ai_draft,"To flourish, thrive",ازدهر,يزدهر,ازدهر,unambiguous,فتحة,اِزْدَهَرَ,يَزْدَهِرُ,اِزْدَهِرْ,False,False,False,past=اِزْدَهَرَ; present=يَزْدَهِرُ; imperative=اِزْدَهِرْ,https://qutrub.arabeyes.org/?verb=ازدهر
+قرض,قرض-main,Main,IV,ai_draft,To loan,أقرض,يقرض,أقرض,unambiguous,فتحة,أَقْرَضَ,يُقْرِضُ,أَقْرِضْ,False,False,False,past=أَقْرَضَ; present=يُقْرِضُ; imperative=أَقْرِضْ,https://qutrub.arabeyes.org/?verb=أقرض
+قرض,قرض-csv-271,Variant,VII,ai_draft,To become extinct,انقرض,ينقرض,انقرض,unambiguous,فتحة,اِنْقَرَضَ,يَنْقَرِضُ,اِنْقَرِضْ,False,False,False,past=اِنْقَرَضَ; present=يَنْقَرِضُ; imperative=اِنْقَرِضْ,https://qutrub.arabeyes.org/?verb=انقرض
+حرب,حرب-main,Main,III,ai_draft,To fight against,حارب,يحارب,حارب,unambiguous,فتحة,حَارَبَ,يُحَارِبُ,حَارِبْ,False,False,False,past=حَارَبَ; present=يُحَارِبُ; imperative=حَارِبْ,https://qutrub.arabeyes.org/?verb=حارب
+شجع,شجع-main,Main,II,ai_draft,"To encourage, promote",شجّع,يشجع,شجع,unambiguous,فتحة,شَجَّعَ,يُشَجِّعُ,شَجِّعْ,False,False,False,past=شَجَّعَ; present=يُشَجِّعُ; imperative=شَجِّعْ,https://qutrub.arabeyes.org/?verb=شجّع
+قوي,قوي-main,Main,I,ai_draft,To be strong(er),قوي,يقوى,اقو,ambiguous_future_type,,قَوِيَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قوي
+ألف,ألف-main,Main,II,ai_draft,To author,ألّف,يؤلف,ألف,unambiguous,فتحة,أَلَّفَ,يُؤَلِّفُ,أَلِّفْ,False,False,False,past=أَلَّفَ; present=يُؤَلِّفُ; imperative=أَلِّفْ,https://qutrub.arabeyes.org/?verb=ألّف
+ألف,ألف-csv-584,Variant,I,ai_draft,To get used to,ألف,يألف,ائلف,ambiguous_future_type,,أَلَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ألف
+علن,علن-main,Main,IV,ai_draft,To announce,أعلن,يعلن,أعلن,unambiguous,فتحة,أَعْلَنَ,يُعْلِنُ,أَعْلِنْ,False,False,False,past=أَعْلَنَ; present=يُعْلِنُ; imperative=أَعْلِنْ,https://qutrub.arabeyes.org/?verb=أعلن
+خدم,خدم-main,Main,I,ai_draft,To serve,خدم,يخدم,اخدم,ambiguous_future_type,,خَدَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خدم
+عفو,عفو-main,Main,I,ai_draft,To forgive,عفا,يعفو,اعف,ambiguous_future_type,,عَفَا,,,False,,,,https://qutrub.arabeyes.org/?verb=عفا
+شرك,شرك-main,Main,III,ai_draft,To participate,شارك,يشارك,شارك,unambiguous,فتحة,شَارَكَ,يُشَارِكُ,شَارِكْ,False,False,False,past=شَارَكَ; present=يُشَارِكُ; imperative=شَارِكْ,https://qutrub.arabeyes.org/?verb=شارك
+شرك,شرك-csv-279,Variant,VIII,ai_draft,"To join, partake (in)",اشترك,يشترك,اشترك,unambiguous,فتحة,اِشْتَرَكَ,يَشْتَرِكُ,اِشْتَرِكْ,False,False,False,past=اِشْتَرَكَ; present=يَشْتَرِكُ; imperative=اِشْتَرِكْ,https://qutrub.arabeyes.org/?verb=اشترك
+شرك,شرك-quranic-associate,Variant,IV,ai_draft,associating partners (with Allah),أَشْرَكَ,يُشْرِكُ,أَشْرِكْ,unambiguous,فتحة,أَشْرَكَ,يُشْرِكُ,أَشْرِكْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَشْرَكَ
+نفس,نفس-main,Main,III,ai_draft,To compete,نافس,ينافس,نافس,unambiguous,فتحة,نَافَسَ,يُنَافِسُ,نَافِسْ,False,False,False,past=نَافَسَ; present=يُنَافِسُ; imperative=نَافِسْ,https://qutrub.arabeyes.org/?verb=نافس
+نفس,نفس-csv-413,Variant,V,ai_draft,To breathe,تنفس,يتنفس,تنفس,unambiguous,فتحة,تَنْفَسَ,يُتَنْفِسُ,تَنْفِسْ,False,False,False,past=تَنْفَسَ; present=يُتَنْفِسُ; imperative=تَنْفِسْ,https://qutrub.arabeyes.org/?verb=تنفس
+كفأ,كفأ-main,Main,III,ai_draft,To reward,كافأ,يكافئ,كافئ,unambiguous,فتحة,كَافَأَ,يُكَافِئُ,كَافِئْ,False,False,False,past=كَافَأَ; present=يُكَافِئُ; imperative=كَافِئْ,https://qutrub.arabeyes.org/?verb=كافأ
+منح,منح-main,Main,I,ai_draft,To award (to),منح,يمنح,امنح,ambiguous_future_type,,مَنَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=منح
+نيل,نيل-main,Main,I,ai_draft,"To win, accomplish",نال,ينال,نل,ambiguous_future_type,,نَالَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نال
+رسل,رسل-main,Main,IV,ai_draft,To send,أرسل,يرسل,أرسل,unambiguous,فتحة,أَرْسَلَ,يُرْسِلُ,أَرْسِلْ,False,False,False,past=أَرْسَلَ; present=يُرْسِلُ; imperative=أَرْسِلْ,https://qutrub.arabeyes.org/?verb=أرسل
+جلل,جلل-main,Main,VI,ai_draft,"To wander, explore",تجوّل,يتجوّل,تجوّل,unambiguous,فتحة,تَجَوَّلَ,يَتَجَوَّلُ,تَجَوَّلْ,False,False,False,past=تَجَوَّلَ; present=يَتَجَوَّلُ; imperative=تَجَوَّلْ,https://qutrub.arabeyes.org/?verb=تجوّل
+جعل,جعل-main,Main,I,ai_draft,To make,جعل,يجعل,اجعل,ambiguous_future_type,,جَعَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=جعل
+رفض,رفض-main,Main,I,ai_draft,To reject,رفض,يرفض,ارفض,ambiguous_future_type,,رَفَضَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رفض
+طير,طير-main,Main,I,ai_draft,To fly,طار,يطير,طر,ambiguous_future_type,,طَارَ,,,False,,,,https://qutrub.arabeyes.org/?verb=طار
+فرض,فرض-main,Main,I,ai_draft,"To compel, force",فرض,يفرض,افرض,ambiguous_future_type,,فَرَضَ,,,False,,,,https://qutrub.arabeyes.org/?verb=فرض
+ربط,ربط-main,Main,I,ai_draft,To tie,ربط,يربط,اربط,ambiguous_future_type,,رَبَطَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ربط
+زول,زول-main,Main,IV,ai_draft,To remove,أزال,يزيل,أزل,unambiguous,فتحة,أَزَالَ,يُزِيلُ,أَزِلْ,False,False,False,past=أَزَالَ; present=يُزِيلُ; imperative=أَزِلْ,https://qutrub.arabeyes.org/?verb=أزال
+نفق,نفق-main,Main,IV,ai_draft,To spend,أنفق,ينفق,أنفق,unambiguous,فتحة,أَنْفَقَ,يُنْفِقُ,أَنْفِقْ,False,False,False,past=أَنْفَقَ; present=يُنْفِقُ; imperative=أَنْفِقْ,https://qutrub.arabeyes.org/?verb=أنفق
+سمم,سمم-main,Main,V,ai_draft,To be poisoned,تسمّم,يتسمّم,تسمّم,unambiguous,فتحة,تَسَمَّمَ,يَتَسَمَّمُ,تَسَمَّمْ,False,False,False,past=تَسَمَّمَ; present=يَتَسَمَّمُ; imperative=تَسَمَّمْ,https://qutrub.arabeyes.org/?verb=تسمّم
+كرر,كرر-main,Main,V,ai_draft,To repeat,تكرّر,يتكرّر,تكرّر,unambiguous,فتحة,تَكَرَّرَ,يَتَكَرَّرُ,تَكَرَّرْ,False,False,False,past=تَكَرَّرَ; present=يَتَكَرَّرُ; imperative=تَكَرَّرْ,https://qutrub.arabeyes.org/?verb=تكرّر
+حثث,حثث-main,Main,I,ai_draft,"To incite, encourage",حثّ,يحثّ,حثّ,ambiguous_future_type,,حَثَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=حثّ
+حرق,حرق-main,Main,I,ai_draft,To burn,حرق,يحرق,احرق,ambiguous_future_type,,حَرَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حرق
+حرق,حرق-csv-267,Variant,IV,ai_draft,To set on fire,أحرق,يحرق,أحرق,unambiguous,فتحة,أَحْرَقَ,يُحْرِقُ,أَحْرِقْ,False,False,False,past=أَحْرَقَ; present=يُحْرِقُ; imperative=أَحْرِقْ,https://qutrub.arabeyes.org/?verb=أحرق
+حرق,حرق-csv-560,Variant,VIII,ai_draft,To burn,احترق,يحترق,احترق,unambiguous,فتحة,اِحْتَرَقَ,يَحْتَرِقُ,اِحْتَرِقْ,False,False,False,past=اِحْتَرَقَ; present=يَحْتَرِقُ; imperative=اِحْتَرِقْ,https://qutrub.arabeyes.org/?verb=احترق
+قيس,قيس-main,Main,I,ai_draft,To measure,قاس,يقيس,قس,ambiguous_future_type,,قَاسَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قاس
+لحظ,لحظ-main,Main,I,ai_draft,To notice,لحظ,يلحظ,لحظ,ambiguous_future_type,,لَحَظَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لحظ
+ضيف,ضيف-main,Main,IV,ai_draft,To add,أضاف,يضيف,أضف,unambiguous,فتحة,أَضَافَ,يُضِيفُ,أَضِفْ,False,False,False,past=أَضَافَ; present=يُضِيفُ; imperative=أَضِفْ,https://qutrub.arabeyes.org/?verb=أضاف
+ثبت,ثبت-main,Main,IV,ai_draft,"To prove, to verify",أثبت,يثبت,أثبت,unambiguous,فتحة,أَثْبَتَ,يُثْبِتُ,أَثْبِتْ,False,False,False,past=أَثْبَتَ; present=يُثْبِتُ; imperative=أَثْبِتْ,https://qutrub.arabeyes.org/?verb=أثبت
+ثبت,ثبت-csv-307,Variant,II,ai_draft,"To reinforce, make firm",ثبت,يثبت,ثبت,ambiguous_future_type,,ثَبَتَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ثبت
+ثبت,ثبت-csv-356,Variant,V,ai_draft,To verify,تثبت,يتثبت,تثبت,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=تثبت
+عور,عور-main,Main,IV,ai_draft,To lend,أعار,يعير,أعر,unambiguous,فتحة,أَعَارَ,يُعِيرُ,أَعِرْ,False,False,False,past=أَعَارَ; present=يُعِيرُ; imperative=أَعِرْ,https://qutrub.arabeyes.org/?verb=أعار
+قود,قود-main,Main,VII,ai_draft,"To submit, surrender",انقاد,ينقاد,انقد,unambiguous,فتحة,اِنْقَادَ,يَنْقَادُ,اِنْقَدْ,False,False,False,past=اِنْقَادَ; present=يَنْقَادُ; imperative=اِنْقَدْ,https://qutrub.arabeyes.org/?verb=انقاد
+كفل,كفل-main,Main,V,ai_draft,To take upon oneself,تكفّل,يتكفّل,تكفّل,unambiguous,فتحة,تَكَفَّلَ,يَتَكَفَّلُ,تَكَفَّلْ,False,False,False,past=تَكَفَّلَ; present=يَتَكَفَّلُ; imperative=تَكَفَّلْ,https://qutrub.arabeyes.org/?verb=تكفّل
+رحب,رحب-main,Main,II,ai_draft,To welcome,رحّب,يرحب,رحب,unambiguous,فتحة,رَحَّبَ,يُرَحِّبُ,رَحِّبْ,False,False,False,past=رَحَّبَ; present=يُرَحِّبُ; imperative=رَحِّبْ,https://qutrub.arabeyes.org/?verb=رحّب
+فهم,فهم-main,Main,I,ai_draft,To understand,فهم,يفهم,افهم,ambiguous_future_type,,فَهَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=فهم
+ضيق,ضيق-main,Main,III,ai_draft,"To annoy, irritate",ضايق,يضايق,ضايق,unambiguous,فتحة,ضَايَقَ,يُضَايِقُ,ضَايِقْ,False,False,False,past=ضَايَقَ; present=يُضَايِقُ; imperative=ضَايِقْ,https://qutrub.arabeyes.org/?verb=ضايق
+أتي,أتي-main,Main,I,ai_draft,"To come, arrive",أتى,يأتي,ائت,ambiguous_future_type,,أَتَى,,,False,,,,https://qutrub.arabeyes.org/?verb=أتى
+حرم,حرم-main,Main,VIII,ai_draft,To respect,احترم,يحترم,احترم,unambiguous,فتحة,اِحْتَرَمَ,يَحْتَرِمُ,اِحْتَرِمْ,False,False,False,past=اِحْتَرَمَ; present=يَحْتَرِمُ; imperative=اِحْتَرِمْ,https://qutrub.arabeyes.org/?verb=احترم
+حرم,حرم-csv-360,Variant,I,ai_draft,"To be forbidden, unlawful",حرم,يحرم,احرم,ambiguous_future_type,,حَرَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حرم
+حرم,حرم-csv-414,Variant,II,ai_draft,"To forbid, declare unlawful",حرم,يحرم,حرم,ambiguous_future_type,,حَرَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حرم
+خبر,خبر-main,Main,IV,ai_draft,To inform,أخبر,يخبر,أخبر,unambiguous,فتحة,أَخْبَرَ,يُخْبِرُ,أَخْبِرْ,False,False,False,past=أَخْبَرَ; present=يُخْبِرُ; imperative=أَخْبِرْ,https://qutrub.arabeyes.org/?verb=أخبر
+خطأ,خطأ-main,Main,IV,ai_draft,"To be mistaken, to be wrong",أخطأ,يخطئ,أخطئ,unambiguous,فتحة,أَخْطَأَ,يُخْطِئُ,أَخْطِئْ,False,False,False,past=أَخْطَأَ; present=يُخْطِئُ; imperative=أَخْطِئْ,https://qutrub.arabeyes.org/?verb=أخطأ
+بثث,بثث-main,Main,I,ai_draft,"To spread, propagate",بثّ,يبثّ,بثّ,ambiguous_future_type,,بَثَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=بثّ
+تمم,تمم-main,Main,IV,ai_draft,"To complete, finish",أتمّ,يتمّ,أتمّ,unambiguous,فتحة,أَتَمَّ,يُتِمُّ,أَتْمِمْ,False,False,False,past=أَتَمَّ; present=يُتِمُّ; imperative=أَتْمِمْ,https://qutrub.arabeyes.org/?verb=أتمّ
+مزق,مزق-main,Main,II,ai_draft,"To tear up, rip apart",مزّق,يمزق,مزق,unambiguous,فتحة,مَزَّقَ,يُمَزِّقُ,مَزِّقْ,False,False,False,past=مَزَّقَ; present=يُمَزِّقُ; imperative=مَزِّقْ,https://qutrub.arabeyes.org/?verb=مزّق
+نقض,نقض-main,Main,VI,ai_draft,To contradict,تناقض,يتناقض,تناقض,unambiguous,فتحة,تَنَاقَضَ,يَتَنَاقَضُ,تَنَاقَضْ,False,False,False,past=تَنَاقَضَ; present=يَتَنَاقَضُ; imperative=تَنَاقَضْ,https://qutrub.arabeyes.org/?verb=تناقض
+قلد,قلد-main,Main,II,ai_draft,"To imitate, copy",قلّد,يقلد,قلد,unambiguous,فتحة,قَلَّدَ,يُقَلِّدُ,قَلِّدْ,False,False,False,past=قَلَّدَ; present=يُقَلِّدُ; imperative=قَلِّدْ,https://qutrub.arabeyes.org/?verb=قلّد
+كلف,كلف-main,Main,II,ai_draft,To require; ask someone to do (something),كلّف,يكلف,كلف,unambiguous,فتحة,كَلَّفَ,يُكَلِّفُ,كَلِّفْ,False,False,False,past=كَلَّفَ; present=يُكَلِّفُ; imperative=كَلِّفْ,https://qutrub.arabeyes.org/?verb=كلّف
+ولي,ولي-main,Main,II,ai_draft,"To empower, authorise, appoint as ruler",ولّى,يولي,ول,unambiguous,فتحة,وَلَّى,يُوَلِّي,وَلِّ,False,False,False,past=وَلَّى; present=يُوَلِّي; imperative=وَلِّ,https://qutrub.arabeyes.org/?verb=ولّى
+ولي,ولي-quranic-turnaway,Variant,V,ai_draft,turning away; taking as ally,تَوَلَّى,يَتَوَلَّى,تَوَلَّ,unambiguous,فتحة,تَوَلَّى,يَتَوَلَّى,تَوَلَّ,True,True,True,,https://qutrub.arabeyes.org/?verb=تَوَلَّى
+نسي,نسي-main,Main,I,ai_draft,To forget,نسي,ينسى,انس,ambiguous_future_type,,نَسِيَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نسي
+وحد,وحد-main,Main,VIII,ai_draft,To unite,اتّحد,يتّحد,اتّحد,unambiguous,فتحة,اِتَّحَدَ,يَتَّحِدُ,اِتَّحِدْ,False,False,False,past=اِتَّحَدَ; present=يَتَّحِدُ; imperative=اِتَّحِدْ,https://qutrub.arabeyes.org/?verb=اتّحد
+وحد,وحد-csv-228,Variant,II,ai_draft,"To unite, make",وحّد,يوحد,وحد,unambiguous,فتحة,وَحَّدَ,يُوَحِّدُ,وَحِّدْ,False,False,False,past=وَحَّدَ; present=يُوَحِّدُ; imperative=وَحِّدْ,https://qutrub.arabeyes.org/?verb=وحّد
+عون,عون-main,Main,X,ai_draft,To seek help,استعان,يستعين,استعن,unambiguous,فتحة,اِسْتَعَانَ,يَسْتَعِينُ,اِسْتَعِنْ,False,False,False,past=اِسْتَعَانَ; present=يَسْتَعِينُ; imperative=اِسْتَعِنْ,https://qutrub.arabeyes.org/?verb=استعان
+عون,عون-csv-244,Variant,VI,ai_draft,To assist/support one another,تعاون,يتعاون,تعاون,unambiguous,فتحة,تَعَاوَنَ,يَتَعَاوَنُ,تَعَاوَنْ,False,False,False,past=تَعَاوَنَ; present=يَتَعَاوَنُ; imperative=تَعَاوَنْ,https://qutrub.arabeyes.org/?verb=تعاون
+شغل,شغل-main,Main,VIII,ai_draft,"To be busy/ distracted, to work",اشتغل,يشتغل,اشتغل,unambiguous,فتحة,اِشْتَغَلَ,يَشْتَغِلُ,اِشْتَغِلْ,False,False,False,past=اِشْتَغَلَ; present=يَشْتَغِلُ; imperative=اِشْتَغِلْ,https://qutrub.arabeyes.org/?verb=اشتغل
+شغل,شغل-csv-261,Variant,I,ai_draft,"To engage, keep busy",شغل,يشغل,اشغل,ambiguous_future_type,,شَغَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شغل
+نقذ,نقذ-main,Main,IV,ai_draft,"To rescue, save",أنقذ,ينقذ,أنقذ,unambiguous,فتحة,أَنْقَذَ,يُنْقِذُ,أَنْقِذْ,False,False,False,past=أَنْقَذَ; present=يُنْقِذُ; imperative=أَنْقِذْ,https://qutrub.arabeyes.org/?verb=أنقذ
+خصر,خصر-main,Main,VIII,ai_draft,"To summarise, abbreviate",اختصر,يختصر,اختصر,unambiguous,فتحة,اِخْتَصَرَ,يَخْتَصِرُ,اِخْتَصِرْ,False,False,False,past=اِخْتَصَرَ; present=يَخْتَصِرُ; imperative=اِخْتَصِرْ,https://qutrub.arabeyes.org/?verb=اختصر
+شمل,شمل-main,Main,I,ai_draft,"To encompass, include",شمل,يشمل,اشمل,ambiguous_future_type,,شَمَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شمل
+نزع,نزع-main,Main,III,ai_draft,"To dispute (with), argue (with)",نازع,ينازع,نازع,unambiguous,فتحة,نَازَعَ,يُنَازِعُ,نَازِعْ,False,False,False,past=نَازَعَ; present=يُنَازِعُ; imperative=نَازِعْ,https://qutrub.arabeyes.org/?verb=نازع
+نتج,نتج-main,Main,IV,ai_draft,To produce,أنتج,ينتج,أنتج,unambiguous,فتحة,أَنْتَجَ,يُنْتِجُ,أَنْتِجْ,False,False,False,past=أَنْتَجَ; present=يُنْتِجُ; imperative=أَنْتِجْ,https://qutrub.arabeyes.org/?verb=أنتج
+غزو,غزو-main,Main,I,ai_draft,"To attack, assault",غزا,يغزو,اغز,ambiguous_future_type,,غَزَا,,,False,,,,https://qutrub.arabeyes.org/?verb=غزا
+فيد,فيد-main,Main,IV,ai_draft,"To benefit, serve",أفاد,يفيد,أفد,unambiguous,فتحة,أَفَادَ,يُفِيدُ,أَفِدْ,False,False,False,past=أَفَادَ; present=يُفِيدُ; imperative=أَفِدْ,https://qutrub.arabeyes.org/?verb=أفاد
+فيد,فيد-csv-283,Variant,X,ai_draft,To benefit from/by,استفاد,يستفيد,استفد,unambiguous,فتحة,اِسْتَفَادَ,يَسْتَفِيدُ,اِسْتَفِدْ,False,False,False,past=اِسْتَفَادَ; present=يَسْتَفِيدُ; imperative=اِسْتَفِدْ,https://qutrub.arabeyes.org/?verb=استفاد
+رعي,رعي-main,Main,I,ai_draft,To tend (a flock of animals),رعى,يرعى,ارع,ambiguous_future_type,,رَعَى,,,False,,,,https://qutrub.arabeyes.org/?verb=رعى
+رعي,رعي-csv-324,Variant,III,ai_draft,"To observe, comply with",راعى,يراعي,راع,unambiguous,فتحة,رَاعَى,يُرَاعِي,رَاعِ,False,False,False,past=رَاعَى; present=يُرَاعِي; imperative=رَاعِ,https://qutrub.arabeyes.org/?verb=راعى
+زرع,زرع-main,Main,I,ai_draft,"To crop, cultivate (agriculture)",زرع,يزرع,ازرع,ambiguous_future_type,,زَرَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=زرع
+شرق,شرق-main,Main,X,ai_draft,"To orientalise, interest in studying the eastern world",استشرق,يستشرق,استشرق,unambiguous,فتحة,اِسْتَشْرَقَ,يَسْتَشْرِقُ,اِسْتَشْرِقْ,False,False,False,past=اِسْتَشْرَقَ; present=يَسْتَشْرِقُ; imperative=اِسْتَشْرِقْ,https://qutrub.arabeyes.org/?verb=استشرق
+قرر,قرر-main,Main,X,ai_draft,To be settled,استقرّ,يستقرّ,استقرّ,unambiguous,فتحة,اِسْتَقَرَّ,يَسْتَقِرُّ,اِسْتَقْرِرْ,False,False,False,past=اِسْتَقَرَّ; present=يَسْتَقِرُّ; imperative=اِسْتَقْرِرْ,https://qutrub.arabeyes.org/?verb=استقرّ
+قرر,قرر-csv-442,Variant,II,ai_draft,To establish,قرر,يقرر,قرر,ambiguous_future_type,,قَرَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قرر
+أيد,أيد-main,Main,II,ai_draft,"To advocate, support",أيّد,يؤيد,أيد,unambiguous,فتحة,أَيَّدَ,يُؤَيِّدُ,أَيِّدْ,False,False,False,past=أَيَّدَ; present=يُؤَيِّدُ; imperative=أَيِّدْ,https://qutrub.arabeyes.org/?verb=أيّد
+بحث,بحث-main,Main,I,ai_draft,To search,بحث,يبحث,ابحث,ambiguous_future_type,,بَحَثَ,,,False,,,,https://qutrub.arabeyes.org/?verb=بحث
+متع,متع-main,Main,V,ai_draft,To take pleasure in,تمتّع,يتمتّع,تمتّع,unambiguous,فتحة,تَمَتَّعَ,يَتَمَتَّعُ,تَمَتَّعْ,False,False,False,past=تَمَتَّعَ; present=يَتَمَتَّعُ; imperative=تَمَتَّعْ,https://qutrub.arabeyes.org/?verb=تمتّع
+حمي,حمي-main,Main,I,ai_draft,To protect,حمى,يحمي,احم,ambiguous_future_type,,حَمَى,,,False,,,,https://qutrub.arabeyes.org/?verb=حمى
+خصص,خصص-main,Main,I,ai_draft,To have to do with,خصّ,يخصّ,خصّ,ambiguous_future_type,,خَصَّ,,,False,,,,https://qutrub.arabeyes.org/?verb=خصّ
+خصص,خصص-csv-338,Variant,II,ai_draft,To allocate,خصص,يخصص,خصص,ambiguous_future_type,,خَصَصَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خصص
+ذوق,ذوق-main,Main,I,ai_draft,"To experience, taste",ذاق,يذوق,ذق,ambiguous_future_type,,ذَاقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ذاق
+عقب,عقب-main,Main,III,ai_draft,To punish,عاقب,يعاقب,عاقب,unambiguous,فتحة,عَاقَبَ,يُعَاقِبُ,عَاقِبْ,False,False,False,past=عَاقَبَ; present=يُعَاقِبُ; imperative=عَاقِبْ,https://qutrub.arabeyes.org/?verb=عاقب
+قبض,قبض-main,Main,I,ai_draft,"To arrest, seize, apprehend",قبض,يقبض,اقبض,ambiguous_future_type,,قَبَضَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قبض
+نشط,نشط-main,Main,I,ai_draft,"To be active, to proceed",نشط,ينشط,انشط,ambiguous_future_type,,نَشَطَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نشط
+نفذ,نفذ-main,Main,II,ai_draft,"To adhere to, carry out",نفّذ,ينفذ,نفذ,unambiguous,فتحة,نَفَّذَ,يُنَفِّذُ,نَفِّذْ,False,False,False,past=نَفَّذَ; present=يُنَفِّذُ; imperative=نَفِّذْ,https://qutrub.arabeyes.org/?verb=نفّذ
+قرن,قرن-main,Main,III,ai_draft,To compare,قارن,يقارن,قارن,unambiguous,فتحة,قَارَنَ,يُقَارِنُ,قَارِنْ,False,False,False,past=قَارَنَ; present=يُقَارِنُ; imperative=قَارِنْ,https://qutrub.arabeyes.org/?verb=قارن
+غصب,غصب-main,Main,VIII,ai_draft,"To rape, take by force",اغتصب,يغتصب,اغتصب,unambiguous,فتحة,اِغْتَصَبَ,يَغْتَصِبُ,اِغْتَصِبْ,False,False,False,past=اِغْتَصَبَ; present=يَغْتَصِبُ; imperative=اِغْتَصِبْ,https://qutrub.arabeyes.org/?verb=اغتصب
+سوي,سوي-main,Main,III,ai_draft,To be equivalent to,ساوى,يساوي,ساو,unambiguous,فتحة,سَاوَى,يُسَاوِي,سَاوِ,False,False,False,past=سَاوَى; present=يُسَاوِي; imperative=سَاوِ,https://qutrub.arabeyes.org/?verb=ساوى
+سوي,سوي-csv-527,Variant,II,ai_draft,"To equalize, make equal",سوى,يسوي,سو,ambiguous_future_type,,سَوَى,,,False,,,,https://qutrub.arabeyes.org/?verb=سوى
+دوم,دوم-main,Main,IV,ai_draft,"To make permanent, maintain, preserve",أدام,يديم,أدم,unambiguous,فتحة,أَدَامَ,يُدِيمُ,أَدِمْ,False,False,False,past=أَدَامَ; present=يُدِيمُ; imperative=أَدِمْ,https://qutrub.arabeyes.org/?verb=أدام
+أمن,أمن-main,Main,I,ai_draft,"To be safe, secure",أمن,يأمن,ائمن,ambiguous_future_type,,أَمَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أمن
+أمن,أمن-quranic-believe,Variant,IV,ai_draft,believing,آمَنَ,يُؤْمِنُ,آمِنْ,unambiguous,فتحة,آمَنَ,يُؤْمِنُ,آمِنْ,True,True,True,,https://qutrub.arabeyes.org/?verb=آمَنَ
+لهب,لهب-main,Main,VIII,ai_draft,To inflame,التهب,يلتهب,التهب,unambiguous,فتحة,اِلْتَهَبَ,يَلْتَهِبُ,اِلْتَهِبْ,False,False,False,past=اِلْتَهَبَ; present=يَلْتَهِبُ; imperative=اِلْتَهِبْ,https://qutrub.arabeyes.org/?verb=التهب
+لقي,لقي-main,Main,IV,ai_draft,To throw,ألقى,يلقي,ألق,unambiguous,فتحة,أَلْقَى,يُلْقِي,أَلْقِ,False,False,False,past=أَلْقَى; present=يُلْقِي; imperative=أَلْقِ,https://qutrub.arabeyes.org/?verb=ألقى
+لقي,لقي-csv-511,Variant,III,ai_draft,"To meet, encounter",لاقى,يلاقي,لاق,unambiguous,فتحة,لَاقَى,يُلَاقِي,لَاقِ,False,False,False,past=لَاقَى; present=يُلَاقِي; imperative=لَاقِ,https://qutrub.arabeyes.org/?verb=لاقى
+لقي,لقي-quranic-meet,Variant,I,ai_draft,"meeting, encountering",لَقِيَ,يَلْقَى,اِلْقَ,matched_existing_future_type,فتحة,لَقِيَ,يَلْقَى,اِلْقَ,True,True,True,,https://qutrub.arabeyes.org/?verb=لَقِيَ
+سبب,سبب-main,Main,II,ai_draft,To cause,سبّب,يسبب,سبب,unambiguous,فتحة,سَبَّبَ,يُسَبِّبُ,سَبِّبْ,False,False,False,past=سَبَّبَ; present=يُسَبِّبُ; imperative=سَبِّبْ,https://qutrub.arabeyes.org/?verb=سبّب
+حير,حير-main,Main,II,ai_draft,"To confuse, puzzle, perplex",حيّر,يحير,حير,unambiguous,فتحة,حَيَّرَ,يُحَيِّرُ,حَيِّرْ,False,False,False,past=حَيَّرَ; present=يُحَيِّرُ; imperative=حَيِّرْ,https://qutrub.arabeyes.org/?verb=حيّر
+تلف,تلف-main,Main,IV,ai_draft,To damage,أتلف,يتلف,أتلف,unambiguous,فتحة,أَتْلَفَ,يُتْلِفُ,أَتْلِفْ,False,False,False,past=أَتْلَفَ; present=يُتْلِفُ; imperative=أَتْلِفْ,https://qutrub.arabeyes.org/?verb=أتلف
+دفن,دفن-main,Main,I,ai_draft,To bury,دفن,يدفن,ادفن,ambiguous_future_type,,دَفَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دفن
+غرس,غرس-main,Main,I,ai_draft,To plant,غرس,يغرس,اغرس,ambiguous_future_type,,غَرَسَ,,,False,,,,https://qutrub.arabeyes.org/?verb=غرس
+رقب,رقب-main,Main,III,ai_draft,To monitor,راقب,يراقب,راقب,unambiguous,فتحة,رَاقَبَ,يُرَاقِبُ,رَاقِبْ,False,False,False,past=رَاقَبَ; present=يُرَاقِبُ; imperative=رَاقِبْ,https://qutrub.arabeyes.org/?verb=راقب
+حوط,حوط-main,Main,VIII,ai_draft,"To be cautious, careful",احتاط,يحتاط,احتط,unambiguous,فتحة,اِحْتَاطَ,يَحْتَاطُ,اِحْتَطْ,False,False,False,past=اِحْتَاطَ; present=يَحْتَاطُ; imperative=اِحْتَطْ,https://qutrub.arabeyes.org/?verb=احتاط
+غلل,غلل-main,Main,X,ai_draft,"To benefit from/by, exploit",استغلّ,يستغلّ,استغلّ,unambiguous,فتحة,اِسْتَغَلَّ,يَسْتَغِلُّ,اِسْتَغْلِلْ,False,False,False,past=اِسْتَغَلَّ; present=يَسْتَغِلُّ; imperative=اِسْتَغْلِلْ,https://qutrub.arabeyes.org/?verb=استغلّ
+خفض,خفض-main,Main,VII,ai_draft,"To decrease, become less",انخفض,ينخفض,انخفض,unambiguous,فتحة,اِنْخَفَضَ,يَنْخَفِضُ,اِنْخَفِضْ,False,False,False,past=اِنْخَفَضَ; present=يَنْخَفِضُ; imperative=اِنْخَفِضْ,https://qutrub.arabeyes.org/?verb=انخفض
+خفض,خفض-csv-520,Variant,I,ai_draft,To lower,خفض,يخفض,اخفض,ambiguous_future_type,,خَفَضَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خفض
+بذر,بذر-main,Main,II,ai_draft,To waste,بذّر,يبذر,بذر,unambiguous,فتحة,بَذَّرَ,يُبَذِّرُ,بَذِّرْ,False,False,False,past=بَذَّرَ; present=يُبَذِّرُ; imperative=بَذِّرْ,https://qutrub.arabeyes.org/?verb=بذّر
+جمل,جمل-main,Main,II,ai_draft,To beatify,جمّل,يجمل,جمل,unambiguous,فتحة,جَمَّلَ,يُجَمِّلُ,جَمِّلْ,False,False,False,past=جَمَّلَ; present=يُجَمِّلُ; imperative=جَمِّلْ,https://qutrub.arabeyes.org/?verb=جمّل
+برد,برد-main,Main,II,ai_draft,"To cool, freeze, refrigerate",برّد,يبرد,برد,unambiguous,فتحة,بَرَّدَ,يُبَرِّدُ,بَرِّدْ,False,False,False,past=بَرَّدَ; present=يُبَرِّدُ; imperative=بَرِّدْ,https://qutrub.arabeyes.org/?verb=برّد
+برد,برد-csv-419,Variant,I,ai_draft,"To be cold, cool",برد,يبرد,ابرد,ambiguous_future_type,,بَرَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=برد
+سخن,سخن-main,Main,II,ai_draft,To warm up,سخّن,يسخن,سخن,unambiguous,فتحة,سَخَّنَ,يُسَخِّنُ,سَخِّنْ,False,False,False,past=سَخَّنَ; present=يُسَخِّنُ; imperative=سَخِّنْ,https://qutrub.arabeyes.org/?verb=سخّن
+ضوأ,ضوأ-main,Main,IV,ai_draft,"To light up, Illuminate",أضاء,يضيء,أضئ,unambiguous,فتحة,أَضَاءَ,يُضِيءُ,أَضِئْ,False,False,False,past=أَضَاءَ; present=يُضِيءُ; imperative=أَضِئْ,https://qutrub.arabeyes.org/?verb=أضاء
+جدد,جدد-main,Main,II,ai_draft,To renew,جدّد,يجدد,جدد,unambiguous,فتحة,جَدَّدَ,يُجَدِّدُ,جَدِّدْ,False,False,False,past=جَدَّدَ; present=يُجَدِّدُ; imperative=جَدِّدْ,https://qutrub.arabeyes.org/?verb=جدّد
+صدر,صدر-main,Main,II,ai_draft,To export,صدّر,يصدر,صدر,unambiguous,فتحة,صَدَّرَ,يُصَدِّرُ,صَدِّرْ,False,False,False,past=صَدَّرَ; present=يُصَدِّرُ; imperative=صَدِّرْ,https://qutrub.arabeyes.org/?verb=صدّر
+قفز,قفز-main,Main,I,ai_draft,"To jump, leap",قفز,يقفز,اقفز,ambiguous_future_type,,قَفَزَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قفز
+دفأ,دفأ-main,Main,II,ai_draft,"To heat, warm (up)",دفّأ,يدفئ,دفئ,unambiguous,فتحة,دَفَّأَ,يُدَفِّئُ,دَفِّئْ,False,False,False,past=دَفَّأَ; present=يُدَفِّئُ; imperative=دَفِّئْ,https://qutrub.arabeyes.org/?verb=دفّأ
+مدد,مدد-main,Main,X,ai_draft,"To get from, obtain from, take from",استمدّ,يستمدّ,استمدّ,unambiguous,فتحة,اِسْتَمَدَّ,يَسْتَمِدُّ,اِسْتَمْدِدْ,False,False,False,past=اِسْتَمَدَّ; present=يَسْتَمِدُّ; imperative=اِسْتَمْدِدْ,https://qutrub.arabeyes.org/?verb=استمدّ
+مدد,مدد-csv-383,Variant,I,ai_draft,To extend,مد,يمد,مد,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=مد
+مدد,مدد-csv-492,Variant,IV,ai_draft,"To equip with, supply with",أمد,يمد,أمد,ambiguous_future_type,,أَمَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أمد
+نفد,نفد-main,Main,I,ai_draft,"To run out, be exhausted",نفد,ينفد,انفد,ambiguous_future_type,,نَفَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نفد
+جرب,جرب-main,Main,II,ai_draft,"To try, test",جرّب,يجرب,جرب,unambiguous,فتحة,جَرَّبَ,يُجَرِّبُ,جَرِّبْ,False,False,False,past=جَرَّبَ; present=يُجَرِّبُ; imperative=جَرِّبْ,https://qutrub.arabeyes.org/?verb=جرّب
+حجب,حجب-main,Main,VIII,ai_draft,"To be covered, concealed",احتجب,يحتجب,احتجب,unambiguous,فتحة,اِحْتَجَبَ,يَحْتَجِبُ,اِحْتَجِبْ,False,False,False,past=اِحْتَجَبَ; present=يَحْتَجِبُ; imperative=اِحْتَجِبْ,https://qutrub.arabeyes.org/?verb=احتجب
+حدي,حدي-main,Main,V,ai_draft,To challenge,تحدى,يتحدى,تحد,unambiguous,فتحة,تَحْدَى,يُتَحْدِي,تَحْدِ,False,False,False,past=تَحْدَى; present=يُتَحْدِي; imperative=تَحْدِ,https://qutrub.arabeyes.org/?verb=تحدى
+وفي,وفي-main,Main,V,ai_draft,To cause to die,توفى,يتوفى,توف,unambiguous,فتحة,تَوْفَى,يُتَوْفِي,تَوْفِ,False,False,False,past=تَوْفَى; present=يُتَوْفِي; imperative=تَوْفِ,https://qutrub.arabeyes.org/?verb=توفى
+دلل,دلل-main,Main,I,ai_draft,"To prove, demonstrate",دل,يدل,دل,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=دل
+ردد,ردد-main,Main,VIII,ai_draft,To apostate,ارتد,يرتد,ارتد,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=ارتد
+ردد,ردد-csv-513,Variant,I,ai_draft,"To reply, answer, repel, refute",رد,يرد,رد,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=رد
+رتل,رتل-main,Main,II,ai_draft,To recite,رتل,يرتل,رتل,ambiguous_future_type,,رَتَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رتل
+شقق,شقق-main,Main,VII,ai_draft,To split (apart),انشق,ينشق,انشق,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=انشق
+دون,دون-main,Main,II,ai_draft,To write down,دون,يدون,دون,ambiguous_future_type,,دَوَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دون
+سرب,سرب-main,Main,V,ai_draft,"To creep into, leak",تسرب,يتسرب,تسرب,unambiguous,فتحة,تَسْرَبَ,يُتَسْرِبُ,تَسْرِبْ,False,False,False,past=تَسْرَبَ; present=يُتَسْرِبُ; imperative=تَسْرِبْ,https://qutrub.arabeyes.org/?verb=تسرب
+تقن,تقن-main,Main,IV,ai_draft,"To do well, make perfect, master",أتقن,يتقن,أتقن,unambiguous,فتحة,أَتْقَنَ,يُتْقِنُ,أَتْقِنْ,False,False,False,past=أَتْقَنَ; present=يُتْقِنُ; imperative=أَتْقِنْ,https://qutrub.arabeyes.org/?verb=أتقن
+فشي,فشي-main,Main,IV,ai_draft,To spread,أفشى,يفشي,أفش,unambiguous,فتحة,أَفْشَى,يُفْشِي,أَفْشِ,False,False,False,past=أَفْشَى; present=يُفْشِي; imperative=أَفْشِ,https://qutrub.arabeyes.org/?verb=أفشى
+هجد,هجد-main,Main,V,ai_draft,To pray the night prayer,تهجد,يتهجد,تهجد,unambiguous,فتحة,تَهْجَدَ,يُتَهْجِدُ,تَهْجِدْ,False,False,False,past=تَهْجَدَ; present=يُتَهْجِدُ; imperative=تَهْجِدْ,https://qutrub.arabeyes.org/?verb=تهجد
+يسر,يسر-main,Main,V,ai_draft,"To be easy, feasible",تيسر,يتيسر,تيسر,unambiguous,فتحة,تَيْسَرَ,يُتَيْسِرُ,تَيْسِرْ,False,False,False,past=تَيْسَرَ; present=يُتَيْسِرُ; imperative=تَيْسِرْ,https://qutrub.arabeyes.org/?verb=تيسر
+حرص,حرص-main,Main,I,ai_draft,"To be eager, to take care off",حرص,يحرص,احرص,ambiguous_future_type,,حَرَصَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حرص
+غضض,غضض-main,Main,I,ai_draft,To lower,غض,يغض,غض,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=غض
+قدر,قدر-main,Main,II,ai_draft,"To honour, respect",قدر,يقدر,قدر,ambiguous_future_type,,قَدَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قدر
+قدر,قدر-csv-384,Variant,I,ai_draft,To be able (to),قدر,يقدر,اقدر,ambiguous_future_type,,قَدَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قدر
+قدر,قدر-quranic-decree,Variant,II,ai_draft,"decreeing, ordaining",قَدَّرَ,يُقَدِّرُ,قَدِّرْ,unambiguous,فتحة,قَدَّرَ,يُقَدِّرُ,قَدِّرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=قَدَّرَ
+بوح,بوح-main,Main,IV,ai_draft,"To permit, make lawful",أباح,يبيح,أبح,unambiguous,فتحة,أَبَاحَ,يُبِيحُ,أَبِحْ,False,False,False,past=أَبَاحَ; present=يُبِيحُ; imperative=أَبِحْ,https://qutrub.arabeyes.org/?verb=أباح
+علق,علق-main,Main,V,ai_draft,"To do with, relate to",تعلق,يتعلق,تعلق,unambiguous,فتحة,تَعْلَقَ,يُتَعْلِقُ,تَعْلِقْ,False,False,False,past=تَعْلَقَ; present=يُتَعْلِقُ; imperative=تَعْلِقْ,https://qutrub.arabeyes.org/?verb=تعلق
+علق,علق-csv-377,Variant,II,ai_draft,To comment on,علق,يعلق,علق,ambiguous_future_type,,عَلَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=علق
+دمج,دمج-main,Main,VII,ai_draft,To integrate,اندمج,يندمج,اندمج,unambiguous,فتحة,اِنْدَمَجَ,يَنْدَمِجُ,اِنْدَمِجْ,False,False,False,past=اِنْدَمَجَ; present=يَنْدَمِجُ; imperative=اِنْدَمِجْ,https://qutrub.arabeyes.org/?verb=اندمج
+كفن,كفن-main,Main,II,ai_draft,To shroud,كفن,يكفن,كفن,ambiguous_future_type,,كَفَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كفن
+وزع,وزع-main,Main,II,ai_draft,To distribute,وزع,يوزع,وزع,ambiguous_future_type,,وَزَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وزع
+ذوب,ذوب-main,Main,I,ai_draft,To dissolve,ذاب,يذوب,ذب,ambiguous_future_type,,ذَابَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ذاب
+طرد,طرد-main,Main,I,ai_draft,To expel,طرد,يطرد,اطرد,ambiguous_future_type,,طَرَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=طرد
+لجأ,لجأ-main,Main,I,ai_draft,To resort to,لجأ,يلجأ,الجأ,ambiguous_future_type,,لَجَأَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لجأ
+جري,جري-main,Main,IV,ai_draft,"To carry out, execute",أجرى,يجري,أجر,unambiguous,فتحة,أَجْرَى,يُجْرِي,أَجْرِ,False,False,False,past=أَجْرَى; present=يُجْرِي; imperative=أَجْرِ,https://qutrub.arabeyes.org/?verb=أجرى
+أبي,أبي-main,Main,I,ai_draft,To refuse,أبى,يأبى,ائب,ambiguous_future_type,,أَبَى,,,False,,,,https://qutrub.arabeyes.org/?verb=أبى
+رفق,رفق-main,Main,I,ai_draft,"To be kind, gentle",رفق,يرفق,ارفق,ambiguous_future_type,,رَفَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رفق
+برر,برر-main,Main,I,ai_draft,"To be righteous, pious",بر,يبر,بر,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=بر
+غنم,غنم-main,Main,VIII,ai_draft,"To make use of, seize",اغتنم,يغتنم,اغتنم,unambiguous,فتحة,اِغْتَنَمَ,يَغْتَنِمُ,اِغْتَنِمْ,False,False,False,past=اِغْتَنَمَ; present=يَغْتَنِمُ; imperative=اِغْتَنِمْ,https://qutrub.arabeyes.org/?verb=اغتنم
+وصي,وصي-main,Main,IV,ai_draft,"To advise, command",أوصى,يوصي,أوص,unambiguous,فتحة,أَوْصَى,يُوصِي,أَوْصِ,False,False,False,past=أَوْصَى; present=يُوصِي; imperative=أَوْصِ,https://qutrub.arabeyes.org/?verb=أوصى
+شكك,شكك-main,Main,I,ai_draft,"To doubt, question",شك,يشك,شك,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=شك
+حري,حري-main,Main,V,ai_draft,To search for,تحرى,يتحرى,تحر,unambiguous,فتحة,تَحْرَى,يُتَحْرِي,تَحْرِ,False,False,False,past=تَحْرَى; present=يُتَحْرِي; imperative=تَحْرِ,https://qutrub.arabeyes.org/?verb=تحرى
+دقق,دقق-main,Main,II,ai_draft,"To examine carefully, scrutinise",دقق,يدقق,دقق,ambiguous_future_type,,دَقَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دقق
+شرع,شرع-main,Main,II,ai_draft,To legislate,شرع,يشرع,شرع,ambiguous_future_type,,شَرَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شرع
+حوي,حوي-main,Main,I,ai_draft,"To collect, gather, contain",حوى,يحوي,احو,ambiguous_future_type,,حَوَى,,,False,,,,https://qutrub.arabeyes.org/?verb=حوى
+شدد,شدد-main,Main,I,ai_draft,To consolidate,شد,يشد,شد,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=شد
+عصي,عصي-main,Main,I,ai_draft,To disobey,عصى,يعصي,اعص,ambiguous_future_type,,عَصَى,,,False,,,,https://qutrub.arabeyes.org/?verb=عصى
+قذف,قذف-main,Main,I,ai_draft,"To throw, cast, fling",قذف,يقذف,اقذف,ambiguous_future_type,,قَذَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قذف
+ميز,ميز-main,Main,II,ai_draft,To distinguish (between),ميز,يميز,ميز,ambiguous_future_type,,مَيَزَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ميز
+هدي,هدي-main,Main,I,ai_draft,"To guide, direct",هدى,يهدي,اهد,ambiguous_future_type,,هَدَى,,,False,,,,https://qutrub.arabeyes.org/?verb=هدى
+ضحك,ضحك-main,Main,I,ai_draft,To laugh,ضحك,يضحك,اضحك,ambiguous_future_type,,ضَحَكَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ضحك
+تبه,تبه-main,Main,VII,ai_draft,To pay attention,انتبه,ينتبه,انتبه,unambiguous,فتحة,اِنْتَبَهَ,يَنْتَبِهُ,اِنْتَبِهْ,False,False,False,past=اِنْتَبَهَ; present=يَنْتَبِهُ; imperative=اِنْتَبِهْ,https://qutrub.arabeyes.org/?verb=انتبه
+تزع,تزع-main,Main,VII,ai_draft,"To pull out, remove",انتزع,ينتزع,انتزع,unambiguous,فتحة,اِنْتَزَعَ,يَنْتَزِعُ,اِنْتَزِعْ,False,False,False,past=اِنْتَزَعَ; present=يَنْتَزِعُ; imperative=اِنْتَزِعْ,https://qutrub.arabeyes.org/?verb=انتزع
+سمي,سمي-main,Main,II,ai_draft,To name,سمى,يسمي,سم,ambiguous_future_type,,سَمَى,,,False,,,,https://qutrub.arabeyes.org/?verb=سمى
+لءم,لءم-main,Main,III,ai_draft,"To be suitable for, appropriate for",لاءم,يلائم,لائم,unambiguous,فتحة,لَاءَمَ,يُلَائِمُ,لَائِمْ,False,False,False,past=لَاءَمَ; present=يُلَائِمُ; imperative=لَائِمْ,https://qutrub.arabeyes.org/?verb=لاءم
+نفي,نفي-main,Main,VI,ai_draft,To conflict,تنافى,يتنافى,تناف,unambiguous,فتحة,تَنَافَى,يَتَنَافَى,تَنَافَ,False,False,False,past=تَنَافَى; present=يَتَنَافَى; imperative=تَنَافَ,https://qutrub.arabeyes.org/?verb=تنافى
+نفي,نفي-csv-403,Variant,I,ai_draft,To negate,نفى,ينفي,انف,ambiguous_future_type,,نَفَى,,,False,,,,https://qutrub.arabeyes.org/?verb=نفى
+ثري,ثري-main,Main,IV,ai_draft,To make rich,أثرى,يثري,أثر,unambiguous,فتحة,أَثْرَى,يُثْرِي,أَثْرِ,False,False,False,past=أَثْرَى; present=يُثْرِي; imperative=أَثْرِ,https://qutrub.arabeyes.org/?verb=أثرى
+فقر,فقر-main,Main,VIII,ai_draft,"To be very poor, destitute",افتقر,يفتقر,افتقر,unambiguous,فتحة,اِفْتَقَرَ,يَفْتَقِرُ,اِفْتَقِرْ,False,False,False,past=اِفْتَقَرَ; present=يَفْتَقِرُ; imperative=اِفْتَقِرْ,https://qutrub.arabeyes.org/?verb=افتقر
+عدم,عدم-main,Main,VII,ai_draft,"To be absent, non existent",انعدم,ينعدم,انعدم,unambiguous,فتحة,اِنْعَدَمَ,يَنْعَدِمُ,اِنْعَدِمْ,False,False,False,past=اِنْعَدَمَ; present=يَنْعَدِمُ; imperative=اِنْعَدِمْ,https://qutrub.arabeyes.org/?verb=انعدم
+سهم,سهم-main,Main,III,ai_draft,To contribute,ساهم,يساهم,ساهم,unambiguous,فتحة,سَاهَمَ,يُسَاهِمُ,سَاهِمْ,False,False,False,past=سَاهَمَ; present=يُسَاهِمُ; imperative=سَاهِمْ,https://qutrub.arabeyes.org/?verb=ساهم
+عين,عين-main,Main,II,ai_draft,"To appoint, assign, specify",عين,يعين,عين,ambiguous_future_type,,عَيَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عين
+فدي,فدي-main,Main,VI,ai_draft,"To prevent, avoid",تفادى,يتفادى,تفاد,unambiguous,فتحة,تَفَادَى,يَتَفَادَى,تَفَادَ,False,False,False,past=تَفَادَى; present=يَتَفَادَى; imperative=تَفَادَ,https://qutrub.arabeyes.org/?verb=تفادى
+نظم,نظم-main,Main,II,ai_draft,"To organise, systemise",نظم,ينظم,نظم,ambiguous_future_type,,نَظَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نظم
+صمم,صمم-main,Main,II,ai_draft,"To design, plan",صمم,يصمم,صمم,ambiguous_future_type,,صَمَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صمم
+طيب,طيب-main,Main,I,ai_draft,"To be good, pleasant",طاب,يطيب,طب,ambiguous_future_type,,طَابَ,,,False,,,,https://qutrub.arabeyes.org/?verb=طاب
+رشد,رشد-main,Main,IV,ai_draft,To guide,أرشد,يرشد,أرشد,unambiguous,فتحة,أَرْشَدَ,يُرْشِدُ,أَرْشِدْ,False,False,False,past=أَرْشَدَ; present=يُرْشِدُ; imperative=أَرْشِدْ,https://qutrub.arabeyes.org/?verb=أرشد
+أرق,أرق-main,Main,I,ai_draft,To suffer insomnia,أرق,يأرق,أرق,ambiguous_future_type,,أَرَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أرق
+رخي,رخي-main,Main,X,ai_draft,"To relax, loosen",استرخى,يسترخي,استرخ,unambiguous,فتحة,اِسْتَرْخَى,يَسْتَرْخِي,اِسْتَرْخِ,False,False,False,past=اِسْتَرْخَى; present=يَسْتَرْخِي; imperative=اِسْتَرْخِ,https://qutrub.arabeyes.org/?verb=استرخى
+كسل,كسل-main,Main,I,ai_draft,To be lazy,كسل,يكسل,اكسل,ambiguous_future_type,,كَسَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كسل
+وتر,وتر-main,Main,V,ai_draft,To be tense,توتر,يتوتر,توتر,unambiguous,فتحة,تَوْتَرَ,يُتَوْتِرُ,تَوْتِرْ,False,False,False,past=تَوْتَرَ; present=يُتَوْتِرُ; imperative=تَوْتِرْ,https://qutrub.arabeyes.org/?verb=توتر
+نعس,نعس-main,Main,I,ai_draft,"To be sleepy, drowsy",نعس,ينعس,انعس,ambiguous_future_type,,نَعَسَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نعس
+لفف,لفف-main,Main,VIII,ai_draft,To curl (up),التف,يلتف,التف,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=التف
+لفف,لفف-csv-590,Variant,I,ai_draft,To wrap up,لف,يلف,لف,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=لف
+بكر,بكر-main,Main,II,ai_draft,To do early,بكر,يبكر,بكر,ambiguous_future_type,,بَكَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=بكر
+مني,مني-main,Main,V,ai_draft,To wish for (something),تمنى,يتمنى,تمن,unambiguous,فتحة,تَمْنَى,يُتَمْنِي,تَمْنِ,False,False,False,past=تَمْنَى; present=يُتَمْنِي; imperative=تَمْنِ,https://qutrub.arabeyes.org/?verb=تمنى
+قيل,قيل-main,Main,I,ai_draft,To take a (midday) nap,قال,يقيل,قل,ambiguous_future_type,,قَالَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قال
+حفر,حفر-main,Main,I,ai_draft,To dig,حفر,يحفر,احفر,ambiguous_future_type,,حَفَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حفر
+حيي,حيي-main,Main,X,ai_draft,To be shy,استحى,يستحي,استح,unambiguous,فتحة,اِسْتَحَى,يَسْتَحِي,اِسْتَحِ,False,False,False,past=اِسْتَحَى; present=يَسْتَحِي; imperative=اِسْتَحِ,https://qutrub.arabeyes.org/?verb=استحى
+حيي,حيي-quranic-life,Variant,I,ai_draft,"life, living",حَيِيَ,يَحْيَا,اِحْيَ,matched_existing_future_type,فتحة,حَيِيَ,يَحْيَا,اِحْيَ,True,True,True,,https://qutrub.arabeyes.org/?verb=حَيِيَ
+نشد,نشد-main,Main,IV,ai_draft,"To chant, sing",أنشد,ينشد,أنشد,unambiguous,فتحة,أَنْشَدَ,يُنْشِدُ,أَنْشِدْ,False,False,False,past=أَنْشَدَ; present=يُنْشِدُ; imperative=أَنْشِدْ,https://qutrub.arabeyes.org/?verb=أنشد
+بكي,بكي-main,Main,I,ai_draft,To cry,بكى,يبكي,ابك,ambiguous_future_type,,بَكَى,,,False,,,,https://qutrub.arabeyes.org/?verb=بكى
+عدو,عدو-main,Main,I,ai_draft,To run,عدا,يعدو,اعد,ambiguous_future_type,,عَدَا,,,False,,,,https://qutrub.arabeyes.org/?verb=عدا
+حشو,حشو-main,Main,I,ai_draft,"To cram, pack, fill",حشا,يحشو,احش,ambiguous_future_type,,حَشَا,,,False,,,,https://qutrub.arabeyes.org/?verb=حشا
+ربح,ربح-main,Main,I,ai_draft,To profit,ربح,يربح,اربح,ambiguous_future_type,,رَبَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ربح
+ثني,ثني-main,Main,X,ai_draft,To except or exclude,استثنى,يستثني,استثن,unambiguous,فتحة,اِسْتَثْنَى,يَسْتَثْنِي,اِسْتَثْنِ,False,False,False,past=اِسْتَثْنَى; present=يَسْتَثْنِي; imperative=اِسْتَثْنِ,https://qutrub.arabeyes.org/?verb=استثنى
+رضي,رضي-main,Main,X,ai_draft,To conciliate,استرضى,يسترضي,استرض,unambiguous,فتحة,اِسْتَرْضَى,يَسْتَرْضِي,اِسْتَرْضِ,False,False,False,past=اِسْتَرْضَى; present=يَسْتَرْضِي; imperative=اِسْتَرْضِ,https://qutrub.arabeyes.org/?verb=استرضى
+شفق,شفق-main,Main,IV,ai_draft,To feel sorry for,أشفق,يشفق,أشفق,unambiguous,فتحة,أَشْفَقَ,يُشْفِقُ,أَشْفِقْ,False,False,False,past=أَشْفَقَ; present=يُشْفِقُ; imperative=أَشْفِقْ,https://qutrub.arabeyes.org/?verb=أشفق
+قصص,قصص-main,Main,VIII,ai_draft,"To avenge oneself, take revenge",اقتص,يقتص,اقتص,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=اقتص
+أنب,أنب-main,Main,II,ai_draft,To rebuke,أنب,يؤنب,أنب,ambiguous_future_type,,أَنَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=أنب
+لفت,لفت-main,Main,VIII,ai_draft,"To turn, look around",التفت,يلتفت,التفت,unambiguous,فتحة,اِلْتَفَتَ,يَلْتَفِتُ,اِلْتَفِتْ,False,False,False,past=اِلْتَفَتَ; present=يَلْتَفِتُ; imperative=اِلْتَفِتْ,https://qutrub.arabeyes.org/?verb=التفت
+جور,جور-main,Main,VI,ai_draft,To be adjacent,تجاور,يتجاور,تجاور,unambiguous,فتحة,تَجَاوَرَ,يَتَجَاوَرُ,تَجَاوَرْ,False,False,False,past=تَجَاوَرَ; present=يَتَجَاوَرُ; imperative=تَجَاوَرْ,https://qutrub.arabeyes.org/?verb=تجاور
+جور,جور-csv-589,Variant,III,ai_draft,To be next to,جاور,يجاور,جاور,unambiguous,فتحة,جَاوَرَ,يُجَاوِرُ,جَاوِرْ,False,False,False,past=جَاوَرَ; present=يُجَاوِرُ; imperative=جَاوِرْ,https://qutrub.arabeyes.org/?verb=جاور
+شفع,شفع-main,Main,I,ai_draft,To intercede,شفع,يشفع,اشفع,ambiguous_future_type,,شَفَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شفع
+طبق,طبق-main,Main,II,ai_draft,"To execute, carry out",طبق,يطبق,طبق,ambiguous_future_type,,طَبَقَ,,,False,,,,https://qutrub.arabeyes.org/?verb=طبق
+كني,كني-main,Main,II,ai_draft,To give a kunyah to or call someone by their kunyah,كنى,يكني,كن,ambiguous_future_type,,كَنَى,,,False,,,,https://qutrub.arabeyes.org/?verb=كنى
+كرم,كرم-main,Main,II,ai_draft,To honour,كرم,يكرم,كرم,ambiguous_future_type,,كَرَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كرم
+جبر,جبر-main,Main,IV,ai_draft,To compel,أجبر,يجبر,أجبر,unambiguous,فتحة,أَجْبَرَ,يُجْبِرُ,أَجْبِرْ,False,False,False,past=أَجْبَرَ; present=يُجْبِرُ; imperative=أَجْبِرْ,https://qutrub.arabeyes.org/?verb=أجبر
+لزم,لزم-main,Main,IV,ai_draft,To obligate,ألزم,يلزم,ألزم,unambiguous,فتحة,أَلْزَمَ,يُلْزِمُ,أَلْزِمْ,False,False,False,past=أَلْزَمَ; present=يُلْزِمُ; imperative=أَلْزِمْ,https://qutrub.arabeyes.org/?verb=ألزم
+رهق,رهق-main,Main,IV,ai_draft,To overburden,أرهق,يرهق,أرهق,unambiguous,فتحة,أَرْهَقَ,يُرْهِقُ,أَرْهِقْ,False,False,False,past=أَرْهَقَ; present=يُرْهِقُ; imperative=أَرْهِقْ,https://qutrub.arabeyes.org/?verb=أرهق
+أجر,أجر-main,Main,X,ai_draft,To rent,استأجر,يستأجر,استأجر,unambiguous,فتحة,اِسْتَأْجَرَ,يَسْتَأْجِرُ,اِسْتَأْجِرْ,False,False,False,past=اِسْتَأْجَرَ; present=يَسْتَأْجِرُ; imperative=اِسْتَأْجِرْ,https://qutrub.arabeyes.org/?verb=استأجر
+أجر,أجر-quranic-wage,Variant,I,ai_draft,"rewarding, paying wages",أَجَرَ,يَأْجُرُ,اُؤْجُرْ,matched_existing_future_type,ضمة,أَجَرَ,يَأْجُرُ,اُؤْجُرْ,True,True,True,,https://qutrub.arabeyes.org/?verb=أَجَرَ
+طعم,طعم-main,Main,IV,ai_draft,To feed,أطعم,يطعم,أطعم,unambiguous,فتحة,أَطْعَمَ,يُطْعِمُ,أَطْعِمْ,False,False,False,past=أَطْعَمَ; present=يُطْعِمُ; imperative=أَطْعِمْ,https://qutrub.arabeyes.org/?verb=أطعم
+حنن,حنن-main,Main,I,ai_draft,To cry out producing a yearning sound,حن,يحن,حن,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=حن
+ذرف,ذرف-main,Main,I,ai_draft,To shed (tears),ذرف,يذرف,اذرف,ambiguous_future_type,,ذَرَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ذرف
+سخر,سخر-main,Main,II,ai_draft,To make subservient,سخر,يسخر,سخر,ambiguous_future_type,,سَخَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سخر
+عطش,عطش-main,Main,I,ai_draft,To feel thirsty,عطش,يعطش,اعطش,ambiguous_future_type,,عَطَشَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عطش
+لعن,لعن-main,Main,I,ai_draft,To curse,لعن,يلعن,العن,ambiguous_future_type,,لَعَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لعن
+لهث,لهث-main,Main,I,ai_draft,To breathe hard,لهث,يلهث,الهث,ambiguous_future_type,,لَهَثَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لهث
+وسم,وسم-main,Main,I,ai_draft,To brand,وسم,يسم,سم,ambiguous_future_type,,وَسَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وسم
+عبث,عبث-main,Main,I,ai_draft,To play with,عبث,يعبث,اعبث,ambiguous_future_type,,عَبَثَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عبث
+جزي,جزي-main,Main,I,ai_draft,To reward,جزى,يجزي,اجز,ambiguous_future_type,,جَزَى,,,False,,,,https://qutrub.arabeyes.org/?verb=جزى
+صعد,صعد-main,Main,I,ai_draft,"To ascend, climb",صعد,يصعد,اصعد,ambiguous_future_type,,صَعَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صعد
+سوأ,سوأ-main,Main,IV,ai_draft,"To do badly, damage, harm",أساء,يسيء,أسئ,unambiguous,فتحة,أَسَاءَ,يُسِيءُ,أَسِئْ,False,False,False,past=أَسَاءَ; present=يُسِيءُ; imperative=أَسِئْ,https://qutrub.arabeyes.org/?verb=أساء
+سوأ,سوأ-quranic-evil,Variant,I,ai_draft,"being evil, causing grief",سَاءَ,يَسُوءُ,سُؤْ,matched_existing_future_type,ضمة,سَاءَ,يَسُوءُ,سُؤْ,True,True,True,,https://qutrub.arabeyes.org/?verb=سَاءَ
+سوم,سوم-main,Main,III,ai_draft,"To bargain, haggle",ساوم,يساوم,ساوم,unambiguous,فتحة,سَاوَمَ,يُسَاوِمُ,سَاوِمْ,False,False,False,past=سَاوَمَ; present=يُسَاوِمُ; imperative=سَاوِمْ,https://qutrub.arabeyes.org/?verb=ساوم
+غيظ,غيظ-main,Main,I,ai_draft,To enrage,غاظ,يغيظ,غظ,ambiguous_future_type,,غَاظَ,,,False,,,,https://qutrub.arabeyes.org/?verb=غاظ
+ندم,ندم-main,Main,I,ai_draft,To regret,ندم,يندم,اندم,ambiguous_future_type,,نَدَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ندم
+خيب,خيب-main,Main,I,ai_draft,"To fail, be unsuccessful",خاب,يخيب,خب,ambiguous_future_type,,خَابَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خاب
+زهو,زهو-main,Main,I,ai_draft,"To blossom, flower",زها,يزهو,ازه,ambiguous_future_type,,زَهَا,,,False,,,,https://qutrub.arabeyes.org/?verb=زها
+يئس,يئس-main,Main,I,ai_draft,To lose hope,يئس,ييأس,ايئس,ambiguous_future_type,,يَئِسَ,,,False,,,,https://qutrub.arabeyes.org/?verb=يئس
+نبه,نبه-main,Main,II,ai_draft,To alert,نبه,ينبه,نبه,ambiguous_future_type,,نَبَهَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نبه
+نبح,نبح-main,Main,I,ai_draft,To bark,نبح,ينبح,انبح,ambiguous_future_type,,نَبَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نبح
+هجم,هجم-main,Main,III,ai_draft,"To attack, launch an attack",هاجم,يهاجم,هاجم,unambiguous,فتحة,هَاجَمَ,يُهَاجِمُ,هَاجِمْ,False,False,False,past=هَاجَمَ; present=يُهَاجِمُ; imperative=هَاجِمْ,https://qutrub.arabeyes.org/?verb=هاجم
+جلب,جلب-main,Main,I,ai_draft,To bring (about),جلب,يجلب,اجلب,ambiguous_future_type,,جَلَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=جلب
+شؤم,شؤم-main,Main,I,ai_draft,"To bring evil, bad luck",شؤم,يشؤم,اشؤم,ambiguous_future_type,,شَأَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شؤم
+ثأر,ثأر-main,Main,I,ai_draft,To take revenge,ثأر,يثأر,اثأر,ambiguous_future_type,,ثَأَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ثأر
+حقن,حقن-main,Main,I,ai_draft,To save,حقن,يحقن,احقن,ambiguous_future_type,,حَقَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حقن
+سكت,سكت-main,Main,I,ai_draft,To be quiet,سكت,يسكت,اسكت,ambiguous_future_type,,سَكَتَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سكت
+سلب,سلب-main,Main,I,ai_draft,"To pillage, steal",سلب,يسلب,اسلب,ambiguous_future_type,,سَلَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سلب
+نهب,نهب-main,Main,I,ai_draft,"To pillage, steal",نهب,ينهب,انهب,ambiguous_future_type,,نَهَبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نهب
+تهز,تهز-main,Main,VII,ai_draft,To seize the opportunity,انتهز,ينتهز,انتهز,unambiguous,فتحة,اِنْتَهَزَ,يَنْتَهِزُ,اِنْتَهِزْ,False,False,False,past=اِنْتَهَزَ; present=يَنْتَهِزُ; imperative=اِنْتَهِزْ,https://qutrub.arabeyes.org/?verb=انتهز
+يقن,يقن-main,Main,I,ai_draft,"To know, be certain",يقن,ييقن,ايقن,ambiguous_future_type,,يَقَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=يقن
+جني,جني-main,Main,I,ai_draft,"To commit, perpetrate, harm",جنى,يجني,اجن,ambiguous_future_type,,جَنَى,,,False,,,,https://qutrub.arabeyes.org/?verb=جنى
+صرح,صرح-main,Main,I,ai_draft,"To be clear, pure",صرح,يصرح,اصرح,ambiguous_future_type,,صَرَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صرح
+برئ,برئ-main,Main,I,ai_draft,To be innocent,برئ,يبرأ,ابرأ,ambiguous_future_type,,بَرِئَ,,,False,,,,https://qutrub.arabeyes.org/?verb=برئ
+هدأ,هدأ-main,Main,I,ai_draft,To be calm,هدأ,يهدأ,اهدأ,ambiguous_future_type,,هَدَأَ,,,False,,,,https://qutrub.arabeyes.org/?verb=هدأ
+شجر,شجر-main,Main,III,ai_draft,"To fight with, argue with",شاجر,يشاجر,شاجر,unambiguous,فتحة,شَاجَرَ,يُشَاجِرُ,شَاجِرْ,False,False,False,past=شَاجَرَ; present=يُشَاجِرُ; imperative=شَاجِرْ,https://qutrub.arabeyes.org/?verb=شاجر
+سرع,سرع-main,Main,III,ai_draft,To rush,سارع,يسارع,سارع,unambiguous,فتحة,سَارَعَ,يُسَارِعُ,سَارِعْ,False,False,False,past=سَارَعَ; present=يُسَارِعُ; imperative=سَارِعْ,https://qutrub.arabeyes.org/?verb=سارع
+أذي,أذي-main,Main,IV,ai_draft,To harm,آذى,يؤذي,آذ,unambiguous,فتحة,آذَى,يُؤْذِي,آذِ,False,False,False,past=آذَى; present=يُؤْذِي; imperative=آذِ,https://qutrub.arabeyes.org/?verb=آذى
+حطم,حطم-main,Main,II,ai_draft,"To damage, destroy",حطم,يحطم,حطم,ambiguous_future_type,,حَطَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حطم
+عتب,عتب-main,Main,III,ai_draft,To admonish,عاتب,يعاتب,عاتب,unambiguous,فتحة,عَاتَبَ,يُعَاتِبُ,عَاتِبْ,False,False,False,past=عَاتَبَ; present=يُعَاتِبُ; imperative=عَاتِبْ,https://qutrub.arabeyes.org/?verb=عاتب
+وبخ,وبخ-main,Main,II,ai_draft,To rebuke,وبخ,يوبخ,وبخ,ambiguous_future_type,,وَبَخَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وبخ
+بدو,بدو-main,Main,I,ai_draft,To appear,بدا,يبدو,ابد,ambiguous_future_type,,بَدَا,,,False,,,,https://qutrub.arabeyes.org/?verb=بدا
+عنف,عنف-main,Main,I,ai_draft,"To be severe, violent",عنف,يعنف,اعنف,ambiguous_future_type,,عَنَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عنف
+غمر,غمر-main,Main,I,ai_draft,"To immerse, engulf",غمر,يغمر,اغمر,ambiguous_future_type,,غَمَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=غمر
+عوض,عوض-main,Main,II,ai_draft,To compensate,عوض,يعوض,عوض,ambiguous_future_type,,عَوَضَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عوض
+حقد,حقد-main,Main,I,ai_draft,"To bear a grudge, hate",حقد,يحقد,احقد,ambiguous_future_type,,حَقَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حقد
+خلو,خلو-main,Main,I,ai_draft,To be alone,خلا,يخلو,اخل,ambiguous_future_type,,خَلَا,,,False,,,,https://qutrub.arabeyes.org/?verb=خلا
+صفو,صفو-main,Main,I,ai_draft,"To be clear, undisturbed",صفا,يصفو,اصف,ambiguous_future_type,,صَفَا,,,False,,,,https://qutrub.arabeyes.org/?verb=صفا
+صمت,صمت-main,Main,I,ai_draft,To be silent,صمت,يصمت,اصمت,ambiguous_future_type,,صَمَتَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صمت
+ظنن,ظنن-main,Main,I,ai_draft,To think,ظن,يظن,ظن,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=ظن
+عدي,عدي-main,Main,V,ai_draft,To transgress,تعدى,يتعدى,تعد,unambiguous,فتحة,تَعْدَى,يُتَعْدِي,تَعْدِ,False,False,False,past=تَعْدَى; present=يُتَعْدِي; imperative=تَعْدِ,https://qutrub.arabeyes.org/?verb=تعدى
+زود,زود-main,Main,II,ai_draft,To supply with,زود,يزود,زود,ambiguous_future_type,,زَوَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=زود
+وعظ,وعظ-main,Main,I,ai_draft,To admonish,وعظ,يعظ,عظ,ambiguous_future_type,,وَعَظَ,,,False,,,,https://qutrub.arabeyes.org/?verb=وعظ
+سجل,سجل-main,Main,II,ai_draft,"To record, register",سجل,يسجل,سجل,ambiguous_future_type,,سَجَلَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سجل
+عني,عني-main,Main,I,ai_draft,To mean,عنى,يعني,اعن,ambiguous_future_type,,عَنَى,,,False,,,,https://qutrub.arabeyes.org/?verb=عنى
+قنع,قنع-main,Main,VIII,ai_draft,To be convinced,اقتنع,يقتنع,اقتنع,unambiguous,فتحة,اِقْتَنَعَ,يَقْتَنِعُ,اِقْتَنِعْ,False,False,False,past=اِقْتَنَعَ; present=يَقْتَنِعُ; imperative=اِقْتَنِعْ,https://qutrub.arabeyes.org/?verb=اقتنع
+قلل,قلل-main,Main,X,ai_draft,"To gain one’s independence, be independent",استقل,يستقل,استقل,unambiguous,فتحة,اِسْتَقَلَ,يَسْتَقِلُ,اِسْتَقِلْ,False,False,False,past=اِسْتَقَلَ; present=يَسْتَقِلُ; imperative=اِسْتَقِلْ,https://qutrub.arabeyes.org/?verb=استقل
+برأ,برأ-main,Main,V,ai_draft,"To renounce, free oneself from",تبرأ,يتبرأ,تبرأ,unambiguous,فتحة,تَبْرَأَ,يُتَبْرِئُ,تَبْرِئْ,False,False,False,past=تَبْرَأَ; present=يُتَبْرِئُ; imperative=تَبْرِئْ,https://qutrub.arabeyes.org/?verb=تبرأ
+بين,بين-main,Main,II,ai_draft,To clarify,بين,يبين,بين,ambiguous_future_type,,بَيَنَ,,,False,,,,https://qutrub.arabeyes.org/?verb=بين
+حدد,حدد-main,Main,II,ai_draft,"To specify, set, layout",حدد,يحدد,حدد,ambiguous_future_type,,حَدَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=حدد
+سلك,سلك-main,Main,I,ai_draft,"To travel along, pursue",سلك,يسلك,اسلك,ambiguous_future_type,,سَلَكَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سلك
+ضلل,ضلل-main,Main,I,ai_draft,To go astray,ضل,يضل,ضل,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=ضل
+نجو,نجو-main,Main,I,ai_draft,To be saved from,نجا,ينجو,انج,ambiguous_future_type,,نَجَا,,,False,,,,https://qutrub.arabeyes.org/?verb=نجا
+نجو,نجو-quranic-save,Variant,II,ai_draft,"saving, rescuing (someone)",نَجَّى,يُنَجِّي,نَجِّ,unambiguous,فتحة,نَجَّى,يُنَجِّي,نَجِّ,True,True,True,,https://qutrub.arabeyes.org/?verb=نَجَّى
+جفف,جفف-main,Main,I,ai_draft,"To dry out, dry",جف,يجف,جف,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=جف
+فوت,فوت-main,Main,VI,ai_draft,"To vary, differ",تفاوت,يتفاوت,تفاوت,unambiguous,فتحة,تَفَاوَتَ,يَتَفَاوَتُ,تَفَاوَتْ,False,False,False,past=تَفَاوَتَ; present=يَتَفَاوَتُ; imperative=تَفَاوَتْ,https://qutrub.arabeyes.org/?verb=تفاوت
+خلص,خلص-main,Main,II,ai_draft,"To free from, save from",خلص,يخلص,خلص,ambiguous_future_type,,خَلَصَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خلص
+هضم,هضم-main,Main,I,ai_draft,To digest,هضم,يهضم,اهضم,ambiguous_future_type,,هَضَمَ,,,False,,,,https://qutrub.arabeyes.org/?verb=هضم
+ذقق,ذقق-main,Main,VI,ai_draft,To taste,تذوق,يتذوق,تذوق,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=تذوق
+يبس,يبس-main,Main,V,ai_draft,To become dry,تيبس,يتيبس,تيبس,unambiguous,فتحة,تَيْبَسَ,يُتَيْبِسُ,تَيْبِسْ,False,False,False,past=تَيْبَسَ; present=يُتَيْبِسُ; imperative=تَيْبِسْ,https://qutrub.arabeyes.org/?verb=تيبس
+لصق,لصق-main,Main,VI,ai_draft,To rub against one another,تلاصق,يتلاصق,تلاصق,unambiguous,فتحة,تَلَاصَقَ,يَتَلَاصَقُ,تَلَاصَقْ,False,False,False,past=تَلَاصَقَ; present=يَتَلَاصَقُ; imperative=تَلَاصَقْ,https://qutrub.arabeyes.org/?verb=تلاصق
+شمم,شمم-main,Main,I,ai_draft,To smell,شم,يشم,شم,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=شم
+وزن,وزن-main,Main,VI,ai_draft,To be balanced,توازن,يتوازن,توازن,unambiguous,فتحة,تَوَازَنَ,يَتَوَازَنُ,تَوَازَنْ,False,False,False,past=تَوَازَنَ; present=يَتَوَازَنُ; imperative=تَوَازَنْ,https://qutrub.arabeyes.org/?verb=توازن
+هور,هور-main,Main,VII,ai_draft,"To collapse, break down",انهار,ينهار,انهر,unambiguous,فتحة,اِنْهَارَ,يَنْهَارُ,اِنْهَرْ,False,False,False,past=اِنْهَارَ; present=يَنْهَارُ; imperative=اِنْهَرْ,https://qutrub.arabeyes.org/?verb=انهار
+جوز,جوز-main,Main,VI,ai_draft,To surpass,تجاوز,يتجاوز,تجاوز,unambiguous,فتحة,تَجَاوَزَ,يَتَجَاوَزُ,تَجَاوَزْ,False,False,False,past=تَجَاوَزَ; present=يَتَجَاوَزُ; imperative=تَجَاوَزْ,https://qutrub.arabeyes.org/?verb=تجاوز
+زفر,زفر-main,Main,I,ai_draft,"To breathe out, exhale, sigh",زفر,يزفر,ازفر,ambiguous_future_type,,زَفَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=زفر
+ظمئ,ظمئ-main,Main,I,ai_draft,To be thirsty,ظمئ,يظمأ,اظمأ,ambiguous_future_type,,ظَمِئَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ظمئ
+دمر,دمر-main,Main,I,ai_draft,To destroy,دمر,يدمر,ادمر,ambiguous_future_type,,دَمَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=دمر
+قضض,قضض-main,Main,VI,ai_draft,To be destroyed,تقوض,يتقوض,تقوض,unambiguous,فتحة,تَقْوَضَ,يُتَقْوِضُ,تَقْوِضْ,False,False,False,past=تَقْوَضَ; present=يُتَقْوِضُ; imperative=تَقْوِضْ,https://qutrub.arabeyes.org/?verb=تقوض
+بسم,بسم-main,Main,VIII,ai_draft,To smile,ابتسم,يبتسم,ابتسم,unambiguous,فتحة,اِبْتَسَمَ,يَبْتَسِمُ,اِبْتَسِمْ,False,False,False,past=اِبْتَسَمَ; present=يَبْتَسِمُ; imperative=اِبْتَسِمْ,https://qutrub.arabeyes.org/?verb=ابتسم
+كشر,كشر-main,Main,II,ai_draft,To grimace,كشر,يكشر,كشر,ambiguous_future_type,,كَشَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كشر
+قصر,قصر-main,Main,II,ai_draft,To shorten,قصر,يقصر,قصر,ambiguous_future_type,,قَصَرَ,,,False,,,,https://qutrub.arabeyes.org/?verb=قصر
+ودع,ودع-main,Main,II,ai_draft,To bid farewell,ودع,يودع,ودع,ambiguous_future_type,,وَدَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ودع
+سخط,سخط-main,Main,I,ai_draft,"To be resentful, dissatisfied",سخط,يسخط,اسخط,ambiguous_future_type,,سَخَطَ,,,False,,,,https://qutrub.arabeyes.org/?verb=سخط
+مسي,مسي-main,Main,II,ai_draft,To wish a good evening,مسى,يمسي,مس,ambiguous_future_type,,مَسَى,,,False,,,,https://qutrub.arabeyes.org/?verb=مسى
+عبس,عبس-main,Main,I,ai_draft,To frown,عبس,يعبس,اعبس,ambiguous_future_type,,عَبَسَ,,,False,,,,https://qutrub.arabeyes.org/?verb=عبس
+نغص,نغص-main,Main,II,ai_draft,"To spoil, disturb",نغص,ينغص,نغص,ambiguous_future_type,,نَغَصَ,,,False,,,,https://qutrub.arabeyes.org/?verb=نغص
+طمح,طمح-main,Main,I,ai_draft,To aspire to,طمح,يطمح,اطمح,ambiguous_future_type,,طَمَحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=طمح
+كئب,كئب-main,Main,I,ai_draft,"To be sad, upset",كئب,يكأب,اكأب,ambiguous_future_type,,كَئِبَ,,,False,,,,https://qutrub.arabeyes.org/?verb=كئب
+ولد,ولد-main,Main,I,ai_draft,To give birth,ولد,يلد,لد,ambiguous_future_type,,وَلَدَ,,,False,,,,https://qutrub.arabeyes.org/?verb=ولد
+نوب,نوب-main,Main,VIII,ai_draft,"To affect, befall",انتاب,ينتاب,انتب,unambiguous,فتحة,اِنْتَابَ,يَنْتَابُ,اِنْتَبْ,False,False,False,past=اِنْتَابَ; present=يَنْتَابُ; imperative=اِنْتَبْ,https://qutrub.arabeyes.org/?verb=انتاب
+لوك,لوك-main,Main,I,ai_draft,To chew,لاك,يلوك,لك,ambiguous_future_type,,لَاكَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لاك
+لين,لين-main,Main,I,ai_draft,To soften,لان,يلين,لن,ambiguous_future_type,,لَانَ,,,False,,,,https://qutrub.arabeyes.org/?verb=لان
+مزج,مزج-main,Main,VIII,ai_draft,To be mixed,امتزج,يمتزج,امتزج,unambiguous,فتحة,اِمْتَزَجَ,يَمْتَزِجُ,اِمْتَزِجْ,False,False,False,past=اِمْتَزَجَ; present=يَمْتَزِجُ; imperative=اِمْتَزِجْ,https://qutrub.arabeyes.org/?verb=امتزج
+فجأ,فجأ-main,Main,I,ai_draft,"To surprise (someone), catch unawares",فجأ,يفجأ,افجأ,ambiguous_future_type,,فَجَأَ,,,False,,,,https://qutrub.arabeyes.org/?verb=فجأ
+صيح,صيح-main,Main,I,ai_draft,"To cry, scream, shout",صاح,يصيح,صح,ambiguous_future_type,,صَاحَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صاح
+صرخ,صرخ-main,Main,I,ai_draft,"To cry, scream, shout",صرخ,يصرخ,اصرخ,ambiguous_future_type,,صَرَخَ,,,False,,,,https://qutrub.arabeyes.org/?verb=صرخ
+مصص,مصص-main,Main,I,ai_draft,To suck,مص,يمص,مص,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=مص
+كفف,كفف-main,Main,I,ai_draft,To stop,كف,يكف,كف,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=كف
+رضع,رضع-main,Main,I,ai_draft,To suckle,رضع,يرضع,ارضع,ambiguous_future_type,,رَضَعَ,,,False,,,,https://qutrub.arabeyes.org/?verb=رضع
+زعج,زعج-main,Main,VII,ai_draft,"To be disturbed, upset, annoyed",انزعج,ينزعج,انزعج,unambiguous,فتحة,اِنْزَعَجَ,يَنْزَعِجُ,اِنْزَعِجْ,False,False,False,past=اِنْزَعَجَ; present=يَنْزَعِجُ; imperative=اِنْزَعِجْ,https://qutrub.arabeyes.org/?verb=انزعج
+شوك,شوك-main,Main,I,ai_draft,To prick,شاك,يشوك,شك,ambiguous_future_type,,شَاكَ,,,False,,,,https://qutrub.arabeyes.org/?verb=شاك
+أمم,أمم-main,Main,I,ai_draft,To become a mother,أم,يؤم,أم,error: فتحة: 'NoneType' object has no attribute 'get' | ضمة: 'NoneType' object has no attribute 'get' | كسرة: 'NoneType' object has no attribute 'get',,,,,,,,,https://qutrub.arabeyes.org/?verb=أم
+خفف,خفف-main,Main,II,ai_draft,"To lighten, alleviate",خفف,يخفف,خفف,ambiguous_future_type,,خَفَفَ,,,False,,,,https://qutrub.arabeyes.org/?verb=خفف

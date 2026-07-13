@@ -8,6 +8,11 @@ import {
   type SarfFormKey,
   type VerbMeasure,
 } from "@/lib/types";
+import { QUTRUB_VERIFIED_FORMS } from "@/data/qutrubVerification";
+import { QABAS_VERIFIED_FORMS } from "@/data/qabasVerification";
+import { CALIMA_VERIFIED_FORMS } from "@/data/calimaVerification";
+import { PARTICIPLE_VERIFIED_FORMS } from "@/data/participleVerification";
+import { ELIXIRFM_VERIFIED_FORMS } from "@/data/elixirfmVerification";
 
 const label = (key: SarfFormKey) => FORM_LABELS[key];
 const AI_DRAFT_NOTE = "AI draft; verify before marking reviewed.";
@@ -2779,8 +2784,116 @@ function applyQuranicFlags(entries: RootEntry[]): RootEntry[] {
   );
 }
 
+function applyFormVerification(
+  entries: RootEntry[],
+  verification: Readonly<Record<string, Partial<Record<SarfFormKey, string>>>>,
+): RootEntry[] {
+  const verify = <T extends RootEntry | RootVerbEntry>(entry: T, entryId: string): T => {
+    const verifiedForms = verification[entryId];
+    if (!verifiedForms) return entry;
+    return {
+      ...entry,
+      forms: entry.forms.map((form) => {
+        const verifiedArabic = verifiedForms[form.key];
+        return verifiedArabic
+          ? { ...form, arabic: verifiedArabic, reviewState: "reviewed" }
+          : form;
+      }),
+    };
+  };
+
+  return entries.map((entry) => {
+    const verifiedEntry = verify(entry, `${entry.root}-main`);
+    return entry.variants
+      ? {
+          ...verifiedEntry,
+          variants: entry.variants.map((variant) => verify(variant, variant.id)),
+        }
+      : verifiedEntry;
+  });
+}
+
+function applyGeneratedFormVerification(
+  entries: RootEntry[],
+  verification: typeof PARTICIPLE_VERIFIED_FORMS,
+): RootEntry[] {
+  const verify = <T extends RootEntry | RootVerbEntry>(entry: T, entryId: string): T => {
+    const verifiedForms = verification[entryId];
+    if (!verifiedForms) return entry;
+    return {
+      ...entry,
+      forms: entry.forms.map((form) => {
+        const verified = verifiedForms[form.key];
+        return verified
+          ? {
+              ...form,
+              ...verified,
+              transliteration: transliterate(verified.arabic),
+              reviewState: "reviewed" as const,
+            }
+          : form;
+      }),
+    };
+  };
+
+  return entries.map((entry) => {
+    const verifiedEntry = verify(entry, `${entry.root}-main`);
+    return entry.variants
+      ? { ...verifiedEntry, variants: entry.variants.map((variant) => verify(variant, variant.id)) }
+      : verifiedEntry;
+  });
+}
+
+function applyEntryReviewStatuses(entries: RootEntry[]): RootEntry[] {
+  const cleanNotes = (notes?: string) => {
+    const cleaned = notes?.replace(AI_DRAFT_NOTE, "").trim();
+    return cleaned || undefined;
+  };
+  const promote = <T extends RootEntry | RootVerbEntry>(entry: T): T => {
+    if (entry.status !== "ai_draft") {
+      return entry;
+    }
+    const reviewedFormCount = entry.forms.filter((form) => form.reviewState === "reviewed").length;
+    if (reviewedFormCount === 0) return entry;
+    if (reviewedFormCount < entry.forms.length) {
+      return { ...entry, status: "partially_reviewed", updatedAt: "2026-07-13" };
+    }
+    return {
+      ...entry,
+      status: "reviewed",
+      notes: cleanNotes(entry.notes),
+      updatedAt: "2026-07-12",
+      forms: entry.forms.map((form) => ({ ...form, notes: cleanNotes(form.notes) })),
+    };
+  };
+
+  return entries.map((entry) => {
+    const promotedEntry = promote(entry);
+    return entry.variants
+      ? { ...promotedEntry, variants: entry.variants.map(promote) }
+      : promotedEntry;
+  });
+}
+
 export const roots: RootEntry[] = applyQuranicFlags(
-  attachExtraVariants(importedArabicVerbBuild.roots),
+  applyEntryReviewStatuses(
+    applyGeneratedFormVerification(
+      applyGeneratedFormVerification(
+        applyFormVerification(
+          applyFormVerification(
+            applyFormVerification(
+              attachExtraVariants(importedArabicVerbBuild.roots),
+              QUTRUB_VERIFIED_FORMS,
+            ),
+            QABAS_VERIFIED_FORMS,
+          ),
+          CALIMA_VERIFIED_FORMS,
+        ),
+        PARTICIPLE_VERIFIED_FORMS,
+      ),
+      ELIXIRFM_VERIFIED_FORMS,
+    ),
+  ),
 );
 export const importedArabicVerbReport = importedArabicVerbBuild.report;
 

@@ -1,4 +1,4 @@
-export type RootStatus = "reviewed" | "community_suggested" | "ai_draft";
+export type RootStatus = "reviewed" | "partially_reviewed" | "community_suggested" | "ai_draft";
 export type QuranRootStatus = "indexed_only" | "ai_draft" | "reviewed";
 
 /** Classical Arabic verb measure (وزن) that this entry's forms conjugate. */
@@ -130,6 +130,7 @@ export const FORM_LABELS: Record<SarfFormKey, { labelAr: string; labelEn: string
 
 export const STATUS_LABELS: Record<RootStatus, string> = {
   reviewed: "Reviewed",
+  partially_reviewed: "Partially reviewed",
   community_suggested: "Community suggested",
   ai_draft: "AI draft",
 };

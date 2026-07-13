@@ -14,6 +14,7 @@ type BrowseFilter =
   | "full"
   | "indexed"
   | "reviewed"
+  | "partially_reviewed"
   | "ai_draft";
 
 const FILTERS: { key: BrowseFilter; label: string }[] = [
@@ -22,6 +23,7 @@ const FILTERS: { key: BrowseFilter; label: string }[] = [
   { key: "full", label: "Full entries only" },
   { key: "indexed", label: "Indexed only" },
   { key: "reviewed", label: "Reviewed" },
+  { key: "partially_reviewed", label: "Partially reviewed" },
   { key: "ai_draft", label: "AI draft" },
 ];
 
@@ -81,6 +83,13 @@ function BrowseRootsContent({
     if (activeFilter === "full" && item.kind !== "full") return false;
     if (activeFilter === "indexed" && item.kind !== "indexed") return false;
     if (activeFilter === "reviewed" && (item.kind !== "full" || item.entry.status !== "reviewed")) return false;
+    if (
+      activeFilter === "partially_reviewed" &&
+      (item.kind !== "full" ||
+        !getRootVerbEntries(item.entry).some((verbEntry) => verbEntry.status === "partially_reviewed"))
+    ) {
+      return false;
+    }
     if (
       activeFilter === "ai_draft" &&
       (item.kind !== "full" ||

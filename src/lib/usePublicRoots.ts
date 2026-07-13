@@ -4,9 +4,10 @@ import { useEffect, useState } from "react";
 import type { RootEntry } from "@/lib/types";
 
 let publicRootsPromise: Promise<RootEntry[]> | undefined;
+const PUBLIC_ROOTS_DATA_VERSION = "2026-07-13-partial-review";
 
 function fetchPublicRoots(): Promise<RootEntry[]> {
-  publicRootsPromise ??= fetch("/data/roots").then(async (response) => {
+  publicRootsPromise ??= fetch(`/data/roots?v=${PUBLIC_ROOTS_DATA_VERSION}`).then(async (response) => {
     if (!response.ok) throw new Error("Could not load the root library.");
     return (await response.json()) as RootEntry[];
   });

@@ -76,7 +76,7 @@ const REQUIRED_FORM_FIELDS = [
   "labelAr",
   "labelEn",
 ] as const;
-const VALID_STATUSES = ["reviewed", "community_suggested", "ai_draft"] as const;
+const VALID_STATUSES = ["reviewed", "partially_reviewed", "community_suggested", "ai_draft"] as const;
 const PLACEHOLDER_RE = /\b(todo|tbd|placeholder|lorem ipsum|xxx)\b/i;
 export const LEARNER_PLACEHOLDER_PATTERNS = [
   /AI-generated/i,
@@ -155,9 +155,6 @@ export function validateRootEntry(entry: RootEntry): string[] {
   }
   if (entry.source) {
     errors.push(...validateImportedVerbSource(entry.source).map((error) => `source ${error}`));
-    if (entry.status === "reviewed") {
-      errors.push("imported/generated entry cannot be marked reviewed");
-    }
   }
   if (entry.quranOccurrenceCount !== undefined && entry.quranOccurrenceCount < 0) {
     errors.push("quranOccurrenceCount must be a positive number when present");
@@ -196,9 +193,6 @@ export function validateRootVerbEntry(entry: RootVerbEntry): string[] {
   }
   if (entry.source) {
     errors.push(...validateImportedVerbSource(entry.source).map((error) => `source ${error}`));
-    if (entry.status === "reviewed") {
-      errors.push("imported/generated entry cannot be marked reviewed");
-    }
   }
   if (
     entry.status === "reviewed" &&

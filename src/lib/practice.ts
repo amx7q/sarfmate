@@ -43,6 +43,7 @@ type PracticeSource = {
   root: string;
   displayRoot: string;
   form: SarfForm;
+  fullyReviewed: boolean;
 };
 
 export type PracticeItemRef = { root: string; formKey: SarfFormKey };
@@ -61,8 +62,6 @@ const REQUIRED_FORM_FIELDS = [
   "labelAr",
   "labelEn",
   "meaningEn",
-  "exampleAr",
-  "exampleEn",
 ] as const;
 
 const QUESTION_TYPES: Record<PracticeDifficulty | "daily", PracticeQuestionType[]> = {
@@ -102,11 +101,17 @@ function shuffled<T>(items: readonly T[], random: () => number): T[] {
   return result;
 }
 
-/** Returns roots whose reviewed, complete six-form data is safe to quiz from. */
+function isPracticeEligibleForm(form: SarfForm, index: number): boolean {
+  return form.reviewState === "reviewed" &&
+    form.key === FORM_SEQUENCE[index] &&
+    form.order === index + 1 &&
+    REQUIRED_FORM_FIELDS.every((field) => hasText(form[field]));
+}
+
+/** Returns roots with at least one individually reviewed, complete form that is safe to quiz from. */
 export function getPracticeEligibleRoots(entries: readonly RootEntry[]): RootEntry[] {
   return entries.filter((entry) => {
     if (
-      entry.status !== "reviewed" ||
       !hasText(entry.root) ||
       !hasText(entry.displayRoot) ||
       !hasText(entry.meaningEn) ||
@@ -115,11 +120,7 @@ export function getPracticeEligibleRoots(entries: readonly RootEntry[]): RootEnt
       return false;
     }
 
-    return entry.forms.every((form, index) =>
-      form.key === FORM_SEQUENCE[index] &&
-      form.order === index + 1 &&
-      REQUIRED_FORM_FIELDS.every((field) => hasText(form[field])),
-    );
+    return entry.forms.some(isPracticeEligibleForm);
   });
 }
 
@@ -187,7 +188,7 @@ function createQuestion(
   }
 
   if (type === "sentence_to_english") {
-    if (!form.exampleAr?.includes(formArabic)) return null;
+    if (!source.fullyReviewed || !form.exampleAr?.includes(formArabic)) return null;
     const options = makeOptions(source, allSources, (item) => item.form.meaningEn ?? "", random);
     if (!options) return null;
     return {
@@ -253,16 +254,31 @@ export function createPracticeSession(
   const otherRoots = eligibleRoots.filter((entry) => !priorityRoots.includes(entry));
   const orderedRoots = [...priorityRoots, ...shuffled(otherRoots, random)];
   const allSources = orderedRoots.flatMap((entry) =>
-    entry.forms.map((form) => ({ root: entry.root, displayRoot: entry.displayRoot, form })),
+    entry.forms
+      .filter(isPracticeEligibleForm)
+      .map((form) => ({
+        root: entry.root,
+        displayRoot: entry.displayRoot,
+        form,
+        fullyReviewed: entry.status === "reviewed",
+      })),
+  );
+  const prioritySources = (priorityItems ?? []).flatMap((item) => {
+    const source = allSources.find(
+      (candidate) => candidate.root === item.root && candidate.form.key === item.formKey,
+    );
+    return source ? [source] : [];
+  });
+  const remainingSources = allSources.filter((source) => !prioritySources.includes(source));
+  const questionSources = [...prioritySources, ...remainingSources].slice(
+    0,
+    Math.max(questionCount * 8, 40),
   );
 
-  const candidates = orderedRoots.flatMap((entry) =>
-    entry.forms.flatMap((form) => {
-      const source = { root: entry.root, displayRoot: entry.displayRoot, form };
-      return QUESTION_TYPES[difficulty].map((type) => createQuestion(type, source, allSources, random)).filter(
+  const candidates = questionSources.flatMap((source) =>
+    QUESTION_TYPES[difficulty].map((type) => createQuestion(type, source, allSources, random)).filter(
         (question): question is PracticeQuestion => question !== null,
-      );
-    }),
+      ),
   );
 
   const selected: PracticeQuestion[] = [];

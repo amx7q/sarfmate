@@ -1,0 +1,3426 @@
+[
+  {
+    "root": "عمل",
+    "entryId": "عمل-csv-214",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To deal with, treat",
+    "past": "عَامَلَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كبر",
+    "entryId": "كبر-csv-517",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To contend stubbornly",
+    "past": "كَابَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حفظ",
+    "entryId": "حفظ-csv-123",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To preserve",
+    "past": "حَافَظَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "رجع",
+    "entryId": "رجع-csv-388",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To revise, review",
+    "past": "رَاجَعَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سبق",
+    "entryId": "سبق-csv-158",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To compete",
+    "past": "سَابَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سبق",
+    "entryId": "سبق-csv-158",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To compete",
+    "past": "سَابَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "هجر",
+    "entryId": "هجر-csv-75",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To move away, migrate",
+    "past": "هَاجَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حسب",
+    "entryId": "حسب-csv-195",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To hold accountable",
+    "past": "حَاسَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نهي",
+    "entryId": "نهي-csv-26",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To forbid, prohibit",
+    "past": "نهى",
+    "candidate": "نَاهِي",
+    "lexemeMatches": [
+      {
+        "citation": "نَهَى",
+        "measure": "I",
+        "gloss": "\"forbid\", \"restrain\"",
+        "derived": {
+          "active_participle": [
+            "نَاهِي"
+          ],
+          "passive_participle": [
+            "مَنهِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نهي",
+    "entryId": "نهي-csv-26",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To forbid, prohibit",
+    "past": "نهى",
+    "candidate": "مَنهِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "نَهَى",
+        "measure": "I",
+        "gloss": "\"forbid\", \"restrain\"",
+        "derived": {
+          "active_participle": [
+            "نَاهِي"
+          ],
+          "passive_participle": [
+            "مَنهِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عود",
+    "entryId": "عود-csv-57",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To return",
+    "past": "عاد",
+    "candidate": "عَائِد",
+    "lexemeMatches": [
+      {
+        "citation": "عَاد",
+        "measure": "I",
+        "gloss": "\"return\", \"go back\", \"no longer\"",
+        "derived": {
+          "active_participle": [
+            "عَائِد"
+          ],
+          "passive_participle": [
+            "مَعُود"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عود",
+    "entryId": "عود-csv-57",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To return",
+    "past": "عاد",
+    "candidate": "مَعُود",
+    "lexemeMatches": [
+      {
+        "citation": "عَاد",
+        "measure": "I",
+        "gloss": "\"return\", \"go back\", \"no longer\"",
+        "derived": {
+          "active_participle": [
+            "عَائِد"
+          ],
+          "passive_participle": [
+            "مَعُود"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جوب",
+    "entryId": "جوب-csv-182",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To explore, go about",
+    "past": "جاب",
+    "candidate": "جَائِب",
+    "lexemeMatches": [
+      {
+        "citation": "جَاب",
+        "measure": "I",
+        "gloss": "\"explore\", \"traverse\"",
+        "derived": {
+          "active_participle": [
+            "جَائِب"
+          ],
+          "passive_participle": [
+            "مَجُوب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جوب",
+    "entryId": "جوب-csv-182",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To explore, go about",
+    "past": "جاب",
+    "candidate": "مَجُوب",
+    "lexemeMatches": [
+      {
+        "citation": "جَاب",
+        "measure": "I",
+        "gloss": "\"explore\", \"traverse\"",
+        "derived": {
+          "active_participle": [
+            "جَائِب"
+          ],
+          "passive_participle": [
+            "مَجُوب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حول",
+    "entryId": "حول-csv-10",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To try",
+    "past": "حَاوَلَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حول",
+    "entryId": "حول-csv-10",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To try",
+    "past": "حَاوَلَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوق",
+    "entryId": "سوق-csv-457",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To move, transport, drive",
+    "past": "ساق",
+    "candidate": "سَائِق",
+    "lexemeMatches": [
+      {
+        "citation": "سَاق",
+        "measure": "I",
+        "gloss": "\"drive\", \"lead\", \"direct\"",
+        "derived": {
+          "active_participle": [
+            "سَائِق"
+          ],
+          "passive_participle": [
+            "مَسُوق"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوق",
+    "entryId": "سوق-csv-457",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To move, transport, drive",
+    "past": "ساق",
+    "candidate": "مَسُوق",
+    "lexemeMatches": [
+      {
+        "citation": "سَاق",
+        "measure": "I",
+        "gloss": "\"drive\", \"lead\", \"direct\"",
+        "derived": {
+          "active_participle": [
+            "سَائِق"
+          ],
+          "passive_participle": [
+            "مَسُوق"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قوم",
+    "entryId": "قوم-csv-69",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To do/fulfill",
+    "past": "قام",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قوم",
+    "entryId": "قوم-csv-69",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To do/fulfill",
+    "past": "قام",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خلف",
+    "entryId": "خلف-csv-208",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To be different from, be contrary to",
+    "past": "خَالَفَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غمي",
+    "entryId": "غمي-main",
+    "formKey": "active_participle",
+    "measure": "IV",
+    "meaning": "To faint, to cause to faint",
+    "past": "أغمي/أغمى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غمي",
+    "entryId": "غمي-main",
+    "formKey": "passive_participle",
+    "measure": "IV",
+    "meaning": "To faint, to cause to faint",
+    "past": "أغمي/أغمى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ندي",
+    "entryId": "ندي-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To call",
+    "past": "نَادَى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ندي",
+    "entryId": "ندي-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To call",
+    "past": "نَادَى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نقش",
+    "entryId": "نقش-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To discuss",
+    "past": "نَاقَشَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نقش",
+    "entryId": "نقش-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To discuss",
+    "past": "نَاقَشَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "صيد",
+    "entryId": "صيد-csv-233",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To hunt, shoot",
+    "past": "صاد",
+    "candidate": "صَائِد",
+    "lexemeMatches": [
+      {
+        "citation": "صَاد",
+        "measure": "I",
+        "gloss": "\"hunt\", \"fish\", \"trap\"",
+        "derived": {
+          "active_participle": [
+            "صَائِد"
+          ],
+          "passive_participle": [
+            "مَصِيد"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "صيد",
+    "entryId": "صيد-csv-233",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To hunt, shoot",
+    "past": "صاد",
+    "candidate": "مَصِيد",
+    "lexemeMatches": [
+      {
+        "citation": "صَاد",
+        "measure": "I",
+        "gloss": "\"hunt\", \"fish\", \"trap\"",
+        "derived": {
+          "active_participle": [
+            "صَائِد"
+          ],
+          "passive_participle": [
+            "مَصِيد"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مشي",
+    "entryId": "مشي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To walk",
+    "past": "مشى",
+    "candidate": "مَاشِي",
+    "lexemeMatches": [
+      {
+        "citation": "مَشَى",
+        "measure": "I",
+        "gloss": "\"walk\", \"proceed\"",
+        "derived": {
+          "active_participle": [
+            "مَاشِي"
+          ],
+          "passive_participle": [
+            "مَمشِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مشي",
+    "entryId": "مشي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To walk",
+    "past": "مشى",
+    "candidate": "مَمشِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "مَشَى",
+        "measure": "I",
+        "gloss": "\"walk\", \"proceed\"",
+        "derived": {
+          "active_participle": [
+            "مَاشِي"
+          ],
+          "passive_participle": [
+            "مَمشِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نسب",
+    "entryId": "نسب-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To be suitable",
+    "past": "نَاسَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ثور",
+    "entryId": "ثور-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To become agitated",
+    "past": "ثار",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ثور",
+    "entryId": "ثور-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To become agitated",
+    "past": "ثار",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حور",
+    "entryId": "حور-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To converse",
+    "past": "حَاوَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حور",
+    "entryId": "حور-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To converse",
+    "past": "حَاوَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عيش",
+    "entryId": "عيش-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To live",
+    "past": "عاش",
+    "candidate": "عَائِش",
+    "lexemeMatches": [
+      {
+        "citation": "عَاش",
+        "measure": "I",
+        "gloss": "\"live\", \"exist\"",
+        "derived": {
+          "active_participle": [
+            "عَائِش"
+          ],
+          "passive_participle": [
+            "مَعِيش"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عيش",
+    "entryId": "عيش-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To live",
+    "past": "عاش",
+    "candidate": "مَعِيش",
+    "lexemeMatches": [
+      {
+        "citation": "عَاش",
+        "measure": "I",
+        "gloss": "\"live\", \"exist\"",
+        "derived": {
+          "active_participle": [
+            "عَائِش"
+          ],
+          "passive_participle": [
+            "مَعِيش"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "دري",
+    "entryId": "دري-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To know",
+    "past": "درى",
+    "candidate": "دَارِي",
+    "lexemeMatches": [
+      {
+        "citation": "دَرَى",
+        "measure": "I",
+        "gloss": "\"know\", \"be aware of\", \"notice\"",
+        "derived": {
+          "active_participle": [
+            "دَارِي"
+          ],
+          "passive_participle": [
+            "مَدرِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "دري",
+    "entryId": "دري-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To know",
+    "past": "درى",
+    "candidate": "مَدرِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "دَرَى",
+        "measure": "I",
+        "gloss": "\"know\", \"be aware of\", \"notice\"",
+        "derived": {
+          "active_participle": [
+            "دَارِي"
+          ],
+          "passive_participle": [
+            "مَدرِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خوف",
+    "entryId": "خوف-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To fear",
+    "past": "خاف",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خوف",
+    "entryId": "خوف-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To fear",
+    "past": "خاف",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "وجه",
+    "entryId": "وجه-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To face, encounter",
+    "past": "وَاجَهَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "وجه",
+    "entryId": "وجه-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To face, encounter",
+    "past": "وَاجَهَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "بني",
+    "entryId": "بني-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To build",
+    "past": "بنى",
+    "candidate": "بَانِي",
+    "lexemeMatches": [
+      {
+        "citation": "بَنَى",
+        "measure": "I",
+        "gloss": "\"build\", \"erect\"",
+        "derived": {
+          "active_participle": [
+            "بَانِي"
+          ],
+          "passive_participle": [
+            "مَبنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "بني",
+    "entryId": "بني-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To build",
+    "past": "بنى",
+    "candidate": "مَبنِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "بَنَى",
+        "measure": "I",
+        "gloss": "\"build\", \"erect\"",
+        "derived": {
+          "active_participle": [
+            "بَانِي"
+          ],
+          "passive_participle": [
+            "مَبنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "وفق",
+    "entryId": "وفق-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To agree",
+    "past": "وَافَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "وفق",
+    "entryId": "وفق-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To agree",
+    "past": "وَافَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شيع",
+    "entryId": "شيع-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To circulate, be widespread",
+    "past": "شاع",
+    "candidate": "شَائِع",
+    "lexemeMatches": [
+      {
+        "citation": "شَاع",
+        "measure": "I",
+        "gloss": "\"circulate\", \"be propagated\"",
+        "derived": {
+          "active_participle": [
+            "شَائِع"
+          ],
+          "passive_participle": [
+            "مَشِيع"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شيع",
+    "entryId": "شيع-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To circulate, be widespread",
+    "past": "شاع",
+    "candidate": "مَشِيع",
+    "lexemeMatches": [
+      {
+        "citation": "شَاع",
+        "measure": "I",
+        "gloss": "\"circulate\", \"be propagated\"",
+        "derived": {
+          "active_participle": [
+            "شَائِع"
+          ],
+          "passive_participle": [
+            "مَشِيع"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضيع",
+    "entryId": "ضيع-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To be squandered, to be wasted, to be lost",
+    "past": "ضاع",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضيع",
+    "entryId": "ضيع-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To be squandered, to be wasted, to be lost",
+    "past": "ضاع",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خلط",
+    "entryId": "خلط-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To mix with",
+    "past": "خَالَطَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خلط",
+    "entryId": "خلط-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To mix with",
+    "past": "خَالَطَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حرب",
+    "entryId": "حرب-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To fight against",
+    "past": "حَارَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حرب",
+    "entryId": "حرب-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To fight against",
+    "past": "حَارَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قوي",
+    "entryId": "قوي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To be strong(er)",
+    "past": "قوي",
+    "candidate": "قَاوِي",
+    "lexemeMatches": [
+      {
+        "citation": "قَوِي",
+        "measure": "I",
+        "gloss": "\"be strong\"",
+        "derived": {
+          "active_participle": [
+            "قَاوِي"
+          ],
+          "passive_participle": [
+            "مَقوِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قوي",
+    "entryId": "قوي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To be strong(er)",
+    "past": "قوي",
+    "candidate": "مَقوِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "قَوِي",
+        "measure": "I",
+        "gloss": "\"be strong\"",
+        "derived": {
+          "active_participle": [
+            "قَاوِي"
+          ],
+          "passive_participle": [
+            "مَقوِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شرك",
+    "entryId": "شرك-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To participate",
+    "past": "شَارَكَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نفس",
+    "entryId": "نفس-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To compete",
+    "past": "نَافَسَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نفس",
+    "entryId": "نفس-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To compete",
+    "past": "نَافَسَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كفأ",
+    "entryId": "كفأ-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To reward",
+    "past": "كَافَأَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كفأ",
+    "entryId": "كفأ-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To reward",
+    "past": "كَافَأَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نيل",
+    "entryId": "نيل-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To win, accomplish",
+    "past": "نال",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نيل",
+    "entryId": "نيل-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To win, accomplish",
+    "past": "نال",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "طير",
+    "entryId": "طير-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To fly",
+    "past": "طار",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "طير",
+    "entryId": "طير-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To fly",
+    "past": "طار",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قيس",
+    "entryId": "قيس-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To measure",
+    "past": "قاس",
+    "candidate": "قَائِس",
+    "lexemeMatches": [
+      {
+        "citation": "قَاس",
+        "measure": "I",
+        "gloss": "\"measure\", \"draw conclusions\", \"compare\"",
+        "derived": {
+          "active_participle": [
+            "قَائِس"
+          ],
+          "passive_participle": [
+            "مَقِيس"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قيس",
+    "entryId": "قيس-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To measure",
+    "past": "قاس",
+    "candidate": "مَقِيس",
+    "lexemeMatches": [
+      {
+        "citation": "قَاس",
+        "measure": "I",
+        "gloss": "\"measure\", \"draw conclusions\", \"compare\"",
+        "derived": {
+          "active_participle": [
+            "قَائِس"
+          ],
+          "passive_participle": [
+            "مَقِيس"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضيق",
+    "entryId": "ضيق-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To annoy, irritate",
+    "past": "ضَايَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضيق",
+    "entryId": "ضيق-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To annoy, irritate",
+    "past": "ضَايَقَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أتي",
+    "entryId": "أتي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To come, arrive",
+    "past": "أتى",
+    "candidate": "آتِي",
+    "lexemeMatches": [
+      {
+        "citation": "أَتَى",
+        "measure": "I",
+        "gloss": "\"arrive\", \"come\", \"reach\"",
+        "derived": {
+          "active_participle": [
+            "آتِي"
+          ],
+          "passive_participle": [
+            "مَأتِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أتي",
+    "entryId": "أتي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To come, arrive",
+    "past": "أتى",
+    "candidate": "مَأتِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "أَتَى",
+        "measure": "I",
+        "gloss": "\"arrive\", \"come\", \"reach\"",
+        "derived": {
+          "active_participle": [
+            "آتِي"
+          ],
+          "passive_participle": [
+            "مَأتِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نسي",
+    "entryId": "نسي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To forget",
+    "past": "نسي",
+    "candidate": "نَاسِي",
+    "lexemeMatches": [
+      {
+        "citation": "نَسِي",
+        "measure": "I",
+        "gloss": "\"forget\", \"be forgotten\"",
+        "derived": {
+          "active_participle": [
+            "نَاسِي"
+          ],
+          "passive_participle": [
+            "مَنسِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نسي",
+    "entryId": "نسي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To forget",
+    "past": "نسي",
+    "candidate": "مَنسِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "نَسِي",
+        "measure": "I",
+        "gloss": "\"forget\", \"be forgotten\"",
+        "derived": {
+          "active_participle": [
+            "نَاسِي"
+          ],
+          "passive_participle": [
+            "مَنسِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نزع",
+    "entryId": "نزع-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To dispute (with), argue (with)",
+    "past": "نَازَعَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "رعي",
+    "entryId": "رعي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To tend (a flock of animals)",
+    "past": "رعى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "رعي",
+    "entryId": "رعي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To tend (a flock of animals)",
+    "past": "رعى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "رعي",
+    "entryId": "رعي-csv-324",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To observe, comply with",
+    "past": "رَاعَى",
+    "candidate": "مُرَاعِي",
+    "lexemeMatches": [
+      {
+        "citation": "رَاعَى",
+        "measure": "III",
+        "gloss": "\"observe\", \"heed\", \"show deference\"",
+        "derived": {
+          "active_participle": [
+            "مُرَاعِي"
+          ],
+          "passive_participle": [
+            "مُرَاعَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "رعي",
+    "entryId": "رعي-csv-324",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To observe, comply with",
+    "past": "رَاعَى",
+    "candidate": "مُرَاعَى",
+    "lexemeMatches": [
+      {
+        "citation": "رَاعَى",
+        "measure": "III",
+        "gloss": "\"observe\", \"heed\", \"show deference\"",
+        "derived": {
+          "active_participle": [
+            "مُرَاعِي"
+          ],
+          "passive_participle": [
+            "مُرَاعَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حمي",
+    "entryId": "حمي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To protect",
+    "past": "حمى",
+    "candidate": "حَامِي",
+    "lexemeMatches": [
+      {
+        "citation": "حَمَى",
+        "measure": "I",
+        "gloss": "\"defend\", \"protect\", \"forbid\"",
+        "derived": {
+          "active_participle": [
+            "حَامِي"
+          ],
+          "passive_participle": [
+            "مَحمِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حمي",
+    "entryId": "حمي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To protect",
+    "past": "حمى",
+    "candidate": "مَحمِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "حَمَى",
+        "measure": "I",
+        "gloss": "\"defend\", \"protect\", \"forbid\"",
+        "derived": {
+          "active_participle": [
+            "حَامِي"
+          ],
+          "passive_participle": [
+            "مَحمِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ذوق",
+    "entryId": "ذوق-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To experience, taste",
+    "past": "ذاق",
+    "candidate": "ذَائِق",
+    "lexemeMatches": [
+      {
+        "citation": "ذَاق",
+        "measure": "I",
+        "gloss": "\"taste\", \"sample\", \"experience\"",
+        "derived": {
+          "active_participle": [
+            "ذَائِق"
+          ],
+          "passive_participle": [
+            "مَذُوق"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ذوق",
+    "entryId": "ذوق-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To experience, taste",
+    "past": "ذاق",
+    "candidate": "مَذُوق",
+    "lexemeMatches": [
+      {
+        "citation": "ذَاق",
+        "measure": "I",
+        "gloss": "\"taste\", \"sample\", \"experience\"",
+        "derived": {
+          "active_participle": [
+            "ذَائِق"
+          ],
+          "passive_participle": [
+            "مَذُوق"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عقب",
+    "entryId": "عقب-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To punish",
+    "past": "عَاقَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عقب",
+    "entryId": "عقب-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To punish",
+    "past": "عَاقَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قرن",
+    "entryId": "قرن-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To compare",
+    "past": "قَارَنَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوي",
+    "entryId": "سوي-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To be equivalent to",
+    "past": "سَاوَى",
+    "candidate": "مُسَاوِي",
+    "lexemeMatches": [
+      {
+        "citation": "سَاوَى",
+        "measure": "III",
+        "gloss": "\"settle\", \"be equivalent\", \"equalize\"",
+        "derived": {
+          "active_participle": [
+            "مُسَاوِي"
+          ],
+          "passive_participle": [
+            "مُسَاوَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوي",
+    "entryId": "سوي-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To be equivalent to",
+    "past": "سَاوَى",
+    "candidate": "مُسَاوَى",
+    "lexemeMatches": [
+      {
+        "citation": "سَاوَى",
+        "measure": "III",
+        "gloss": "\"settle\", \"be equivalent\", \"equalize\"",
+        "derived": {
+          "active_participle": [
+            "مُسَاوِي"
+          ],
+          "passive_participle": [
+            "مُسَاوَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوي",
+    "entryId": "سوي-csv-527",
+    "formKey": "active_participle",
+    "measure": "II",
+    "meaning": "To equalize, make equal",
+    "past": "سوى",
+    "candidate": "مُسَوِّي",
+    "lexemeMatches": [
+      {
+        "citation": "سَوَّى",
+        "measure": "II",
+        "gloss": "\"equalize\", \"settle\"",
+        "derived": {
+          "active_participle": [
+            "مُسَوِّي"
+          ],
+          "passive_participle": [
+            "مُسَوَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوي",
+    "entryId": "سوي-csv-527",
+    "formKey": "passive_participle",
+    "measure": "II",
+    "meaning": "To equalize, make equal",
+    "past": "سوى",
+    "candidate": "مُسَوَّى",
+    "lexemeMatches": [
+      {
+        "citation": "سَوَّى",
+        "measure": "II",
+        "gloss": "\"equalize\", \"settle\"",
+        "derived": {
+          "active_participle": [
+            "مُسَوِّي"
+          ],
+          "passive_participle": [
+            "مُسَوَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لقي",
+    "entryId": "لقي-csv-511",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To meet, encounter",
+    "past": "لَاقَى",
+    "candidate": "مُلَاقِي",
+    "lexemeMatches": [
+      {
+        "citation": "لَاقَى",
+        "measure": "III",
+        "gloss": "\"meet\", \"encounter\"",
+        "derived": {
+          "active_participle": [
+            "مُلَاقِي"
+          ],
+          "passive_participle": [
+            "مُلَاقَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لقي",
+    "entryId": "لقي-csv-511",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To meet, encounter",
+    "past": "لَاقَى",
+    "candidate": "مُلَاقَى",
+    "lexemeMatches": [
+      {
+        "citation": "لَاقَى",
+        "measure": "III",
+        "gloss": "\"meet\", \"encounter\"",
+        "derived": {
+          "active_participle": [
+            "مُلَاقِي"
+          ],
+          "passive_participle": [
+            "مُلَاقَى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مدد",
+    "entryId": "مدد-csv-383",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To extend",
+    "past": "مد",
+    "candidate": "مَادّ",
+    "lexemeMatches": [
+      {
+        "citation": "مَدّ",
+        "measure": "I",
+        "gloss": "\"extend\", \"stretch\", \"spread out\"",
+        "derived": {
+          "active_participle": [
+            "مَادّ"
+          ],
+          "passive_participle": [
+            "مَمدُود"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "دلل",
+    "entryId": "دلل-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To prove, demonstrate",
+    "past": "دل",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ردد",
+    "entryId": "ردد-csv-513",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To reply, answer, repel, refute",
+    "past": "رد",
+    "candidate": "رَادّ",
+    "lexemeMatches": [
+      {
+        "citation": "رَدّ",
+        "measure": "I",
+        "gloss": "\"answer\", \"reply\", \"return\"",
+        "derived": {
+          "active_participle": [
+            "رَادّ"
+          ],
+          "passive_participle": [
+            "مَردُود"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ردد",
+    "entryId": "ردد-csv-513",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To reply, answer, repel, refute",
+    "past": "رد",
+    "candidate": "مَردُود",
+    "lexemeMatches": [
+      {
+        "citation": "رَدّ",
+        "measure": "I",
+        "gloss": "\"answer\", \"reply\", \"return\"",
+        "derived": {
+          "active_participle": [
+            "رَادّ"
+          ],
+          "passive_participle": [
+            "مَردُود"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غضض",
+    "entryId": "غضض-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To lower",
+    "past": "غض",
+    "candidate": "غَاضّ",
+    "lexemeMatches": [
+      {
+        "citation": "غَضّ",
+        "measure": "I",
+        "gloss": "\"lower\", \"diminish\"",
+        "derived": {
+          "active_participle": [
+            "غَاضّ"
+          ],
+          "passive_participle": [
+            "مَغضُوض"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غضض",
+    "entryId": "غضض-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To lower",
+    "past": "غض",
+    "candidate": "مَغضُوض",
+    "lexemeMatches": [
+      {
+        "citation": "غَضّ",
+        "measure": "I",
+        "gloss": "\"lower\", \"diminish\"",
+        "derived": {
+          "active_participle": [
+            "غَاضّ"
+          ],
+          "passive_participle": [
+            "مَغضُوض"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ذوب",
+    "entryId": "ذوب-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To dissolve",
+    "past": "ذاب",
+    "candidate": "ذَائِب",
+    "lexemeMatches": [
+      {
+        "citation": "ذَاب",
+        "measure": "I",
+        "gloss": "\"be dissolved\", \"be melted\", \"dwindle\"",
+        "derived": {
+          "active_participle": [
+            "ذَائِب"
+          ],
+          "passive_participle": [
+            "مَذُوب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ذوب",
+    "entryId": "ذوب-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To dissolve",
+    "past": "ذاب",
+    "candidate": "مَذُوب",
+    "lexemeMatches": [
+      {
+        "citation": "ذَاب",
+        "measure": "I",
+        "gloss": "\"be dissolved\", \"be melted\", \"dwindle\"",
+        "derived": {
+          "active_participle": [
+            "ذَائِب"
+          ],
+          "passive_participle": [
+            "مَذُوب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أبي",
+    "entryId": "أبي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To refuse",
+    "past": "أبى",
+    "candidate": "آبِي",
+    "lexemeMatches": [
+      {
+        "citation": "أَبَى",
+        "measure": "I",
+        "gloss": "\"deny\", \"refuse\"",
+        "derived": {
+          "active_participle": [
+            "آبِي"
+          ],
+          "passive_participle": [
+            "مَأبِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أبي",
+    "entryId": "أبي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To refuse",
+    "past": "أبى",
+    "candidate": "مَأبِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "أَبَى",
+        "measure": "I",
+        "gloss": "\"deny\", \"refuse\"",
+        "derived": {
+          "active_participle": [
+            "آبِي"
+          ],
+          "passive_participle": [
+            "مَأبِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "برر",
+    "entryId": "برر-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To be righteous, pious",
+    "past": "بر",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "برر",
+    "entryId": "برر-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To be righteous, pious",
+    "past": "بر",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حوي",
+    "entryId": "حوي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To collect, gather, contain",
+    "past": "حوى",
+    "candidate": "حَاوِي",
+    "lexemeMatches": [
+      {
+        "citation": "حَوَى",
+        "measure": "I",
+        "gloss": "\"gather\", \"encompass\", \"clasp\"",
+        "derived": {
+          "active_participle": [
+            "حَاوِي"
+          ],
+          "passive_participle": [
+            "مَحوِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حوي",
+    "entryId": "حوي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To collect, gather, contain",
+    "past": "حوى",
+    "candidate": "مَحوِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "حَوَى",
+        "measure": "I",
+        "gloss": "\"gather\", \"encompass\", \"clasp\"",
+        "derived": {
+          "active_participle": [
+            "حَاوِي"
+          ],
+          "passive_participle": [
+            "مَحوِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عصي",
+    "entryId": "عصي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To disobey",
+    "past": "عصى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عصي",
+    "entryId": "عصي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To disobey",
+    "past": "عصى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "هدي",
+    "entryId": "هدي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To guide, direct",
+    "past": "هدى",
+    "candidate": "هَادِي",
+    "lexemeMatches": [
+      {
+        "citation": "هَدَى",
+        "measure": "I",
+        "gloss": "\"guide\", \"direct\", \"lead\"",
+        "derived": {
+          "active_participle": [
+            "هَادِي"
+          ],
+          "passive_participle": [
+            "مَهدِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "هدي",
+    "entryId": "هدي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To guide, direct",
+    "past": "هدى",
+    "candidate": "مَهدِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "هَدَى",
+        "measure": "I",
+        "gloss": "\"guide\", \"direct\", \"lead\"",
+        "derived": {
+          "active_participle": [
+            "هَادِي"
+          ],
+          "passive_participle": [
+            "مَهدِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سمي",
+    "entryId": "سمي-main",
+    "formKey": "active_participle",
+    "measure": "II",
+    "meaning": "To name",
+    "past": "سمى",
+    "candidate": "مُسَمِّي",
+    "lexemeMatches": [
+      {
+        "citation": "سَمَّى",
+        "measure": "II",
+        "gloss": "\"name\", \"designate\"",
+        "derived": {
+          "active_participle": [
+            "مُسَمِّي"
+          ],
+          "passive_participle": [
+            "مُسَمَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سمي",
+    "entryId": "سمي-main",
+    "formKey": "passive_participle",
+    "measure": "II",
+    "meaning": "To name",
+    "past": "سمى",
+    "candidate": "مُسَمَّى",
+    "lexemeMatches": [
+      {
+        "citation": "سَمَّى",
+        "measure": "II",
+        "gloss": "\"name\", \"designate\"",
+        "derived": {
+          "active_participle": [
+            "مُسَمِّي"
+          ],
+          "passive_participle": [
+            "مُسَمَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لءم",
+    "entryId": "لءم-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To be suitable for, appropriate for",
+    "past": "لَاءَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لءم",
+    "entryId": "لءم-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To be suitable for, appropriate for",
+    "past": "لَاءَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نفي",
+    "entryId": "نفي-csv-403",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To negate",
+    "past": "نفى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "نفي",
+    "entryId": "نفي-csv-403",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To negate",
+    "past": "نفى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سهم",
+    "entryId": "سهم-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To contribute",
+    "past": "سَاهَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "طيب",
+    "entryId": "طيب-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To be good, pleasant",
+    "past": "طاب",
+    "candidate": "طَائِب",
+    "lexemeMatches": [
+      {
+        "citation": "طَاب",
+        "measure": "I",
+        "gloss": "\"be good\", \"be pleasant\"",
+        "derived": {
+          "active_participle": [
+            "طَائِب"
+          ],
+          "passive_participle": [
+            "مَطِيب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "طيب",
+    "entryId": "طيب-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To be good, pleasant",
+    "past": "طاب",
+    "candidate": "مَطِيب",
+    "lexemeMatches": [
+      {
+        "citation": "طَاب",
+        "measure": "I",
+        "gloss": "\"be good\", \"be pleasant\"",
+        "derived": {
+          "active_participle": [
+            "طَائِب"
+          ],
+          "passive_participle": [
+            "مَطِيب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لفف",
+    "entryId": "لفف-csv-590",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To wrap up",
+    "past": "لف",
+    "candidate": "مَلفُوف",
+    "lexemeMatches": [
+      {
+        "citation": "لَفّ",
+        "measure": "I",
+        "gloss": "\"wrap\", \"turn\"",
+        "derived": {
+          "active_participle": [
+            "لَافّ"
+          ],
+          "passive_participle": [
+            "مَلفُوف"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قيل",
+    "entryId": "قيل-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To take a (midday) nap",
+    "past": "قال",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "قيل",
+    "entryId": "قيل-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To take a (midday) nap",
+    "past": "قال",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "بكي",
+    "entryId": "بكي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To cry",
+    "past": "بكى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "بكي",
+    "entryId": "بكي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To cry",
+    "past": "بكى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جور",
+    "entryId": "جور-csv-589",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To be next to",
+    "past": "جَاوَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جور",
+    "entryId": "جور-csv-589",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To be next to",
+    "past": "جَاوَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كني",
+    "entryId": "كني-main",
+    "formKey": "active_participle",
+    "measure": "II",
+    "meaning": "To give a kunyah to or call someone by their kunyah",
+    "past": "كنى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كني",
+    "entryId": "كني-main",
+    "formKey": "passive_participle",
+    "measure": "II",
+    "meaning": "To give a kunyah to or call someone by their kunyah",
+    "past": "كنى",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حنن",
+    "entryId": "حنن-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To cry out producing a yearning sound",
+    "past": "حن",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "حنن",
+    "entryId": "حنن-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To cry out producing a yearning sound",
+    "past": "حن",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جزي",
+    "entryId": "جزي-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To reward",
+    "past": "جزى",
+    "candidate": "جَازِي",
+    "lexemeMatches": [
+      {
+        "citation": "جَزَى",
+        "measure": "I",
+        "gloss": "\"reward\", \"repay\", \"requite\"",
+        "derived": {
+          "active_participle": [
+            "جَازِي"
+          ],
+          "passive_participle": [
+            "مَجزِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جزي",
+    "entryId": "جزي-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To reward",
+    "past": "جزى",
+    "candidate": "مَجزِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "جَزَى",
+        "measure": "I",
+        "gloss": "\"reward\", \"repay\", \"requite\"",
+        "derived": {
+          "active_participle": [
+            "جَازِي"
+          ],
+          "passive_participle": [
+            "مَجزِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوم",
+    "entryId": "سوم-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To bargain, haggle",
+    "past": "سَاوَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سوم",
+    "entryId": "سوم-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To bargain, haggle",
+    "past": "سَاوَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غيظ",
+    "entryId": "غيظ-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To enrage",
+    "past": "غاظ",
+    "candidate": "غَائِظ",
+    "lexemeMatches": [
+      {
+        "citation": "غَاظ",
+        "measure": "I",
+        "gloss": "\"enrage\", \"irritate\"",
+        "derived": {
+          "active_participle": [
+            "غَائِظ"
+          ],
+          "passive_participle": [
+            "مَغِيظ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "غيظ",
+    "entryId": "غيظ-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To enrage",
+    "past": "غاظ",
+    "candidate": "مَغِيظ",
+    "lexemeMatches": [
+      {
+        "citation": "غَاظ",
+        "measure": "I",
+        "gloss": "\"enrage\", \"irritate\"",
+        "derived": {
+          "active_participle": [
+            "غَائِظ"
+          ],
+          "passive_participle": [
+            "مَغِيظ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خيب",
+    "entryId": "خيب-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To fail, be unsuccessful",
+    "past": "خاب",
+    "candidate": "خَائِب",
+    "lexemeMatches": [
+      {
+        "citation": "خَاب",
+        "measure": "I",
+        "gloss": "\"fail\", \"be frustrated\", \"go wrong\"",
+        "derived": {
+          "active_participle": [
+            "خَائِب"
+          ],
+          "passive_participle": [
+            "مَخِيب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "خيب",
+    "entryId": "خيب-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To fail, be unsuccessful",
+    "past": "خاب",
+    "candidate": "مَخِيب",
+    "lexemeMatches": [
+      {
+        "citation": "خَاب",
+        "measure": "I",
+        "gloss": "\"fail\", \"be frustrated\", \"go wrong\"",
+        "derived": {
+          "active_participle": [
+            "خَائِب"
+          ],
+          "passive_participle": [
+            "مَخِيب"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "هجم",
+    "entryId": "هجم-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To attack, launch an attack",
+    "past": "هَاجَمَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جني",
+    "entryId": "جني-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To commit, perpetrate, harm",
+    "past": "جنى",
+    "candidate": "جَانِي",
+    "lexemeMatches": [
+      {
+        "citation": "جَنَى",
+        "measure": "I",
+        "gloss": "\"commit a crime\"",
+        "derived": {
+          "active_participle": [
+            "جَانِي"
+          ],
+          "passive_participle": [
+            "مَجنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جني",
+    "entryId": "جني-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To commit, perpetrate, harm",
+    "past": "جنى",
+    "candidate": "مَجنِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "جَنَى",
+        "measure": "I",
+        "gloss": "\"commit a crime\"",
+        "derived": {
+          "active_participle": [
+            "جَانِي"
+          ],
+          "passive_participle": [
+            "مَجنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شجر",
+    "entryId": "شجر-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To fight with, argue with",
+    "past": "شَاجَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شجر",
+    "entryId": "شجر-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To fight with, argue with",
+    "past": "شَاجَرَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سرع",
+    "entryId": "سرع-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To rush",
+    "past": "سَارَعَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "سرع",
+    "entryId": "سرع-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To rush",
+    "past": "سَارَعَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عتب",
+    "entryId": "عتب-main",
+    "formKey": "active_participle",
+    "measure": "III",
+    "meaning": "To admonish",
+    "past": "عَاتَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عتب",
+    "entryId": "عتب-main",
+    "formKey": "passive_participle",
+    "measure": "III",
+    "meaning": "To admonish",
+    "past": "عَاتَبَ",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ظنن",
+    "entryId": "ظنن-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To think",
+    "past": "ظن",
+    "candidate": "ظَانّ",
+    "lexemeMatches": [
+      {
+        "citation": "ظَنّ",
+        "measure": "I",
+        "gloss": "\"think\", \"believe\", \"presume\"",
+        "derived": {
+          "active_participle": [
+            "ظَانّ"
+          ],
+          "passive_participle": [
+            "مَظنُون"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ظنن",
+    "entryId": "ظنن-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To think",
+    "past": "ظن",
+    "candidate": "مَظنُون",
+    "lexemeMatches": [
+      {
+        "citation": "ظَنّ",
+        "measure": "I",
+        "gloss": "\"think\", \"believe\", \"presume\"",
+        "derived": {
+          "active_participle": [
+            "ظَانّ"
+          ],
+          "passive_participle": [
+            "مَظنُون"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عني",
+    "entryId": "عني-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To mean",
+    "past": "عنى",
+    "candidate": "عَانِي",
+    "lexemeMatches": [
+      {
+        "citation": "عَنَى",
+        "measure": "I",
+        "gloss": "\"mean\", \"signify\", \"concern\"",
+        "derived": {
+          "active_participle": [
+            "عَانِي"
+          ],
+          "passive_participle": [
+            "مَعنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "عني",
+    "entryId": "عني-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To mean",
+    "past": "عنى",
+    "candidate": "مَعنِيّ",
+    "lexemeMatches": [
+      {
+        "citation": "عَنَى",
+        "measure": "I",
+        "gloss": "\"mean\", \"signify\", \"concern\"",
+        "derived": {
+          "active_participle": [
+            "عَانِي"
+          ],
+          "passive_participle": [
+            "مَعنِيّ"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضلل",
+    "entryId": "ضلل-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To go astray",
+    "past": "ضل",
+    "candidate": "ضَالّ",
+    "lexemeMatches": [
+      {
+        "citation": "ضَلّ",
+        "measure": "I",
+        "gloss": "\"go astray\", \"be in vain\"",
+        "derived": {
+          "active_participle": [
+            "ضَالّ"
+          ],
+          "passive_participle": [
+            "مَضلُول"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "ضلل",
+    "entryId": "ضلل-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To go astray",
+    "past": "ضل",
+    "candidate": "مَضلُول",
+    "lexemeMatches": [
+      {
+        "citation": "ضَلّ",
+        "measure": "I",
+        "gloss": "\"go astray\", \"be in vain\"",
+        "derived": {
+          "active_participle": [
+            "ضَالّ"
+          ],
+          "passive_participle": [
+            "مَضلُول"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جفف",
+    "entryId": "جفف-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To dry out, dry",
+    "past": "جف",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "جفف",
+    "entryId": "جفف-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To dry out, dry",
+    "past": "جف",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شمم",
+    "entryId": "شمم-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To smell",
+    "past": "شم",
+    "candidate": "شَامّ",
+    "lexemeMatches": [
+      {
+        "citation": "شَمّ",
+        "measure": "I",
+        "gloss": "\"smell\", \"sniff\"",
+        "derived": {
+          "active_participle": [
+            "شَامّ"
+          ],
+          "passive_participle": [
+            "مَشمُوم"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مسي",
+    "entryId": "مسي-main",
+    "formKey": "active_participle",
+    "measure": "II",
+    "meaning": "To wish a good evening",
+    "past": "مسى",
+    "candidate": "مُمَسِّي",
+    "lexemeMatches": [
+      {
+        "citation": "مَسَّى",
+        "measure": "II",
+        "gloss": "\"wish good evening\"",
+        "derived": {
+          "active_participle": [
+            "مُمَسِّي"
+          ],
+          "passive_participle": [
+            "مُمَسَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مسي",
+    "entryId": "مسي-main",
+    "formKey": "passive_participle",
+    "measure": "II",
+    "meaning": "To wish a good evening",
+    "past": "مسى",
+    "candidate": "مُمَسَّى",
+    "lexemeMatches": [
+      {
+        "citation": "مَسَّى",
+        "measure": "II",
+        "gloss": "\"wish good evening\"",
+        "derived": {
+          "active_participle": [
+            "مُمَسِّي"
+          ],
+          "passive_participle": [
+            "مُمَسَّى"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لوك",
+    "entryId": "لوك-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To chew",
+    "past": "لاك",
+    "candidate": "لَائِك",
+    "lexemeMatches": [
+      {
+        "citation": "لَاك",
+        "measure": "I",
+        "gloss": "\"chew\", \"discredit\"",
+        "derived": {
+          "active_participle": [
+            "لَائِك"
+          ],
+          "passive_participle": [
+            "مَلُوك"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لوك",
+    "entryId": "لوك-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To chew",
+    "past": "لاك",
+    "candidate": "مَلُوك",
+    "lexemeMatches": [
+      {
+        "citation": "لَاك",
+        "measure": "I",
+        "gloss": "\"chew\", \"discredit\"",
+        "derived": {
+          "active_participle": [
+            "لَائِك"
+          ],
+          "passive_participle": [
+            "مَلُوك"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لين",
+    "entryId": "لين-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To soften",
+    "past": "لان",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "لين",
+    "entryId": "لين-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To soften",
+    "past": "لان",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "صيح",
+    "entryId": "صيح-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To cry, scream, shout",
+    "past": "صاح",
+    "candidate": "صَائِح",
+    "lexemeMatches": [
+      {
+        "citation": "صَاح",
+        "measure": "I",
+        "gloss": "\"scream\", \"call out\"",
+        "derived": {
+          "active_participle": [
+            "صَائِح"
+          ],
+          "passive_participle": [
+            "مَصِيح"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "صيح",
+    "entryId": "صيح-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To cry, scream, shout",
+    "past": "صاح",
+    "candidate": "مَصِيح",
+    "lexemeMatches": [
+      {
+        "citation": "صَاح",
+        "measure": "I",
+        "gloss": "\"scream\", \"call out\"",
+        "derived": {
+          "active_participle": [
+            "صَائِح"
+          ],
+          "passive_participle": [
+            "مَصِيح"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مصص",
+    "entryId": "مصص-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To suck",
+    "past": "مص",
+    "candidate": "مَاصّ",
+    "lexemeMatches": [
+      {
+        "citation": "مَصّ",
+        "measure": "I",
+        "gloss": "\"suck\", \"absorb\", \"lap up\"",
+        "derived": {
+          "active_participle": [
+            "مَاصّ"
+          ],
+          "passive_participle": [
+            "مَمصُوص"
+          ]
+        }
+      },
+      {
+        "citation": "مَصّ",
+        "measure": "I",
+        "gloss": "\"suck\", \"absorb\", \"lap up\"",
+        "derived": {
+          "active_participle": [
+            "مَاصّ"
+          ],
+          "passive_participle": [
+            "مَمصُوص"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "مصص",
+    "entryId": "مصص-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To suck",
+    "past": "مص",
+    "candidate": "مَمصُوص",
+    "lexemeMatches": [
+      {
+        "citation": "مَصّ",
+        "measure": "I",
+        "gloss": "\"suck\", \"absorb\", \"lap up\"",
+        "derived": {
+          "active_participle": [
+            "مَاصّ"
+          ],
+          "passive_participle": [
+            "مَمصُوص"
+          ]
+        }
+      },
+      {
+        "citation": "مَصّ",
+        "measure": "I",
+        "gloss": "\"suck\", \"absorb\", \"lap up\"",
+        "derived": {
+          "active_participle": [
+            "مَاصّ"
+          ],
+          "passive_participle": [
+            "مَمصُوص"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "كفف",
+    "entryId": "كفف-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To stop",
+    "past": "كف",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شوك",
+    "entryId": "شوك-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To prick",
+    "past": "شاك",
+    "candidate": "شَائِك",
+    "lexemeMatches": [
+      {
+        "citation": "شَاك",
+        "measure": "I",
+        "gloss": "\"sting\", \"prick\"",
+        "derived": {
+          "active_participle": [
+            "شَائِك"
+          ],
+          "passive_participle": [
+            "مَشُوك"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "شوك",
+    "entryId": "شوك-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To prick",
+    "past": "شاك",
+    "candidate": "مَشُوك",
+    "lexemeMatches": [
+      {
+        "citation": "شَاك",
+        "measure": "I",
+        "gloss": "\"sting\", \"prick\"",
+        "derived": {
+          "active_participle": [
+            "شَائِك"
+          ],
+          "passive_participle": [
+            "مَشُوك"
+          ]
+        }
+      }
+    ],
+    "verified": true,
+    "verificationTier": "elixirfm_exact_lemma_measure_meaning",
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أمم",
+    "entryId": "أمم-main",
+    "formKey": "active_participle",
+    "measure": "I",
+    "meaning": "To become a mother",
+    "past": "أم",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  },
+  {
+    "root": "أمم",
+    "entryId": "أمم-main",
+    "formKey": "passive_participle",
+    "measure": "I",
+    "meaning": "To become a mother",
+    "past": "أم",
+    "candidate": null,
+    "lexemeMatches": [],
+    "verified": false,
+    "verificationTier": null,
+    "sourceUrl": "https://quest.ms.mff.cuni.cz/cgi-bin/elixir/index.fcgi"
+  }
+]

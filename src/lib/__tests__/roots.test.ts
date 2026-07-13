@@ -1,7 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { importedArabicVerbReport, importedPlaceholderCleanupAudit } from "@/data/roots";
+import { QUTRUB_VERIFIED_FORMS } from "@/data/qutrubVerification";
+import { QABAS_VERIFIED_FORMS } from "@/data/qabasVerification";
+import { CALIMA_VERIFIED_FORMS } from "@/data/calimaVerification";
+import { PARTICIPLE_VERIFIED_FORMS } from "@/data/participleVerification";
+import { ELIXIRFM_VERIFIED_FORMS } from "@/data/elixirfmVerification";
 import {
   getAllRoots,
+  getRootVerbEntries,
   findRoot,
   searchRoot,
   getOrderedForms,
@@ -71,11 +77,11 @@ describe("searchRoot", () => {
 });
 
 describe("imported Arabic verb variants", () => {
-  it("keeps reviewed root entries intact while adding same-root AI draft variants", () => {
+  it("keeps reviewed root entries intact while adding same-root partially reviewed variants", () => {
     const entry = findRoot("علم");
     expect(entry?.status).toBe("reviewed");
     const variant = entry?.variants?.find((item) => item.meaningEn === "To teach");
-    expect(variant?.status).toBe("ai_draft");
+    expect(variant?.status).toBe("partially_reviewed");
     expect(variant?.source?.verifiedFields).toEqual([
       "meaning_en",
       "past_3ms",
@@ -302,6 +308,95 @@ describe("seed data spelling rules", () => {
 });
 
 describe("imported draft content", () => {
+  it("marks every Qutrub-matched form reviewed and partially reviews its whole entry", () => {
+    let verifiedFormCount = 0;
+    for (const root of getAllRoots()) {
+      for (const entry of getRootVerbEntries(root)) {
+        const verifiedKeys = Object.keys(QUTRUB_VERIFIED_FORMS[entry.id] ?? []);
+        verifiedFormCount += verifiedKeys.length;
+        for (const key of verifiedKeys) {
+          expect(entry.forms.find((form) => form.key === key)?.reviewState).toBe("reviewed");
+        }
+      }
+    }
+    expect(verifiedFormCount).toBeGreaterThan(578);
+    expect(findRoot("أخذ")?.status).toBe("partially_reviewed");
+  });
+
+  it("marks every exact Qabas derived-form match reviewed", () => {
+    let verifiedFormCount = 0;
+    for (const root of getAllRoots()) {
+      for (const entry of getRootVerbEntries(root)) {
+        const verifiedKeys = Object.keys(QABAS_VERIFIED_FORMS[entry.id] ?? []);
+        verifiedFormCount += verifiedKeys.length;
+        for (const key of verifiedKeys) {
+          expect(entry.forms.find((form) => form.key === key)?.reviewState).toBe("reviewed");
+        }
+      }
+    }
+    expect(verifiedFormCount).toBe(413);
+  });
+
+  it("applies every strict Qabas and CALIMA verification", () => {
+    let verifiedFormCount = 0;
+    for (const root of getAllRoots()) {
+      for (const entry of getRootVerbEntries(root)) {
+        const verifiedForms = CALIMA_VERIFIED_FORMS[entry.id] ?? {};
+        verifiedFormCount += Object.keys(verifiedForms).length;
+        for (const [key, arabic] of Object.entries(verifiedForms)) {
+          const form = entry.forms.find((candidate) => candidate.key === key);
+          expect(form?.arabic).toBe(arabic);
+          expect(form?.reviewState).toBe("reviewed");
+        }
+      }
+    }
+    expect(verifiedFormCount).toBe(156);
+  });
+
+  it("fills only strictly verified generated participles", () => {
+    let verifiedFormCount = 0;
+    for (const root of getAllRoots()) {
+      for (const entry of getRootVerbEntries(root)) {
+        const verifiedForms = PARTICIPLE_VERIFIED_FORMS[entry.id] ?? {};
+        verifiedFormCount += Object.keys(verifiedForms).length;
+        for (const [key, verified] of Object.entries(verifiedForms)) {
+          const form = entry.forms.find((candidate) => candidate.key === key);
+          expect(form?.arabic).toBe(verified.arabic);
+          expect(form?.meaningEn).toBe(verified.meaningEn);
+          expect(form?.reviewState).toBe("reviewed");
+        }
+      }
+    }
+    expect(verifiedFormCount).toBe(836);
+  });
+
+  it("applies every exact ElixirFM lemma, measure, and meaning match", () => {
+    let verifiedFormCount = 0;
+    for (const root of getAllRoots()) {
+      for (const entry of getRootVerbEntries(root)) {
+        const verifiedForms = ELIXIRFM_VERIFIED_FORMS[entry.id] ?? {};
+        verifiedFormCount += Object.keys(verifiedForms).length;
+        for (const [key, verified] of Object.entries(verifiedForms)) {
+          const form = entry.forms.find((candidate) => candidate.key === key);
+          expect(form?.arabic).toBe(verified.arabic);
+          expect(form?.meaningEn).toBe(verified.meaningEn);
+          expect(form?.reviewState).toBe("reviewed");
+        }
+      }
+    }
+    expect(verifiedFormCount).toBe(83);
+  });
+
+  it("promotes drafts only when all six forms are source-reviewed", () => {
+    const entries = getAllRoots().flatMap(getRootVerbEntries);
+    const fullyVerified = entries.filter((entry) =>
+      entry.forms.every((form) => form.reviewState === "reviewed"),
+    );
+    expect(fullyVerified).toHaveLength(60);
+    expect(fullyVerified.every((entry) => entry.status === "reviewed")).toBe(true);
+    expect(entries.filter((entry) => entry.status === "reviewed")).toHaveLength(64);
+  });
+
   it("audits every entry cleaned by the shared importer fix", () => {
     expect(importedPlaceholderCleanupAudit.affectedEntries).toBe(504);
     expect(importedPlaceholderCleanupAudit.cleanedLearnerFields).toBe(10_080);
@@ -311,7 +406,11 @@ describe("imported draft content", () => {
   it("keeps unsupported imported participles pending instead of generating them", () => {
     const imported = getAllRoots()
       .flatMap((entry) => entry.variants ?? [])
-      .find((entry) => entry.source);
+      .find((entry) =>
+        entry.source &&
+        !PARTICIPLE_VERIFIED_FORMS[entry.id] &&
+        !ELIXIRFM_VERIFIED_FORMS[entry.id],
+      );
     expect(imported).toBeDefined();
     for (const key of ["active_participle", "passive_participle"] as const) {
       const form = imported!.forms.find((candidate) => candidate.key === key)!;
@@ -329,7 +428,7 @@ describe("imported draft content", () => {
     const masdar = imported.forms.find((form) => form.key === "place_or_mim_masdar")!;
     expect(masdar.labelAr).toBe("المصدر");
     expect(masdar.labelEn).toBe("Verbal noun");
-    expect(masdar.reviewState).toBe("source_backed");
+    expect(["source_backed", "reviewed"]).toContain(masdar.reviewState);
   });
 
   it("rejects learner-facing placeholder templates with field context", () => {

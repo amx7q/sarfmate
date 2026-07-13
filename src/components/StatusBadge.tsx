@@ -5,6 +5,10 @@ const STYLES: Record<RootStatus, { pill: string; dot: string }> = {
     pill: "border-secondary/30 bg-secondary/10 text-primary",
     dot: "bg-secondary",
   },
+  partially_reviewed: {
+    pill: "border-secondary/30 bg-secondary/10 text-primary",
+    dot: "bg-secondary",
+  },
   community_suggested: {
     pill: "border-accent/40 bg-accent/10 text-ink",
     dot: "bg-accent",

@@ -31,6 +31,7 @@ function makeRoot(root: string, status: RootEntry["status"] = "reviewed"): RootE
       meaningEn: `${key.replaceAll("_", " ")} ${root}`,
       exampleAr: `${FORM_ARABIC[key]} ${root} مثال`,
       exampleEn: `Example ${root}`,
+      reviewState: "reviewed",
     })),
   };
 }
@@ -58,17 +59,44 @@ describe("practice question generation", () => {
     }
   });
 
-  it("uses reviewed roots and excludes malformed or AI-draft roots", () => {
+  it("uses individually reviewed forms from partially reviewed roots", () => {
     const malformed = makeRoot("دخل");
     malformed.forms[0] = { ...malformed.forms[0], arabic: "" };
-    const roots = [...reviewedRoots, makeRoot("خرج", "ai_draft"), malformed];
+    malformed.forms.slice(1).forEach((form) => { form.reviewState = "pending"; });
+    const partial = makeRoot("خرج", "partially_reviewed");
+    partial.forms.slice(1).forEach((form) => { form.reviewState = "pending"; });
+    const roots = [...reviewedRoots, partial, malformed];
 
     expect(getPracticeEligibleRoots(roots).map((entry) => entry.root)).toEqual(
-      reviewedRoots.map((entry) => entry.root),
+      [...reviewedRoots.map((entry) => entry.root), partial.root],
     );
     expect(createPracticeSession(roots, { random: deterministicRandom }).questions.every((question) =>
-      reviewedRoots.some((entry) => entry.root === question.root),
+      [...reviewedRoots, partial].some((entry) => entry.root === question.root),
     )).toBe(true);
+    const partialQuestions = createPracticeSession(roots, {
+      priorityRoot: partial.root,
+      random: deterministicRandom,
+    }).questions.filter((question) => question.root === partial.root);
+    expect(partialQuestions.every((question) => question.formKey === "past")).toBe(true);
+    expect(createPracticeSession(roots, {
+      priorityRoot: partial.root,
+      random: deterministicRandom,
+      difficulty: "hard",
+    }).questions.every((question) => question.root !== partial.root)).toBe(true);
+  });
+
+  it("does not require example sentences for easy and medium reviewed-form questions", () => {
+    const partial = makeRoot("خرج", "partially_reviewed");
+    partial.forms.slice(1).forEach((form) => { form.reviewState = "pending"; });
+    delete partial.forms[0].exampleAr;
+    delete partial.forms[0].exampleEn;
+
+    expect(getPracticeEligibleRoots([partial])).toHaveLength(1);
+    expect(createPracticeSession([partial, ...reviewedRoots], {
+      priorityRoot: partial.root,
+      random: deterministicRandom,
+      difficulty: "easy",
+    }).questions.some((question) => question.root === partial.root)).toBe(true);
   });
 
   it("uses the stored target form for every question type", () => {
